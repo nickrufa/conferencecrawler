@@ -1,0 +1,1273 @@
+ePoster Flash Session Addressing the need for speed: advances in point-of-care testing	Chair Jennifer Dien Bard (Los Angeles, United States)
+	
+Rapid respiratory microbiological POCTs and antibiotic use in primary care: the RAPID-TEST RCT E. Brown* (Bristol, United Kingdom), A.D. Hay, S. Abbs, M. Ridd, S. Granier, A. Lane, P. Muir, J. Taylor, G. Young, K. Eastwood, H. Dash, L. Bradshaw, R. Clarke, M. Lui, E. Bridgeman, R. Brierley, H. Thornton, P. Mitchell, L. Zhu, L. Yardley, C. Metcalfe	
+	
+Evaluation of the prototype BIOFIRE® nasal HR panel (nHRP) in children with acute respiratory illness, a nasal swab-based rapid hoSt gene expression test G. Storch* (Saint Louis, Missouri, United States), M. Wallendorf, C. Rindlisbacher, J. Jackson, M. Hockin	
+	
+Evaluation of the analytical performance of the Biosynex AMPLIQUICK Fecal Bacteriology kit in the diagnossis of bacterial intestinal infections P. Lehours* (Bordeaux, France), Q. Beaufils, L. Benejat, A. Ducournau, J. Aptel, A. Chevalier, M. Jauvain	
+	
+Development and Validation of a Novel Rapid Antigen Test for Norovirus Detection: A Comparative Performance Analysis N. Younes* (Doha, Qatar), G. Nasrallah	
+	
+A Rapid Molecular POCT System for Detection of Carbapenem-Resistant Enterobacterales (CRE) S.Y. Choi* (Daejeon, Korea, Republic of), C. Lee, H.O. Park	
+	
+Validation of an ultra-rapid, point-of-care, antibiotic susceptibility testing device A. Van Der Linden* (Eindhoven, Netherlands), Y. Deurloo, N. Doomen, D. Kreft, J. Hays, H. Stapert, A. Van Belkum, S. Shanko	
+	
+Development of a frugal multiplexed paper sensor for rapid detection of sepsis-causing pathogens C. Singhal* (Faridabad, India), S. Chatterjee, S. Gupta, M. Yadav, C. Sharma, S. Pandey, D. Kumar, P. Joshi, J. Jaya, R. Dwivedi, S. Tanwar, S. Sharma, S. Shamsi, A. Tyagi, N. Kumar, S. Chaudhuri	
+	
+Multianalyte POCT device for a sample-to-result detection of nucleic acid and protein L. Pommiès* (Gif Sur Yvette, France), H. Boutal, D. Fras, H. Volland	
+	
+A smartphone app for point-of-care quantification of lateral flow assays R. Armiger* (London, United Kingdom), R. Reid, P. Georgiou, A. Holmes, J. Herberg	
+	
+Keynote Lecture HIV: from needle parks to injectables	Chairs Mary Horgan (Dublin, Ireland) Gülsen Özkaya Sahin (Lund, Sweden)
+	
+Huldrych Günthard (Zürich, Switzerland)	
+	
+1-hour Oral Session Planes, Pains, and Pathogens: The Perils of Travel Medicine	Chairs Anu Kantele (Helsinki, Finland) Carlos Seas (Lima, Peru)
+	
+Fever in returning travelers from tropical regions: what not to miss in an evolving epidemiology S. Caronni* (Milan, Italy), M. Pieruzzi, A. Rizzo, A.H. Behring, A. Poloni, A. Giacomelli, F. Salari, S. Grosso, A. Mancon, D. Mileto, S. Antinori	
+	
+Tracing the itch: A spatiotemporal analysis of scabies rates and its risk factors using the Global Burden of Disease data S. Gupta* (Auckland, New Zealand), S. Thornley, G. Sundborn, C. Grant	
+	
+Molecular epidemiological characterization of enterotoxigenic and enteroaggregative Escherichia coli causing traveller&#39;s diarrhoea and their relationship with clinical features P. Oliveras Julia* (Barcelona, Spain), P. Oliveras, E. Riera, L. Horvath, R.M. Albarracín, M.E. Valls, M.J. Álvarez-Martínez, M. Alguacil, E. Guiral, M. Espasa, D. Camprubi-Ferrer, J. Vila	
+	
+Bites and bytes – can digital surveillance of travellers&#39; illness predict outbreaks?	N. Hedrich* (Zürich, Switzerland), T. Lovey, P. Schlagenhauf
+	
+Travel-associated infections and diseases: a retrospective cross-sectional study M. Trojanek* (Prague, Czech Republic), M. Trojánek, V. Grebenyuk, V. Jegorova, P. Hubacek, A. Briksi, J. Havlova, K. Dundrova, L. Kolarik, I. Zicklerova, L. Richterova, O. Beranek, T. Ernestova, L. Kohout, G. Meseznikov, A. Nycova, B. Pisova, R. Šindlerová, M. Tulach, Z. Uhříková, M. Vidlička, M. Štefan, F. Stejskal	
+	
+1-hour Oral Session Marker based diagnostics: forget the pathogen	Chairs Virginie Prendki (Genève-Thônex, Switzerland) Suzanne Van Asten (Nijmegen, Netherlands)
+	
+A 29-mRNA molecular host response test demonstrates enhanced accuracy compared to a protein-based host response test for the diagnosis of bacterial and viral infections N. Whitfield* (Sunnyvale, United States), C. Lu, O. Liesenfeld	
+	
+Diagnostic accuracy of a bacterial versus viral host- protein test for pediatric inpatients with acute infection T. Gottlieb* (Tirat Carmel, Israel), L. Bont, A. Klein, M. Stein, M. Mor, I. Srugo, R. Navon, E. Eden, B.P. Muller	
+	
+Diagnostic accuracy of combined urine lipocalin 2 and copper test in acute pyelonephritis or cystitis V. Havlicek* (Prague, Czech Republic), J. Hrbacek, T. Pluhacek, J. Houst, A. Palyzova, D. Luptakova, D.A. Stevens, J. Novak, R. Dobias, R. Zachoval	
+	
+Diagnostic Performance of Whole-Blood RNA Signatures for Tuberculosis Diagnosis in a Cohort of Patients with Non-Tuberculous Mycobacterial Lung Disease P. Escalante* (Rochester, Mn, United States), B. Piatkowski, B. Pathakumari, V. Van Keulen, N. Fadra, P. Arias-Sanchez, L. Gutierrez, S. Karnakoti, T. Peikert	
+	
+Diagnostic utility of MxA and MxA/CRP ratio in differentiating viral and bacterial infections: a prospective cohort study O. Beránek* (Prague, Czech Republic), R. Prusa, M. Trojánek, O. Beranek, Z. Uhříková, J. Illner, P. Lehnert, P. Bukovska, M. Štefan, V. Jegorova, T. Ernestova, L. Kohout, G. Meseznikov, A. Nycova, R. Šindlerová, M. Tulach, M. Vidlička, V. Grebenyuk	
+	
+Panel Discussion AMR and vaccines	Chairs Charlotte Vernhes (Brussels, Belgium) Ghada Zoubiane (London, United Kingdom)
+	
+Overview of the current evidence of the impact of vaccines on AMR Adam Cunningham (Birmingham, United Kingdom)	
+	
+Panel discussion: gaps, needs, and opportunities to leverage vaccines against AMR , Adam Cunningham (Birmingham, United Kingdom), Sipho Kenneth Dlamini (Observatory, South Africa), Erin Duffy (Boston, United States), Mateusz Hasso-Agopsowicz (Geneva, Switzerland)	
+	
+1-hour Symposium Why is the concept of complicated UTI so complicated?	Chairs Gernot Bonkat (Basel, Switzerland) Maeve Doyle (Waterford, Ireland)
+	
+The concept of complicated UTI: underlying conditions matter Suzanne Geerlings (Amsterdam, Netherlands)	
+	
+The concept of complicated UTI: the site of infection matters most Jesús Rodríguez-Baño (Seville, Spain) Co-organised with: ESCMID Education Subcommittee	
+	
+Meet-the-Expert How to apply organoid models to study infectious disease	
+	
+Jennifer Rohn (London, United Kingdom)	
+	
+Nathalie Sauvonnet (Paris, France)	
+	
+1-hour Oral Session Antimicrobial resistance around birth	Chairs Julia Anna Bielicki (London, United Kingdom) Surbhi Malhotra-Kumar (Antwerp, Belgium)
+	
+Prevalence and risk factors of antibiotic resistance genes in breastmilk and neonatal oral cavity of preterm mother-infant pairs A. Sharma* (Chandigarh, India), S. Dutta, M. Biswal, A. Chakraborty, V. Suri, P. Ray	
+	
+Effect of maternal peripartum antibiotic exposure on the microbial diversity, relative abundance of taxa, and resistome in breastmilk A. Chakraborty* (Chandigarh, India), S. Dutta, P. Sikka, D. Puri, A. Kumar, P. Kumar, A. Pal, A. Arora	
+	
+Dynamics of gastrointestinal colonisation by antibiotic-resistant bacteria in high-risk infants in Swiss and Greek neonatal intensive care units A. Braspenning* (Antwerp, Belgium), L. Timbermont, L. Van Heirstraeten, M. Berkell, A. Cook, E. Sieswerda, C.H. Van Werkhoven, J. Bielicki, S. Malhotra-Kumar	
+	
+Harnessing functional omics to decipher how probiotics reduce antibiotic resistance gene carriage in infants&#39; gut V. Pettersen* (Tromsø, Norway), A. Bargheet, G.H. Bø, C. Klingenberg	
+	
+Dynamics of gut resistome and mobilome in early life: A meta-analysis V. Pettersen* (Tromsø, Norway), A. Bargheet, H.T. Noordzij, A.J. Ponsero, C. Jian, K. Korpela, M. Valles-Colomer, J. Debelius, A. Kurilshikov	
+	
+1-hour Oral Session Advancing diagnostics and preventive measures in hemato-oncological patients	Chairs Dina Averbuch (Jerusalem, Israel) Malgorzata Mikulska (Genoa, Italy)
+	
+Prediction of bacterial and fungal bloodstream infections using machine learning in patients undergoing chemotherapy M. Freire* (Sao Paulo, Brazil), A. Villani. Jr, M. P. Freire, F. Lazzar Neto, L.A. De Padua Covas Lages, M. Salaroli De Oliveira, E. Abdala, F. L.S. Nunes, A.S. S. Levin	
+	
+Viral metagenomics in patients with persistent unexplained neutropenic fever- some clues to the cause of fever?	A. Douglas* (Melbourne, Australia), L. Caly, M.A. Slavin, I. Savic, J. Moselen, A. Aziz, G. Papadakis, G. Ng, J. Druce, K. Thursky
+	
+Results of Optifil study: 18F-FDG-PET/CT guided antifungal stewardship in invasive pulmonary aspergillosis F. Lanternier* (Paris, France), C. Maunoury, F. Montravers, F. Marquant, S. Poiree, C. Elie, C. Robin, A. Thiebaut, F. Ader, F. Suarez, E. Blanchard, O. Lortholary	
+	
+Long-term immunogenicity and boostability of the 5-dose pneumococcal vaccination schedule following allogeneic hematopoietic stem cell transplantation: a prospective cohort study S. Haggenburg* (Amsterdam, Netherlands), J. Schnyder, H. Garcia Garrido, M. Schoordijk, A. Reiners, B. Meek, M. Hazenberg, A. Goorhuis	
+	
+Humoral and cellular immune response to adjuvanted respiratory syncytial virus vaccine RSVPreF3 in adults after allogeneic hematopoietic cell transplantation J. Lötscher* (Basel, Switzerland), C.S. Walti, J. Halter, N. Khanna, S. Heller, S. Schmid, K. Leuzinger	
+	
+1-hour Oral Session New insights in bloodstream infections and endocarditis	Chairs Barbara Hasse (Zurich, Switzerland) José M. Miro (Barcelona, Spain)
+	
+Different from the start – Sex differences in Staphylococcus aureus bacteremia mortality A. Westgeest* (Leiden, Netherlands), M. Lambregts, F. Ruffin, V.G. Fowler, J.T. Thaden	
+	
+Tracking evolution in action during invasive Staphylococcus aureus infections: the BARISTA study S. Giulieri* (Melbourne, Australia), D. Daniel, M. Duarte Aguilera, D. Velasquez-Reyes, R. Guérillot, A. Gador-Whyte, F. James, E. Goodall, P. Fuge-Larsen, M. Henri, J. Trubiano, M. Leroi, K. Bond, T. Stinear, S. Tong, J. Kwong, B. Howden	
+	
+Identifying heterogeneity of treatment effect for antibiotic duration in bloodstream infection – an exploratory post-hoc analysis of the BALANCE randomized clinical trial S. Ong* (Melbourne, Australia), R. Pinto, A. Rishu, S. Tong, R. Commons, J.M. Conly, G. Evans, M. Fralick, C. Kandel, P. Lagacé- Wiens, T. Lee, S. Lother, D. Macfadden, J. Marshall, V. Martel-Laferrière, M. Mayette, E. Mcdonald, J. Neary, J. Prazak, E. Raby, A. Regli, B.A. Rogers, S. Smith, L. Taggart, H.T. Wang, T. Wuerz, D. Yahav, P. Young, R.A. Fowler, N. Daneman	
+	
+Bloodstream infection pathogen diversity and clinical impact revealed through unbiased whole genome sequencing: a prospective genomic epidemiology study N. Macesic* (Melbourne, Australia), J. Hawkey, J.A. Wisniewski, A. Peleg	
+	
+Risk of infection of intracardiac devices in patients with valvular infective endocarditis who carry cardiovascular implanted electronic devices. Analysis on a national cohort A. Blanco Arévalo* (Barcelona, Spain), A. Blanco-Arevalo, E. Calbo, P. Muñoz, D. Monzón, M. Valerio, M. Hernandez Meneses, J.M. Miró, M. Cobo Belastegui, A. De Alarcón, R. Rodríguez, I. Villanueva Benito, J.C. Lopez-Azor, L. Garcia-Alvarez, L. Boix	
+	
+1-hour Symposium Chronic infections in the era of CFTR modulators: what is going on in cystic fibrosis lungs these days?	Chairs Pavel Drevinek (Prague, Czech Republic) Helle Krogh Johansen (Copenhagen, Denmark)
+	
+The lung microbiome of people with cystic fibrosis receiving modulator therapy Sebastien Boutin (Lübeck, Germany)	
+	
+Tackling chronic infections in people with cystic fibrosis receiving modulator therapy: is it still necessary?	Alessandra Bragonzi (Milano, Italy) Co-organised with: ESCMID Study Group for Biofilms (ESGB), Czech Society for Medical Microbiology
+	
+1-hour Symposium Infection prevention and control and intensive care: challenges and solutions	Chairs Antonios Katsounas (Bochum, Germany) Claire Roger (Nimes, France)
+	
+Intensive care unit (ICU) and infection: two sides of a coin Reto Schuepbach (Zurich, Switzerland)	
+	
+Ventilator- associated pneumonia (VAP) and ICU enviroment: how can we improve practices?	Despoina Koulenti (London, United Kingdom) Co-organised with: ESCMID Study Group for Critically Ill Patients (ESGCIP), EUCIC Steering Committee
+	
+1-hour Oral Session Don&#39;t &#39;rash&#39; it	Chairs Heli Harvala (Turku, Finland) Catherine Moore (Cardiff, United Kingdom)
+	
+Current Prevalence of Parvovirus B 19 Infections: Ankara Bilkent City Hospital Experience 2019- 2024 B. Dinc* (Ankara, Türkiye), F.G. Aslan, F. Kırca, A. Toyran, S. Aydoğan, B. Dinç	
+	
+Managing an outbreak of parvovirus B19 infection in pregnancy: clinical outcomes from a single-centre study M. Melchio* (Genoa, Italy), E. Ricci, E. Cristina, E. Di Marco, P. Caligiuri, F. Prefumo, S. Mangini, A. Mesini, M. Mariani, C. Russo Artimagnella, C. Saffioti	
+	
+The dark side of the „fifth disease” endemic: human parvovirus B19 infections transmitted through blood transfusions in adults with malignant hematological diseases B.G. Szabo* (Budapest, Hungary), D. Korozs, P. Remenyi, J. Sinko	
+	
+Key learnings from a measles outbreak with multiple hospital exposures in Ireland, May-July 2024 A.M. Murray* (Dublin, Ireland), G. Larkin, D. Hickey	
+	
+Measles virus in the context of subacute sclerosing panencephalitis (SSPE) J. Dina* (Caen, France), S. Medragh, J. Adnet, T. Belveyre, C. Vauloup-Fellous	
+	
+1-hour Symposium Antimicrobial prescribing: myths or pearls?	Chairs Massimo Fantoni (Roma, Italy) Spyros Pournaras (Athens, Greece)
+	
+Why treat IV when PO is possible?	Bradley Spellberg (Los Angeles, United States)
+	
+De-escalation of antibiotic therapy to narrow- spectrum IV drugs Flaminia Olearo (Hamburg, Germany) Co-organised with: CMI Communications Board of Editors, ESCMID AMR Action Subcommittee, ESCMID Study Group for Antimicrobial stewardship (ESGAP), Trainee Association of ESCMID (TAE) Steering Committee, ESCMID Scientific Affairs Subcommittee	
+	
+1-hour Symposium Cutting edge methods in mycology	Chairs Katrien Lagrou (Leuven, Belgium) Antonio Vena (Genova, Italy)
+	
+Imaging for diagnosing mycoses: focus on 18F-FDG PET/CT Ana Fernández-Cruz (Majadahonda (Madrid), Spain)	
+	
+Exploring the intersection of fungal metagenomics and medical mycology Marcus De Melo Teixeira (Brasília, Brazil) Co-organised with: ESCMID Fungal Infection Study Group (EFISG), ESCMID Education Subcommittee, Medical Mycology Study Group (GEMICOMED) within the SEIMC (Spanish Society of Infectious Diseases and Clinical Microbiology), ESCMID Study Group for Critically Ill Patients (ESGCIP), Società Italiana per la Terapia Antinfett	
+	
+1-hour Case Session Weird and unusual infections	Chairs Murat Akova (Ankara, Türkiye) Muge Cevik (St Andrews, United Kingdom)
+	
+Vertical Transmission of Clade Ib monkeypoxvirus during Pregnancy: Clinical and Histopathological description of 3 cases E. Hasivirwe Vakaniaki* (Kinshasa, Congo, the Democratic Republic of the), N.R. Swar Kuispond, H. Yuichiro, S. Tadaki, R. Bulakali Chirimwami, L. Liesenborghs, P. Mbala-Kingebeni, E. Bangwen, I. Brosius, T. Wawina-Bokalanga, S. Sabiti Nundu	
+	
+First case of Oropouche fever in the South of Spain I. Pérez Hernández* (Málaga, Spain), I.A. Pérez- Hernández, E. Basallote Leal, M.A. Sempere Alcocer, B. O´donell Cortés	
+	
+Wild hippopotamus bite and Aeromonas spp. infection: a treatment challenge. First case report. J. Alza Arcila* (Medellín, Colombia), N.M. Daza Alarcon, M.V. Montoya Garcia, A. Múnera-Echeverri, F.F. Jiménez Quiroz, J. Alza-Arcila	
+	
+From the sea to the land: an emerging species K. Rodríguez Martínez* (Santo Domingo, Dominican Republic), K. Rodríguez, A. Fernández, K. Espaillat, J. Cruz, X. Rodríguez, T. Flores	
+	
+The first findings of Wohlfahrtiimonas chitiniclastica and Ignatzschineria species bacteremia in two cases with maggot infested wounds in Scandinavia A.L. Engsbro* (Slagelse, Denmark), C. Mortensen, R. Jul, W. Cebula, A.L. Laugesen, J.T. Møller, M. Kemp	
+	
+Meet-the-Expert EUCAST: What&#39;s new in susceptibility testing	
+	
+Erika Matuschek (Växjö, Sweden)	
+	
+Rafael Canton (Madrid, Spain) Co-organised with: EUCAST Steering Committee	
+	
+Meet-the-Expert The older solid organ transplant recipient: between frailty, immunosenescence and infection	
+	
+Maheen Abidi (Denver, United States)	
+	
+Alaa Atamna (Petah-Tikva, Israel) Co-organised with: ESCMID Study Group for Infections in Compromised Hosts (ESGICH), ESCMID Study Group for Infections in the Elderly (ESGIE)	
+	
+1-hour Symposium Vaccines and antimicrobial resistance	Chairs Iva Butic (Zagreb, Croatia) Zitta Barrella Harboe (Hillerød, Denmark)
+	
+The impact of current and future vaccines on AMR: from pneumococcal to COVID-19 Mateusz Hasso- Agopsowicz (Geneva, Switzerland)	
+	
+Can vaccines against AMR be translated into policy?	William Hausdorff (Washington DC, United States) Co-organised with: ESCMID Study Group for Antimicrobial Resistance Surveillance (ESGARS), ESCMID Vaccine Study Group (EVASG)
+	
+Educational Session Transforming your research idea into an appropriate study design	Chairs Casandra Bulescu (Bucharest, Romania) Mary Horgan (Dublin, Ireland)
+	
+Designing high-quality research studies: methodological skills and knowledge Mical Paul (Haifa, Israel)	
+	
+How to design and run scientific studies using AI agents as research assistants Alyssa Bilinski (Cambridge, United States)	
+	
+Designing your first study: how to construct a workable project when your work environment may not help Thomas Tängdén (Uppsala, Sweden)	
+	
+Bridging early-career professionals with partners and seniors Giorgia Caruana (Sion, Switzerland) Co-organised with: CMI Board of Editors, CMI Communications Board of Editors, Trainee Association of ESCMID (TAE) Steering Committee	
+	
+Open Forum Diversity in CM and ID: gender gaps and policy traps	Chair Andre Fuchs (Augsburg, Germany)
+	
+How to avoid parity traps in ID/CM research?	Muge Cevik (St Andrews, United Kingdom)
+	
+Gender gaps in visibility at scientific conferences Sarah Delliere (Paris, France)	
+	
+Psychological determinants of empowerment at individual and societal level Tba Co-organised with: ESCMID Education Subcommittee, ESCMID Parity Commission	
+	
+ePoster Flash Session Real world experience with modern HIV treatment: the art of ART	
+	
+Use of long-acting cabotegravir/rilpivirine in HIV- viraemic individuals: a metanalysis M. Bongiovanni* (Lugano, Switzerland), B. Barda, G. Barilaro, E. Bernasconi	
+	
+Assessment of HIV-DNA, immune activation and senescence biomarkers during injectable cabotegravir/rilpivirine treatment M. Mazzitelli* (Padua, Italy), M.R. Petrara, C. Cozzolino, L. Sasset, D. Leoni, S. Gardin, E. Ruffoni, A. De Rossi, A. Cattelan	
+	
+Impact of Cabotegravir plus Rilpivirine Long-Acting on Body Composition: Results from a Prospective Study A. De Vito* (Sassari, Italy), A. Marongiu, A. Cano, M. Puci, A. Colpani, A. Mura, M.G. Catte, M.A. Deledda, S. Uzzau, S. Babudieri, G. Sotgiu, F. Deriu, A. Spanu, G. Madeddu	
+	
+Real-World Efficacy and Tolerability of Long-Acting Cabotegravir/Rilpivirine in Older Woman with Polypharmacy and Comorbidities M. Rosas Cancio- Suárez* (Madrid, Spain), A. Moreno, S. Del Campo Terrón, M.J. Vivancos, A. G. García De Morales, J. Martínez-Sanz, M.D. Corbacho, M. Suárez, C. Cano, R. Ron, M.J. Cárdenas-Isasi, M. Vélez-Díaz-Pallarés, S. Moreno, M.J. Pérez-Elías	
+	
+Two-year comparative analysis of lipid profile changes between INSTI-based single tablet regimens in treatment-naïve people living with HIV: real-world evidence from South Korea S.Y. Lim* (Seoul, Korea, Republic of), B. Chin, M.K. Kim, Y. Kim, G. Kim, J. Bang	
+	
+Long-acting antiretroviral therapy in PLWH with prior HBV exposure J. Mateo Gonzalez* (Valencia, Spain), J.I. Mateo-Gonzalez, M. Plaza-De-La-Torre, D. Martinez-Perez, J. Martinez-Andres, V. Abril-Lopez- De-Medrano, E. Ballester-Belda, M. Garcia- Rodriguez, C. Ricart-Olmos, M. Garcia-Deltoro	
+	
+Protease inhibitors in today&#39;s antiretroviral landscape: are we tracking resistance?	J. Ciscar Soriano* (València, Spain), J. Ciscar-Soriano, M.D. Gómez-Ruiz, A. Hernández-Cabezas, A. Valentín- Martín, M. Montero-Alonso, J.L. López-Hontangas
+	
+Effect after Switching from Efavirenz to Rilpivirine on Liver Steatosis Among People Living with HIV with Non-Alcoholic Fatty Liver Disease: A Randomized Controlled Trial L. Srikham* (Sakon Nakhon, Thailand), S. Sriphoosanaphan, O. Putcharoen	
+	
+Impact of maternal dolutegravir on growth outcomes of HIV-exposed uninfected children: A prospective study E. Yoram* (Morongoro, Tanzania, United republic of), E. Luoga, S. Glanzman, F. Vanobberghen, M. Weisser, E. Dotto, G.J. Mollel, G. Sigalla, E. Nyenza, L. Moshi, L. Wilson, J. Okuma, D. Paris	
+	
+ePoster Flash Session Speed, convenience and performance of virus diagnostic methods	Chair Hans H. Hirsch (Basel, Switzerland)
+	
+Prospective evaluation of a rapid diagnostic test in a tertiary hospital and prospects for reinforced dengue surveillance in Catalonia (Northeastern Spain) L. Horvath* (Barcelona, Spain), L. Horvath Ruiz, J. Navero, M. Navarro, M. Pujada, A. Navarro, M. Garrido, B. Herrerías, P. Rodríguez, N. Zancada, B. Escudero-Perez, M.J. Martinez	
+	
+Sequence-Independent Single-Primer Amplification (SISPA) followed by Next-Generation Sequencing for Diagnosing Viral Respiratory Tract Infections P. Trindade* (Santa Maria, Brazil), B.C. Casarin, T.R. Y Castro, B.C. Piccoli, V.T. Santos, L.F. Tessele, A.V. Schwarzbold	
+	
+Seasonal trends and co-infection dynamics of respiratory pathogens: insights from a yearlong study Z. Tsinaris* (Thessaloniki, Greece), A. Tychala, G. Meletis, A. Greco, T. Chatziantoniou, R. Dimitriadou, C. Chantzi, E. Georgiadou, G. Kagkalou, O. Vasilaki, P. Mantzana, L. Skoura, E. Protonotariou	
+	
+Speed meets reliability in respiratory infections diagnosis with a new nucleic acid extraction workflow L. Pastor-Bernad* (San Mateo De Gállego, Spain), B. Santos Da Silveira, E. Lucia, M.C. Gil- Rodríguez, H. Alonoso, C. Giménez-Rota	
+	
+Pathobiome characterization and role in disease severity in children under 5-years with respiratory infection symptoms L. Terranova* (Milan, Italy), L. Corneo, G. Di Pietro, R. Pinzani, M. Bolis, L. Alagna, M. Caruso, F. Giorgetti, N. Hejazifar, E. Furchì, M. Carnevale Schianca, P. Bono, C. Tagliabue, F.B.A. Blasi, A. Callegaro, A. Bandera, S. Bosis, C. Alteri	
+	
+Viral viability markers of SARS-CoV-2: A Comparison of cell culture genomic RNA RT-PCR and subgenomic RNA RT-PCR C. Cuesta Chasco* (Barcelona, Spain), S. Alex, M. Mª Ángeles, C.C. Genoveva, A. Francesco, R. Cristina, V. Anna, H. Juan Carlos, F.A. Francesc, R.L. Luis Gerardo, N. Mireia, G. Ignacio, B. Marta, G.V. Carolina	
+	
+Diagnostic performance of Hepatitis B virus surface antigens in the Netherlands using type-specific external quality assessment E. Vanhulle* (Bilthoven, Netherlands), M. Simões, H. Ten Bruin, G. Boland, A. Brandenburg, K. Benschop	
+	
+Low utility of parallel testing by multiplex and individual real-time PCR assays for the diagnosis of viral meningitis and encephalitis at a large public hospital in the United States. A. Cuber* (Los Angeles, United States), S. Butler-Wu	
+	
+Plasma Separation Card as an alternative sampling method for quantitative HCV RNA testing with high comparability to EDTA plasma F. Garcia* (Granada, Spain), A. Fuentes López, A. Rando Segura, R. Carracedo, A. Kessler, A. De Salazar González, S.Z. Gebreab, E. Molina, N. Parajó, S. Pereira, J. Romero Vico, E. Ruiz Escolano, M. Vila, L. Viñuela González, A. Carrasco Durán, A. Aguilera, F. García, M. Buti Ferret	
+	
+Keynote Lecture Infectious disease challenges in an ever-changing environment	Chairs Jacob Moran-Gilad (Beer Sheva, Israel) Annelies Zinkernagel (Zurich, Switzerland)
+	
+Pamela Rendi Wagner (Stockholm, Sweden)	
+	
+Meet-the-Innovators Future prospects of electronic clinical decision support systems in stewardship programs	
+	
+Opportunities for clinical decision support systems in infectious disease management Nathan Peiffer- Smadja (Paris, France)	
+	
+CDSS and AMS programs: the Lumed example Valiquette Louis (Sherbrooke, Canada)	
+	
+1-hour Symposium Predicting antibiotic susceptibility profiles from whole genome sequences: state-of-the-art	Chairs Werner Ruppitsch (Vienna, Austria) Balaji Veeraraghavan (Vellore, India)
+	
+Impact of the WHO’s developed catalogue of mutations on rapid TB diagnosis and treatment Thomas Schön (Kalmar, Sweden)	
+	
+Antimicrobial resistance prediction using whole genome sequencing Patricia Simner (Rochester, United States) Co-organised with: ESCMID Study Group for Antimicrobial Resistance Surveillance (ESGARS), ESCMID Study Group for Epidemiological Markers (ESGEM), EUCAST Steering Committee	
+	
+1-hour Case Session Mycobacterial mayhem	Chairs Seif Al-Abri (Muscat, Oman) Linda Aulin (Leiden, Netherlands)
+	
+Limitations of the Xpert ® MTB/RIF assay: A series of four clinical cases A. Haas* (Salt Lake City, United States), A. Ma, J. Pham, P. Verma, U. Malhotra, E.C. Church, M. Narita, V. Escuyer, S. Shakir	
+	
+Pharmacokinetic analysis of blood and cerebrospinal fluid contezolid concentrations in a patient with tuberculous meningoencephalitis W. Nie* (Beijing, China), N. Chu	
+	
+Is this the first case of Mycobacterium stephanolepidis infection in humans?	S. Pérez-Recio* (Barcelona, Spain), M.D. Grijota-Camino, A. Lérida, A. Bauer, L. Fernández-Delgado, M.J. Luque, N. Sabé Fernández, F. Alcaide, M. Santin
+	
+Diagnostic Aspects of a Bacillus Calmette-Guërin Infection Following Intravesical Treatment for Bladder Cancer K.J. Kim* (Seoul, Korea, Republic of), J.H. Cha, S.G. Yoon, M.H. Nam, G.I. Lee, Y. Cho	
+	
+Mycobacterium abscessus : Is Shorter Antibiotic Therapy Combined with Surgery Sufficient?	M.J. Lopes* (Amadora, Portugal), C. Paulo, D. Trigo, M. Caixeiro, M. Alves, R. Macedo, P. Pacheco
+	
+1-hour Symposium Probiotics in infectious diseases: current state-of-play	Chairs Nicolas Benech (Lyon, France) Silvia Corcione (Turin, Italy)
+	
+Probiotics in infectious diseases: the perfect complement to antimicrobial therapies?	Lena Biehl (Cologne, Germany)
+	
+The horizon of next generation probiotics for infectious diseases Cormac Gahan (Cork, Ireland) Co-organised with: ESCMID Study Group for Host and Microbiota Interaction (ESGHAMI)	
+	
+1-hour Oral Session Genomic and molecular drivers of bacterial virulence and resistance	Chairs Ecaterina Noroc (Chisinau, Moldova, Republic of) Guido Werner (Wernigerode, Germany)
+	
+Characterization of the virulence shaping and adaptability in the methicillin-resistant Staphylococcus aureus	
+	
+lineage. Y. Chen* (Hangzhou, China), L. Sun	
+	
+Elucidating molecular mechanisms of bacterial conjugation: towards an improved understanding of plasmid evolution and epidemiology S. David* (Oxford, United Kingdom), C. Seddon, J. Wong, N. Ishimoto, S. He, J. Bradshaw, W.W. Low, D. Aanensen, G. Frankel, K. Beis	
+	
+Clinical carbapenem-resistant Klebsiella pneumoniae (CRKP) strains carrying a mutH mutation are hypermutators that have heightened virulence and readily develop -lactam/-lactamase resistance S. Cheng* (Pittsburgh, United States), C. Clancy, M.H. Nguyen, B. Hao, G. Liu	
+	
+Genomic insights into the new prophages of MDR Pseudomonas aeruginosa : an example of phage- host-phage interaction A. Uskudar Guclu* (Ankara, Türkiye), S. Unlu	
+	
+Genome-wide association study (GWAS) reveals importance of vaginal epithelium associated genes in case of recurrent vaginitis R. Mändar* (Tartu, Estonia), E. Mutli, K. Koort, A. Salumets, T. Laisk	
+	
+ePoster Flash Session Infection Prevention in Action: Innovations, Insights, and Global Intervention	Chair Allison Mcgeer (Toronto, Canada)
+	
+A Candida auris cgMLST Scheme for Enhanced Outbreak Surveillance and Global Epidemiological Tracking C. Harless* (Silver Spring, United States), J. Stam, B. Corey, E. Horishny, A. Ong, Y. Kwak, J. Bennett, P. Mcgann, F. Lebreton	
+	
+Machine Learning-Augmented Clinical Scoring System for Predicting KPC Infections in Healthcare Crisis Scenarios A. Rearte* (Buenos Aires, Argentina), F. Herrera, E. Temporiti, J. Smayevski, P. Bonvehi	
+	
+Incident infections with respiratory syncytial virus in a hospital-based healthcare worker cohort, 2023-2024 winter season C. Savulescu* (Paris, France), M. Rojas, K. Brolin, A. Uusküla, C. Bergin, C. Fleming, V. Zvirbulis, D. Zavadska, V. Gaio, C.P. Popescu, R.M. Hrisca, M. Cisneros, M. Latorre-Millán, J. Mcgrath, L. Lohur, L. Ferguson, I. Abolina, D. Gravele, A. Machado, S.A. Florescu, S.M. Pohrib, P. Subirats, L. Clusa Cuesta, J. Sui, C. Kenny, D. Krievins, E.A. Barzdina, C. Valadas Henriques, A.G. Kosa, M. Lazar, C. Muñoz-Almagro, A.M. Milagro, S. Bacci, A. Nardone	
+	
+Evaluation of the efficiency of reusable terminal filters for showers for nosocomial legionellosis prevention in a French university hospital N. Khanafer* (Lyon, France), A. Regard, L. Beraud, R. Sintes-Tissot, Q. Barriot, J.C. Saurin, M. Chuzeville, P. Vanhems, M. Chaboud	
+	
+Emerging uncommon non-fermenters and their decreasing antibiotic susceptibility in patients with prolonged hospital stay V. Khillan* (New Delhi, India), V.G. Nag P, P. Kale, A. Paul, A. Saran	
+	
+Air and surface sampling around mpox Clade 1b in hospitals in the UK S. Gould* (Liverpool, United Kingdom), B. Atkinson, B. Hack, T. Williams, J. Otter, Y. Ceesay, A. Alsonso, G. Nebbia, S. Blundell, W. Newsholme, G. O&#39;hara, M.G. Semple, T. Fletcher, J. Dunning	
+	
+Utilization of a healthcare facilities rapid assessment tool to define infection prevention and control and Water, Sanitation and Hygiene baseline criterion met during Democratic Republic of Congo mpox outbreak from August to November 2024A. Baller* (Geneva, Switzerland), N.R. Okum, G. Nsambi, K. Kabamba, Y.L. Soro, L. Kabego, V. Willet, N. Usman, H. Hamilton Hurwitz, M. Moon	
+	
+The REACT study: Exploring the BSI Potential of KPC, NDM, VRE, and CRAB rectal colonization M. Colaneri* (Milano, Italy), P. Giordani, S. Lerta, A. Sangani, V.A. Villano, A. Gori, M. Rettani, S. Milanesi, G. De Nicolao, R. Bruno	
+	
+ePoster Flash Session Cefiderocol: an efficient Trojan horse?	Chair Anna Sramkova (Pilsen, Czech Republic)
+	
+Acceleration of Emergence of Cefiderocol Resistance in Microfluidic Evolution System B. Li* (Beijing, China), S. Shen, Q. Wang, S. Wang, W. Wang, H. Wang	
+	
+The hidden link between cefiderocol resistance and increased virulence in Klebsiella pneumoniae : Insights from a TraDIS-based investigation E. Eger* (Greifswald, Germany), L. Guardabassi, K. Schaufler, J.U. Müller, B. Jana, M. Schwabe, Y. Ma, M. Pirolo	
+	
+Resistance profiles of Carbapenemase-producing Enterobacterales in a large centre in England: are we already losing cefiderocol?	I. Baltas* (London, United Kingdom), T. Patel, A.L. Soares
+	
+Impact of cefiderocol therapy on patient survival across different multi-drug resistant Gram-negative bacilli infections: insights from the SUSANA cohort. N. Corti* (Monza, Italy), M. Faltoni, L. Mezzadri, E. Ricci, M. Fois, A. De Vito, A. Bandera, P. Maggi, D. Bavaro, S. Rusconi, A. Mastroianni, M.A. Carleo, G. Cenderello, L. Bisi, G. Madeddu, P. Bonfanti	
+	
+Decoding resistance: investigating cefiderocol&#39;s battle against carbapenem-resistant Acinetobacter baumanniiY.T. Lee* (Taipei, Taiwan, China)	
+	
+Long-read sequencing reveals novel genetic factors in cefiderocol resistance in Pseudomonas aeruginosa ATCC 27853: A stepwise adaptive evolution study M. Cardoso* (Groningen, Netherlands), B.B. Xavier, B. Sinha, J. W. A. Rossen, A. Kumar Bari, T. T. Severs	
+	
+Activity of cefiderocol against carbapenem-resistant and molecularly characterized Enterobacterales clinical isolates causing infection in hospitals in Europe and adjacent regions R. Mendes* (North Liberty, United States), A. Scullin, D. Beekman, Z. Kockler, J.M. Maher, H.S. Sader, M. Castanheira	
+	
+Cefiderocol activity against planktonic and biofilm forms of -lactamase-producing Pseudomonas aeruginosa from people with cystic fibrosis G. Fabrizio* (Rome, Italy), M. Truglio, I. Cavallo, F. Sivori, M. Francalancia, R. Riveros Cabral J, S. Petrolo, L. Pamparau, M. Comar, D. Compagnino, M. Trancassini, G. Antonelli, F. Ascenzioni, G. Cimino, F. Pimpinelli, E.G. Di Domenico	
+	
+Activity of cefiderocol against clinical isolates of Pseudomonas aeruginosa collected from five European countries as part of SENTRY antimicrobial surveillance program 2020-2023 C. Longshaw* (London, United Kingdom), J. Maher, R. Mendes, H. Yamashiro, Y. Yamano	
+	
+ePoster Flash Session Immunology of bacterial pathogens	
+	
+Serotype 38 Streptococcus pneumoniae emerges as one of the dominant serotypes causing invasive pneumococcal disease in Germany and Poland, but not in the Netherlands K. Hajji* (Bilthoven, Netherlands), I. Wróbel-Pawelczyk, J. Van Veldhuizen, K. Maruhn, W. Miellet, M. Rob, A. Steens, N. Van Sorge, K. Trzciński, M. Van Der Linden, A. Skoczyńska, L. Visser	
+	
+Cross reactivity within pneumococcal serogroups 6 and 15 following adult vaccination with pneumococcal conjugate vaccine V116: a secondary analysis of five phase 3 studies M. Esteves Jaramillo* (Rahway, United States), J. Li, H. Platt, W. Hu, W. Xu, T. Chapman, K. Nolan, J. Hartzel, U. Buchwald	
+	
+Baseline serotype-specific IgG responses to pneumococcal vaccines in type 2 diabetes: implications for vaccine strategy in vulnerable populations S. Mettingal Ramakrishnan* (Bsk 2nd Stage,Bangalore, India), V. Govindan, M.M. Akhila, N. Geetha, K.L. Ravikumar	
+	
+Protection against invasive meningococcal disease and gonorrhoea, 5 years post introduction of a 4CMenB immunisation program in infants and adolescents in South Australia H. Marshall* (Adelaide, Australia), B. Wang, L. Giles, P. Andraweera, M. Mcmillan, S. Almond, R. Beazley, J. Mitchell, J. Sisnowski, C. Bell, L. Flood, J. Ward	
+	
+Molecular epidemiology and correlates of protection among group B Streptococcus from carriage and disease: assessing vaccine coverage in Brazil T. Pinto* (Rio De Janeiro, Brazil), L. Oliveira, N. Costa, E. Bressan, A. Rio Tinto, S. Fracalanzza, L. Teixeira	
+	
+Impact of BCG vaccination on adaptive immune responses to mycobacterial and non-mycobacterial antigens in HIV-exposed, uninfected infants. R. Namakula* (Bergen, Norway), V. Nankabirwa, S. Cose, O. Namugga, M.G. Netea, H. Steinsland, H. Sommerfelt, K. Hanevik	
+	
+Immune signature against Klebsiella pneumoniae proteins in a mother-baby cohort from Blantyre, Malawi E. Heinz* (Glasgow, United Kingdom), J. Campo, O. Pearse, A. Zuza, A. Teng, J. Pablo, A. Oberai, J. Edgar, A. Shandling, K. Kawaza, N. Feasey	
+	
+A comprehensive computational mapping of B-cell epitopes in the Klebsiella pneumoniae porinome S. Prieto Martin Gil* (Madrid, Spain), S. Prieto Martín Gil, E. Gato, A. Pérez, M.J. Mcconnell, A.J. Martín Galiano	
+	
+Chronic infection induces a broadly neutralizing antibody response to Elastase B of Pseudomonas aeruginosaA. Albus* (Cologne, Germany), D. Kolling, K. Rox, D. Holzmann, K. Mundry, M. Sánchez Agut, C. Meyer, R. Brock, J. Kutschera, K. Schmitt, J.A. Wilms, L. Ullrich, C. Kreer, M. Meyer-Willerscheidt, M. Hallek, E. Rietschel, S. Van Koningsbruggen-Rietschel, F. Klein, J. Koehnke, J. Rybniker, A. Simonis	
+	
+Keynote Lecture Staphylococcus aureus host-microbe interaction: ecology, disease, and vaccine development	Chairs Werner Ruppitsch (Vienna, Austria) Annelies Zinkernagel (Zurich, Switzerland)
+	
+Juliane Bubeck Wardenburg (St. Louis, United States)	
+	
+Meet-the-Expert Bioinformatic tools from start to finish	
+	
+Vítor Borges (Lisbon, Portugal)	
+	
+Clare Sloggett (Melbourne, Australia)	
+	
+Meet-the-Expert AI use in antimicrobial stewardship	
+	
+Shruti Gohil (Irvine, United States)	
+	
+Jose Ramon Pano-Pardo (Zaragoza, Spain)	
+	
+1-hour Oral Session Update on zoonotic and enteric infections	Chairs Steen Ethelberg Kavitha Saravu (Manipal, India)
+	
+A large-scale epidemiological study of Campylobacter employing whole genome analysis reveals the evolution of highly virulent and multidrug- resistant clones in the UK. B. Lopes* (Middlesbrough, United Kingdom), A.S. Boaitey-Biko	
+	
+Population dynamics and evolution of multidrug resistant clones of Shigella sonnei in Metropolitan France C. Silva Nodari* (Paris, France), I. Carle, M. Lejay-Collin, L. Philippot, C. Ruckly, L. Fabre, M. Pardos De La Gandara, F.X. Weill	
+	
+Shiga toxin-producing Escherichia coli O26 as an increasingly common cause of haemolytic uraemic syndrome in England: A fifteen-year analysis of national enhanced surveillance data L. Mcgeoch* (London, United Kingdom), O. Quinn, C. Sawyer, A. Douglas, C. Jenkins, S. Balasegaram	
+	
+Incidence, clinical presentation, and outcomes of Pasteurella infections: a population-based Danish study L. Øbo Larsen* (8200, Denmark), L.Ø. Larsen, H.L. Nielsen, K.K. Søgaard	
+	
+Natural history of latent brucellosis and efficacy evaluation of B-spot in active and latent cases: A 12- month prospective cohort study H. Wang* (Shanghai, China), G. Yuan, D. Li, H. Liu, J. Ai, W. Zhang	
+	
+1-hour Case Session Opportunistic infections in the Immunocompromised	Chairs Aleksandra Barac (Belgrade, Serbia) Olivier Lortholary (Paris, France)
+	
+Dog scratch disease?	A case of Vibrio vulnificus in a liver transplant patient E. Kim* (Galveston, United States), A. Covington
+	
+Mpox infection among solid organ transplant recipients: a single center experience at a U.S. Tertiary Care Facility. J. Bini Viotti* (Miami, United States), J. Bini	
+	
+Histoplasmosis in Hansen&#39;s Disease: Thalidomide for TNF-alpha Inhibition in ENL with a Risk of Opportunistic Infections K.K. Vaitheeswaran* (Delhi, India), M. Soneja, N. Bhari, R. M., G. K. V., S. Agarwal, R. Kumar, Y. Dharmashaktu	
+	
+Nocardiosis in a kidney transplant recipient: pros &amp; cons of tedizolid M. Pellegrino* (Modena, Italy), V. Todisco, S. Generoso, L. Benassi, E. Franceschini, F. Damiano, G. Donati, C. Mussini, A. Cervo	
+	
+Mycobacterium genavense-Associated IRIS with Macrophage Activation Syndrome: A Case Report Highlighting Diagnostic Challenges M. Meroi* (Verona, Italy), M. Morra, M.E. De Rui, E. Tacconelli, F. Soldani	
+	
+1-hour Symposium How to manage bacterial meningitis in low resource settings	Chairs Joseph Donovan (Ho Chi Minh City, Vietnam) Christina Obiero (Kilifi, Kenya)
+	
+Bacterial meningitis diagnosis and surveillance Divya Deodhar (Muscat, Oman)	
+	
+Clinical presentation and management of CNS infections Kartika Maharani (Jakarta, Indonesia) Co-organised with: ESCMID Study Group for Infectious Diseases of the Brain (ESGIB), ESCMID Study Group for Forensic and Postmortem Microbiology (ESGFOR), Spanish Society of Forensic Pathologists (SEPAF)	
+	
+1-hour Oral Session Community respiratory tract infections: latest trends and approaches	Chairs Catia Cilloniz (Barcelona, Spain) Aurélien Dinh (Garches, France)
+	
+Mycoplasma pneumoniae increase in 2023/24 causes disease in adults in Europe B.M.M. Streng* (Utrecht, Netherlands), C. Prat Aymerich, L. Bont, P. Meyer Sauteur, M. Bonten, A. Van Rossum	
+	
+Serotype distribution of pneumococcal community- acquired pneumonia in hospitalized adults in Germany D. Karssen* (Utrecht, Netherlands), L. Hessels, G. Barten-Neiner, W. Bauer, S. Franch, T. Fühner, C. Hassiepen, D.F. Heigener, B. Hullegie, R. Jahja, K.D. Johnson, J. Kremling, C. Roberts, G.G.U. Rohde, M. Ruggieri, J. Scheider, D. Stolz, T.D. Swarthout, T. Weiss, H. Van Werkhoven, M. Bonten, Prat-Aymerich	
+	
+Community-acquired pneumonia identification from electronic health records in the absence of a gold standard: a Bayesian latent class analysis J. Wei* (Oxford, United Kingdom), K. Yuan, A. Luk, S. Walker, Eyre	
+	
+Causes of death and risk factors for 90-day mortality and readmission in community-acquired pneumonia. F. Al-Zergani* (Hvidovre, Denmark), C. Lundetoft Clausen, P. Ravn, M. Sebastian Roldgaard, Kolte, H. Sarac, M. Fally, S. Bastrup Israelsen, T. Benfield	
+	
+Oropharyngeal carriage of gut-derived Enterobacterales increases RTI risk in long-term aged care residents S. Miller* (Adelaide, Australia), F. Zhang, S. Taylor, A. Shoubridge, E. Vasil, R. Woodman, L. Papanicolas, G. Rogers	
+	
+1-hour Symposium Global clones and evolving resistance mechanisms towards newer beta- lactams: Where are we heading?	Chairs Yesim Besli (Istanbul, Türkiye) Spyros Pournaras (Athens, Greece)
+	
+Carbapenemase -producing Enterobacterales: the not so good, the bad and the ugly. Arjana Tambic Andrasevic (Zagreb, Croatia)	
+	
+The P. aeruginosa frightening cocktail: high-risk clones, horizontally-acquired resistance and evolving mutational resistome Katy Jeannot (Besançon, France) Co-organised with: ESCMID Study Group for Antimicrobial Resistance Surveillance (ESGARS)	
+	
+1-hour Oral Session Trends in antifungal resistance	Chairs Alexandre Alanio (Paris, France) Ana Alastruey-Izquierdo (Madrid, Spain)
+	
+Turning resistance into vulnerability: leveraging genetic insights to predict collateral sensitivity and synergism for effective multidrug therapies K. Schmidlin* (Tempe, United States), K. Geiler- Samerotte	
+	
+Role of the C2585G substitution in the MRR1 gene in the development of azole resistance in Candida parapsilosis sensu strictu . I. Franconi* (Pisa, Italy), P. Noemi, A. Tavanti, A. Lupetti, R. Cosmeri, L. Maltinti, Falcone	
+	
+Fungaemia in a tertiary Madrid hospital from 2007 to 2024: changes in species epidemiology, increase in echinocandin resistance and low patient-to-patient transmission in recent years J. Guinea* (Madrid, Spain), P. Escribano, G. Jesús, M. Machado, A. Burillo, P. Muñoz	
+	
+A multicentre study for determination of epidemiological cutoff values for rezafungin and four comparators against Candida auris with EUCAST broth microdilution reference methodology J. Meletiadis* (Haidari, Greece), J. Guinea, S. Arikan- Akdagli, E.F.J. Meijer, J. Meis, M.C. Arendrup	
+	
+Decoding Candida auris Resistance in Latin America: Candida.app vs. Pathogenwatch J. Acosta España* (Quiro, Ecuador), P. Eduarda, J.D. Acosta-España, A. Herrera-Yela	
+	
+1-hour Symposium What&#39;s the role of infant and maternal immunisation for paediatric RSV prevention?	Chairs Joanne M. Langley (Halifax, Canada) Peter Openshaw (London, United Kingdom)
+	
+Pros and cons of passive infant immunisation with mAb before their first RSV season Federico Martinón- Torres (Santiago De Compostela, Spain)	
+	
+Pros and cons of maternal vaccination in preventing severe RSV infections in infants. Anne Vergison (Luxembourg, Luxembourg)	
+	
+ePoster Flash Session Cutting-edge technologies to improve viral diagnostics	Chair Patricia Alvarez (Rio De Janeiro, Brazil)
+	
+How straightforward is the switch from qPCR to dPCR in a routine lab setting for quantification of Varicella-zoster virus in CSF samples A. Baumhögger* (Bochum, Germany), T. Bähr, G. Geis, S. Gatermann	
+	
+A novel biosensor for the detection of RSV infection C. Zannella* (Naples, Italy), F. Passeggio, F. Napolitano, A. De Filippis, F. Arcadio, C. Marzano, I. Tavoletta, L. Zeni, M. Galdiero, G. Portella, N. Cennamo	
+	
+Insufficient sexual health bloods don&#39;t always need throwing away! S. Hutchings* (Bristol, United Kingdom), R. Hopes, P. North, W. Stoate, M. Murphy, G. Beckley, J. Gabb	
+	
+A comparison of 4 HAV serology assays: the value of consensus results as a reference standard T. Chin* (Ghent, Belgium), E. Padalko	
+	
+Advancing herpesvirus diagnostics: clinical evaluation of a high-performance real-time PCR assay H. Alonso-Ezcurra* (Zaragoza, Spain), S. Lucea, C. Escolar, H. Alonso	
+	
+Evaluation of microbiological techniques for the diagnosis of West Nile Virus in the Virgen del Rocío hospital area (Sevilla, Spain). M. Aznar Fernandez* (Seville, Spain), M. Aznar, C. Lozano, L. Merino, M.J. Pérez, J.L. Garcia, C. Cintora, J.A. Lepe	
+	
+Development of Non-Cross-Reactive Monoclonal Antibodies Against West Nile Virus and Usutu Virus Non-Structural Protein 1 to Improve Early Diagnosis M. Ceconi* (Antwerp, Belgium), K. Ariën, P. Delputte	
+	
+Enhancing Diagnostics and Global Standards through the QCMD Viral Metagenomics EQA G. Sutton* (Glasgow, United Kingdom), D. Montgomery, E. Mcculloch, A. Ricketts	
+	
+Analysis of HIV-1 drug-resistence in newly diagnosed subjects using Next Generation Sequencing V. Micheli* (Milan, Italy), F. Bracchitta, L. Morelli, A. Cavallo, S. Giubileo, A. Tamoni, A. Lombardi, A. Dolci	
+	
+ePoster Flash Session New data in non-tuberculous mycobacterial disease	Chair Lorenzo Guglielmetti (Paris, France)
+	
+Deciphering genotypic resistance to amikacin in Mycobacterium abscessus using whole genome sequencing and a specific pipeline (GenoMAB) C. Allam* (Paris, France), S. Agsous, P. Baylac, K. La, N. Godron, F. Mougari, Z. Awad, E. Cambau	
+	
+Pseudomonas aeruginosa rapidly kills Mycobacterium abscessus in dual-species biofilms in vitroM. Mcdaniel* (Nijmegen, Netherlands), J. Scoffield, J. Van Ingen	
+	
+Distribution of contezolid in different tissues of mice and human patients infected with Mycobacterium abscessusW. Nie* (Beijing, China), N. Chu	
+	
+Exploration of clofazimine and bedaquiline activity against clinical strains of Mycobacterium abscessus to advance innovative therapeutic strategies C. Maria* (Madrid, Spain), M. Cano-Fernández, J. Esteban, P. López-Roa, A. Ruedas-López, J.J. Aguilera-Correa, M.C. Muñoz-Egea	
+	
+Leveraging stem cell technology to identify new treatment options for nontuberculous mycobacteria S. Sarkar* (Parkville, Australia), K. Strumila, S. Yu, R. Werder, T. Johanssen, A. Hidalgo Gonzalez, E. Stanley, S. Ranganathan	
+	
+Recovery of Non-Tuberculous Mycobacteria and Detection of Dominant Circulating Clones in Indoor Water Samples from Germany N. Wetzstein* (Frankfurt, Germany), M. Diricks, D. Frank, I. Friesen, S. Niemann, T. Wichelhaus	
+	
+Deciphering the Epidemiology of Mycobacterium chimaera : Genetic Lineages, Environmental Sources, and Infection Prevention Insights G. Lorenzin* (Trento, Italy), M. Sandei, P. Fassan, A. Casadei, C. Scarparo	
+	
+Evaluation of a novel media for susceptibility testing of Mycobacterium avium-intracellulare complex isolates T. Grams* (Salt Lake City, United States), S. Shakir	
+	
+Emerging cases of Mycobacterium chelonae endocarditis associated with BioIntegral bioprostheses J. Kikhney* (Berlin, Germany), F. Pfäfflin, L. Kursawe, K. Sarbandi, I. Friesen, M. Stegemann, R. Schwarzer, D. Von Schöning, V. Falk, A. Moter	
+	
+ePoster Flash Session The ABC (allergy, bloodstream infections and clinical decision support) in AMS	Chair Céline Pulcini (Nancy, France)
+	
+Evaluation of the allergy fact checker, a clinical decision support system to promote non-invasive delabeling of incorrect penicillin allergy labels: a mixed-methods study D. Wets* (Leuven, Belgium), R. Schrijvers, I. Spriet, G. Van De Sijpe, L. Gilissen, C. Breynaert, T. Ieven, P. De Munter	
+	
+Penicillin allergy assessment pathway versus usual clinical care for primary care patients with a penicillin allergy record to assess safety, de-labelling and antibiotic prescribing: The ALABAMA randomised controlled trial. J. Sandoe* (Leeds, United Kingdom), S. Ahmed, K. Armitage, C. Bates, R. Bestwick, B. Jenny, C. Butler, J. Cook, F. Joanne, U. Galal, P. Howard, D. Howdon, S. Mort, R. Mujica-Mota, A. Negut, C. Porter, N. Powell, M. Santillo, R. Sargur, S. Savic, S. Tonkin-Crine, M. Wanat, R. West, M. Yang, L.M. Yu, S. Pavitt	
+	
+Stewardship interventions reduced blood culture utilization by 40% during BD BACTEC™ Blood Culture media shortage X. Li* (Toronto, Canada), K. Katz, A. Ceentavida, R. Kozak, C. Vermeiren, P. Sheldrake, S. John, A. Belhaj, S. Hsieh, S. Patel, R. Lovinsky	
+	
+Prescriptive Impact of Rapid Microbiological Diagnostics in Bloodstream Infections Caused by Escherichia coli , Klebsiella pneumoniae , and Staphylococcus aureus (PRIMEKA): A Retrospective Single-Center Cohort Study. F. Salvati* (Rome, Italy), F. Giovannenze, G.M. Leanza, M. Chiuchiarelli, A. Frater, M.L. Colombo, F. Iannarelli, B. Fiori, T. D&#39;inzeo, R. Murri, C. Torti	
+	
+The inappropriate use of antibiotics for blood culture contamination and colonisation by multidrug- resistante microorganisms: the role of counselling on antibiotic prescription R.R. Peña-Zalbidea* (Palma (balearic Islands), Spain), L. Martin, H. Vilchez, L. Periañez, E. Rojo, M. Peñaranda, M. Garcia, M. Riera, X. Mulet, A. Oliver, J. Murillas	
+	
+Factors influencing meropenem prescription following the 2020 EUCAST « I » definition update : a multicentric observational study in Belgian hospitals L. Catteau* (Brussels, Belgium), L. Bonacini	
+	
+Impact of an Antimicrobial Stewardship Mobile Application on Antimicrobial Prescribing, Length of Hospital Stay, and Cost Savings Z.O.E. Babiker* (Abu Dhabi, United Arab Emirates), L. Bukasa, A. Sadeq, J. Shamseddine, R. Ali	
+	
+Evaluation of a model-based clinical decision support system for empirical antimicrobial therapy M.L. Mogensen* (Aalborg, Denmark), S.N. Søgaard, L. Ward, H. Skjøt-Arkil	
+	
+A rapid systematic review of criteria to facilitate prompt intravenous-to-oral antimicrobial switch in children and young people in England. R. Oettle* (London, United Kingdom), S. Patel, A. Demirjian, M. Mcleod, C. Jamieson, G. Damant, K. Hand, D. Ashiru- Oredope EA 16:15 - 17:30 Hall 1 Awards Excellence Award Lectures	Chairs Jon S. Friedland (London, United Kingdom) Robert Leo Skov (Copenhagen, Denmark)
+	
+Towards pandemic prevention, moonshot or utopia?	Marion Koopmans (Rotterdam, Netherlands)
+	
+Can global warming bring new infectious diseases?	Arturo Casadevall (Baltimore, United States)
+	
+ESCMID guidelines for the vaccination of immunocompromised individuals: solid organ transplant recipients 1-hour Symposium	Chairs Elisa Cordero Matia (Seville, Spain) Zitta Barrella Harboe (Hillerød, Denmark)
+	
+Vaccination against respiratory pathogens Albert Vollaard (Bilthoven, Netherlands)	
+	
+Other vaccines Olivier Epaulard (Grenoble, France) Co-organised with: ESCMID Study Group for Infections in Compromised Hosts (ESGICH), ESCMID Vaccine Study Group (EVASG)	
+	
+Educational Session How to detect, manage and communicate hospital outbreaks	Chairs Margaret Ip (Shatin, Hong-Kong SAR, China) Rossitza Vatcheva-Dobrevska (Sofia, Bulgaria)
+	
+How to detect hospital outbreaks David Fisman (Toronto, Canada)	
+	
+How to confirm hospital outbreaks using genomics John W. A. Rossen (Groningen, Netherlands)	
+	
+How to rapidly respond to an ongoing hospital outbreak Ermira Tartari (Msida, Malta)	
+	
+How to communicate hospital outbreaks via scientific publication Ines Steffens (Solna, Sweden)	
+	
+Meet-the-Expert Fungal meningitis: recognition and current status of management	
+	
+Olivier Lortholary (Paris, France)	
+	
+Janis Blair (Phoenix, United States)	
+	
+Journal Session Late-breaker research from the Lancet group: new interventions for familiar and new infectious diseases	Chairs Syeda Saleha Hassan (London, United Kingdom) Ursula Hofer (London, United Kingdom)
+	
+TBA	
+	
+The spatio-temporal ecology of Oropouche virus: a laboratory-based modelling study across Latin America Jan Felix Drexler (Berlin, Germany)	
+	
+The WHO Bacterial Priority Pathogens List: guiding research and development, and informing innovative public health strategies to address antimicrobial resistance Hatim Sati (Geneva, Switzerland)	
+	
+Efficacy, safety, and immunogenicity of the AS01E- adjuvanted respiratory syncytial virus prefusion F protein vaccine (RSVPreF3 OA) in older adults over three RSV seasons: a randomized trial Alberto Papi (Ferrara, Italy) Co-organised with: The Lancet group	
+	
+hour Oral Session AI tools empowering AMR prediction in WGS and MALDI-TOF	Chairs Oliver Nolte (Zürich, Switzerland) Patricia Simner (Rochester, United States)
+	
+A scalable machine learning approach to predict antimicrobial susceptibility from whole genome sequencing data Y. Zhong* (Liverpool, United Kingdom), A. Gerada, A. Howard, P. Green, W. Hope	
+	
+Machine Learning-Based Antimicrobial Resistance Prediction of 11 antibiotics for Klebsiella pneumoniae from Clinical NGS Data J. Xinmiao* (Beijing, China), X. Jia, J. Zhang, J. Chen, Q. Yang	
+	
+AI-Powered Real-Time Plasmid Prediction Using Nanopore Sequencing E. Sauerborn* (Munich, Germany), S. Atum, H. Urel, M. Peisker, N. Wantia, E. Foster-Nyarko, L. Urban	
+	
+MALDI-TOF Prediction model based on machine learning algorithm for the detection of	
+	
+high- virulence K. pneumoniaeL. Dortet* (Le Kremlin- Bicêtre, France), L. Mancera Pascual, M.J. Arroyo	
+	
+Predicting rifampicin resistance in Mycobacterium tuberculosis complex with a machine learning based MALDI-TOF MS approche Y.W. Sun* (Taichung, Taiwan, China), P. Huang, B. Tsou, S.C. Chang, C.W. Lu, C.C. Chen, J. Yu	
+	
+hour Oral Session Emerging pathogens in humans, animals and vectors	
+	
+Genome-wide association study identifies ABCG1 as a susceptibility locus for tick-borne encephalitis P. Gampawar* (Graz, Austria), M. Sagmeister, D. Ruzek, N. Schweintzger, E. Hofer, B. Kohlmaier, V. Švendová, P. Bogovicˇ, J. Zajkowska, L. Krbková, V. Štruncová, A. Mickiene, D. Kohlfürst, A. Sonnleitner, A. Fořtová, M. Berankova, M. Pychova, D. Zavadska, N. Sallah, A. Pichler, D. Sedlácek, A. Chrdle, C. Haudum, B. Obermayer-Pietsch, P. Hoffmann, M. Nöthen, M.L. Tammesoo, A. Metspalu, P. Husa, K. Stiasny, A. Binder, A. Berghold, F. Strle, M. Hibberd, W. Zenz	
+	
+First detection of tick-borne encephalitis virus in Belgian ticks, May 2024 E. Portell-Buj* (Stockholm, Sweden), C. Philippe, S. Van Gucht, F. Dufrasne	
+	
+Spread of a fusidic acid and methicillin-resistant Staphylococcus aureus clone causing impetigo in Europe A.R. Larsen* (Copenhagen, Denmark), A. Petersen, L. Roer, K. Vendrik, R. Zwittink, D. Notermans, N. Yin, M. Perrin, K. Khonyongwa, A. Tristan, B. Youenou, F. Layer-Nicolaou, G. Werner, H. Enger, E.C.H. Eikrem, J. Darenberg, B. Mäkitalo, M. Paulsson, H. Fang, E. Tång Hallbäck, L. Lindholm, K. Moganeradj, B.J. Holzknecht, H.B. Eriksen, M. Hoppe, M.D. Bartels, J.A. Samaniego Castruita	
+	
+Increase of PVL-positive livestock-associated MRSA in the Netherlands: a growing concern beyond livestock settings K. Vendrik* (Bilthoven, Netherlands), S. Witteveen, D.W. Notermans, S.C. De Greeff, C.C. Wielders, E. Van Duijkeren, A.S. Schoffelen, A.P. Hendrickx, R.D. Zwittink	
+	
+H5N1 human infection in the United Kingdom: a One- Health approach R. Puleston* (London, United Kingdom), N. Hamzaoui, S. Hayward, W. Proto, E. Booth, C. Beck, A. Lackenby, K. Spence, M. Beadsworth, N. Wong, M. Samuel, A. Singanayagam, K. Hoschler, N. Groves, D. Kumar, O. Olufon, W. Cook, N. Watkins, D. Ready, S. Makki, K. Marston, S. Collins, C. Arevalo, D. Blackman, L. Guiness, C. Chatt, M. Mcgivern, A. Edwards, A. Banyard, R. Jorquera, K. Saville, R. Benee, S. Van Helvoort, E. Brown, L. Leighton Mcteague, M. Chand, S. Rokadiya, S. Hopkins, H.I.M. Team, N. National Response Center Team	
+	
+hour Symposium Precision genomics to improve infectious diseases management	Chair Jacob Moran-Gilad (Beer Sheva, Israel)
+	
+Human genomics approaches to infection immunity Fergus Hamilton (Bristol, United Kingdom)	
+	
+Applying bacterial GWAS to uncover new mechanisms of antibiotic resistance Marco Galardini (Hannover, Germany)	
+	
+Evolution in action: large-scale within-host evolution analyses of persistent bacterial infections Stefano Giulieri (Melbourne, Australia)	
+	
+Machine learning in bacterial genomics and metagenomics Francesco Asnicar (Trento, Italy)	
+	
+1-hour Oral Session Polymicrobial interactions and competition	Chairs Alessandra Bragonzi (Milano, Italy) Kimberly Kline (Genéve, Switzerland)
+	
+The Klebsiella pneumoniae type VI secretion system effector Tle4 facilitates adaptation survival by damaging the cell membrane of competing bacteria W. Li* (Shanghai, China), J. Zhang	
+	
+Candida albicans promotes TSST-1 production in Staphylococcus aureus by depleting glucose and lifting carbon catabolite repression M. Carriou* (Lyon, France), C. Badiou, A. Soulard, K. Chikh, O. Vitalis, A. Frugier, K. Dufresne, G. Lina	
+	
+Understanding polymicrobial biofilm dynamics: focus on Pseudomonas aeruginosa and its molecular interactions S. Kansal* (Chandigarh, India), U. Dutta, A. Angrup, P. Ray	
+	
+Intra- and interspecific antagonism inhibits growth of Staphyloccous aureus in human nasal microbial communities L. Brülisauer* (Zurich, Switzerland), M. Boumasmoud, S. Brugger, A.R. Hall	
+	
+Combination therapy against drug resistance biomimetic dual-species biofilm model of Pseudomonas aeruginosa and Staphylococcus aureusP. Mojarrad* (Helsinki, Finland), P. Tammela, T. Laaksonen, Z. Gounani	
+	
+ePoster Flash Session Advancing diagnostics and treatment of endocarditis	Chair Benoît Guery (Lausanne, Switzerland)
+	
+18F-FDG-PET/CT improves source control of extra- cardiac complications in infective endocarditis J.M. Prins* (Amsterdam, Netherlands), S. Douiyeb, W. Van Gameren, D. Buis, T. Van Der Vaart, M. Boekholdt, J. Selder, D. Robbers-Visser, H. Verberne, H. Van Werkhoven, K. Sigaloff	
+	
+Comparing Duke criteria updates: Advancing IE diagnosis in patients with prosthetic intracardiac materials M. Papadimitriou Olivgeris* (Sion, Switzerland), M. Papadimitriou-Olivgeris, B. Ledergerber, N. Fourré, V. Zimmermann, N. Ianculescu, P. Monney, M. Frank, G. Tzimas, G. Domenichini, P. Tozzi, M. Kirsch, M. Van Hemelrijck, O. Dzemali, J. Epprecht, B. Guery, B. Hasse	
+	
+In vivo Dalbavancin efficacy against methicillin- resistant Staphylococcus aureus (MRSA) and high- level aminoglycoside resistant (HLAR) Enterococcus faecalis (EFAE) experimental endocarditis model. C. Garcia De La Maria* (Barcelona, Spain), C. García De La Mària, M.A. Cañas, M. Brunet, J. García-González, G. Cuervo, M. Espasa, M. Hernandez-Meneses, C. Falces, A. Perissinotti, B. Vidal, J.M. Tolosana, E. Sandoval, J. Llopis, A. Moreno, J.M. Miro	
+	
+Identification and validation of clinical phenotypes in Staphylococcus aureus blood stream infection and their association with mortality (FEN-AUREUS study) J. Rodríguez-Baño* (Seville, Spain), B. Gutiérrez-Gutiérrez, B. Gallego, A.J. Kaasch, M. Riediger, S. Rieg, M. Trigo, S. Sonsoles, F. Anguita- Santos, Á. Cano, R. Palacios, S. López-Cárdenas, M.T. Pérez-Rodríguez, F.J. Martínez-Marcos, E. Merino-Lucas, B. Anaya-Baz, A. Aizcorreta, A. Plata- Ciézar, M. Piscaglia, A. Aceituno, E. Ruiz-Gutiérrez, L. Romero-Calderón, A. Alemán-Rodríguez, E. Recacha, J. Torre-Cisneros, N. Merchante, Á. Pascual, L.E. López-Cortés	
+	
+Enterococcal Infective Endocarditis: demographics, comorbidities, diagnostic evaluation and mortality outcomes M. Singh* (London, United Kingdom), C. Watkins, H. Bristowe, M. Gunning, J. Galloway, R. Dworakowski, M. Arias	
+	
+Health related quality of life of patients with infective endocarditis – preliminary data of the DERIVE cohort C. Meyer-Schwickerath* (Cologne, Germany), K. Schmidt-Hellerau, J. Camp, K. Last, I. Joost, S. Rieg, N. Jung	
+	
+The optimal management of Enterococcus faecium catheter-related bloodstream infections: a gap to bridge I. Rancan* (Florence, Italy), M. Rinaldi, F. Malerba, B. Profiti, L. Ancillotti, M. Tumbarello, P. Viale, M. Giannella	
+	
+Ceftobiprole alone versus in combination with ampicillin against borderline penicillin-resistant, vancomycin-resistant Enterococcus faecalisO. Funk* (Brooklyn, United States), I. Khan, J. Li, J. Cusumano	
+	
+Risk factors for in- hospital mortality in 500 cases of infective endocarditis C. Lamas* (Rio De Janeiro, Brazil), G. Pompeo, T. De Almeida, M. De Carvalho, N. Feijoó, R. Garrido, G. Barbosa, B. Zappa, C. Weksler, M. Correia, W. Golebiovski	
+	
+ePoster Flash Session Don&#39;t blink: STIs are everywhere	Chair Mathew Beale (Hinxton, United Kingdom)
+	
+Neurosyphillis and Mpox co-infection mimic HIV encephalitis L. Mejdoubi* (Vienna, Austria), A. Nader, L. Mautner, A. Bahrami, F. Hofer	
+	
+An unusal cause of transverse myelitis J. Koleri* (Doha, Qatar), M. Samawi, M. Maslamani	
+	
+Ocular Syphilis, an uncommon presentation form of syphilis: two cases R. Kardashi* (Dresden, Germany), A. Frenz, K. De With	
+	
+Case report of a severe skin infection in a young man on PrEP and DoxyPEP M. Zlámal* (Prague, Czech Republic), Z. Bartovská, B. Lacmanová, M. Holub	
+	
+Serowaffling in PrEP Users: The Difficulty of HIV Diagnosis – A Case Report. P. Pillado Alonso* (Badalona, Spain), G. Fernández Rivas, A. Rivero Calaf, Á. Hernández-Rodríguez, R. Peña, J. Prado, J. Martínez-Picado	
+	
+Severe disseminated mpox in a patient with advanced HIV: A case report M.A. Quadros Flores* (Lisbon, Portugal), R. Diogo, F. Gonçalves, T. Marques, S. Paulo, F. Cota Medeiros, D. Mendes Pedro	
+	
+Sensorimotor polyneuropathy in a patient affected by HIV-1: an atypical presentation of neurosyphilis associated to anti-SOX-1 antibodies A. Lippi* (Siena, Italy), L. Ancillotti, M. Fabbiani, L. Migliorini, S. Bartalini, F. Ginanneschi, M. Tumbarello, F. Pippi, C. Puttini, F. Montagnani	
+	
+ePoster Flash Session Clinical considerations in resistant organisms	Chair Divya Deodhar (Muscat, Oman)
+	
+Clinical characteristics, therapy and outcome of bloodstream infections caused by vancomycin- resistant enterococci: a multicenter clinical experience F. Serapide* (Catanzaro, Italy), R. Serraino, L. Spadafora, M. Bernardi, G. Brucci, G. Cattardico, S. Corcione, I. De Benedetto, M. Del Monte, A. Limongelli, D.R. Giacobbe, E. Graziano, M. Meschiari, S. Mornese Pinna, M. Peghin, G. Tiseo, A. Vena, F. Romeo, G. Sarto, M. Bassetti, G. Biondi- Zoccai, F.G. De Rosa, M. Falcone, P.A. Grossi, C. Mussini, A. Russo	
+	
+Clinical outcomes of MSSA bacteremia exhibiting the cefazolin inoculum effect and development of a novel diagnostic method S. Yoshizawa* (Ota-Ku, Japan), T. Sato, K. Komori, K. Yamada, T. Yamaguchi, K. Tateda	
+	
+Third- and fourth-generation cephalosporins for the treatment of infections due to	
+	
+carbapenemase-producing Enterobacterales A. Blanco Arévalo* (Barcelona, Spain), A. Blanco- Arevalo, E. Sastre-Escolà, J. Camara Mas, F. Tubau Quintano, R. Costa, A. Padulles, E. Shaw, C. Gudiol, M. Puig-Asensio	
+	
+Are meropenem or imipenem-cilastatin effective therapies for patients with invasive ertapenem- resistant infections?	A. Peters* (Santiago, Chile), S. Fiawoo, L. Diaz, J.R. Martínez, M. Spencer-Sandino, L. Rivas, M.P. Riquelme, P. Rojas, L. Rojas, M.L. Rioseco, J. Moreno, R. Araos, P. Garcia, P.D. Tamma, J.M. Munita
+	
+Oral Fosfomycin after Carbapenems as de- escalating therapy in Complicated Urinary Tract Infection: A randomized controlled trial K. Angkanavisan* (Bankgkok, Thailand), B. Sakboonyarat, C. Ungthammakhun	
+	
+Oral switch vs. intravenous antibiotics treatment for serious carbapenem-resistant Enterobacterales and Pseudomonas aeruginosa infections on hospital discharge: the next frontier for oral switch?	C. Arena* (Detroit, United States), A. Abed, R. Kenney, G. Suleyman, A. Shallal, S. Davis, M. Veve
+	
+Metallo--lactamase colonization and subsequent risk of infection: a retrospective study. C. Lee Luna Fernandes* (Sao Paulo, Brazil), C. Vaiana, C. Amato, S. Castelbuono, G. Di Martino, F. Cardinale, F. Monaco, A. Cona, A. Mularoni	
+	
+Polymyxin including therapy versus colistin including therapy in the therapy of carbapenem- resistant Gram-negative infections: A retrospective matched cohort study M. Mert Vahabi* (Van, Türkiye), D. Akyol Seyhan, B. Kenanoğlu, Ş. Yeniyol, G. Şanlıdağ İşbilen, Ş. Dirik, D. Dağ, B. Özkara, M. Ceylan, C. Bulut Avşar, U. Önal, S. Ketentzi, A. Uyan Önal, A. Kaya, O. Acet, D. Kaya, N. Yalcin, G. Vatansever, C. Tol, Ş. Aydemir, D. Akdağ, H.A. Erdem, T. Yamazhan, H. Sipahi, B. Arda, O.R. Sipahi	
+	
+Prognostic factors and role of clinical management in carbapenem-resistant Acinetobacter baumannii bacteraemia: results from a prospective, international, multicentre cohort (EURECA) F. Cogliati Dezza* (Seville, Spain), J.M. Bravo-Ferrer Acosta, B. Gutiérrez-Gutiérrez, B. Carevic, G. Dragovac, G.L. Daikos, M. Akova, L. Raka, A. Hristea, P. Viale, E. Shaw, E. Roilides, M. Antonelli, H. Akalin, A. Komnos, J.M. Reguera, A. Vince, M. Mašanovic, L. Radulović, C. Kirakli, C. Gogos, A. Bartoloni, C. Dan, P. Kapisyzi, M.E. Falagas, A. Vata, S. Benea, D. Tomescu, A. Meda Vasiesiu, L. Bukarica, N. Lukic, A. Cano, V. Pintado, A. Azap, H. Goosens, M.J.M. Bonten, J. Rodríguez-Baño	
+	
+1-hour Symposium Avian influenza in mammals: jumps under the radar	Chairs Patricia Antunes (Porto, Portugal) Ana Vale (Dublin, Ireland)
+	
+Threat of highly pathogenic avian influenza to non- traditional hosts, including humans Thijs Kuiken (Rotterdam, Netherlands)	
+	
+Recent changes in the epidemiology of avian influenza in relation to human health risks Ron Fouchier (Rotterdam, Netherlands) Co-organised with: ESCMID Food- and Water-borne Infections Study Group (EFWISG), ESCMID Study Group for Veterinary Microbiology (ESGVM), ESCMID Study Group for Respiratory Viruses (ESGREV), European Scientific Working group on Influenza (ESWI)	
+	
+1-hour Symposium Echinococcosis: neglected but expanding	Chairs Daniel Grupel (Jerusalem, Israel) Francesca Tamarozzi (Negrar-Verona, Italy)
+	
+Expansion and diversity of cystic echinococcosis Pedro Legua (Lima, Peru)	
+	
+Management of echinococcosis: evidence, eminence and new developments Beate Grüner (Ulm, Germany) Co-organised with: Österreichische Gesellschaft für Antimikrobielle Chemotherapie (ÖGACH), Österreichische Gesellschaft für Hygiene, Mikrobiologie und Präventivmedizin (ÖGHMP), Österreichische Gesellschaft für Infektionskrankheiten und Tropenmedizin (OEGIT), ESCMID Study Group for Infections in Travellers and Migrants (ESGITM)	
+	
+1-hour Oral Session Training CM/ID - a global view	Chairs Mihai Mares (Iasi, Romania) Priya Nori (New York, United States)
+	
+Specialist training in infectious diseases in Europe J. Salmanton-Garcia* (Cologne, Germany), J. Salmanton-García, A. Guerra Maio, J.P. Stahl, E. De Barra, S. Jensen-Fangel, C. Torti, C. Kraef, J.M. Miró, A. Verbon, O.A. Cornely, N. Beeching	
+	
+Infectious Diseases Residency Training over the World P. Irkören* (Zeytinburnu/istanbul, Türkiye), P. Irkoren, C. Cimen, S. Keske, Ö. Ergönül	
+	
+Five years of experience with the virtual International Postgraduate Diploma in Infection Prevention and Control from the Infection Control Africa Network. A. Tostmann* (Nijmegen, Netherlands), E. Schoeman, B. Du Toit Ludick, E. Ruizendaal, Y. Gouws, J. Hopman, C. Azzouz, S. Mehtar	
+	
+Combatting challenges in laboratory capacity through an innovative, longitudinal Gram stain training programme for blood culture specimens in Zimbabwe. T. Mwaturura* (Harare, Zimbabwe), D. Hettle, F. Makoga, A. Mudungwe, B. Sado, K. Kranzer	
+	
+Benefit of the implementation of Entrustable Professional Activities (EPA) as an assessment tool in the Laboratory of clinical bacteriology: a study focused on the improvement of residents&#39; skills and feelings. H. Pailhoriès* (Angers, France), H. Pailhories, C. Zins, R. Chenouard, M. Kempf, M. Eveillard	
+	
+Meet-the-Expert How to perform molecular surveillance of multidrug resistant bacteria	
+	
+Martina Lengerova (Brno, Czech Republic)	
+	
+Henrik Hasman (Copenhagen, Denmark)	
+	
+hour Oral Session Novel vaccines in clinical development	Chairs Mateusz Hasso-Agopsowicz (Geneva, Switzerland) Hanna M. Nohynek (Helsinki, Finland)
+	
+Safety and immunogenicity of a seasonal booster dose of the 6-valent, OspA-based Lyme borreliosis vaccine candidate	
+	
+in a healthy population aged 5-65 years M. Messier* (Vienna, France), L. Wagner, R. Hochreiter, J. Larcher-Senn, E. Lamberth, R. Simon, C. Clarkin, J. Stark, S. Eder-Lingelbach	
+	
+Safety and immunogenicity of mRNA mpox vaccine candidate mRNA-1769: Interim analysis results from a Phase 1/2 Trial H. Hiruy* (Cambridge, United States), R. Lazarus, K. Mccafferty, K. Cohen, R. Dhar, T. Rizk, A. Adeniji, X. Chang, L. Siquel, H. Bennett, B. Leav	
+	
+Development of a Rapid-Acting Oral Cholera Vaccine: Phase I Clinical Trial A. Hannaford* (Boston, United States), D. Leitner, M. Waldor, L. Baden, M. Desjardins, M. Suzuki, L. Carr, D. Slater, H. Levine, H. Kaul, J.B. Park Chang, A. Piermatti, N. Puri, B. Piantadosi, J. Harris, S. Piantadosi, A. Sherman, S. Walsh	
+	
+Safety and immunogenicity of a Group B Streptococcus vaccine in participants aged 55-75 years L. Oostvogels* (Frederiksberg, Denmark), A. Alhatemi, S. De Gussem, E. Englev, B. Jacobs, B. Johansson-Lindbom, G. Kitson, G. Waerlop, I. Leroux- Roels	
+	
+Aggregated summary of immunogenicity and safety for the chikungunya virus virus-like particle (VLP) vaccine development programme L. Tindale* (Toronto, Canada), J. Richardson, D. Anderson, J. Mendy, S. Muhammad, T. Loreth, V. Jenkins, P. Ajiboye, L. Bedell	
+	
+hour Oral Session Novel approaches to preventing device-related infections	Chairs Natividad Benito (Barcelona, Spain) Preeti Malani (Ann Arbor, United States)
+	
+Clinical and microbiological impact of antibiotic- impregnated catheters in ventriculoperitoneal shunt infections in adults. M. Sanz De Mena* (Barcelona, Spain), I. Pelegrín Senent, J. Gómez Junyent, J. Poblet Florentin, C. Iglesias, A. Siverio Parés, S. Gómez Zorrilla, L. Sorlí Redó, M. Montero, J.P. Horcajada	
+	
+Reducing drainage-associated meningitis by using an antiseptic dressing: A randomized controlled trial AntiRedMen S. Scheithauer* (Goettingen, Germany), O. Moerer, V. Rohde, N. Srivastava, T. Asendorf, K. Antweiler, D. Mielke, G. Uwe, N. Lennart, S. Friedrich, A. Beste, N. Kucheryava, M. Baehr	
+	
+Efficacy of antimicrobial envelopes in preventing cardiac implantable electronic device infections – systematic review and meta-analysis A. Mahajan* (Melbourne, Australia), C. Robson	
+	
+A bundled approach to reducing central line associated blood stream infections (CLABSI) in hemodialysis (HD) patients J. Guerrero* (Scarborough, Canada), A. Garga, S. Paramalingam, R. Lovinsky, F. Go	
+	
+Increased long-term mortality in patients with prosthetic joint infection after primary total hip arthroplasty – a cohort study with 89&#39;709 patients N. Imhasly* (Lucerne, Switzerland), A. Widmer, C. Brand, V. Zdravkovic, A. Spoerri, K. Schmidlin, M. Wicki, M. Beck, R. Sommerstein 	
+	
+	
+	
+hour Symposium Out of the spotlight or out of reach?	Vaccination of hard-to-reach groups
+	
+Ukrainian war refugees and vaccination attitudes: experience from Poland Maria Ganczak (Zielona Gora, Poland)	
+	
+Vaccination in migrants in Latin America: The challenges of transit through Darien, Panama Alfonso J. Rodriguez-Morales (Pereira, Colombia)	
+	
+Are penitentiary systems ready for introducing vaccination programmes?	Lara Tavoschi (Pisa, Italy)
+	
+HPV and other essential vaccinations for sex workers Debora Konopnicki (Brussels, Belgium) Co-organised with: ESCMID Vaccine Study Group (EVASG)	
+	
+2-hour Symposium Breaking new ground in febrile neutropaenia management	Chairs Murat Akova (Ankara, Türkiye) Stefan Schwartz (Berlin, Germany)
+	
+Do we need to redefine the concept of febrile neutropaenia in the era of immunotherapy?	Manuela Aguilar-Guisado (Seville, Spain)
+	
+Should some patients be empirically treated with combination therapy?	Dina Averbuch (Jerusalem, Israel)
+	
+Role of new antibiotics in febrile neutropaenia Malgorzata Mikulska (Genoa, Italy)	
+	
+Can treatment strategies be personalised using AI or new diagnostic tools?	Carolina Garcia Vidal (Barcelona, Spain) Co-organised with: ESCMID Study Group for Infections in Compromised Hosts (ESGICH), European Conference on Infections in Leukemia (ECIL)
+	
+Educational Session The rules of the game: how to tackle the peer-review and publication process	Chairs Christian Kraef (Copenhagen, Denmark) Oana Sandulescu (Bucharest, Romania)
+	
+Communicating with journals, editors and reviewers Angela Huttner (Geneva, Switzerland)	
+	
+The Wild West of predatory journals Ursula Hofer (London, United Kingdom)	
+	
+Communicating your publications on social media Neil Stone (London, United Kingdom)	
+	
+Re-imagining peer review Amelia Joseph (Nottingham, United Kingdom) Co-organised with: Deutsche Gesellschaft für Hygiene und Mikrobiologie, CMI Communications Board of Editors, ESCMID Parity Commission, CMI Board of Editors	
+	
+ePoster Flash Session Innovations and insights in diagnosing parasitic infections	Chair Pikka Jokelainen (Copenhagen, Denmark)
+	
+Evaluation of a multiplex beads assay for the simultaneous detection of serum antibodies in neurocysticercosis patients. A. Lopez Alva* (Lima, Peru), P.D.S. Nakazaki Aza, L.M. Toribio Salazar, H.H. Garcia Lescano	
+	
+Development and evaluation of real-time loop mediated isothermal amplification assay for rapid detection of hookworm (Ancylostoma duodenale) in human fecal samplesM. Thakur* (Chandigarh, India), S. Khurana, A. Mewara, L. Pvm	
+	
+Exploring Genotypic Prevalence and Transmission of Cryptosporidium and Giardia in Immunocompromised Patients: A Dual Approach with Modern Molecular Methods: MLST &amp; nested real- time HRM P. Rani* (Chandigarh, India), P. Datta, S.L. Bhasin, P. Malhotra, S.S. Rana, R. Sehgal	
+	
+Prevalence and diagnostic accuracy of different diagnostic tests for Chagas disease in the Paraguayan Chaco S. Ardiles Ruesjas* (Saarbruecken, Germany), S. Ardiles-Ruesjas, V. Lesmo, V. González-Romero, Z. Cubilla, L. Chena, C. Huber, M.J. Rivas, P. Saldaña, A. Carrascosa, S. Méndez, S. Sanz, S.L. Becker, J. Alonso-Padilla, I. Losada	
+	
+Development and validation of an artificial intelligence model for detection of gastrointestinal parasites from concentrated wet-mount stool examinations M.R. Couturier* (Salt Lake City, Ut, United States), B. Mathison, K.A. Knight, J.R. Potts, F. Markow, A.E. Wood, K.W. Dixon, J.F. Walker, D.L. Bess, W. Hymas	
+	
+Evaluation of KU-F40 automated microscope for diagnosis of intestinal parasitic infections : will AI rescue old-time microscopy ?	A. Aupaix* (Hornu, Belgium), L. Filippin, I. Mansoor, M. Chemais, D. Martiny, V.Y. Miendje Deyi, M. Deffontaine, C. Deckers, V. Verbelen, J. Brauner
+	
+Improving vector surveillance: evaluating a real-time PCR assay for Leishmania DNA detection in sandflies H. Alonso-Ezcurra* (Zaragoza, Spain), M.P. Peris, I. Ruiz-Arrondo, J.A. Castillo, D. Martínez- Durán, S. Delacour, I. Ruiz-Zarzuela, I. De Blas, C. Cervera-Acedo, J.A. Oteo, F. Collantes, B. Dehesa, H. Alonso	
+	
+Assessment of a new immunochromatographic assay for serological diagnosis of amoebic liver abscess R. Fleury* (Besançon, France), M.P. Brenier-Pinchart, P. Tirard-Collet, F. Gabriel, E. Pretot, F. Touafek, A. Marteau, S. Houze, C. Amiot, T.G. Nguyen, D. Dupont, A. Moreno-Sabater, F. Grenouillet	
+	
+Human piroplasmosis: diagnostic lessons from a national parasitology reference laboratory in South Africa. C. Sriruttan-Nel* (Johannesburg, South Africa), J. Frean	
+	
+ePoster Flash Session New genomic methods in clinical microbiology	Chair Natacha Couto (Oxford, United Kingdom)
+	
+Prediction of antimicrobial minimum inhibitory concentration from Escherichia coli whole genome sequence data using machine learning A. Gerada* (Liverpool, United Kingdom), N. Harper, Y. Zhong, A. Howard, P.L. Green, W. Hope	
+	
+Dynamically Optimized Reference Adaptive Sampling (DORAS) to streamline bacterial Multi-Locus Sequence Typing A. Ramette* (Bern, Switzerland), L. Borcard, M.A. Terrazos Miani, S. Gempeler, S. Neuenschwander	
+	
+Prediction of antibiotic resistance in Pseudomonas aeruginosa , Escherichia coli and Klebsiella pneumoniae from genomic data using machine learning and deep learning approaches E. Denakpo* (Gif-Sur-Yvette, France), N. Dias, F. Jay, B. Iorga	
+	
+Machine learning pipeline accelerates identification of diagnostic targets for Neisseria gonorrhoeaeA. Verich* (Sydney, Australia), T. Applegate, D. Bauer, P. Ramarao-Milne, L. Sng, E. Trembizki, E. Mokany	
+	
+Reliable bacterial genomic genotyping from Oxford Nanopore Technologies data – the ONT cgMLST Polisher N. Scherff* (Muenster, Germany), J. Rothgänger, D. Harmsen	
+	
+Developing a core genome MLST (cgMLST) for Mycoplasma pneumoniaeC. Dixon* (Cardiff, United Kingdom), R. Mamede, M. Ramirez, H. Milton, P.M. Meyer Sauteur, G. Greub, N. Couto, M.L. Beeton	
+	
+Voyager: real-time taxonomic characterization of long-read mixed-species sequencing samples in sorted motif distance space S. Branders* (Hamar, Norway), M. Grabherr, R. Ahmad	
+	
+VCP: a signature protein-based tool for accurate and rapid profiling of human gut virome J. Li* (Shenzhen, China), F. Yang, L. Xiong, X. Feng, H. Zhong	
+	
+Genomic Data-Driven Machine Learning for Predicting Antimicrobial Resistance in ESCAPEE Pathogens A. Skoulakis* (Lamia, Greece), K. Daniilidis, S. Digenis, A. Hatzigeorgiou CGR 08:30 - 10:30 Hall 1 Special Session Clinical Grand Round Experts Nina Khanna (Basel, Switzerland) Dimitrios P. Kontoyiannis (Houston, Tx, United States) Lior Nesher (Beersheba, Israel) David L. Paterson (Singapore, Singapore) Priscilla Rupali (Vellore, India) Monica Slavin (Melbourne, Australia)	
+	
+Case 1 Kruthi Malur Kumaraswamy (Mumbai, India)	
+	
+Case 2 Christopher Wong (Victoria, Australia)	
+	
+Case 3 Filipa Ferreira (Porto, Portugal)	
+	
+Case 4 Jia Arng Lee (Zhongzheng Dist, Taipei City, Taiwan, Taiwan, China)	
+	
+Case 5 Lorenzo Bertolino (Naples, Italy)	
+	
+Case 6 Armani Hawes (Baltimore, United States)	
+	
+Case 7 Sima Sharara (Baltimore, United States) Co-organised with: Infectious Diseases Society of America (IDSA)	
+	
+hour Oral Session Knockin&#39; on Science&#39;s Door: New Antimicrobial Solutions	Chairs Sandrine Marchand (Poitiers, France) Ursula Theuretzbacher (Vienna, Austria)
+	
+Chimerbactin: a hybrid antibiotic for persistent Gram-positive infections that overcomes resistance development R. Lee* (Memphis, United States), Y. Zhao, A. Arya, M. Lafleur, R. Conlin, G. Phelps, C. Dunn, E. Griffith, J. Portelinha, N. Chumbler, V. Loudon, I. Lister, S. Zia, K. Urish, K. Lewis	
+	
+A Novel Klebicin Cocktail to Treat Lung Infection Caused by Klebsiella pneumoniaeV.D. Paul* (Bangalore, India), A. Ambady, U. Chopra	
+	
+Thiophene derivatives: A promising solution against MDR Gram-negative bacilli Y. Smani* (Seville, Spain), I. Molina Panadero, Á. Rey Hidalgo, M. Morales-Tenorio, A. García-Rubia, T. Samernate, P. Nonejuie, A. Martínez, A. Hmadcha, A. De Alarcón, C. Gil	
+	
+Molecular insight into non-lytic polyproline peptide disruption of Klebsiella pneumoniae biofilms R. Fleeman* (Orlando, United States), R. Beckman Iv, B. Victoria, L. Suits, P. Eswara	
+	
+Reverting cefotaxime resistance in CTX-M-15- producing Escherichia coli using Targeted- Antibacterial-Plasmids (TAPs): a CRISPR-Cas9 approach. N. Roson Calero* (Barcelona, Spain), N. Roson-Calero, E. Derollez, P. Rouze, A. Dedieu- Berne, S. Bigot, C. Ballesté-Delpierre, J. Vila, P. Bogaerts, C. Lesterlin	
+	
+Structural and functional characterization of LysSM5: An innovative endolysin from Salmonella Phage vB_SenA_SM5 K. Sharma* (Chandigarh, India), H. Kaur, N. Chaudhary, S. Prajapati, B. Mohan, N. Taneja	
+	
+Rational step-by-step design of a two-phage cocktail against a contemporary A. baumannii strain recovered from a burned patient at CHUV. G. Resch* (Lausanne, Switzerland), H. De Villiers De La Noue, G. Golliard, X. Vuattoux	
+	
+A novel antibiotic class targeting the enolase of Acinetobacter baumanniiI. Molina Panadero* (Seville, Spain), A. Moreno Rodríguez, Á. Rey Hidalgo, L. Tomás Gallardo, M. De La Cruz, P. Sánchez, T. Samernate, A.J. Pérez Pulido, S. Glisic, O. Genilloud, P. Nonejuie, A. Hmadcha, Y. Smani	
+	
+Reviving antibiotic potency: Pharmacological Assessment of JS238 a newly designed potentiator against P. aeruginosaP. Rasouli* (Brussels, Belgium), J.M. Brunel, J.H. Lorent, F. Van Bambeke	
+	
+Advancements in combating tularemia: Novel therapeutic strategies targeting Francisella tularensisS. Guillier* (Brétigny-Sur-Orge, France), M. Gâchon, C. Lemoigne, C. Rougeaux, V. Lourde, C. Demeure, J. Pizarro Cerda, G. Guichard, G. Compain, D. Burnouf, O. Gorgé, J. Wagner	
+	
+2-hour Symposium Using mathematical and epidemiological models to identify the drivers of AMR	Chairs Marc J.M. Bonten (Utrecht, Netherlands) Sarah Tschudin Sutter (Basel, Switzerland)
+	
+Quantifying the drivers of antiviral resistance: what does it take to prevent resistance evolution?	Roger Kouyos (Zürich, Switzerland)
+	
+Inferring the determinants of AMR dynamics across bacterial pathogens Lulla Opatowski (Paris, France)	
+	
+Modelling the evolution of resistance Erida Gjini (Lisbon, Portugal)	
+	
+Assessing the associations of microbiome and socio- demographic dynamics on AMR Katariina Pärnänen (Helsinki, Finland)	
+	
+Educational Session Endemic mycoses and mycetoma: underdiagnosed and underreported fungal diseases	Chairs Ana Alastruey-Izquierdo (Madrid, Spain) Rita Oladele (Lagos, Nigeria)
+	
+Advances and gaps in the diagnosis and treatment of histoplasmosis Diego Rodrigues Falci (Porto Alegre, Brazil)	
+	
+Paracoccidioidomycosis: an update on diagnostic challenges Beatriz L. Gomez (Bogota, Colombia)	
+	
+What is new in Talaromycosis Brown Lottie (London, United Kingdom)	
+	
+Mycetoma: treatment challenges of a unique neglected tropical disease Borna Nyaoke-Anoke (Nairobi, Kenya)	
+	
+Educational Session An update on arboviral disease challenges	Chairs Misa Korva (Ljubljana, Slovenia) Anna Papa-Konidari (Thessaloniki, Greece)
+	
+The global epidemiology of arboviral diseases Chantal B.E.M. Reusken (Bilthoven, Netherlands)	
+	
+Arboviral diseases transmitted by mosquitoes Luisa Barzon (Padua, Italy)	
+	
+Aboviral diseases transmitted by ticks Joanna Maria Zajkowska (Białystok, Poland)	
+	
+Arboviral diseases transmitted by sandflies Rémi Charrel (Marseille, France) Co-organised with: EURL-PH-VBV, Polish Association of Epidemiologists and Infectiologists	
+	
+2-hour Symposium Faecal microbiota transplantation and live biotherapeutic products: scientific and regulatory challenges	Chairs Lindsey Ann Edwards (London, United Kingdom) Ed J. Kuijper (Leiden, Netherlands)
+	
+How can we recognise and deal with adverse events of Faecal Microbiota Transplantation?	Serena Porcari (Roma, Italy)
+	
+What to check?	– An attempt at evidence-based donor screening Elisabeth Terveer (Leiden, Netherlands)
+	
+What are the right bugs – Developing LBPs out of FMTs Lena Biehl (Cologne, Germany)	
+	
+What’s up next?	– Hot LBP candidates Ilan Youngster (Beer Yaakov, Israel) Co-organised with: ESCMID Study Group for Host and Microbiota Interaction (ESGHAMI), The European Faecal Microbiota Transplantation Network of academics (EurFMT), European Helicobacter &amp; Microbiota Study Group (EHMSG)
+	
+2-hour Symposium News in endocarditis care	Chairs Michele Bartoletti (Milan, Italy) Pilar Retamar Gentil (Seville, Spain)
+	
+Endocarditis guidelines: what is new?	Siegbert Rieg (Freiburg, Germany)
+	
+Oral therapy and outpatient care Laura Escolà-Vergé (Barcelona, Spain)	
+	
+PK/PD aspects of endocarditis antibiotic therapy Fekade Bruck Sime (Brisbane, Australia)	
+	
+The Endocarditis Team: there is no way to work alone Barbara Hasse (Zurich, Switzerland) Co-organised with: ESCMID Study Group for Bloodstream Infections, Endocarditis and Sepsis (ESGBIES), ESCMID Study Group for Antimicrobial stewardship (ESGAP), Sociedad Espanola de Infecciones Cardiovasculares (SEICAV)	
+	
+ePoster Flash Session Sepsis revolutions: from machines to molecules	Chair Pierluigi Del Vecchio (Roma, Italy)
+	
+Machine learning enabled prediction of blood stream infection in emergency department attendees. C. Rosato* (Liverpool, United Kingdom), S. Aston, A. Velluva, A. Howard, W. Hope	
+	
+Utilizing Automation to Streamline the Blood Culture Process: Enhancing Efficiency and Patient Outcomes J. Qin* (Shanghai, China), M. Li, Z. Shen	
+	
+Implementation of a bundle for Gram-negative bloodstream infection: impact on mortality and MDT/DTT carriage C. Bonazzetti* (Bologna, Italy), A. Grechi, D. Gibertoni, L. Mangione, F. Todisco, N. Caroccia, M. Rinaldi, R. Pascale, B. Tazza, A. Toschi, A. Amicucci, C. Campoli, Z. Pasquini, F. Calo&#39;, P. Viale, M. Giannella	
+	
+A matter of time: impact of time to first follow-up blood cultures in patients with candidemia and Staphylococcus aureus bacteremia from a retrospective cohort P. Valsecchi* (Pavia, Italy), E. Bono, A. Valeretto, S. Resuli, M. Corbella, P. Cambieri, E. Seminari, R. Bruno	
+	
+Characteristics of infections and outcomes in patients with left ventricular assist devices N. Sarı* (Ankara, Türkiye), E. Ateş, Ç. Sarıkaş, Ö. Kurt Azap, Ç. Erol, A. Sezgin	
+	
+Nb 2 (Sn 0.7 Cu 0.3 )C MAX phase for anti-Infection therapy via hyperthermia-mediated bacterial metabolic interference M. Yang* (Chengdu, China)	
+	
+Age-Dependent Plasma Lipidomic Alterations and Immune Correlations in Sepsis: Insights into Disease Severity and Biomarker Potential Y. Sun* (Shanghai, China), K. Lin, L. Wang, J. Ai, J. Zhao, X. Cheng, Y. Wan, P. Cui, S. Wang, J. Wu, J. Jin	
+	
+Aberrant integrin activation causes transmigration defects in S100A9 -/- neutrophils during sepsis S. Mülder* (Münster, Germany), N. Ludwig, J. Rossaint, T. Vogl	
+	
+Efficacy of dimercaptosuccinic acid in combination with imipenem in a murine model of experimental sepsis due to metallo-ß-lactamase-producing Pseudomonas aeruginosa . S. Herrera-Espejo* (Seville, Spain), M. Bouvier, J. Findlay, L. Ceballos- Romero, J. Pachón, J.M. Cisneros, M.E. Pachón- Ibáñez, P. Nordmann	
+	
+ePoster Flash Session C. diff challenges: insights into treatment, monitoring, and infection prevention	Chair Kerrie Davies (Leeds, United Kingdom)
+	
+Epidemiology, risk factors, and outcomes of nosocomial Clostridioides difficile infections: a cohort study in a tertiary hospital. L. Ruiz Salazar* (Madrid, Spain), T. Mata Forte	
+	
+Long-read or short-read sequencing in Clostridioides difficile infection surveillance?	M. Brajerová* (Prague, Czech Republic), M. Brajerova, P. Kinross, P. Drevinek, M. Krutova
+	
+“Beyond C. difficile Colitis”: Exploring the Role of Fidaxomicin in preventing concomitant and secondary bloodstream infections in patients with Clostridioides difficile colitis. D.F. Bavaro* (Milan, Italy), D. Schumann, A. Cilli, L. Diella, D. Barbanotti, D. Mondatore, F. Medioli, M. Casana, A. Belati, L. Bussini, V. Cento, R. Epis, M. Bartoletti	
+	
+Comparison of bezlotoxumab versus no- bezlotoxumab on recurrence in high-risk patients with Clostridioides difficile infection C. Arena* (Detroit, United States), A. Abed, R. Kenney, A. Shallal, S. Davis, M. Veve	
+	
+Exploring bacterial contributors to C. difficile colonization resistance: comparative effects of vancomycin and fidaxomicin in humanised mice E. Montenegro-Borbolla* (Lausanne, Switzerland), L. Beldi, S. Hapfelmeier, G. Greub, C. Bertelli, B. Guery	
+	
+An optimised vancomycin dosing regimen is effective against C. difficile , reduces gut microbiota impact and prevents recurrent C. difficile infection in a human in vitro gut model. J. Freeman* (Leeds, United Kingdom), C. Normington, E. Clark, K. Bentley, J. Altringham, A. Berry, W. Spittle, D. Ewin, A. Kirby, M. Wilcox, K. Davies	
+	
+Cost and resource utilization of fidaxomicin in risk patients with recurrent or refractory Clostridioides difficile infection M. Engelhard* (Cologne, Germany), I. Alram, S.M. Wingen-Heimann, N. Pfeiffer, J.J. Vehreschild, M.J.G.T. Vehreschild, S.M. Hopff	
+	
+Impact of a cohorting intervention on the incidence of hospital-acquired Clostridioides difficile infection (CDI): an interrupted time series analysis C.D. Moschopoulos* (Athens, Greece), M. Tsakona, S. Grigoropoulou, P. Kazakou, M. Kostoula, I. Kliani, C. Filis, K. Thomas, I. Grigoropoulos, K. Protopapas, E. Kalogeropoulou, S. Pournaras, N.V. Sipsas, G.L. Daikos, F. Kontopidou, A. Papadopoulos, S. Tsiodras, D. Kavatha	
+	
+Meet-the-Expert How to use citizen science for public health	
+	
+Anna Noel-Storr (Leamington Spa, United Kingdom)	
+	
+Jani Sormunen (Turku, Finland) Co-organised with: European Centre for Disease Prevention and Control (ECDC)	
+	
+1-hour Symposium dsDNA virus infections in immunocompromised patients	Chairs Lior Nesher (Beersheba, Israel) Michelle Yong (Melbourne, Australia)
+	
+Challenges of diagnosis: do we need to treat all patients with detectable dsDNA virus PCR?	Hans H. Hirsch (Basel, Switzerland)
+	
+The role of CRISPR-Cas9-edited antiviral T cells against dsDNA virus infections Tba	
+	
+Open Forum Vaccine rollout in low resource settings	Chair Asma Nasim (Karachi, Pakistan)
+	
+Typhoid vaccine roll out Nginache Nampota (Baltimore, United States)	
+	
+Introduction of malaria vaccines to countries in sub- Saharan Africa: acceptance and barriers Bernhards Ogutu Ragama (Nairobi, Kenya)	
+	
+The story of COVID-19 vaccines in LMIC Paul Adepoju (Perton, United Kingdom) Co-organised with: ESCMID Ethics Advisory Committee (EEAC)	
+	
+ePoster Flash Session Advancing antimicrobials: trials and therapies for resistant infections	Chair Ursula Theuretzbacher (Vienna, Austria)
+	
+Efficacy of High Dose Tigecycline-Containing Regimens for the Combination Treatment of Carbapenem Resistance Enterobacterales Bacteremia: a propensity score-matched study V. Vasikasin* (Bangkok, Thailand), W. Nasomsong, P. Wanloptaree	
+	
+Evaluation of CRS3123 compared to vancomycin for the treatment of Clostridioides difficile infection (CDI) J. Bruss* (Pagosa Springs Co, United States), M.A. Degroote, L. Boccumini, W. Ribble, J. Day, C. Mason, X. Sun, J. Freeman, N. Seema, N. Janjic, T. Jarvis, U. Ochsner, M. Wilcox, T. Louie	
+	
+Phase 2/3, open-label, randomized, active-controlled clinical trial evaluating the safety and efficacy of imipenem/cilastatin/relebactam (IMI/REL) in paediatric patients with gram-negative bacterial infection J. Bradley* (San Diego, United States), C.T. Norice, E. Roilides, A. Shevelev, B. Jurkiewicz, J.A. Piedrahita, S. Koseoglu, I. Masih, P. Nair, K. Young, D.W. Hilbert, G.T. Nieddu, J.A. Huntington, C.J. Bruno	
+	
+A Phase I, Randomized, Double-Blind, Placebo- Controlled, Dose Escalation Study to Evaluate the Safety and Tolerability of Intravenous Ertapenem (ERT) with Zidebactam (ZID) in Combination (WCK 6777) in Healthy Adult Subjects T. Lodise* (Albany, United States), R. Chavan, A. Patel, R. Yeole, S. Bhagwat, M. Patel, G. Saviolakis, K. Gu, V. Ghazaryan, M. Kankam, A. Jaunarajs, E. Hammett, H. Howell, R.A. Bonomo	
+	
+Head-to-head: meropenem/vaborbactam versus ceftazidime/avibactam in ICUs patients with KPC- producing K. pneumoniae infections – Results from a retrospective multicentre study A. Marino* (Catania, Italy), A.E. Maraolo, M. Mazzitelli, A. Oliva, N. Geremia, A. De Vito, C. Gullotta, V. Scaglione, E. Vania, S. Lo Menzo, P. Navalesi, L. Volpicelli, A. Fiori, P. Prestifilippo, A. Cattelan, C.M. Mastroianni, G. Madeddu, B. Cacopardo, G. Nunnari	
+	
+Phase 3 study of oral gepotidacin for the treatment of uncomplicated urinary tract infection in Japanese female participants (EAGLE-J) Y. Kayama* (Tokyo, Japan), S. Yamamoto, K. Fujii, A. Nimura, T. Maenaka, M. Ramirez, R. Banerjee, N.E. Scangarella-Oman, S. Mozzicato, S. Ura	
+	
+Efficacy of Ceftolozane/Tazobactam vs. Ceftazidime/Avibactam in the Treatment of Nosocomial Pneumonia Caused by Pseudomonas aeruginosa : a multicentric retrospective study from the SUSANA cohort. A. Bitti* (Sassari, Italy), A. De Vito, M. Fois, E. Ricci, A. Bandera, A. Maccaro, S. Piconi, P. Maggi, G. Cenderello, M. Merli, G.V. De Socio, P. Morelli, P. Bonfanti, G. Madeddu	
+	
+Experience of dalbavancin use for unlicensed indications in a UK tertiary infectious diseases setting C. Darlow* (Liverpool, United Kingdom), J. Parsons, D. Lucy, N. Wong	
+	
+Investigator-driven randomised controlled trial of cefiderocol versus standard therapy for healthcare- associated and hospital-acquired gram-negative bacterial bloodstream Infections (BSI) : Hierarchical composite endpoint analysis with DOOR and generalised pairwise comparisons M. Hardy* (Maroochydore, Australia), D.L. Paterson, M. Chatfield, H. Bin Sulaiman, L. Po-Yu, M. Yilmaz, Z.N. Salmuna, M.Z. Mazlan, S. Anunnatsiri, R. Sirijatuphat, D. Chotiprasitsakul, D. Lye, J. Somani, S. Kalimuddin, V. Thamlikitkul, Y.T. Lee, Y.T. Lin, W.N.W. Ramli, H.C. Ong, P. Mootsikapun, A. Meesing, C.H. Tseng, T.K. Yeh, A.M.B. Hashim, P. Puangpatra, A. Aslan, P. Santanirand, T.T. Chiang, S. Archuleta, Y.F.Z. Chan, P.Y. Chia, B. Forde, H. Wright, A. Stewart, K. Ramsay, W.P. Ling, V. Rossi, T. Harris-Brown, P.N.A. Harris	
+	
+ePoster Flash Session Thinking outside the box in urinary tract infection	Chair Özlem Kurt Azap (Ankara, Türkiye)
+	
+Targeted NGS: a promising approach for pathogen detection of urinary tract infection W. Gao* (Beijing, China), P. Li, W. Han, D. Chen, L. Huang, P. Chen, B. Cheng, Y. Gu, C. Hu, J. Chen, Z. Zhang	
+	
+Turnaround time of just four hours from sample collection to informed decision-making for complicated urinary tract infections in a urology ward, using culture-independent metagenomics A.B. Bellankimath* (Hamar, Norway), S. Branders, J. Ali, F. Asadi, T.E.B. Johansen, C. Imirzalioglu, T. Hain, F. Wagenlehner, R. Ahmad	
+	
+Identification of Microorganism Types in Urinary Tract Infections Using Machine Learning and Flow Cytometry E. Flores* (Alicante, Spain), I. Gutierrez, R. Torrreblanca, A. Blasco, R. Carbonell, M. Lopez- Garrigós	
+	
+A New Approach In Diagnosis Of Urinary Tract Infections B. Dinc* (Ankara, Türkiye), F. Kırca, S. Kazcı, Ö. Uslu, N. Çöplü	
+	
+Diagnosis of urinary tract infections: from machine learning to clinical practice E. Flores* (Alicante, Spain), R. Torrreblanca, I. Gutierrez, R. Carbonell, L.G. Maite, A. Blasco	
+	
+Strategic testing optimisation practices for urinary tract infections (STOP-UTI): findings from LMIC hospital setting S. Sarika* (Tamil Nadu, India), B. Rithik Dharan	
+	
+Rapid culture-independent mass spectrometry based proteomics methods for improving urinary tract infection diagnostics S. El-Ali* (Gothenburg, Sweden), L. Acha Alarcon, G. Alves, Y.K. Yu, R. Karlsson, E. Moore	
+	
+Unraveling the complexity: Corynebacterium diversity and antimicrobial resistance hub in the urinary tract ecosystem E. Cappelli* (Porto, Portugal), A. Morais, T. Ribeiro, L. Peixe	
+	
+Active surveillance in the diagnosis of sexually transmitted infections: performing PCR in negative urine cultures A. Castellano Verdasco* (Lleida, Spain), E. Sánchez Báscones, E. López González, A. Blanquero-Porras, M. Riesgo Magaña, A. Bernet Sánchez, S. Mormeneo Bayo, I. Prats Sánchez, A. Bellés-Bellés, M. García González	
+	
+ePoster Flash Session Bugs breaking the blood-brain barrier	Chair Markus Zeitlinger (Vienna, Austria)
+	
+Pharmacologic depletion of meningeal macrophages worsens disease in a mouse model of meningitis U. Koedel* (Munich, Germany), S. Dyckhoff-Shen, I. Masouris, H.W. Pfister, M. Klein	
+	
+Pgm1 modulates the inflammatory response of macrophages in experimental pneumococcal meningitis D. Bakker* (Amsterdam, Netherlands), R. Koning, M. Van Roon, V. Jaspers, M. Brouwer, D. Van De Beek	
+	
+Heparin-binding protein in cerebrospinal fluid as a biomarker for bacterial meningitis: a study of diagnostic accuracy S. Olie* (Amsterdam, Netherlands), S.L. Staal, A.C. Da Cruz Campos, J. Bodilsen, H. Nielsen, D. Van De Beek, M.C. Brouwer	
+	
+Efficacy Analysis of Intraventricular/Intrathecal Polymyxin B sulphate Injections in the Treatment of Post-neurosurgical CNS Infections in Neurocritical Ill Patients:a prospective observational study L. Yang* (Shanghai, China), J. Song, M. Wang, H. Yuan, Q. Yuan, Z. Du, G. Wu, J. Hu, W. Chen	
+	
+Ventriculitis characteristics and outcomes (VELCRO): an international retrospective cohort study D. Luque Paz* (Rennes, France), B. Díaz Pollán, M. Boyer- Besseyre, F. Djanikian, A.L. Munier, F. Cunha, L. Escaut, G. Martin-Blondel, B. Sarton, P. Jaquet, F. Arrivé, R. Wolf, V. Legros, M. Willig, O.R. Sipahi, L. Flurin, A. Bianchi, B. Balança, J. Puel, R. Lino, B. Soyer, T. Leveque, A. Salomon, A. Serris, R. Larcher, F. Bruneel, N. Mongardon, A. Mazeraud, M. Wolff, R. Sonneville, F. Valour, P. Tattevin	
+	
+Clinical Features and Outcomes of Staphylococcus aureus Brain Abscess E. Eriksen* (Aalborg, Denmark), M. Bijlsma, S. Olie, L. Larsen, M. Storgaard, H. Mens, L. Wiese, M.P.G. Jepsen, B.R. Hansen, H.R. Lüttichau, H. Nielsen, M. Brouwer, J. Bodilsen	
+	
+Epidemiology of Adult Intracranial Bacterial Abscess in the Republic of Ireland (2010-2021) S. Kilgarriff* (Cork, Ireland), E. Glynn, D. Murray, C. Lim, C. Hickey, S. O Donnell, B. Dinesh, C. O Connor, A. Doherty	
+	
+Corticospinal tract involvement in Neuromelioidosis: A Retrospective cohort Study from South India and a Systematic Review of Literature P.K. Tirlangi* (Manipal, India), N. Gupta, V. Muralidhar, C. Mukhopadhyay	
+	
+A multicenter prospective study to develop and validate clinical prediction models for diagnosis of scrub typhus and treatment with doxycycline in children with acute encephalitis syndrome in southern India T. Damodar* (Bangalore, India), L. Turtle, R. Kolamunnage-Dona, M. Jose, U. Kinhal, B. Singh, A. L, S. Marate, N. Prabhu, L. A V, F.S. D&#39;souza, S.V. Sajjan, K. Mallesh, R.S. Mani, T. Solomon, V.K. Gowda, R. Vasanthapuram, R. Yadav	
+	
+Keynote Lecture What genomics brought to the knowledge of tuberculosis, leprosy and buruli ulcer	Chairs Emmanuelle Cambau (Paris, France) Kathryn Holt (London, United Kingdom)
+	
+Stewart T. Cole (Paris, France)	
+	
+1-hour Symposium Antimicrobial stewardship across the lifespan from paediatrics to geriatrics	Chairs Lucy Catteau (Brussels, Belgium) Priya Nori (New York, United States)
+	
+Antimicrobial Stewardship in paediatrics across different settings Taylor Morrisette (Charleston, United States)	
+	
+Stewardship in geriatrics: an exceedingly important target Dafna Yahav (Ramat-Gan, Israel)	
+	
+Meet-the-Expert Implementing AI in microbiological diagnostics: practical steps and quality control	
+	
+Oliver Nolte (Zürich, Switzerland)	
+	
+Jennifer Dien Bard (Los Angeles, United States) Co-organised with: ESCMID Study Group for Genomic and Molecular Diagnostics (ESGMD), Swiss Society for Microbiology (SSM)	
+	
+1-hour Symposium People-centred approach to strengthening the AMR response at primary care	Chairs Benedikt Huttner (Geneva, Switzerland) Mirfin Mpundu (Lusaka, Zambia)
+	
+Implementation of WHO’s people-centred interventions Nienke Van De sanDe Bruinsma (Geneva, Switzerland)	
+	
+Opportunities for strengthening AMR interventions in primary healthcare Sholpan Kaliyeva (Karaganda City, Kazakhstan) Co-organised with: World Health Organisation (WHO)	
+	
+1-hour Oral Session Serious games - a serious business	Chairs Christian Kraef (Copenhagen, Denmark) Galadriel Pellejero-Sagastizábal (Zaragoza, Spain)
+	
+The development process, impact and implementation of an educational VR-module in infection prevention and control for medical students and healthcare workers in The Netherlands. A. Tostmann* (Nijmegen, Netherlands), O. Coenen- Bouwman, B. Schippers, F. Luk, M. Graner, F. Van Hoek, N. Stikkelbroeck, M. Dronkers	
+	
+Impact of Professional Background on Performance in ToREIMC: A Gamified Medical Knowledge Platform A. Blanco-Di Matteo* (Pamplona, Spain), M. Morante Ruiz, M. Riesgo Magaña, M. Martín García	
+	
+Serious games and storytelling to enhance adolescents&#39; capabilities for decision-making regarding meningococcal vaccination: a monocenter study T. Morris* (Saint-Etienne, France), S. Essalim, K. Atroune, V. Ronat, M. Moulin, R. Eichel, E. Botelho- Nevers, A. Gagneux-Brunon	
+	
+‘The Sepsis Olympics&#39;: Raising awareness of the Sepsis 6 care bundle in an Irish Hospital through a clinical challenge game. C. Uhomoibhi* (Dublin, Ireland), K. Costelloe, J. Harte, N. Power, E. De Barra	
+	
+Improvement of learners&#39; confidence in antibiotic management by an interdisciplinary annual multi- centred webinar A. Friedrichs* (Kiel, Germany), E. Kramme, T. Koch, J. Jochum, A. Van Der Linde, H. Gerth, F. Jahn, A. Neubert	
+	
+1-hour Symposium Beat the cancer by beating the infections	Chairs Daniela Maric (Novi Sad, Serbia) Mojca Maticic (Ljubljana, Slovenia)
+	
+Prevention of infection-associated cancer: learning from each other Catharina Alberts (Amsterdam, Netherlands)	
+	
+Test and treat early to prevent cancer: hepatitis B and hepatitis C Francesco Negro (Geneva, Switzerland)	
+	
+Personalised patient management and infection prevention: Current evidence and future perspectives 1-hour Symposium	Chairs Agnes Hajdu (Budapest, Hungary) Iris K. Minichmayr (Vienna, Austria)
+	
+The dosing perspective: towards individualised treatment strategies Thomas Tängdén (Uppsala, Sweden)	
+	
+The infection control perspective: advancing patient- centred approaches Alessia Savoldi (Verona, Italy)	
+	
+Emerging fungal diseases in children: Global challenges and approach to management 1-hour Symposium	Chairs Andreas H. Groll (Münster, Germany) Adilia Warris (Exeter, United Kingdom)
+	
+Emerging fungal infections in immunocompromised and geographically exposed children Laura Ferreras- Antolin (London, United Kingdom)	
+	
+Best available treatments and options for children in resource-limited settings Fabianne Carlesse (Sao Paulo, Brazil) Co-organised with: ESCMID Fungal Infection Study Group (EFISG), German- Speaking Mycological Society (DMykG)	
+	
+1-hour Oral Session Plasmids as a powerful tool of antibiotic resistance spread	Chair Monika Dolejska (Pilsen, Czech Republic)
+	
+Co-anchorage of antibiotic resistance genes and mobile genetic elements on bacterial plasmids boosts horizontal gene transfer across sewage interfaces M. Shafiq* (Shantou, China)	
+	
+The emergence of tet (X4) and mcr co-harbored on the same plasmid and its clinical significance N. Rakhi* (Oxford, United Kingdom), A. Lankapalli, T. Lanyon-Hogg, P. Niumsup, K. Thomson, K. Sands, T. Walsh	
+	
+The plasmidome of a global collection of convergent K. pneumoniae and its impact on virulence F. Lebreton* (Silver Spring, United States), M. Martin, A.P. Sapre, T. Luo, U. Carolino-Macdonald, E. Mills, B. Corey, R. Maybank, A. Ong, Y. Kwak, J. Bennett, T. Russo, P. Mc Gann	
+	
+Factors that affect plasmid transfer in multispecies biofilms H.Y. Liu* (Norwich, United Kingdom), M. Yasir, E. Trampari, G. Langridge, M. Webber	
+	
+Identification of the czc metal efflux operon on a new plasmid type in a Pseudomonas aeruginosa clinical isolate belonging to	
+	
+O11 A. Valcek* (Brussels, Belgium), D.I. Costescu Strachinaru, P. Soentjens, A. Stoefs, C. Van Der Henst	
+	
+1-hour Case Session Looking inside endovascular infections	Chairs Claus Moser (Copenhagen, Denmark) Matthaios Papadimitriou Olivgeris (Sion, Switzerland)
+	
+A Case of Persistent Legionella micdadei Aortitis with Endocarditis: Diagnostic and Therapeutic Challenges V. Zwart* (Breda, Netherlands), E. Kayabasi, H. De Groot, R. Bentvelsen	
+	
+Management and Prognosis of Vascular Endograft Infections: Case Series N. Scarpulla* (Napoli, Italy), F. Patauner, L. Bertolino, R. Andini, A.M.C. Peluso, R. Gallo, E. Durante-Mangoni	
+	
+Fungal frenzy: handling an uncommon etiology in prosthetic valve endocarditis I. Cafarella* (Naples, Italy), R. Gallo, F. Patauner, F. Luciano, L. Bertolino, A.M.C. Peluso, F. Boccia, R. Zampino, E. Durante- Mangoni	
+	
+Successful Use of Oritavancin as Consolidation Therapy for Infective Endocarditis Caused by Enterococcus spp.: Experience from Seven Cases in a Referral Center F. Frondizi* (Rome, Italy), G.M. Leanza, F. Catania, F. Sangiorgi, M. Chiuchiarelli, B. Andriolo, L. Vahedi, B. Liguoro, F. Giovannenze, E. Taddei, G. Scoppettuolo, C. Torti	
+	
+Clinical Features and Outcomes of Gram-Negative Bacterial Endocarditis: A Case Series from a University Hospital G. Oliva* (Rome, Italy), F. Giovannenze, G.M. Leanza, F. Frondizi, M. Chiuchiarelli, B. Liguoro, B. Andriolo, E. Taddei, G. Scoppettuolo, C. Torti	
+	
+1-hour Oral Session Exploring Host-Pathogen Interactions and Immune Dynamics in Bacterial Virulence	Chairs Giovanni Delogu (Rome, Italy) Simon Foster (Sheffield, United Kingdom)
+	
+Bacteria and host responses in both mice and human lung organoid model revealed the role of a novel plasmid	
+	
+in hypervirulent Carbapenem- resistant Klebsiella pneumoniae Y. Zhang* (Shanghai, China), W. Liu, K. Lin, L. Chen, J. Wu, N. Jiang	
+	
+Presence and role of hypervirulence-associated markers in Klebsiella pneumoniae groups based on	
+	
+value in mouse septic model A. Avdeeva* (Saint-Petersburg, Russian Federation), D. Kandina, E. Podvysotskaia, P. Chulkova, M. Velizhanina, J. Sopova, V. Lomonosova, V. Galushka, A. Afinogenova, V. Shapovalova, O. Sulian, I. Ageevets, V. Ageevets, S. Sidorenko	
+	
+Meta-transcriptomic Insights into Host-Pathogen Interactions in Necrotizing Soft Tissue Infections Using Differential Analysis T. Vashist* (Chandigarh, India), N. Rana, D. Nair, A. Angrup, V. Sharma, C. Tandup, P. Ray, A. Arora	
+	
+Unveiling the hidden virulence of Acinetobacter baumannii : how the lipooligosaccharide core modulates immune responses and enhances interferon- production Y.T. Lee* (Taipei, Taiwan, China), Y.C. Wang	
+	
+Platelets drive neutrophil-mediated neuroinflammation in tuberculous meningitis K. Skolimowska* (London, United Kingdom), R. Wilkinson, J.S. Friedland, D. Kirwan, T. Reid, D. De Swardt, D.L.W. Chong, J. Kutschenreuter, M. Saeed, A. Davis, S. Wasserman, R. Goliath, Q. Kakana, P. Renner, M. Panchoo, C. Stek, R. Johnson, M. Maxebengula	
+	
+hour Oral Session Shaping the future of IPC - digitalisation of surveillance	Chairs Diamantis Plachouras (Solna, Sweden) Maaike S.M. Van Mourik (Utrecht, Netherlands)
+	
+PRAISE hospital-onset bacteraemia and fungaemia algorithm as novel automated surveillance indicator: results from four European university hospitals S. Van Der Werff* (Stockholm, Sweden), S.J.S. Aghdassi, M. Behnke, M.S.M. Van Mourik, G. Catho, M. Brekelmans, L.A. Peña Diaz, N. Buetti, F.D. Rüther, D. Dinis Teixeira, D. Sjöholm, P. Nauclér	
+	
+Transforming hospital-onset bacteremia and fungemia data to the OMOP common data model H. Düsseldorf* (Vienna, Austria), G. Duftschmid, E. Presterl	
+	
+Dutch Electronic Health Records in primary care: the Nivel general practisioners database F.F. Stelma* (Utrecht, Netherlands), J. Van Summeren, M. Hooiveld, C. Baliatsas, V. Sankatsing, J. Schmitz, S. Van Beusekom	
+	
+Local signs at catheter insertion sites: Insights from the multicenter DeepCath cohort study with 4,256 pictures N. Buetti* (Geneva, Switzerland), S. Ruckly, A. Byczko, L. Gallay, A. Nguyen, H. Slimani, J.R. Zahar, J.F. Timsit	
+	
+Prospective evaluation of a machine learning-based real-time multidrug-resistant organism prediction system V. Vasikasin* (Bangkok, Thailand), W. Nasomsong, A. Holmes, R.L. Peach, K. Bhangananda, A. Myall, C.H. Yoon, D. Changpradub, S. Mookerjee, J. Price, B. Mauricio, T.M. Rawson	
+	
+ePoster Flash Session The current landscape of carbapenem resistance: from genotype to phenotype and virulence determinants	Chair Amy Mathers (Charlottesville, United States)
+	
+Molecular Insights into the Growing Threat Carbapenem-Resistant Hypervirulent Klebsiella pneumoniae and the Rising Challenge of Ceftazidime- Avibactam Resistance C. Vatansever* (Istanbul, Türkiye), A. Akpinar, J. Boral, S. Belge, N. Kardan, B. Tanyolaç, G. Shahrokhi, G. Ekinci, E. Ural, B. İşler, Ö. Ergönül, F. Can	
+	
+Global large-scale genomic snapshot on the diversity of carbapenem-resistant and hypervirulent Klebsiella pneumoniae strains R. Elias* (Lisboa, Portugal), T. Clark, I. Portugal, J. Perdigao	
+	
+Carbapenem-resistant Enterobacter cloacae complex: genetic determinants of resistance and molecular epidemiology D. Pinheiro De Sousa Santos* (Lisbon, Portugal), D. Santos, A. Bruschy-Fonseca, E. Gonçalves, D. Ranhel, C. Conceição, A. Pedrosa, A.C. Silva, A. Duarte, L. Méndez, C. Toscano, J. Melo- Cristino, C. Caneiras	
+	
+Molecular epidemiology of carbapenemase- producing Escherichia coli in Hungary A. Hanczvikkel* (Budapest, Hungary), D. Göbhardter, E. Ungvári, N. Derzsy, A. Darab, L. Jánvári, L. Buzgó, L. Holub, K. Papp, K. Kristóf, L. Majoros, K. Kamotsay, M. Käfer, G. Jakab, Á. Sonnevend, Á. Tóth	
+	
+Genomic multicentre surveillance of VIM-producing Enterobacterales shows spread driven by bacterial clones and plasmids in Germany from 2015 to 2021 A. Wendel* (Cologne, Germany), J. Sattler, B. Bader, J. Müller, A. Hamprecht, S. Peter	
+	
+Three distinct routes of virulence-resistance convergence in ST-395 K. pneumoniae from Eastern Europe over the last decade. A. Sapre* (Silver Spring, United States), E. Nguyen, T. Luo, E. Mills, B. Corey, R. Maybank, A. Ong, V. Kondratiuk, V. Kovalchuk, M. Metreveli, N. Trapaidze, Y. Kwak, T. Musich, J. Bennett, P. Mc Gann, M. Martin, F. Lebreton	
+	
+Carbapenemases in Germany in 2024: Report of the German National Reference Centre for Multidrug- resistant Gram-negative Bacteria N. Pfennigwerth* (Bochum, Germany), S. Möller, J. Eisfeld, F. Pankok, A. Anders, S. Gatermann	
+	
+Unravelling divergent genomic modes of transmission of Carbapenemase-Producing Organisms in a single hospital in Singapore between 2019 and 2022 V. Koh* (Singapore, Singapore), Z.Q. Lim, S.Q.D. Loy, N.M. Thevasagayam, S.R.S. Prakki, P.Y. Hon, X. Huan, Z.L. Kyaw, A.Y. Lin, P. Rao, P.P. De, S. Vasoo, K. Marimuthu, O.T. Ng	
+	
+2011-2017 vs 2018-2024: comparison of carbapenem non-susceptibility trends among bloodstream Klebsiella pneumoniae , Acinetobacter baumannii and Pseudomonas aeruginosa isolates from Greek hospitals: data from the Electronic System for the AMR surveillance-WHONET-Greece M. Polemis* (Vari, Greece), A. Vatopoulos, K. Tryfinopoulou	
+	
+ePoster Flash Session Difficult-to-treat cases in the immunocompromised	Chair Nicolas Mueller (Zurich, Switzerland)
+	
+A case of IRIS nocardiosis S.K. Dlamini* (Cape Town, South Africa), P. Namale, P. Arnab	
+	
+Concurrent invasive disseminated Nocardia farcinica and Candida infections in a patient undergoing long- term glucocorticoid therapy for autoimmune thrombocytopenia: A case report N. Zhang* (Bengbu, China)	
+	
+Subcutaneous paeohyphomycosis due to Alternaria infectoria in an immunosuppressed renal transplant recipient: successful multidisciplinary management E. Vetsiou* (London, United Kingdom), E. Rudd, S. Rai, K. Ahmed, S. Rao-Merugumala, A. Wasif, C. Shaw, A. Abdolrasouli, M. Arias	
+	
+Lung nodules in a patient with breast cancer history… Not everything is cancer. E. Muñoa Hernández* (Chiapas, Mexico), E. Muñoa	
+	
+Treatment of fulminant Clostridioides difficile infection using bacteria-free stool supernatant in adult hematological patients during chemotherapy- induced aplasia B.G. Szabo* (Budapest, Hungary), D. Korozs, A. Hardi, K. Jeszenszky, P. Remenyi, J. Sinko	
+	
+Eradication of multidrug resistant Pseudomonas aeruginosa pneumonia in acute lymphoblastic leukemia patient with broad host-range phage P. Gadea* (Montevideo, Uruguay), J. Puig, M. Gómez, I. Ferrés, A. Galiana, F. Grill, G. Iraola	
+	
+An Emerging fungal pathogen in immunocompromised hosts: A rare case of subcutaneous abscess caused by Chondrostereum purpureumP. Kitjacharoenchai* (Bangkok, Thailand), A. Thammahong, J. Vanichanan	
+	
+Unveiling a Rare Simultaneous Central Nervous System infection in an Immunocompromised Patient from Mexico E. Sienra Iracheta* (Tlalpan, Mexico), A. Magallanes Lopez, J.P. Venzor Castellanos, M.J. Corredor Nassar, A.P. Rodriguez Zulueta	
+	
+ePoster Flash Session Viral infections in special populations	Chair Federico Garcia (Granada, Spain)
+	
+ORCHESTRA Delphi Consensus: Therapeutic and Diagnostic Management of SARS-CoV-2 Infection in Rheumatological Patients M.G. Caponcello* (Seville, Spain), P. Olivares Navarro, J. Rodríguez Baño, Z.R. Palacios Baena, C. Bonazzetti, C. Campoli, A. Savoldi, E. Gentilotti, G. Marchetti, S. Lo Caputo, L. Otero-Varela, I. Castrejón, E. Tacconelli	
+	
+Immunogenicity, reactogenicity and safety of booster vaccinations with BNT162b2 or full-dose mRNA-1273 in adults ≥75 years (EU-COVAT-1- AGED) – final report J. Stemler* (Cologne, Germany), L. Yeghiazaryan, C. Stephan, R. Cox, K. Greve-Isdahl Mohn, A.J. Carcas-Sansuan, E. Romero Rodriguez, J. Moltó, I. Vergara Mitxeltorena, T. Welte, B. Zablockienė, M. Akova, U. Bethe, S. Grimm, J. Salmanton-García, J. Jakobs, L. Tischmann, M. Zarrouk, A. Cüppers, L.M. Biehl, J. Grothe, S.C. Mellinghoff, J.A. Nacov, J.M. Neuhann, R. Sprute, J. Frías-Iniesta, R. Negi, C. Gaillard, G. Saini, A. García León, P.W.G. Mallon, C. Lammens, A. Hotterbeekx, L. Katherine, S. Malhotra-Kumar, H. Goossens, S. Kumar-Singh, F. König, M. Posch, P. Koehler, O.A. Cornely	
+	
+Effectiveness of adjuvanted recombinant zoster vaccine in adults aged ≥50 years in the United States L. Qian* (Pasadena, United States), L.S. Sy, B.K. Ackerson, E. Rayens, J. Wu, Y. Luo, Y. Cheng, J.H. Ku, L.I. Vega Daily, H.S. Takhar, J. Song, R.A. Cohen, H. Yun, D. Oraichi, H. Seifert, H.F. Tseng	
+	
+Differential SARS-CoV-2 RNAemia features and humoral immune response analysis of acute COVID- 19 in solid organ transplant recipients and patients with hematological malignancies. A. Ruiz-Molina* (Seville, Spain), J. Martín-Escolano, C. Infante- Domínguez, Z.R. Palacios-Baena, I. Tallón-Ruiz, F. Martín-Dominguez, G. Bernal-Blanco, B. Villacorta- Linaza, G. Suárez-Artacho, C. Cepeda-Franco, D. Rangel-Sousa, C. Rodríguez-Urbistondo, B. Gutiérrez-Gutiérrez, M. Carretero-Ledesma, N. Maldonado, S. Salto-Alejandre, B. Gallego, L. Merino, J. Rodríguez-Baño, J.M. Cisneros, J.A. Pérez-Simón, E. Cordero, J. Pachón, M. Aguilar- Guisado, R. Álvarez-Marín, J. Sánchez-Céspedes	
+	
+Prevalence of and risk factors for persisting COVID- 19 in patients with B-cell malignancies A. Toschi* (Bologna, Italy), Z. Pasquini, A. Amicucci, N. Caroccia, M. Di Chiara, F. Simone, B. Casadei, C. Pellegrini, A. D&#39;abramo, P. De Marco, L. Bussini, M. Ciccone, A. Visentin, G. Caponcello, M. Bartoletti, E. Nicastri, M. Krampera, P.L. Zinzani, J. Rodriguez Baño, E. Tacconelli, M. Giannella	
+	
+Clinical characteristics and predictors of severe outcome among older adults hospitalized with respiratory syncytial virus (RSV) infection– a retrospective study from Israel M. Jurkowicz* (Tel Aviv, Israel), I. Margalit, I. Harris, D. Mazar, A. Teper, I. Royzman, S. Uppal, C. Liang, E. Begier, I. Ganiel, M. Mandelboim, D. Yahav	
+	
+RSV and bronchiolitis associated primary care and emergency department visit rates in children under 5 years: Estimates for Europe and other high- income countries. F.F. Stelma* (Utrecht, Netherlands), S. Heemskerk, L. Van Heuvel, P. Spreeuwenberg, L. Bont, J. Van Summeren	
+	
+Higher incidence of post-transplant EBV infection in pediatric liver transplant recipients compared to pediatric kidney transplants: a retrospective analysis from a tertiary pediatric transplant center S. Mercadante* (Rome, Italy), L. Romani, A. Pietrobattista, I. Guzzo, R. Labbadia, A. Cappoli, A. Mosca, L. Lancella, M. De Luca	
+	
+Insights from a single center&#39;s experience in hepatitis C treatment across four prisons in Slovakia I. Hockickova* (Košice, Slovakia), I. Hockicková, J. Hockicko, M. Novotný, Z. Paraličová, P. Kristian	
+	
+ePoster Flash Session Infection Controller&#39;s Daily	Chair Cansu Cimen (Oldenburg, Germany)
+	
+Mortality and length of stay associated with antimicrobial-susceptible and resistant hospital- onset bloodstream infections at a tertiary referral hospital in Melbourne, Australia A. Stewardson* (Melbourne, Victoria, Australia), S.J. Curtis, S.L. Lee, B.S. Cooper, J.M. Bell, G.W. Coombs, D. Daley, A.C. Cheng, D.W. Spelman, A.Y. Peleg	
+	
+MRSA on the rise in neonatal care departments E. Herkes* (Amsterdam, Netherlands), A. Schoffelen, R. Zwittink, J. Kluytmans, D. Notermans	
+	
+Risk factors for OXA-carbapenemase-producing Enterobacteriaceae acquisition in Israel: a retrospective case control study M. Amar* (Haifa, Israel), R. Najjar-Debbiny, G. Weber, R. Yasin, A. Arbel, S. Shehade, I. Greenfeld, O. Salah, P. Shaked- Mishan, O. Barnett-Griness	
+	
+Experience providing a rapid, reactive nanopore isolate sequencing service for bacterial outbreak investigation for hospitals in London, UK S. Raharison* (Nice, France), A. Alcolea-Medina, L.B. Snell, M. Tan, G. Humayun, R. Chang, D. Ward, V. Enne, V. Patel, C. Alder, L. Sowole, R. Batra, S. Goldenberg, J. Edgeworth, J. Otter	
+	
+Duration of colonization and time to de-isolation in patients with extended-spectrum beta-lactamase producing non- Escherichia coli Enterobacterales J. Männer* (St.Gallen, Switzerland), V. Steinacher, T. Dörr, M. Schlegel, P. Kohler	
+	
+A tale of three cities: The comparative longitudinal epidemiology of vancomycin-resistant Enterococcus faecium from bloodstream infections at three tertiary care hospitals in Bavaria, Germany A. Rath* (Regensburg, Germany), B. Neumann, V. Rauschenberger, B. Kieninger, A. Eichner, J. Steinmann, S. Kampmeier, W. Schneider- Brachert	
+	
+Molecular epidemiology and transmission dynamics of vancomycin-resistant Enterococcus faecium in Belgian hospitals (2022-2023) S. De Koster* (Edegem, Belgium), S. Van Kleef-Van Koeveringe, H. Jansens, S. Vandamme, T. Demuyser, M. Vanden Driessche, Y. Glupczynski, S. Malhotra-Kumar, V. Matheeussen	
+	
+Increasing Prevalence of Linezolid-resistant Enterococci: Outbreak or Overuse?	R. Traynor* (Cork, Ireland), G. Brennan, I. O Callaghan, E. Keily, E. Skelton, E. Kennedy, B. O Connell, J. Walsh, A. Doherty, C. Hickey
+	
+Continuous 2-year surveillance for airborne fungi at hospitals in the same city: Impact of season, construction, a construction accident and HEPA- filtered/positive pressure rooms M.H. Nguyen* (Pittsburgh, United States), C. Clancy, Z. Wilkins, Y. Cho, B. Hao, E. Driscoll, S. Cheng, A. Sundermann, A. Ayres, S. Graham	
+	
+Educational Session Best practices and emerging strategies in the management of ventilator- and healthcare-associated pneumonia	Chairs Fusun Can (Istanbul, Türkiye) Jeroen Schouten (Nijmegen, Netherlands)
+	
+Artificial Intelligence to predict VAP Miia Jansson (Oulu, Finland)	
+	
+Metagenomic approach to VAP diagnosis Jacques	
+	
+Viruses in VAP and HAP: should we worry about them?	Catia Cilloniz (Barcelona, Spain)
+	
+Optimising antibiotic therapy in VAP Pinyo Rattanaumpawan (Bangkok, Thailand)	
+	
+2-hour Symposium Novel strategies for eliminating the ‘worst films ever’	Chairs Elisa Borghi (Milan, Italy) Markus Zeitlinger (Vienna, Austria)
+	
+What answers can biofilm PK/PD modelling provide?	Coen Van Hasselt (Leiden, Netherlands)
+	
+subMIC antibiotic effects to improve biofilm PK/PD parameters – still relevant?	Francoise Van Bambeke (Brussels, Belgium)
+	
+PK/PD-based optimisation of antibiotic treatments to suppress resistance in dynamic biofilm models Maria Dolores Macia Romero (Palma De Mallorca, Spain)	
+	
+Giving antibiotics an upper hand in the treatment of biofilm infections – antibiotic augmenting strategies Claus Moser (Copenhagen, Denmark) Co-organised with: ESCMID Study Group for Biofilms (ESGB), ESCMID Scientific Affairs Subcommittee	
+	
+hour Symposium Enhancing efficiency and reducing cost in microbiological diagnostics using pool testing	Chairs Mauricio Farfan (Santiago, Chile) Chiara Minotti (Basel, Switzerland)
+	
+Congenital cytomegalovirus detection by pool testing in saliva Giannina Izquierdo (Santiago, Chile)	
+	
+Detection of blood-corne pathogens in asymptomatic blood donors by pool testing Patricia Alvarez (Rio De Janeiro, Brazil)	
+	
+Large-scale pooled testing to increase rapid molecular diagnostic test coverage for tuberculosis Melissa Sander (Bamenda, Cameroon)	
+	
+Pool testing for screening of bacterial sexually transmitted infections Tba	
+	
+hour Oral Session Advances in fungal diagnostics	Chair Sarah Delliere (Paris, France)
+	
+BAL galactomannan dynamics predict survival in critically ill patients with virus-associated pulmonary aspergillosis V. Delanote* (Leuven, Belgium), J. Wauters, S. Feys, J. Heylen, H.M. Lauwers, C. Jacobs, L. Maessen, Y. Debaveye, P. Frederiks, G. Hermans, P. Meersseman, M. Peetermans, E. Van Wijngaerden, A. Wilmer, K. Lagrou	
+	
+Retrospective Assessment of a New Chemiluminescence Immunoassay for Serum (1, 3)- -D-Glucan Levels in Patient with Invasive Fungal Infections Z. Zhou* (Tianjin, China), K. Yuan, L. Ye, S. Liu, A. Huang, Z. Chen, W. Yan, S. Niu, K. Hua, Q. Wang, G. Zhang, H. Wang, Y. Zhao, G. Li	
+	
+Evaluation of a multiplex PCR assay using barcoded magnetic bead technology for detection of fungal pathogens in bronchoalveolar lavage fluid: a diagnostic aid for invasive fungal infections S. Zhang* (Baltimore, United States)	
+	
+Combined use of (1,3)--D-glucan and PCR in oral wash for Pneumocystis jirovecii pneumonia diagnosis in non-HIV population A. Falcó Roget* (Mataró, Spain), A. Falcó-Roget, A. Albasanz-Puig, A.B. Pérez, S. Serradell, A. Guillén, E. Revilla, I. Los-Arcos, O. Len, I. Ruiz-Camps, M.T. Martín-Gómez	
+	
+Iron levels in bronchoalveolar lavage fluid of hematological patients with suspected invasive pulmonary aspergillosis and their association with 12- week mortality: a retrospective cohort study H. Lamberink* (Amsterdam, Netherlands), J. Heijmans, Wagemakers, K. Van Dijk	
+	
+hour Symposium Staphylococcus aureus : its expansion dynamics and interactions with its pals	Chair Barbara C. Kahl (Münster, Germany)
+	
+S. aureus and its special relationship to S. epidermidis Andreas Peschel (Tübingen, Germany)	
+	
+Computational and in vitro evaluation of probiotic treatments for nasal S. aureus decolonization Silvio Daniel Brugger (Zurich, Switzerland)	
+	
+Clonal population expansion of S. aureus occurs due to escape from a finite number of intraphagocyte niches Simon Foster (Sheffield, United Kingdom)	
+	
+How bacteriophages and pathogenicity islands drive the evolution of S. aureus John Chen (Singapore, Singapore) Co-organised with: ESCMID Study Group for Staphylococci and Staphylococcal Diseases (ESGS)	
+	
+Educational Session Beyond the gift of life: viral infection during pregnancy	Chairs Gülsen Özkaya Sahin (Lund, Sweden) Simona Ruta (Bucharest, Romania)
+	
+Hepatitis B during pregnancy: diagnosis, management and outcome Tba	
+	
+RSV and Influenza during pregnancy: management and outcome Monika Redlberger-Fritz (Vienna, Austria)	
+	
+Prenatal screening and prevention of congenital CMV: shifting concepts and consensus guideline Marianne Leruez-Ville (Paris, France)	
+	
+Novel methods of vaccine administration to newborns Tba Co-organised with: ESCMID Study Group for Viral Hepatitis (ESGVH), European Society for Infectious Diseases in Obstetrics and Gynaecology (ESIDOG), Society on Liver Diseases in Africa (SOLDA), Gastroenterology and Hepatology Association of SubSaharan Africa (GHASSA)	
+	
+2-hour Symposium Molecular epidemiology, resistance mechanisms and management of Gram- negative bacteria	Chairs Agnes Maria Sonnevend (Pécs, Hungary) Kyriaki Xanthopoulou (Cologne, Germany)
+	
+Globally emerging resistance patterns of Enterobacterales Sasheela Ponnampalavanar (Kuala Lumpur, Malaysia)	
+	
+Non-fermenters still important globally: a review of spread and resistance	Anupa Thampy (Vellore, India)
+	
+Innovative rapid diagnostic methodologies for Gram- negative pathogens Laurent Dortet (Le Kremlin-	
+	
+Tailoring treatment to resistant Gram-negative bacteria: newer therapeutic approaches Juan P. Horcajada (Barcelona, Spain) Co-organised with: ESCMID Study Group for Antimicrobial Resistance Surveillance (ESGARS)	
+	
+Educational Session Tropical dermatology: a case-based approach	Chairs Pedro Legua (Lima, Peru) Bobbi Pritt (Rochester, United States)
+	
+Parasitic diseases: dermatological manifestations in the tropics Kirti Sabnis (India)	
+	
+Madura foot and other implantation mycoses	M Ramam (New Delhi, India)
+	
+Mycobacteria	Francisco Bravo (Lima, Peru)
+	
+Approach to rash in the returning traveller Frank O. D. Pettersen (Oslo, Norway)	
+	
+1-hour Oral Session The good, the bad and the itchy: update on STIs	Chair Tatum Mortimer (Athens, United States)
+	
+High frequency of Nichols-like strains of Treponema pallidum subsp . pallidum circulating in Barcelona, Spain P. Nadal-Baron* (Barcelona, Spain), P. Nadal- Barón, J. Trejo-Zahinos, M. Arando, A. Barberan- Masegosa, M. Bernat-Sole, A. Perez-Ugarte, M. Valverde Espinal, A. Canals Quintana, J.J. González- López, A. Antón, M. Alberny, O. Mitjà, N. Larrosa, Y. Hoyos-Mallecot	
+	
+Doxycycline post-exposure prophylaxis (doxy-PEP) use and outcomes in metropolitan Detroit C. Arena* (Detroit, United States), N. Everson, R. Kenney, I. Brar, S. Gudipati, N. Yared, S. Davis, M. Veve	
+	
+The Gonococcus Bacterial Load Measured by the Cycle Threshold (Ct) in Urinary Samples Correlates with Symptomatology G. Beraud* (Orleans, France), T. Prazuck, L. Barhoum, H. Meyjonnade, J. Effa, L. Hocqueloux, A. Seve, J. Guinard, K. Kochbati, E. Carbonelle, C. Guillaume	
+	
+STI pathogen interactions and viability in men who have sex with men (MSM) E. Rayo* (Zurich, Switzerland), D. Onorini, C. Leonard, H. Marti, T. Pesch, B. Hampel, N. Low, N. Borel	
+	
+Epidemiology of bacterial genitourinary infections among women with recurrent vulvovaginal Candidiasis (RVVC) in Nigeria. S. Fayemiwo* (Ibadan, Nigeria), L. Novak-Frazer, I. Adewole, R. Rautemaa- Richardson	
+	
+hour Oral Session Biofilm biology and control	Chairs Margherita Cacaci (Rome, Italy) Laura Escolà-Vergé (Barcelona, Spain)
+	
+Influence of non-coding small RNA00203 in biofilm cells of Acinetobacter baumannii : Transcriptomic and phenotypic D. Gebrelibanos* (Hong Kong, China), P. Leung, A.M. Shenkutie, F. Chow	
+	
+Sub-MIC antibiotic effects on Pseudomonas aeruginosa biofilm streamer formation A. Di Claudio* (Pieve Emanuele, Italy), R. Rusconi, E. Secchi, G. Savorana	
+	
+Regulation of Novel Genes and Their Downstream Functions in the AI-2-Mediated Quorum Sensing System of Klebsiella pneumoniae X. Chu* (Beijing, China), Q. Yang	
+	
+Exploring structural differences in biofilms of smooth and rough Mycobacterium abscessus clinical strains through confocal laser scanning microscopy C. Maria* (Madrid, Spain), M. Cano-Fernández, J. Esteban, P. López-Roa, A. Ruedas-López, M.C. Muñoz-Egea	
+	
+Antibacterial and biofilm eradication of mupirocin- loaded nano-emulsions Z. Najmi* (Novara, Italy), A.C. Scalia, A. Cochis, J. De Souza Nunes, J. Alkorta, L. Rimondini, D. Dupin	
+	
+hour Oral Session Emerging viruses, diverse threats	Chairs Luisa Barzon (Padua, Italy) Karin Stiasny (Vienna, Austria)
+	
+Epidemiological and clinical features of mpox during the clade Ib outbreak in South-Kivu, Democratic Republic of the Congo: a prospective cohort study I. Brosius* (Antwerp, Belgium), E. Hasivirwe Vakaniaki, S. Sabiti Nundu, L. Liesenborghs, P. Mbala-Kingebeni, G. Mukari, P. Munganga, J.C. Tshomba, E. De Vos, E. Bangwen, Y. Mujula, A. Tsoumanis, C. Van Dijck, A. Alengo, L. Mutimba-Mambo, F. Mweshi Kumbana, J. Babingwa Muunga, D. Mazambi Mambo, J. Wakilongo Zangilwa, S. Bilembo Kitwanda, S. Houben, N. Hoff, J.C. Makangara-Cigolo, E. Kinganda-Lusamaki, M. Peeters, A. Rimoin, J. Kindrachuck, N. Low, P. Katoto, E. Bwenge Malembaka, J.H. Amuasi, O. Tshiani, R. Kojan, D. Muamba Kambaj, C. Kacita, D. Mukadi-Bamuleka, S. Ahuka-Mundeke, K. Vercauteren, T. Wawina- Bokalanga, J.J. Muyembe-Tamfum	
+	
+Tracing the origin, spread and molecular evolution of Dengue type 1 cases occurred in Northern Italy in 2023 G. Romano* (Pavia, Italy), G. Ferrari, A.M.G. Pitrolo, F. Rovida, A. Piralla, F. Baldanti	
+	
+Dengue Country Risk Estimation: Vector Suitability and Imported Activity 2024. M. Torres Portillo* (Toronto, Canada), K. Williams, R. Lababidi, A. Thomas, K. Khan	
+	
+Rat HEV in humans in Germany: presence but low detection rate, a screening study 2022 - 2023 L. Mueller* (Berlin, Germany), M.L. Schmidt, T. Schwarz, T.D. Best, T. Bleicker, J. Panajotov, J. Jansen, J. Melchert, T. Mauno, C. Drosten, R. Johne, V.M. Corman	
+	
+Emergence of new enterovirus	
+	
+lineage in Europe in 2023 associated with distinct amino acid substitutions in VP1 protein A. Hirvonen* (Vantaa, Finland), C.K. Johannesen, P. Simmonds, T.K. Fischer, H. Harvala, K.S.M. Benschop	
+	
+Health-economic impacts of chikungunya vaccination in 34 countries J. Zhou* (Oxford, United Kingdom), N. Salant, D. Smith, D. Hollingsworth, K. Pouwels, S. Radoykova, J. Lord, K. French	
+	
+Clinical importance of a new tick-borne flaviviridae virus, Alongshan Virus: retrospective serologic and molecular study in Switzerland F. Tagini* (Lausanne, Switzerland), O. Opota, A. Eggermann, A. Coste, G. Greub	
+	
+From Trade Routes to Transmission Routes: Risk Assessment of Japanese Encephalitis Outbreak in Pakistan under China-Pakistan Economic Corridor Using One Health Approach S. Ahmad* (Tampere, Finland)	
+	
+Building a screening protocol for the detection of Orthobunyavirus oropoucheense infection G. Gagliardi* (Milan, Italy), D. Mileto, A. Mancon, L. Morelli, M. Cutrera, A. Cavallo, A. Rizzo, V. Micheli, A. Lombardi, A. Dolci	
+	
+Substantial viral diversity in bats and rodents from East Africa: insights into conservation, recombination, and co-circulation D. Wang* (Shenzhen, China)	
+	
+1-hour Oral Session AI Aiding AMS	Chairs Marlieke De Kraker (Geneva, Switzerland) Bhanu Sinha (Groningen, Netherlands)
+	
+Using natural language processing to understand free-text antibiotic prescriptions A. Martin* (Middlesbrough, United Kingdom), L. Christopher	
+	
+Enhancing Antimicrobial Stewardship Through Collaboration Between an Intelligent System and Infectious Disease Experts H.M. Wei* (Taichung, Taiwan, China), Y.L. Hsu, Y.W. Chang, I.C. Chen, K.P. Hwang	
+	
+Augmented Intelligence in Infectious Diseases (AI 2 D) as an antimicrobial stewardship tool for early antibiotic discontinuation in suspected lower respiratory tract infections J.L. Lim* (Singapore, Singapore), P.Z.B. Cherng, P.M. Chlebicki, L.S.C. Gan, S.Y. Thien, S.L.S. Tang, L.X.T. Lee, Y.C.D. Yii, P.Y. Zhou, Y. Wang, S.J. Chung, L.H.A. Kwa	
+	
+Virtual antimicrobial stewardship ward rounds: predicting antibiotic course stopping decisions in hospitals using machine learning K. Yuan* (Oxford, United Kingdom), J. Wei, C.H. Yoon, Q. Gu, W. Walker, T. Zhu, D. Eyre	
+	
+Prospective evaluation of a machine learning-based decision support system for intravenous-to-oral antibiotic switching. W. Bolton* (London, United Kingdom), R. Wilson, P. Georgiou, A. Holmes, T.M. Rawson, M. Gilchrist 	

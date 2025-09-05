@@ -1,0 +1,42 @@
+[
+    {
+        "url": "sampleSessionData.html",
+        "tracknames": [
+            "Adult ID",
+            "Global ID",
+            "Investigative ID",
+            "Pediatric ID",
+            "Trainee",
+            "Transplant"
+        ],
+        "session_type": "Symposium",
+        "title": "1 - â??Gutâ?? to Be Important: The Microbiome and Its Role in Neutropenic Patients Undergoing Chemotherapy and Stem Cell Therapy",
+        "date": "Wednesday, October 16, 2024",
+        "time": "1:30 PM – 3:15 PM US PT",
+        "location": "Location: 515 A",
+        "badges": [
+            "This session will be available on demand after IDWeek.",
+            "This session will be live streamed during IDWeek."
+        ],
+        "additional_info": "All relevant financial relationships have been mitigated.CME Credits: Maximum of 1.75 hours of AMA PRA Category 1 Creditâ?¢MOC Credits: Maximum of 1.75 hours of MOC CreditCNE Credits: Maximum of 1.75 hours of ANCC CreditACPE Credits: ACPE 1.75 knowledge-based contact hours of pharmacy CEACPE Number: JA0007082-9999-24-002-L01-P",
+        "presenters": [
+            {
+                "title": "Murat Akova, Prof. (he/him/his)",
+                "affiliation": "Professor Hacettepe University Ankara, Ankara, Turkey"
+            },
+            {
+                "title": "Maricar Malinis, MD (she/her/hers)",
+                "affiliation": "Associate Professor of Medicine Section of Infectious Diseases Vanderbilt University Medical Center, TN, United States"
+            },
+            {},
+            {},
+            {}
+        ],
+        "disclosures": [
+            "Disclosure(s):",
+            "Murat Akova, Prof.: No financial relationships to disclose",
+            "Maricar F. Malinis, MD: No financial relationships to disclose"
+        ],
+        "presentations": []
+    }
+]

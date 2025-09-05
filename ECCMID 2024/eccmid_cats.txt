@@ -1,0 +1,864 @@
+08. Healthcare-associated infections, infection prevention & controlid: 1
+
+02. Bacterial infection & diseaseid: 2
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 3
+
+02. Bacterial infection & diseaseid: 4
+
+01. Viral infection & disease (incl. COVID-19)id: 5
+
+08. Healthcare-associated infections, infection prevention & controlid: 6
+
+04. Diagnostic microbiologyid: 7
+
+01. Viral infection & disease (incl. COVID-19)id: 8
+
+03. Bacterial susceptibility & resistanceid: 9
+
+03. Bacterial susceptibility & resistanceid: 10
+
+10. Immunology, Immune compromise & vaccinologyid: 11
+
+07. Parasitic diseases & global healthid: 12
+
+02. Bacterial infection & diseaseid: 13
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 14
+
+06. Fungal infection & diseaseid: 15
+
+04. Diagnostic microbiologyid: 16
+
+01. Viral infection & disease (incl. COVID-19)id: 17
+
+03. Bacterial susceptibility & resistanceid: 18
+
+07. Parasitic diseases & global healthid: 19
+
+08. Healthcare-associated infections, infection prevention & controlid: 20
+
+02. Bacterial infection & diseaseid: 21
+
+06. Fungal infection & diseaseid: 22
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 23
+
+02. Bacterial infection & diseaseid: 24
+
+04. Diagnostic microbiologyid: 25
+
+03. Bacterial susceptibility & resistanceid: 26
+
+08. Healthcare-associated infections, infection prevention & controlid: 27
+
+01. Viral infection & disease (incl. COVID-19)id: 28
+
+03. Bacterial susceptibility & resistanceid: 29
+
+04. Diagnostic microbiologyid: 30
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 31
+
+03. Bacterial susceptibility & resistanceid: 32
+
+04. Diagnostic microbiologyid: 33
+
+03. Bacterial susceptibility & resistanceid: 34
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 35
+
+01. Viral infection & disease (incl. COVID-19)id: 36
+
+02. Bacterial infection & diseaseid: 37
+
+04. Diagnostic microbiologyid: 38
+
+07. Parasitic diseases & global healthid: 39
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 40
+
+02. Bacterial infection & diseaseid: 41
+
+08. Healthcare-associated infections, infection prevention & controlid: 42
+
+06. Fungal infection & diseaseid: 43
+
+01. Viral infection & disease (incl. COVID-19)id: 44
+
+03. Bacterial susceptibility & resistanceid: 45
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 46
+
+06. Fungal infection & diseaseid: 47
+
+01. Viral infection & disease (incl. COVID-19)id: 48
+
+02. Bacterial infection & diseaseid: 49
+
+03. Bacterial susceptibility & resistanceid: 50
+
+07. Parasitic diseases & global healthid: 51
+
+10. Immunology, Immune compromise & vaccinologyid: 52
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 53
+
+08. Healthcare-associated infections, infection prevention & controlid: 54
+
+04. Diagnostic microbiologyid: 55
+
+03. Bacterial susceptibility & resistanceid: 56
+
+01. Viral infection & disease (incl. COVID-19)id: 57
+
+10. Immunology, Immune compromise & vaccinologyid: 58
+
+08. Healthcare-associated infections, infection prevention & controlid: 59
+
+06. Fungal infection & diseaseid: 60
+
+04. Diagnostic microbiologyid: 61
+
+02. Bacterial infection & diseaseid: 62
+
+07. Parasitic diseases & global healthid: 63
+
+01. Viral infection & disease (incl. COVID-19)id: 64
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 65
+
+03. Bacterial susceptibility & resistanceid: 66
+
+08. Healthcare-associated infections, infection prevention & controlid: 67
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 68
+
+11. Otherid: 69
+
+08. Healthcare-associated infections, infection prevention & controlid: 70
+
+02. Bacterial infection & diseaseid: 71
+
+11. Otherid: 72
+
+08. Healthcare-associated infections, infection prevention & controlid: 73
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 74
+
+10. Immunology, Immune compromise & vaccinologyid: 75
+
+04. Diagnostic microbiologyid: 76
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 77
+
+04. Diagnostic microbiologyid: 78
+
+08. Healthcare-associated infections, infection prevention & controlid: 79
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 80
+
+07. Parasitic diseases & global healthid: 81
+
+06. Fungal infection & diseaseid: 82
+
+11. Otherid: 83
+
+11. Otherid: 84
+
+11. Otherid: 85
+
+11. Otherid: 86
+
+03. Bacterial susceptibility & resistanceid: 87
+
+04. Diagnostic microbiologyid: 88
+
+11. Otherid: 89
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 90
+
+03. Bacterial susceptibility & resistanceid: 91
+
+11. Otherid: 92
+
+11. Otherid: 93
+
+11. Otherid: 94
+
+11. Otherid: 95
+
+11. Otherid: 96
+
+11. Otherid: 97
+
+11. Otherid: 98
+
+11. Otherid: 99
+
+11. Otherid: 100
+
+11. Otherid: 101
+
+11. Otherid: 102
+
+11. Otherid: 103
+
+11. Otherid: 104
+
+11. Otherid: 105
+
+11. Otherid: 106
+
+11. Otherid: 107
+
+11. Otherid: 108
+
+11. Otherid: 109
+
+11. Otherid: 110
+
+11. Otherid: 111
+
+11. Otherid: 112
+
+11. Otherid: 113
+
+11. Otherid: 114
+
+11. Otherid: 115
+
+11. Otherid: 116
+
+11. Otherid: 117
+
+11. Otherid: 118
+
+11. Otherid: 119
+
+11. Otherid: 120
+
+11. Otherid: 121
+
+11. Otherid: 122
+
+11. Otherid: 123
+
+11. Otherid: 124
+
+11. Otherid: 125
+
+11. Otherid: 126
+
+11. Otherid: 127
+
+11. Otherid: 128
+
+11. Otherid: 129
+
+11. Otherid: 130
+
+11. Otherid: 131
+
+11. Otherid: 132
+
+11. Otherid: 133
+
+11. Otherid: 134
+
+11. Otherid: 135
+
+11. Otherid: 136
+
+11. Otherid: 137
+
+11. Otherid: 138
+
+11. Otherid: 139
+
+11. Otherid: 140
+
+11. Otherid: 141
+
+11. Otherid: 142
+
+11. Otherid: 143
+
+11. Otherid: 144
+
+11. Otherid: 145
+
+11. Otherid: 146
+
+11. Otherid: 147
+
+11. Otherid: 148
+
+11. Otherid: 149
+
+11. Otherid: 150
+
+11. Otherid: 151
+
+11. Otherid: 152
+
+11. Otherid: 153
+
+11. Otherid: 154
+
+11. Otherid: 155
+
+11. Otherid: 156
+
+11. Otherid: 157
+
+11. Otherid: 158
+
+11. Otherid: 159
+
+11. Otherid: 160
+
+11. Otherid: 161
+
+11. Otherid: 162
+
+11. Otherid: 163
+
+11. Otherid: 164
+
+11. Otherid: 165
+
+02. Bacterial infection & diseaseid: 166
+
+08. Healthcare-associated infections, infection prevention & controlid: 167
+
+03. Bacterial susceptibility & resistanceid: 168
+
+07. Parasitic diseases & global healthid: 169
+
+10. Immunology, Immune compromise & vaccinologyid: 170
+
+02. Bacterial infection & diseaseid: 171
+
+01. Viral infection & disease (incl. COVID-19)id: 172
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 173
+
+10. Immunology, Immune compromise & vaccinologyid: 174
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 175
+
+03. Bacterial susceptibility & resistanceid: 176
+
+02. Bacterial infection & diseaseid: 177
+
+04. Diagnostic microbiologyid: 178
+
+06. Fungal infection & diseaseid: 179
+
+08. Healthcare-associated infections, infection prevention & controlid: 180
+
+01. Viral infection & disease (incl. COVID-19)id: 181
+
+03. Bacterial susceptibility & resistanceid: 182
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 183
+
+11. Otherid: 184
+
+07. Parasitic diseases & global healthid: 185
+
+04. Diagnostic microbiologyid: 186
+
+02. Bacterial infection & diseaseid: 187
+
+10. Immunology, Immune compromise & vaccinologyid: 188
+
+01. Viral infection & disease (incl. COVID-19)id: 189
+
+11. Otherid: 190
+
+03. Bacterial susceptibility & resistanceid: 191
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 192
+
+02. Bacterial infection & diseaseid: 193
+
+04. Diagnostic microbiologyid: 194
+
+06. Fungal infection & diseaseid: 195
+
+02. Bacterial infection & diseaseid: 196
+
+04. Diagnostic microbiologyid: 197
+
+08. Healthcare-associated infections, infection prevention & controlid: 198
+
+id: 199
+
+id: 200
+
+id: 201
+
+id: 202
+
+id: 203
+
+id: 204
+
+id: 205
+
+id: 206
+
+id: 207
+
+id: 208
+
+id: 209
+
+id: 210
+
+id: 211
+
+id: 212
+
+id: 213
+
+id: 214
+
+id: 215
+
+id: 216
+
+id: 217
+
+id: 218
+
+id: 219
+
+id: 220
+
+id: 221
+
+id: 222
+
+id: 223
+
+id: 224
+
+id: 225
+
+id: 226
+
+id: 227
+
+id: 228
+
+id: 229
+
+id: 230
+
+id: 231
+
+id: 232
+
+11. Otherid: 233
+
+id: 234
+
+01. Viral infection & disease (incl. COVID-19)id: 235
+
+03. Bacterial susceptibility & resistanceid: 236
+
+06. Fungal infection & diseaseid: 237
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 238
+
+08. Healthcare-associated infections, infection prevention & controlid: 239
+
+12. Case reports and case series (n<10)id: 240
+
+03. Bacterial susceptibility & resistanceid: 241
+
+10. Immunology, Immune compromise & vaccinologyid: 242
+
+04. Diagnostic microbiologyid: 243
+
+02. Bacterial infection & diseaseid: 244
+
+01. Viral infection & disease (incl. COVID-19)id: 245
+
+04. Diagnostic microbiologyid: 246
+
+08. Healthcare-associated infections, infection prevention & controlid: 247
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 248
+
+07. Parasitic diseases & global healthid: 249
+
+03. Bacterial susceptibility & resistanceid: 250
+
+Late Breakersid: 251
+
+12. Case reports and case series (n<10)id: 252
+
+03. Bacterial susceptibility & resistanceid: 253
+
+12. Case reports and case series (n<10)id: 254
+
+08. Healthcare-associated infections, infection prevention & controlid: 255
+
+04. Diagnostic microbiologyid: 256
+
+Late Breakersid: 257
+
+03. Bacterial susceptibility & resistanceid: 258
+
+02. Bacterial infection & diseaseid: 259
+
+02. Bacterial infection & diseaseid: 260
+
+12. Case reports and case series (n<10)id: 261
+
+04. Diagnostic microbiologyid: 262
+
+08. Healthcare-associated infections, infection prevention & controlid: 263
+
+Late Breakersid: 264
+
+02. Bacterial infection & diseaseid: 265
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 266
+
+Late Breakersid: 267
+
+01. Viral infection & disease (incl. COVID-19)id: 268
+
+08. Healthcare-associated infections, infection prevention & controlid: 269
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 270
+
+03. Bacterial susceptibility & resistanceid: 271
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 272
+
+12. Case reports and case series (n<10)id: 273
+
+12. Case reports and case series (n<10)id: 274
+
+10. Immunology, Immune compromise & vaccinologyid: 275
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 276
+
+06. Fungal infection & diseaseid: 277
+
+01. Viral infection & disease (incl. COVID-19)id: 278
+
+11. Otherid: 279
+
+12. Case reports and case series (n<10)id: 280
+
+12. Case reports and case series (n<10)id: 281
+
+01. Viral infection & disease (incl. COVID-19)id: 282
+
+02. Bacterial infection & diseaseid: 283
+
+Late Breakersid: 284
+
+03. Bacterial susceptibility & resistanceid: 285
+
+Late Breakersid: 286
+
+07. Parasitic diseases & global healthid: 287
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 288
+
+12. Case reports and case series (n<10)id: 289
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 290
+
+02. Bacterial infection & diseaseid: 291
+
+04. Diagnostic microbiologyid: 292
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 293
+
+12. Case reports and case series (n<10)id: 294
+
+Late Breakersid: 295
+
+03. Bacterial susceptibility & resistanceid: 296
+
+02. Bacterial infection & diseaseid: 297
+
+12. Case reports and case series (n<10)id: 298
+
+06. Fungal infection & diseaseid: 299
+
+12. Case reports and case series (n<10)id: 300
+
+11. Otherid: 301
+
+01. Viral infection & disease (incl. COVID-19)id: 302
+
+03. Bacterial susceptibility & resistanceid: 303
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 304
+
+04. Diagnostic microbiologyid: 305
+
+06. Fungal infection & diseaseid: 306
+
+08. Healthcare-associated infections, infection prevention & controlid: 307
+
+03. Bacterial susceptibility & resistanceid: 308
+
+11. Otherid: 309
+
+12. Case reports and case series (n<10)id: 310
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 311
+
+02. Bacterial infection & diseaseid: 312
+
+12. Case reports and case series (n<10)id: 313
+
+12. Case reports and case series (n<10)id: 314
+
+02. Bacterial infection & diseaseid: 315
+
+11. Otherid: 316
+
+11. Otherid: 317
+
+11. Otherid: 318
+
+02. Bacterial infection & diseaseid: 319
+
+08. Healthcare-associated infections, infection prevention & controlid: 320
+
+03. Bacterial susceptibility & resistanceid: 321
+
+07. Parasitic diseases & global healthid: 322
+
+10. Immunology, Immune compromise & vaccinologyid: 323
+
+02. Bacterial infection & diseaseid: 324
+
+01. Viral infection & disease (incl. COVID-19)id: 325
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 326
+
+10. Immunology, Immune compromise & vaccinologyid: 327
+
+03. Bacterial susceptibility & resistanceid: 328
+
+id: 329
+
+11. Otherid: 330
+
+11. Otherid: 331
+
+11. Otherid: 332
+
+11. Otherid: 333
+
+11. Otherid: 334
+
+11. Otherid: 335
+
+11. Otherid: 336
+
+11. Otherid: 337
+
+11. Otherid: 338
+
+11. Otherid: 339
+
+11. Otherid: 340
+
+11. Otherid: 341
+
+11. Otherid: 342
+
+11. Otherid: 343
+
+11. Otherid: 344
+
+11. Otherid: 345
+
+11. Otherid: 346
+
+11. Otherid: 347
+
+11. Otherid: 348
+
+11. Otherid: 349
+
+11. Otherid: 350
+
+11. Otherid: 351
+
+11. Otherid: 352
+
+11. Otherid: 353
+
+11. Otherid: 354
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 355
+
+07. Parasitic diseases & global healthid: 356
+
+02. Bacterial infection & diseaseid: 357
+
+08. Healthcare-associated infections, infection prevention & controlid: 358
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 359
+
+04. Diagnostic microbiologyid: 360
+
+11. Otherid: 361
+
+06. Fungal infection & diseaseid: 362
+
+01. Viral infection & disease (incl. COVID-19)id: 363
+
+07. Parasitic diseases & global healthid: 364
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 365
+
+11. Otherid: 366
+
+10. Immunology, Immune compromise & vaccinologyid: 367
+
+03. Bacterial susceptibility & resistanceid: 368
+
+01. Viral infection & disease (incl. COVID-19)id: 369
+
+02. Bacterial infection & diseaseid: 370
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 371
+
+03. Bacterial susceptibility & resistanceid: 372
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 373
+
+01. Viral infection & disease (incl. COVID-19)id: 374
+
+11. Otherid: 375
+
+02. Bacterial infection & diseaseid: 376
+
+06. Fungal infection & diseaseid: 377
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 378
+
+10. Immunology, Immune compromise & vaccinologyid: 379
+
+03. Bacterial susceptibility & resistanceid: 380
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 381
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 382
+
+02. Bacterial infection & diseaseid: 383
+
+04. Diagnostic microbiologyid: 384
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 385
+
+01. Viral infection & disease (incl. COVID-19)id: 386
+
+08. Healthcare-associated infections, infection prevention & controlid: 387
+
+02. Bacterial infection & diseaseid: 388
+
+07. Parasitic diseases & global healthid: 389
+
+11. Otherid: 390
+
+11. Otherid: 391
+
+11. Otherid: 392
+
+03. Bacterial susceptibility & resistanceid: 393
+
+08. Healthcare-associated infections, infection prevention & controlid: 394
+
+04. Diagnostic microbiologyid: 395
+
+10. Immunology, Immune compromise & vaccinologyid: 396
+
+01. Viral infection & disease (incl. COVID-19)id: 397
+
+07. Parasitic diseases & global healthid: 398
+
+11. Otherid: 399
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 400
+
+03. Bacterial susceptibility & resistanceid: 401
+
+08. Healthcare-associated infections, infection prevention & controlid: 402
+
+11. Otherid: 403
+
+04. Diagnostic microbiologyid: 404
+
+06. Fungal infection & diseaseid: 405
+
+10. Immunology, Immune compromise & vaccinologyid: 406
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 407
+
+08. Healthcare-associated infections, infection prevention & controlid: 408
+
+10. Immunology, Immune compromise & vaccinologyid: 409
+
+04. Diagnostic microbiologyid: 410
+
+08. Healthcare-associated infections, infection prevention & controlid: 411
+
+01. Viral infection & disease (incl. COVID-19)id: 412
+
+07. Parasitic diseases & global healthid: 413
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 414
+
+01. Viral infection & disease (incl. COVID-19)id: 415
+
+09. Experimental microbiology, microbial pathogenesis & biofilmsid: 416
+
+11. Otherid: 417
+
+11. Otherid: 418
+
+11. Otherid: 419
+
+06. Fungal infection & diseaseid: 420
+
+07. Parasitic diseases & global healthid: 421
+
+02. Bacterial infection & diseaseid: 422
+
+01. Viral infection & disease (incl. COVID-19)id: 423
+
+03. Bacterial susceptibility & resistanceid: 424
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 425
+
+02. Bacterial infection & diseaseid: 426
+
+01. Viral infection & disease (incl. COVID-19)id: 427
+
+04. Diagnostic microbiologyid: 428
+
+01. Viral infection & disease (incl. COVID-19)id: 429
+
+03. Bacterial susceptibility & resistanceid: 430
+
+05. New antibacterial agents, PK/PD & Stewardshipid: 431
+
+11. Otherid: 432
+
