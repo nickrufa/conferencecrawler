@@ -1,0 +1,530 @@
+Erica Fernandez
+0 minutes 9 seconds0:09
+Erica Fernandez 0 minutes 9 seconds
+Yeah. And I can run back and like ask the copilot, can you go through again what we talked about with XYZ? Because I was doing that about this debrief meeting before I got on the call with you. So with journal watch, so that might be like I and this is only, I'll come back to that, but with the journal watch column, it's like, OK, this.
+Nicholas Rufa
+0 minutes 17 seconds0:17
+Nicholas Rufa 0 minutes 17 seconds
+Yeah, yeah. Awesome.
+Erica Fernandez
+0 minutes 29 seconds0:29
+Erica Fernandez 0 minutes 29 seconds
+This data I think is important for us to have an awareness that it's there and that it's it's out in in the ether. But I think it's not so big of a deal that it should be in your bag and instead I think it's it's possibly useful for a journal watch.
+Erica Fernandez 0 minutes 46 seconds
+And so that way I would share that with the product lead and a lot of this would love if it could be automated. I'll kind of describe what I mean by that in a second, but the only things that can go for in your bag post or approval or journal.
+Erica Fernandez 1 minute 6 seconds
+Watch is anything that's considered original research, so it's not going to be anything from a symposia. It could be an oral abstract, an e-flash poster, a poster presentation, or a poster session, but where they are.
+Erica Fernandez 1 minute 21 seconds
+Presenting their study findings. So that's the only time a session is more of a or a symposia is more of a a lecture where they bring in a bunch of different stuff.
+Erica Fernandez 1 minute 34 seconds
+So with estimate in particular and I I'll have to look at the ID week.
+Erica Fernandez 1 minute 40 seconds
+Website because it's it's being updated now or it should be mostly like the backbone should be ready is that the symposia, the oral abstracts versus the posters, the names of those things are a little different for IDB than they are for estimate, but it's the same.
+Erica Fernandez 2 minutes
+Same idea. If you're presenting your original data, that is something that we would consider for in your bag.
+Erica Fernandez 2 minutes 8 seconds
+Or journal watch which if you're if that part is a poster or slides then you need permission to use them.
+Erica Fernandez 2 minutes 15 seconds
+Which is why those 3 columns are on the symposia Excel sheet, because they also included the oral abstracts in the form of SMID. And we did keep them separated since you sent one for symposia and with oral abstracts because that's how it was on the website and then posters separately.
+Erica Fernandez 2 minutes 35 seconds
+We kept those separate for ourselves as well.
+Erica Fernandez 2 minutes 39 seconds
+So I'm just going to pop over to poster real quick so that you can see how that one looks.
+Erica Fernandez 2 minutes 48 seconds
+Because it's not that different, it's a different color.
+Erica Fernandez 2 minutes 57 seconds
+So you can see here again I have the strategic objectives that in your bag like all of the all of the.
+Erica Fernandez 3 minutes 7 seconds
+Columns we talked about. There's one column that's different because with the posters we're able to download a PDF and with SMID we had to use shortcut keys because they're sneaky and they don't let you do it. What I did was.
+Nicholas Rufa
+3 minutes 8 seconds3:08
+Nicholas Rufa 3 minutes 8 seconds
+Mhm.
+3:24
+Erica Fernandez 3 minutes 24 seconds
+I said we need um.
+Erica Fernandez 3 minutes 27 seconds
+We need to have a standard method for naming the PDFs of all of these posters that is consistent, and so I have a few like hidden columns here, but essentially I made a formula that gave them a name that they would just copy and paste, which was a.
+Erica Fernandez 3 minutes 47 seconds
+Combination of the poster number and I think the abstract number cause in this particular see I'm gonna unhide. I'll go to Christina's. I'm notorious for hiding all of my columns so just want to see what I want to see, yeah.
+Nicholas Rufa
+4 minutes 5 seconds4:05
+Nicholas Rufa 4 minutes 5 seconds
+That's good.
+Erica Fernandez
+4 minutes 6 seconds4:06
+Erica Fernandez 4 minutes 6 seconds
+So I did poster plus abstract equals the name. So then when they got to the poster they would just hit you know control P for print in this case and then control C control V for the name and then done. And in an app the way I would see it similarly is that you could upload the poster.
+Erica Fernandez 4 minutes 25 seconds
+But that the name would automatically be whatever your standard is going to be. Because then what could happen is right at the end, if you have all of these journal watches, you have essentially like the list with the attached.
+Erica Fernandez 4 minutes 41 seconds
+PDF by drug. So I could say, hey, you know, I could hit a button within the app and say, oh, these are all the journal watch recommendations from the team for Ridvansin. Ridvans is my product. That's not the case. But let's just say it was. I could go through each one and say, OK, yes, yes, yes, yes, no, no, no, no, whatever.
+Erica Fernandez 5 minutes
+And it's just faster. And then that way I could drag and drop or download any of the posters that I agree with. That should be general watch. That makes sense.
+Nicholas Rufa
+5 minutes 8 seconds5:08
+Nicholas Rufa 5 minutes 8 seconds
+I think so. So you're you're at the poster. I'm just trying to envision being there and.
+Erica Fernandez
+5 minutes 13 seconds5:13
+Erica Fernandez 5 minutes 13 seconds
+Mhm.
+Nicholas Rufa
+5 minutes 17 seconds5:17
+Nicholas Rufa 5 minutes 17 seconds
+They'll have a QR code or the posters right there in front of you and they offer a download right at that point.
+Erica Fernandez
+5 minutes 23 seconds5:23
+Erica Fernandez 5 minutes 23 seconds
+They do it on the website, so I may do it. Yeah, I may do it even before I get there. Yeah, yeah.
+Nicholas Rufa
+5 minutes 25 seconds5:25
+Nicholas Rufa 5 minutes 25 seconds
+Yeah, yeah. And they do it on the website as well, right?
+Nicholas Rufa 5 minutes 29 seconds
+OK, so you'll have it even before. Yeah, I was just trying to figure out the the steps.
+Erica Fernandez
+5 minutes 35 seconds5:35
+Erica Fernandez 5 minutes 35 seconds
+Yeah, most of the time I will download it before I get there and I've been looking at it so that I can decide because the poster titles are available probably like 2 weeks in advance, but the poster itself isn't there. So like I may have seen a poster title and said this might be relevant to us, I'm going to assign it to myself.
+Nicholas Rufa
+5 minutes 40 seconds5:40
+Nicholas Rufa 5 minutes 40 seconds
+Uh.
+Nicholas Rufa 5 minutes 49 seconds
+Right.
+Erica Fernandez
+5 minutes 53 seconds5:53
+Erica Fernandez 5 minutes 53 seconds
+And then the posters get come up. I look at the poster and I'm like no relevance completed NR, don't have to do anything else. And so I kind of I go back and forth as to whether if the poster is available for download, do we have it automatically downloaded into the app so it's there and with the name and all that so that when I'm.
+Nicholas Rufa
+5 minutes 59 seconds5:59
+Nicholas Rufa 5 minutes 59 seconds
+Yeah.
+Nicholas Rufa 6 minutes 11 seconds
+Um.
+Erica Fernandez
+6 minutes 13 seconds6:13
+Erica Fernandez 6 minutes 13 seconds
+Sign the poster and then it becomes available. I can just click on the poster and say, Oh yeah, not relevant, check it is not relevant, move on with my life. So that way the added step of having to download it isn't there. But I know that that can get really complex depending on what conference we're looking at, etcetera. Like estimate is almost impossible to get it downloaded like I said.
+Nicholas Rufa
+6 minutes 33 seconds6:33
+Nicholas Rufa 6 minutes 33 seconds
+Yeah.
+Erica Fernandez
+6 minutes 33 seconds6:33
+Erica Fernandez 6 minutes 33 seconds
+And we were using shortcut keys and they were all PNGS. That was a mess. But but yeah, so that was how we utilized the Excel. This is what I would consider the super.
+Nicholas Rufa
+6 minutes 41 seconds6:41
+Nicholas Rufa 6 minutes 41 seconds
+Yeah, all right.
+Erica Fernandez
+6 minutes 49 seconds6:49
+Erica Fernandez 6 minutes 49 seconds
+Manual way.
+Erica Fernandez 6 minutes 53 seconds
+What our output used to look like was drove me insane. I don't know if you ever went to any of the conference lunch and learns that medical did, if you ever had a chance to bore yourself to death, but it was just very.
+Nicholas Rufa
+7 minutes 2 seconds7:02
+Nicholas Rufa 7 minutes 2 seconds
+Mm.
+Erica Fernandez
+7 minutes 10 seconds7:10
+Erica Fernandez 7 minutes 10 seconds
+Data heavy, data intense and every slide was about a study or a session that nobody in clinical development or E seek is and So what we tried to shift to this year was.
+Nicholas Rufa
+7 minutes 19 seconds7:19
+Nicholas Rufa 7 minutes 19 seconds
+Right.
+Erica Fernandez
+7 minutes 25 seconds7:25
+Erica Fernandez 7 minutes 25 seconds
+Let's really look 30,000 foot view at what the people in the audience care about most for the presentation itself. So by really focusing in on the insights and what those common themes are and then comparing the common themes that we're seeing in the conferences.
+Erica Fernandez 7 minutes 44 seconds
+With the insight analysis that I do on our CRM and our social listening platform, so that you get more of a holistic ecosystem of what's happening in the space relative to our products and our competitors across everything and how that engages at the conference.
+Nicholas Rufa
+8 minutes 1 second8:01
+Nicholas Rufa 8 minutes 1 second
+Yeah.
+Erica Fernandez
+8 minutes 3 seconds8:03
+Erica Fernandez 8 minutes 3 seconds
+So our output is manual, right? Like I don't expect anything like a a. I don't expect an app or or a platform is better.
+Erica Fernandez 8 minutes 16 seconds
+Better say a platform to come up with the PowerPoint as an example. I don't. I don't think that that's a fair.
+Nicholas Rufa
+8 minutes 23 seconds8:23
+Nicholas Rufa 8 minutes 23 seconds
+Right.
+Erica Fernandez
+8 minutes 27 seconds8:27
+Erica Fernandez 8 minutes 27 seconds
+That that's a a fair option and so I want to pull up what this looks like so that you you can see so.
+Erica Fernandez 8 minutes 39 seconds
+Our final looks like this, but I think what's important is for you to see the intermediate steps because the final is what we presented to the EC.
+Erica Fernandez 8 minutes 54 seconds
+But the intermediate steps is what medical ends up getting so.
+Erica Fernandez 9 minutes
+You'll see here.
+Erica Fernandez 9 minutes 2 seconds
+So we really spent time here going through each drug and focusing on the high-level insights. So some things that I pulled from the Excel that I would want from a platform to be able to tell me is, you know, basic analysis.
+Erica Fernandez 9 minutes 22 seconds
+Of this is how many total, you know, posters or sessions there were for SMID. This is this is how many that MSDS reviewed. This is how many were considered relevant. All of these things could be like I did it with pivot tables, right in Excel. So on a platform you should be able to pull those kinds of numbers.
+Nicholas Rufa
+9 minutes 40 seconds9:40
+Nicholas Rufa 9 minutes 40 seconds
+Right. They're all usage stats and you know this is what you've you did. You know it's it's reporting on right reporting on.
+Erica Fernandez
+9 minutes 45 seconds9:45
+Erica Fernandez 9 minutes 45 seconds
+Exactly, exactly. So like those were the simple stats. And so those were like, this is how many were reviewed, this is how many of the ones that we reviewed we found relevant, et cetera. But for the the the insights and what was relevant, we would combine things that we saw.
+Nicholas Rufa
+9 minutes 54 seconds9:54
+Nicholas Rufa 9 minutes 54 seconds
+Yeah.
+10:04
+Erica Fernandez 10 minutes 4 seconds
+You know within the conference which we use the icon, this icon for conference, this icon for MSD interactions and this could be MSD interactions at the conference or the quarter before or a month after the conference. And then we also did like we had this icon for social listenings where we brought across some of the mentors.
+Erica Fernandez 10 minutes 24 seconds
+Of the product and the like topics that were mentioned within them on social media. So the social media aspect of it is something, you know, we have our own platform that's that's pulling for for all of that. And then for the MSD interactions, that's all coming from Steve Rock and our CRM.
+Erica Fernandez 10 minutes 41 seconds
+But it's the insights for the meeting are all coming from the Excel sheet. So in order to get to this point, what I did was I had two outputs. I had what I call the final database and then the the written report.
+Erica Fernandez 11 minutes 1 second
+And so for the final database, what I did was bring together.
+Erica Fernandez 11 minutes 9 seconds
+All of the posters, oral sessions, etcetera into one Excel that included all of the MSD notes and included all of the all of the insights and so.
+Erica Fernandez 11 minutes 24 seconds
+I right. I made sure that all the columns were the same. Some of the columns I had to rename so it all made sense and and I put everything symposia, posters, integrated symposia, et cetera.
+Erica Fernandez 11 minutes 41 seconds
+All of the same sheet and then on another sheet I created sort of AV look up where if they entered the session code or the the session number then what would pop up is the title, the author, the MSD notes and then the insights.
+Erica Fernandez 12 minutes
+From that session, since then I've gotten requests like can I put in other fields that then will pop up the information? I was like, yeah, I'm sure you can, but I don't have the time to make that V look up because I am not an Excel wizard, but it that's, you know, one of the things that came up.
+Erica Fernandez 12 minutes 17 seconds
+And the reason somebody would want to come to this is because they are using the final written report. So the final written report is where I put like I drop these Excel sheets, I separated them out by product. So resa fungen, marafenamaberbactam.
+Erica Fernandez 12 minutes 33 seconds
+And I made one Excel sheet for each and the only reason I did that was because I don't trust Copilot to deal with that much data at once and I want it to be very focused like only answer from this so.
+Nicholas Rufa
+12 minutes 46 seconds12:46
+Nicholas Rufa 12 minutes 46 seconds
+Yeah.
+Erica Fernandez
+12 minutes 49 seconds12:49
+Erica Fernandez 12 minutes 49 seconds
+Then I created these sections and you'll have to excuse Rosafunge. Rosafunge is dirty and messy, but where we focused in on the things that we wanted to learn from the insights. And I when I created the agents in copilot, I you know, I described what each column was and what it meant and I.
+Erica Fernandez 13 minutes 9 seconds
+That the insights are really what we're focusing on, but you know, use the title of the session as well as the MSD notes for context to the insight and so for each drug.
+Nicholas Rufa
+13 minutes 17 seconds13:17
+Nicholas Rufa 13 minutes 17 seconds
+Hmm.
+Erica Fernandez
+13 minutes 22 seconds13:22
+Erica Fernandez 13 minutes 22 seconds
+This is a little messy, but I think let me.
+Erica Fernandez 13 minutes 26 seconds
+Find.
+Erica Fernandez 13 minutes 35 seconds
+Brought over the notes.
+Erica Fernandez 13 minutes 39 seconds
+For each drug.
+Erica Fernandez 13 minutes 45 seconds
+Yeah. So for each drug, the final format for the report, we wanted it to be like key themes that came up regarding the drug, key insights about the disease states that the drugs treat that came up during the session and then the summaries for the original research that was performed.
+Erica Fernandez 14 minutes 3 seconds
+So as an example, I'll use Mayor Penn and Mayor Backham.
+Erica Fernandez 14 minutes 10 seconds
+Because that one was helpful. So what I did was I summarized like.
+Erica Fernandez 14 minutes 17 seconds
+Ignore the strategic objective. It didn't work out well for us for this, but you know it in the future. And so top categories of insights related to Mirapet and Maverbaktam. And so anytime that I provided like an assessment or a summary or whatever, I made sure that it.
+Erica Fernandez 14 minutes 33 seconds
+It always referenced where the F are you getting this from. So you have to give me the session number, the poster number, whatever. And so that way when the the person who is tasked with taking this insight report that AI has generated, Erica has generated with AI, right?
+Nicholas Rufa
+14 minutes 49 seconds14:49
+Nicholas Rufa 14 minutes 49 seconds
+Mhm.
+Erica Fernandez
+14 minutes 50 seconds14:50
+Erica Fernandez 14 minutes 50 seconds
+If you have a question about something, you can go to that database, type in the session number and then see the full context of it. So like it was, you know, key takeaways and it was by disease state or or whatever, CUTI, CNS infections, PPC infections and it.
+Erica Fernandez 15 minutes 9 seconds
+Talks about that and then also competitive landscapes. So a review of the competitive landscape that's related to to Mariken and Mayor back Tam and I'll go back and show you how you would know that. And then it I asked for summaries on all of the original research and so.
+Erica Fernandez 15 minutes 29 seconds
+The the way it because it's copilot and I was tired. I spent like 40 hours on this. Every time it gave me the original research, it kind of gave it to me in a different format. But the whole point was I wanted all of the information. I wanted the actual the the title, the code number.
+Nicholas Rufa
+15 minutes 39 seconds15:39
+Nicholas Rufa 15 minutes 39 seconds
+Mm-hmm.
+Erica Fernandez
+15 minutes 47 seconds15:47
+Erica Fernandez 15 minutes 47 seconds
+Who was covering it from the medical affairs team, the MSD notes, and then the insights? Because looking at that in an Excel sheet is really complicated. So that you know, once I had all of my top insights, I could come down to this, look through these really quickly and make sure I wasn't missing anything from the content that they provided or that the agent had summarized from the data.
+Erica Fernandez 16 minutes 7 seconds
+Data I had provided before. So for each drug it did this original research summary and we thought that that was good. We would want that with all drugs moving forward and so.
+Erica Fernandez 16 minutes 23 seconds
+Trying to think of.
+Erica Fernandez 16 minutes 25 seconds
+Start up.
+Erica Fernandez 16 minutes 29 seconds
+No, skip that. Some of this again garbage 'cause it was our first time, but you can see like.
+Erica Fernandez 16 minutes 37 seconds
+Some of the sections are a little different based on what's in there.
+Nicholas Rufa
+16 minutes 41 seconds16:41
+Nicholas Rufa 16 minutes 41 seconds
+Yeah.
+Erica Fernandez
+16 minutes 43 seconds16:43
+Erica Fernandez 16 minutes 43 seconds
+Uh, trying to go through to get to the point where.
+Erica Fernandez 16 minutes 48 seconds
+And then we had subsections that I would enter into the report. So I would take it from AI Analytics, which is one of our platforms for the MSDS, and then I would do an OLA run for anything that had to do with social media, which for some of these there was really nothing for social media.
+Erica Fernandez 17 minutes 3 seconds
+So the point of the report was to put everything that was in the Excel in a more organized fashion, highlight what came up multiple times. So then that way you just use that report to decide what to put on a couple of slides for the product. Going back to the Excel sheet though I failed to show you when we talk about.
+Erica Fernandez 17 minutes 22 seconds
+Category and I would put this in a much better. I hadn't had the chance to get what I wanted done by today where I have a a really like, I don't sound like a crazy person and jumping all over the place like it's very much organized cause I have to present this to the team next week as well.
+Nicholas Rufa
+17 minutes 30 seconds17:30
+Nicholas Rufa 17 minutes 30 seconds
+Mhm.
+Erica Fernandez
+17 minutes 37 seconds17:37
+Erica Fernandez 17 minutes 37 seconds
+But um, so when you're looking at the.
+Erica Fernandez 17 minutes 43 seconds
+When you're looking at the drug and then you're looking at the topic, this is one of the ones that we added. So there's it's a competitor. So the category is ori. So we're going to use oridavancin and dalvavancin as an example. Dalvavancin is a direct competitor to oridavancin, but as far as what category this data is going to fall under.
+Nicholas Rufa
+17 minutes 49 seconds17:49
+Nicholas Rufa 17 minutes 49 seconds
+Mm-hmm.
+Erica Fernandez
+18 minutes 3 seconds18:03
+Erica Fernandez 18 minutes 3 seconds
+It's going to fall under oritavancin, but what's the topic? A competitor. And so that's why it was able to when I was like, OK, look for any topic that has competitor and then give me the key takeaways from the competitors for oritavancin because I only uploaded the oritavancin insight. It was able to do that and then same thing for.
+Nicholas Rufa
+18 minutes 7 seconds18:07
+Nicholas Rufa 18 minutes 7 seconds
+Yeah.
+Erica Fernandez
+18 minutes 21 seconds18:21
+Erica Fernandez 18 minutes 21 seconds
+Pipeline where if it is a pipeline competitor for Advancent, then this topic would say pipeline.
+Erica Fernandez 18 minutes 31 seconds
+Hopefully that makes sense, OK.
+Nicholas Rufa
+18 minutes 32 seconds18:32
+Nicholas Rufa 18 minutes 32 seconds
+Yeah, yeah.
+Erica Fernandez
+18 minutes 35 seconds18:35
+Erica Fernandez 18 minutes 35 seconds
+That is, I think.
+Erica Fernandez 18 minutes 39 seconds
+I don't know that you want anymore for me at this point cause I've just been rambling.
+Nicholas Rufa
+18 minutes 41 seconds18:41
+Nicholas Rufa 18 minutes 41 seconds
+Oh, it's very good. You know to see I I hadn't really seen before how it gets used after. So this is awesome. You know from seeing the kind of the final PowerPoint to the EC to see the you know even what you do with it with a I and work you know and and how you kept the how you.
+Erica Fernandez
+18 minutes 48 seconds18:48
+Erica Fernandez 18 minutes 48 seconds
+Mhm.
+Nicholas Rufa
+19 minutes 1 second19:01
+Nicholas Rufa 19 minutes 1 second
+You kept the sources or had it, you know, output the sources with everything, which is good. Yeah, it's good. Just trying to absorb it all, but I I I like it.
+Erica Fernandez
+19 minutes 9 seconds19:09
+Erica Fernandez 19 minutes 9 seconds
+Yeah.
+Erica Fernandez 19 minutes 11 seconds
+OK, so for ID Week, obviously hands down, we will still want to scrape the site.
+Nicholas Rufa
+19 minutes 19 seconds19:19
+Nicholas Rufa 19 minutes 19 seconds
+Yeah.
+Erica Fernandez
+19 minutes 21 seconds19:21
+Erica Fernandez 19 minutes 21 seconds
+But it like from your perspective, like if you're if this is something that's high on your radar, high priority for you to develop it, First off, is it something that you think other teams would be interested?
+Nicholas Rufa
+19 minutes 34 seconds19:34
+Nicholas Rufa 19 minutes 34 seconds
+I think so. I mean, your pain points are probably the same pain points. I mean, maybe bigger companies that have bigger budgets, you know, are using tools already that do some of this. I don't know if they are. Yeah, so.
+Erica Fernandez
+19 minutes 47 seconds19:47
+Erica Fernandez 19 minutes 47 seconds
+I can tell you Novo isn't 'cause my husband's an MSL for Novo and he's like, if somebody else color codes this Excel sheet, I'm gonna kill them.
+Nicholas Rufa
+19 minutes 55 seconds19:55
+Nicholas Rufa 19 minutes 55 seconds
+Right. So you know what, I I think it's, it's certainly worthwhile. It's a worth. I think it's a worthwhile effort and I'm we're already doing kind of not half of it, you know, but we're doing a portion of it, right, the 1st 20% maybe. And now it's still obviously you guys have to go there and do all the hard work a day of and days of.
+Erica Fernandez
+20 minutes 7 seconds20:07
+Erica Fernandez 20 minutes 7 seconds
+Yeah.
+Nicholas Rufa
+20 minutes 15 seconds20:15
+Nicholas Rufa 20 minutes 15 seconds
+But and then crunching it after, I mean, right. So those three, there's the pre, there's the, you know, getting it set up, being at the meeting, doing all that, some of that the real time, like I like you talked about the the insights and the kind of tagging or reminded me of tagging like one word or a couple of words, you know, hit alt enter and you know it saves that.
+Erica Fernandez
+20 minutes 19 seconds20:19
+Erica Fernandez 20 minutes 19 seconds
+umm
+Nicholas Rufa
+20 minutes 34 seconds20:34
+Nicholas Rufa 20 minutes 34 seconds
+And do it collaboratively where two or three people can do it at once and now it's all combined and you don't have to do that work separately in Excel later or whatever. So yeah, there's some some good stuff here I.
+Erica Fernandez
+20 minutes 40 seconds20:40
+Erica Fernandez 20 minutes 40 seconds
+Yeah.
+Erica Fernandez 20 minutes 46 seconds
+Yeah, and any dashboarding that can be created real time, because also what medical struggles with is showing impact to the rest of the department, right? So like if we're having every day, we can actually send a report out to the commercial folks and be like, hey, medical attended this many sessions today, this many.
+Nicholas Rufa
+20 minutes 50 seconds20:50
+Nicholas Rufa 20 minutes 50 seconds
+Yep.
+Nicholas Rufa 20 minutes 55 seconds
+Yep.
+Erica Fernandez
+21 minutes 6 seconds21:06
+Erica Fernandez 21 minutes 6 seconds
+Posters today and also if there's like a an option or a side note where we could just like type in interesting insight that's not necessarily to a session or overheard this and these are more like quickies that Sandy can then at the end of the day be like here's some quickies that the MSD split came across. It then shows sort of the value of having met.
+Nicholas Rufa
+21 minutes 14 seconds21:14
+Nicholas Rufa 21 minutes 14 seconds
+Yeah.
+Nicholas Rufa 21 minutes 22 seconds
+Mm-hmm.
+Erica Fernandez
+21 minutes 26 seconds21:26
+Erica Fernandez 21 minutes 26 seconds
+There and involved in what we're doing. And then the last thing, which would be marvelous.
+Nicholas Rufa
+21 minutes 27 seconds21:27
+Nicholas Rufa 21 minutes 27 seconds
+Yeah.
+Erica Fernandez
+21 minutes 35 seconds21:35
+Erica Fernandez 21 minutes 35 seconds
+But not necessary, but marvelous. Um is if.
+Nicholas Rufa
+21 minutes 37 seconds21:37
+Nicholas Rufa 21 minutes 37 seconds
+Mhm.
+Erica Fernandez
+21 minutes 41 seconds21:41
+Erica Fernandez 21 minutes 41 seconds
+Somehow, and I would call this like souped up on steroids, we figured out a way for.
+Erica Fernandez 21 minutes 50 seconds
+When we're actually having a conversation with the KOL, like if we've walked up to the KOL and then talk to them and learn some insights, if we document that KOL interaction in a platform like this and then in that way the insights.
+Erica Fernandez 22 minutes 5 seconds
+And all of that is sort of captured as part of ID week holistically, but then can be forwarded into the CRM cause some of them I know like Tika MSL.
+Erica Fernandez 22 minutes 21 seconds
+Allegedly says they can go into Viva. I don't believe them. But if that also like took away the need for the MSL to put it into the platform and then also put it into Steep Rock, that would be a win for them too, because then they can really focus on.
+Nicholas Rufa
+22 minutes 33 seconds22:33
+Nicholas Rufa 22 minutes 33 seconds
+Mm.
+Erica Fernandez
+22 minutes 36 seconds22:36
+Erica Fernandez 22 minutes 36 seconds
+Analyzing it and just making the output much better. It also makes us faster in deciding on who we want to meet with post meeting because we've done the analysis faster and so we have like our Q4, these are the people we want to hit with the information they're most interested in and it's less of like November we all.
+Erica Fernandez 22 minutes 54 seconds
+Wanna kill everybody. So this would make it easier, but but yeah, so I think.
+Nicholas Rufa
+22 minutes 55 seconds22:55
+Nicholas Rufa 22 minutes 55 seconds
+Yeah, yeah.
+Erica Fernandez
+23 minutes 4 seconds23:04
+Erica Fernandez 23 minutes 4 seconds
+Hopefully some of that makes sense. I figured what I could do is I could send you the database, I could send you the final report and I can send you like I have to present to the MSCS next week how conference coverage, planning, etcetera will change whether there's a platform or not like this is.
+Nicholas Rufa
+23 minutes 6 seconds23:06
+Nicholas Rufa 23 minutes 6 seconds
+It does, definitely.
+Nicholas Rufa 23 minutes 24 seconds
+Right.
+Erica Fernandez
+23 minutes 24 seconds23:24
+Erica Fernandez 23 minutes 24 seconds
+Is the new version. And so I can I can send that whole package to you as well, just so that way you're like, oh, this is what the nutty professor was talking about.
+Nicholas Rufa
+23 minutes 34 seconds23:34
+Nicholas Rufa 23 minutes 34 seconds
+I'd love to see it. It's good. Definitely good stuff because I hadn't seen it, you know, and way back when I was working, you know, I know that I would see up in Perceptum or whatever it was, one of those old systems where there were some reports, but you know, it really didn't, you know, in one ear or out the other or over my head probably.
+Erica Fernandez
+23 minutes 37 seconds23:37
+Erica Fernandez 23 minutes 37 seconds
+Card.
+Nicholas Rufa
+23 minutes 54 seconds23:54
+Nicholas Rufa 23 minutes 54 seconds
+More, more the, you know, but now seeing it from you, you know, being walked through it is much different. So this was good.
+Erica Fernandez
+23 minutes 55 seconds23:55
+Erica Fernandez 23 minutes 55 seconds
+Yeah.
+Erica Fernandez 24 minutes 1 second
+Nice. Good. Yeah. I think the real value of something like this would be how does it analyze your insights and inform your strategy in real time at a Congress or conference? Some people pay people thousands of dollars upon thousands of dollars to hire a people to go to a Congress. And I always wonder, how useful is that?
+Nicholas Rufa
+24 minutes 11 seconds24:11
+Nicholas Rufa 24 minutes 11 seconds
+Yeah.
+Erica Fernandez
+24 minutes 20 seconds24:20
+Erica Fernandez 24 minutes 20 seconds
+That if the people covering the Congress aren't subject matter experts in that information, like can they do they really know the insight versus sending your own MSLS and then having some platform that can pull out the value that these big teams that you hire are saying they can get for you from a conference.
+Nicholas Rufa
+24 minutes 23 seconds24:23
+Nicholas Rufa 24 minutes 23 seconds
+Right, right.
+Nicholas Rufa 24 minutes 37 seconds
+No, I agree.
+Erica Fernandez
+24 minutes 39 seconds24:39
+Erica Fernandez 24 minutes 39 seconds
+Dial.
+Nicholas Rufa
+24 minutes 40 seconds24:40
+Nicholas Rufa 24 minutes 40 seconds
+Yeah, there's a lot of, you know, a lot of knowledge they're not gonna have, you know, unless they've worked in, you know, ID for for a long time, you know, in this case, but yeah.
+Erica Fernandez
+24 minutes 46 seconds24:46
+Erica Fernandez 24 minutes 46 seconds
+Yeah.
+Erica Fernandez 24 minutes 49 seconds
+Yeah, so that's it. Oh, I'll leave you with one thing. I'll leave you with one thing for the Christine. What she always asks at these EC meetings is what was the most interesting thing you heard? And so that's where that.
+Nicholas Rufa
+24 minutes 52 seconds24:52
+Nicholas Rufa 24 minutes 52 seconds
+Thanks.
+Nicholas Rufa 25 minutes 1 second
+Hmm.
+Erica Fernandez
+25 minutes 4 seconds25:04
+Erica Fernandez 25 minutes 4 seconds
+Hey, really interesting thought or whatever that you pop into it would be nice. I happened to have heard something super interesting and was able to answer that right away. But being able to report that out to the EC every day, be like, hey, this is what medical did. I think that that really.
+Nicholas Rufa
+25 minutes 20 seconds25:20
+Nicholas Rufa 25 minutes 20 seconds
+Yeah.
+Erica Fernandez
+25 minutes 23 seconds25:23
+Erica Fernandez 25 minutes 23 seconds
+That's what medical teams are looking for. Like, how can we prove to the EC? Give us more money. You know, that's the end point. But that's it. We're at one minute over. Yeah. Thank you. And I'll send you the info.
+Nicholas Rufa
+25 minutes 27 seconds25:27
+Nicholas Rufa 25 minutes 27 seconds
+Right, right. Exactly.
+Nicholas Rufa 25 minutes 31 seconds
+All right. Thanks, Erica. This was great. I'll look forward to that. I'll look forward to that info. And if it I think it'll send me the copilot stuff too, but if not, I'll, I'll reach out to you and I'll get back to you on Steve Rock and I'll I'll look and see if I can see those cases come through.
+Erica Fernandez
+25 minutes 42 seconds25:42
+Erica Fernandez 25 minutes 42 seconds
+OK, sounds good.
+
+
+
+Erica Fernandez stopped transcription

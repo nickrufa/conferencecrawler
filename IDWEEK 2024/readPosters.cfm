@@ -1,4 +1,4 @@
-<cffile action="read" file="/Users/nickrufa/Development/www/CMEU_sites/occpoc/IDWEEK/poster_output.json" variable="poster_output">
+<cffile action="read" file="/Users/nickrufa/Development/www/CMEU_sites/conferencecrawler/IDWEEK 2024/poster_output.json" variable="poster_output">
 <cfset data = deserializeJSON(poster_output)>
 
 <table border="1">

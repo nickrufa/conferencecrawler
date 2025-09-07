@@ -1,6 +1,6 @@
 <cfsetting showdebugoutput="no">
 <cfparam name="url.thisID" default="267">
-<cfquery name="getAllIDWEEKSessionData" datasource="occ3">
+<cfquery name="getAllIDWEEKSessionData" datasource="conference_crawler">
     SELECT *
     FROM IDWEEK_2024
     WHERE 0=0

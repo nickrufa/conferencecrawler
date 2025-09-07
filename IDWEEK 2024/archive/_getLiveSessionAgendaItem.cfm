@@ -61,7 +61,7 @@
         </cfoutput>
     </cfloop>
     <cfquery name="sessionData" datasource="#application.dsn#">
-        SELECT count(1) as remaining FROM occ3.IDWEEK_2024 WHERE 0=0 AND rawSessionData IS NULL;
+        SELECT count(1) as remaining FROM conference_crawler.IDWEEK_2024 WHERE 0=0 AND rawSessionData IS NULL;
     </cfquery>
     <cfset minutesFromNow = dateAdd("s",(sessionData.remaining*(lownum+highnum)/2),now())>
     <cfoutput>

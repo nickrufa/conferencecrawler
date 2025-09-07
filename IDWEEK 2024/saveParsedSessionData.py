@@ -14,7 +14,7 @@ for url in urls:
     # host="database-1.cluster-cheaomfkb77i.us-east-1.rds.amazonaws.com",
     # user="awsrdsadmin",
     # password="Z1Wz5!u44fiO99$yJtXvhBLF1$Qp!",
-    # database="occ3"
+    # database="conference_crawler"
     # )
 
     # Create a cursor object
