@@ -10,6 +10,7 @@ Visit the IDWeek 2025 meeting website and manually save HTML content from Sessio
 
 ### Step 2: Extract Poster IDs
 Extract poster IDs from the saved HTML files and insert them into MySQL table, populating the `poster_id` column.
+Use BBEdit or text tool to parse out IDs. SQL Insert the list of IDs.
 
 ### Step 3: Crawl Raw Poster Data
 Use the CFML crawler to fetch and save raw poster data:
