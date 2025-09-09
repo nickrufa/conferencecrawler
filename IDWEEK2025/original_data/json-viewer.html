@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IDWeek 2025 Sessions Viewer</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .session { border: 1px solid #ccc; margin: 10px 0; padding: 15px; }
+        .session-title { font-weight: bold; color: #2c5aa0; }
+        .session-meta { color: #666; margin: 5px 0; }
+        pre { background: #f5f5f5; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>IDWeek 2025 Sessions</h1>
+    <div id="sessions"></div>
+    
+    <script>
+        fetch('idweek2025_sessions.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('sessions');
+                data.slice(0, 20).forEach((session, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'session';
+                    div.innerHTML = `
+                        <div class="session-title">Session ${index + 1}: ${session.title || 'No title'}</div>
+                        <div class="session-meta">ID: ${session.session_id || 'N/A'}</div>
+                        <div class="session-meta">URL: ${session.source_url || 'N/A'}</div>
+                        <pre>${JSON.stringify(session, null, 2)}</pre>
+                    `;
+                    container.appendChild(div);
+                });
+            })
+            .catch(error => {
+                document.getElementById('sessions').innerHTML = `<p>Error loading data: ${error}</p>`;
+            });
+    </script>
+</body>
+</html>

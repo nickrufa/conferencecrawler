@@ -97,6 +97,13 @@ class IDWeek2025SessionCrawler:
             logger.warning("No data to save")
             return
         
+        def sanitize_csv_field(value):
+            """Clean field values to prevent CSV formatting issues"""
+            if not isinstance(value, str):
+                return value
+            # Replace newlines with semicolons, clean up whitespace
+            return value.replace('\n', '; ').replace('\r', '').strip()
+        
         # Flatten the nested data structure for CSV
         flattened_data = []
         for session in self.crawled_data:
@@ -107,29 +114,29 @@ class IDWeek2025SessionCrawler:
             flat_record = {
                 'session_id': session.get('session_id', ''),
                 'source_url': session.get('source_url', ''),
-                'primary_track': session.get('tracks', {}).get('primary_track', ''),
+                'primary_track': sanitize_csv_field(session.get('tracks', {}).get('primary_track', '')),
                 'all_tracks': '; '.join(session.get('tracks', {}).get('all_tracks', [])),
                 'track_count': session.get('tracks', {}).get('track_count', 0),
-                'session_type': session.get('session_info', {}).get('type', ''),
-                'session_number': session.get('session_info', {}).get('number', ''),
-                'session_title': session.get('session_info', {}).get('title', ''),
-                'full_title': session.get('session_info', {}).get('full_title', ''),
-                'date': session.get('schedule', {}).get('date', ''),
-                'time': session.get('schedule', {}).get('time', ''),
-                'timezone': session.get('schedule', {}).get('timezone', ''),
-                'location': session.get('schedule', {}).get('location', ''),
+                'session_type': sanitize_csv_field(session.get('session_info', {}).get('type', '')),
+                'session_number': sanitize_csv_field(session.get('session_info', {}).get('number', '')),
+                'session_title': sanitize_csv_field(session.get('session_info', {}).get('title', '')),
+                'full_title': sanitize_csv_field(session.get('session_info', {}).get('full_title', '')),
+                'date': sanitize_csv_field(session.get('schedule', {}).get('date', '')),
+                'time': sanitize_csv_field(session.get('schedule', {}).get('time', '')),
+                'timezone': sanitize_csv_field(session.get('schedule', {}).get('timezone', '')),
+                'location': sanitize_csv_field(session.get('schedule', {}).get('location', '')),
             }
             
             # Credit information
             credits = session.get('credits', {})
             flat_record.update({
-                'cme_hours': credits.get('cme_hours', ''),
-                'moc_hours': credits.get('moc_hours', ''),
-                'cne_hours': credits.get('cne_hours', ''),
-                'acpe_hours': credits.get('acpe_hours', ''),
-                'acpe_number': credits.get('acpe_number', ''),
-                'pace_hours': credits.get('pace_hours', ''),
-                'ce_broker_hours': credits.get('ce_broker_hours', ''),
+                'cme_hours': sanitize_csv_field(credits.get('cme_hours', '')),
+                'moc_hours': sanitize_csv_field(credits.get('moc_hours', '')),
+                'cne_hours': sanitize_csv_field(credits.get('cne_hours', '')),
+                'acpe_hours': sanitize_csv_field(credits.get('acpe_hours', '')),
+                'acpe_number': sanitize_csv_field(credits.get('acpe_number', '')),
+                'pace_hours': sanitize_csv_field(credits.get('pace_hours', '')),
+                'ce_broker_hours': sanitize_csv_field(credits.get('ce_broker_hours', '')),
             })
             
             # Speaker information
@@ -138,22 +145,23 @@ class IDWeek2025SessionCrawler:
                 # Primary speaker
                 primary_speaker = speakers[0]
                 flat_record.update({
-                    'primary_speaker_name': primary_speaker.get('name', ''),
-                    'primary_speaker_title': primary_speaker.get('title', ''),
-                    'primary_speaker_department': primary_speaker.get('department', ''),
-                    'primary_speaker_institution': primary_speaker.get('institution', ''),
-                    'primary_speaker_location': primary_speaker.get('location', ''),
+                    'primary_speaker_name': sanitize_csv_field(primary_speaker.get('name', '')),
+                    'primary_speaker_title': sanitize_csv_field(primary_speaker.get('title', '')),
+                    'primary_speaker_department': sanitize_csv_field(primary_speaker.get('department', '')),
+                    'primary_speaker_institution': sanitize_csv_field(primary_speaker.get('institution', '')),
+                    'primary_speaker_location': sanitize_csv_field(primary_speaker.get('location', '')),
                 })
             
             # Speaker counts and lists
             flat_record['total_speakers'] = len(speakers)
-            flat_record['all_speakers'] = '; '.join([s.get('name', '') for s in speakers])
+            flat_record['all_speakers'] = sanitize_csv_field('; '.join([s.get('name', '') for s in speakers]))
             
             # Disclosure information
             disclosures = session.get('disclosures', [])
             flat_record['disclosure_count'] = len(disclosures)
             if disclosures:
-                flat_record['disclosures'] = ' | '.join([f"{d.get('speaker', '')}: {d.get('disclosure', '')}" for d in disclosures])
+                disclosure_text = ' | '.join([f"{d.get('speaker', '')}: {d.get('disclosure', '')}" for d in disclosures])
+                flat_record['disclosures'] = sanitize_csv_field(disclosure_text)
             else:
                 flat_record['disclosures'] = ''
             
@@ -162,13 +170,13 @@ class IDWeek2025SessionCrawler:
             flat_record['presentation_count'] = len(presentations)
             if presentations:
                 pres_titles = [p.get('title', '') for p in presentations]
-                flat_record['presentation_titles'] = ' | '.join(pres_titles)
+                flat_record['presentation_titles'] = sanitize_csv_field(' | '.join(pres_titles))
                 
                 pres_times = [p.get('time', '') for p in presentations]
-                flat_record['presentation_times'] = ' | '.join(pres_times)
+                flat_record['presentation_times'] = sanitize_csv_field(' | '.join(pres_times))
                 
                 pres_speakers = [p.get('speaker', {}).get('name', '') for p in presentations]
-                flat_record['presentation_speakers'] = ' | '.join(pres_speakers)
+                flat_record['presentation_speakers'] = sanitize_csv_field(' | '.join(pres_speakers))
             else:
                 flat_record.update({
                     'presentation_titles': '',
