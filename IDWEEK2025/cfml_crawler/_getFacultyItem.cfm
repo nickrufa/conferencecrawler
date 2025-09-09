@@ -1,6 +1,17 @@
-<cfprocessingdirective pageEncoding="UTF-8"><cfparam name="presenterid" default="1841088">
+<cfprocessingdirective pageEncoding="UTF-8">
+<cfparam name="presenterid" default="1841088">
+
+<!--- 
+    poster presenters
+     --->
 <cfparam name="siteURL" default="https://idweek2025.eventscribe.net/ajaxcalls/posterPresenterInfo.asp?PresenterID=">
-<!--- cfparam name="siteURL" default="https://idweek2024.eventscribe.net/fsPopup.asp?mode=sessionInfo&PresentationID=" --->
+
+<!--- 
+    OR
+    session presenters
+     --->
+<cfparam name="siteURL" default="https://idweek2025.eventscribe.net/ajaxcalls/presenterInfo.asp?PresenterId=">
+
 <cfset lownum = 4>
 <cfset highnum = 6>
 
@@ -23,7 +34,7 @@
     ORDER BY presenterid desc
     LIMIT 1
 </cfquery>
-<!--- cfdump var="#getAll_IDWEEK_Data#" label="getAll_IDWEEK_Data" --->
+<cfif 0><cfdump var="#getAll_IDWEEK_Data#" label="getAll_IDWEEK_Data"></cfif>
 
 <cfset body_data = '#getAll_IDWEEK_Data.presenterid#'>
 
