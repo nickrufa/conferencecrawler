@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 class IDWeek2025SessionCrawler:
     """Crawler for IDWeek 2025 session data from local server"""
     
-    def __init__(self, base_url: str = "http://local.dev.conferencecrawler.com/IDWEEK2025/sessions.cfm"):
+    def __init__(self, base_url: str = "http://local.dev.conferencecrawler.com/IDWEEK2025/cfml_viewer/sessions.cfm"):
         self.base_url = base_url
         self.parser = SessionHTMLParserFixed()
         self.session = requests.Session()

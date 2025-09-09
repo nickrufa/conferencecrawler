@@ -25,6 +25,8 @@ class SessionHTMLParserFixed:
         """Parse session HTML and extract all data"""
         try:
             tree = html.fromstring(html_content)
+            # Store original HTML content for manual parsing when needed
+            self.original_html = html_content
             
             session_data = {
                 'tracks': self._extract_tracks(tree),
@@ -33,8 +35,7 @@ class SessionHTMLParserFixed:
                 'credits': self._extract_credit_info(tree),
                 'speakers': self._extract_speakers(tree),
                 'disclosures': self._extract_disclosures(tree),
-                'presentations': self._extract_presentations(tree),
-                'raw_html': html_content
+                'presentations': self._extract_presentations(tree)
             }
             
             self.parsed_count += 1
@@ -47,8 +48,7 @@ class SessionHTMLParserFixed:
             self.error_count += 1
             logger.error(f"Error parsing session HTML: {str(e)}")
             return {
-                'error': str(e),
-                'raw_html': html_content
+                'error': str(e)
             }
     
     def _extract_tracks(self, tree) -> Dict[str, Any]:
@@ -173,64 +173,84 @@ class SessionHTMLParserFixed:
             logger.warning(f"Error extracting credits: {e}")
             return {}
     
-    def _extract_speakers(self, tree) -> List[Dict[str, str]]:
-        """Extract speaker information"""
+    def _extract_speakers(self, tree) -> Dict[str, List[Dict[str, str]]]:
+        """Extract speaker information with role types"""
         try:
-            speakers = []
+            speakers_by_role = {}
             
-            # Speaker li elements
-            speaker_elements = tree.xpath('//ul[@class="speakers-wrap"]//li[@class="speakerrow"]')
+            # Find all speaker sections with role titles
+            speakers_wrap = tree.xpath('//ul[@class="speakers-wrap"]')
+            if not speakers_wrap:
+                return {}
             
-            for element in speaker_elements:
-                try:
-                    # Speaker name
-                    name_elements = element.xpath('.//p[contains(@class, "speaker-name")]/text()')
-                    name = name_elements[0].strip() if name_elements else ""
-                    
-                    # Presenter ID
-                    presenter_id = element.get('data-presenterid', '')
-                    
-                    # Professional info
-                    prof_elements = element.xpath('.//p[contains(@class, "prof-text")]//text()')
-                    prof_parts = [text.strip() for text in prof_elements if text.strip()]
-                    
-                    # Parse affiliation components
-                    title = prof_parts[0] if len(prof_parts) > 0 else ""
-                    department = prof_parts[1] if len(prof_parts) > 1 else ""
-                    institution = prof_parts[2] if len(prof_parts) > 2 else ""
-                    location = prof_parts[3] if len(prof_parts) > 3 else ""
-                    
-                    if len(prof_parts) == 3:
-                        # No department, shift everything
-                        department = ""
-                        institution = prof_parts[1]
-                        location = prof_parts[2]
-                    elif len(prof_parts) == 2:
-                        # Just institution and location
-                        title = ""
-                        department = ""
-                        institution = prof_parts[0]
-                        location = prof_parts[1]
-                    
-                    speakers.append({
-                        'name': name,
-                        'presenter_id': presenter_id,
-                        'title': title,
-                        'department': department,
-                        'institution': institution,
-                        'location': location,
-                        'full_affiliation': ' | '.join(prof_parts)
-                    })
-                    
-                except Exception as speaker_error:
-                    logger.warning(f"Error parsing speaker: {speaker_error}")
-                    continue
+            speakers_wrap = speakers_wrap[0]
             
-            return speakers
+            # Get all elements in the speakers wrap (both role titles and speaker rows)
+            all_elements = speakers_wrap.xpath('.//*[self::h2[@class="role-title"] or self::li[@class="speakerrow"]]')
+            
+            current_role = "speakers"  # default role
+            
+            for element in all_elements:
+                if element.tag == 'h2' and 'role-title' in element.get('class', ''):
+                    # This is a role title
+                    role_text = element.text_content().strip()
+                    current_role = role_text.lower()
+                elif element.tag == 'li' and 'speakerrow' in element.get('class', ''):
+                    # This is a speaker row
+                    try:
+                        # Speaker name
+                        name_elements = element.xpath('.//p[contains(@class, "speaker-name")]/text()')
+                        name = name_elements[0].strip() if name_elements else ""
+                        
+                        # Presenter ID
+                        presenter_id = element.get('data-presenterid', '')
+                        
+                        # Professional info
+                        prof_elements = element.xpath('.//p[contains(@class, "prof-text")]//text()')
+                        prof_parts = [text.strip() for text in prof_elements if text.strip()]
+                        
+                        # Parse affiliation components
+                        title = prof_parts[0] if len(prof_parts) > 0 else ""
+                        department = prof_parts[1] if len(prof_parts) > 1 else ""
+                        institution = prof_parts[2] if len(prof_parts) > 2 else ""
+                        location = prof_parts[3] if len(prof_parts) > 3 else ""
+                        
+                        if len(prof_parts) == 3:
+                            # No department, shift everything
+                            department = ""
+                            institution = prof_parts[1]
+                            location = prof_parts[2]
+                        elif len(prof_parts) == 2:
+                            # Just institution and location
+                            title = ""
+                            department = ""
+                            institution = prof_parts[0]
+                            location = prof_parts[1]
+                        
+                        speaker_data = {
+                            'name': name,
+                            'presenter_id': presenter_id,
+                            'role': current_role,
+                            'title': title,
+                            'department': department,
+                            'institution': institution,
+                            'location': location,
+                            'full_affiliation': ' | '.join(prof_parts)
+                        }
+                        
+                        if current_role not in speakers_by_role:
+                            speakers_by_role[current_role] = []
+                        speakers_by_role[current_role].append(speaker_data)
+                        
+                    except Exception as speaker_error:
+                        logger.warning(f"Error parsing speaker: {speaker_error}")
+                        continue
+            
+            return speakers_by_role
             
         except Exception as e:
             logger.warning(f"Error extracting speakers: {e}")
-            return []
+            return {}
     
     def _extract_disclosures(self, tree) -> List[Dict[str, str]]:
         """Extract disclosure information"""
@@ -268,7 +288,7 @@ class SessionHTMLParserFixed:
             return []
     
     def _extract_presentations(self, tree) -> List[Dict[str, Any]]:
-        """Extract presentation information"""
+        """Extract presentation information with multiple speakers support"""
         try:
             presentations = []
             
@@ -283,34 +303,116 @@ class SessionHTMLParserFixed:
                     # Time
                     time_elements = element.xpath('.//span[@class="tipsytip"][contains(text(), "AM") or contains(text(), "PM")]/text()')
                     time_raw = time_elements[0].strip() if time_elements else ""
-                    time = re.sub(r'\\s*US ET\\s*$', '', time_raw).strip()
+                    time = re.sub(r'\s*US ET\s*$', '', time_raw).strip()
                     
                     # Title (first text node in prestitle div)
                     title_elements = element.xpath('.//div[contains(@class, "prestitle")]/text()[1]')
                     title = title_elements[0].strip() if title_elements else ""
                     
-                    # Speaker info from biopopup span
-                    speaker_name_elements = element.xpath('.//span[@class="biopopup"]/text()')
-                    speaker_name = speaker_name_elements[0].strip() if speaker_name_elements else ""
-                    
-                    # Affiliation (everything after the em dash)
+                    # Extract all speakers from presentation-presenters section
+                    speakers = []
                     presenter_elements = element.xpath('.//small[@class="presentation-presenters"]')
-                    affiliation = ""
+                    
                     if presenter_elements:
-                        presenter_text = presenter_elements[0].text_content()
-                        if '–' in presenter_text:
-                            affiliation = presenter_text.split('–', 1)[1].strip()
-                        elif ' - ' in presenter_text:
-                            affiliation = presenter_text.split(' - ', 1)[1].strip()
+                        # Extract presentation ID to find the correct section in original HTML
+                        pres_id = element.get('data-presid', '')
+                        
+                        # Find the presentation section in original HTML using regex
+                        pres_pattern = rf'data-presid=["\']?{re.escape(pres_id)}["\']?[^>]*>.*?</li>'
+                        pres_match = re.search(pres_pattern, getattr(self, 'original_html', ''), re.DOTALL)
+                        
+                        if pres_match:
+                            pres_html = pres_match.group(0)
+                            
+                            # Extract <p> tags from presentation-presenters section
+                            presenters_pattern = r'<small[^>]*class=["\']presentation-presenters["\'][^>]*>(.*?)</small>'
+                            presenters_match = re.search(presenters_pattern, pres_html, re.DOTALL)
+                            
+                            if presenters_match:
+                                presenters_content = presenters_match.group(1)
+                                p_pattern = r'<p[^>]*>(.*?)</p>'
+                                p_matches = re.findall(p_pattern, presenters_content, re.DOTALL)
+                                
+                                for p_content in p_matches:
+                                    if not p_content.strip():
+                                        continue
+                                        
+                                    # Parse the paragraph content
+                                    # Extract role (Speaker, Workshop Moderator, etc.)
+                                    role = ""
+                                    name = ""
+                                    affiliation = ""
+                                    
+                                    # Look for role pattern like "Speaker:" or "Workshop Moderator:"
+                                    role_match = re.match(r'^([^:]+):\s*', p_content)
+                                    if role_match:
+                                        role = role_match.group(1).strip()
+                                        remaining_text = p_content[role_match.end():].strip()
+                                    else:
+                                        remaining_text = p_content
+                                    
+                                    # Extract name from biopopup span
+                                    biopopup_match = re.search(r'<span[^>]*class=["\']biopopup["\'][^>]*>(.*?)</span>', remaining_text)
+                                    if biopopup_match:
+                                        name = biopopup_match.group(1).strip()
+                                        # Extract affiliation (everything after the em dash)
+                                        if '&ndash;' in remaining_text:
+                                            affiliation = remaining_text.split('&ndash;', 1)[1].strip()
+                                            # Clean HTML tags from affiliation
+                                            affiliation = re.sub(r'<[^>]+>', '', affiliation).strip()
+                                        elif '–' in remaining_text:
+                                            affiliation = remaining_text.split('–', 1)[1].strip()
+                                            affiliation = re.sub(r'<[^>]+>', '', affiliation).strip()
+                                        elif ' - ' in remaining_text:
+                                            affiliation = remaining_text.split(' - ', 1)[1].strip()
+                                            affiliation = re.sub(r'<[^>]+>', '', affiliation).strip()
+                                    else:
+                                        # Fallback: try to parse name from plain text
+                                        clean_text = re.sub(r'<[^>]+>', '', remaining_text)
+                                        if '–' in clean_text:
+                                            parts = clean_text.split('–', 1)
+                                            name = parts[0].strip()
+                                            affiliation = parts[1].strip()
+                                        elif ' - ' in clean_text:
+                                            parts = clean_text.split(' - ', 1)
+                                            name = parts[0].strip()
+                                            affiliation = parts[1].strip()
+                                        else:
+                                            name = clean_text.strip()
+                                    
+                                    if name:  # Only add if we found a name
+                                        speakers.append({
+                                            'name': name,
+                                            'role': role,
+                                            'affiliation': affiliation
+                                        })
+                    
+                    # If no speakers found in structured format, fall back to old method
+                    if not speakers:
+                        speaker_name_elements = element.xpath('.//span[@class="biopopup"]/text()')
+                        speaker_name = speaker_name_elements[0].strip() if speaker_name_elements else ""
+                        
+                        affiliation = ""
+                        if presenter_elements:
+                            presenter_text = presenter_elements[0].text_content()
+                            if '–' in presenter_text:
+                                affiliation = presenter_text.split('–', 1)[1].strip()
+                            elif ' - ' in presenter_text:
+                                affiliation = presenter_text.split(' - ', 1)[1].strip()
+                        
+                        if speaker_name:
+                            speakers.append({
+                                'name': speaker_name,
+                                'role': 'speaker',
+                                'affiliation': affiliation
+                            })
                     
                     presentations.append({
                         'presentation_id': pres_id,
                         'time': time,
                         'title': title,
-                        'speaker': {
-                            'name': speaker_name,
-                            'affiliation': affiliation
-                        }
+                        'speakers': speakers,
+                        'speaker_count': len(speakers)
                     })
                     
                 except Exception as pres_error:
