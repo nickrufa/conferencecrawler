@@ -6,14 +6,12 @@
 <cfheader name="Content-Type" value="application/json">
 
 <cfparam name="url.conference_id" default="">
-<cfparam name="url.confid" default="">
+<cfparam name="url.confid" default="#url.conference_id#">
 
 <cfif structKeyExists(url, "confid") AND len(trim(url.confid))>
     <cfset conference_id = trim(url.confid)>
-<cfelseif structKeyExists(url, "conference_id") AND len(trim(url.conference_id))>
-    <cfset conference_id = trim(url.conference_id)>
 <cfelse>
-    <cfoutput>{"error": "confid or conference_id parameter is required"}</cfoutput>
+    <cfoutput>{"error": "conference_id parameter is required"}</cfoutput>
     <cfabort>
 </cfif>
 
@@ -26,15 +24,15 @@
     <cfquery name="getUsers" datasource="conference_crawler">
         SELECT
             id as user_id,
-            CONCAT(COALESCE(firstname, ''), ' ', COALESCE(lastname, '')) as name,
-            COALESCE(firstname, '') as firstname,
-            COALESCE(lastname, '') as lastname,
-            COALESCE(email, '') as email,
-            COALESCE(department, '') as department,
-            COALESCE(title, '') as title,
-            COALESCE(degree, '') as degree,
+            CONCAT(firstname, ' ', lastname) as name,
+            firstname,
+            lastname,
+            email,
+            department,
+            title,
+            degree,
             external_id,
-            COALESCE(external_system, '') as external_system,
+            external_system,
             active,
             created_at
         FROM conference_users

@@ -970,7 +970,7 @@
 
             const totalAssignments = dateGroup.timeSlots.reduce((sum, timeSlot) => {
                 return sum + timeSlot.sessions.reduce((sessionSum, session) => {
-                    return sessionSum + (assignments[session.session_id] || []).length;
+                    return sessionSum + (assignments[getSessionId(session)] || []).length;
                 }, 0);
             }, 0);
 
@@ -994,7 +994,7 @@
 
         function createTimeSlotElement(timeSlot) {
             const totalAssignments = timeSlot.sessions.reduce((sum, session) => {
-                return sum + (assignments[session.session_id] || []).length;
+                return sum + (assignments[getSessionId(session)] || []).length;
             }, 0);
 
             return `
@@ -1016,7 +1016,7 @@
         }
 
         function createGroupedSessionHTML(session, groupLocation) {
-            const sessionAssignments = assignments[session.session_id] || [];
+            const sessionAssignments = assignments[getSessionId(session)] || [];
             const assignedUsers = sessionAssignments.map(userId =>
                 users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
             ).filter(Boolean);
@@ -1030,9 +1030,9 @@
 
             const hasAssignments = sessionAssignments.length > 0;
             return `
-                <div class="grouped-session ${hasAssignments ? 'assigned' : 'unassigned'}" data-session-id="${session.session_id}">
+                <div class="grouped-session ${hasAssignments ? 'assigned' : 'unassigned'}" data-session-id="${getSessionId(session)}">
                     <div class="grouped-session-main">
-                        <div class="grouped-session-title">${session.session_info?.title || 'Untitled Session'}</div>
+                        <div class="grouped-session-title">${getSessionTitle(session)}</div>
                         <div class="grouped-session-meta">
                             ${showLocation ? `
                             <div class="grouped-session-meta-item">
@@ -1055,7 +1055,7 @@
                             ${hasConflict ? `
                                 <div class="conflict-popup">
                                     <button class="btn btn-sm" style="background: #ffc107; color: #333; border: 1px solid #f0ad4e;"
-                                            onclick="toggleAssignment('${session.session_id}', ${selectedUser.id})"
+                                            onclick="toggleAssignment('${getSessionId(session)}', ${selectedUser.id})"
                                             onmouseenter="showConflictTooltip(event, '${selectedUser.name}', '${conflicts.join('|||')}')"
                                             onmouseleave="hideConflictTooltip()">
                                         ⚠️ Conflict
@@ -1063,7 +1063,7 @@
                                 </div>
                             ` : `
                                 <button class="btn btn-sm ${sessionAssignments.includes(selectedUser.id) ? 'btn-danger' : 'btn-success'}"
-                                        onclick="toggleAssignment('${session.session_id}', ${selectedUser.id})">
+                                        onclick="toggleAssignment('${getSessionId(session)}', ${selectedUser.id})">
                                     ${sessionAssignments.includes(selectedUser.id) ? '➖ Remove' : '➕ Assign'}
                                 </button>
                             `}
@@ -1075,10 +1075,10 @@
 
         function createSessionElement(session) {
             const div = document.createElement('div');
-            const sessionAssignments = assignments[session.session_id] || [];
+            const sessionAssignments = assignments[getSessionId(session)] || [];
             const hasAssignments = sessionAssignments.length > 0;
             div.className = `session-item ${hasAssignments ? 'assigned' : 'unassigned'}`;
-            div.dataset.sessionId = session.session_id;
+            div.dataset.sessionId = getSessionId(session);
 
             const assignedUsers = sessionAssignments.map(userId =>
                 users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
@@ -1089,11 +1089,11 @@
             
             div.innerHTML = `
                 <div class="session-header">
-                    <div class="session-title">${session.session_info?.title || 'Untitled Session'}</div>
+                    <div class="session-title">${getSessionTitle(session)}</div>
                     <div>
                         ${selectedUser ? `
                             <button class="btn btn-sm ${sessionAssignments.includes(selectedUser.id) ? 'btn-danger' : hasConflict ? 'btn' : 'btn-success'}" 
-                                    onclick="toggleAssignment('${session.session_id}', ${selectedUser.id})"
+                                    onclick="toggleAssignment('${getSessionId(session)}', ${selectedUser.id})"
                                     ${hasConflict ? 'style="background: #ffc107; color: #333; border: 1px solid #f0ad4e;" title="⚠️ Time conflict - cannot attend multiple sessions simultaneously"' : ''}>
                                 ${sessionAssignments.includes(selectedUser.id) ? '➖ Remove' : hasConflict ? '⚠️ Conflict' : '➕ Assign'}
                             </button>
@@ -1134,7 +1134,7 @@
                             ${assignedUsers.map(user => `
                                 <span class="attendee-tag">
                                     ${user.name}
-                                    <button class="remove-attendee" onclick="removeAssignment(${session.session_id}, ${user.id})" title="Remove ${user.name}">×</button>
+                                    <button class="remove-attendee" onclick="removeAssignment(${getSessionId(session)}, ${user.id})" title="Remove ${user.name}">×</button>
                                 </span>
                             `).join('')}
                         </div>
@@ -1773,7 +1773,7 @@
                     const sessionsInSlot = sessionsByDate[date][timeSlot];
                     const sessionCount = sessionsInSlot.length;
                     const assignedCount = sessionsInSlot.filter(session =>
-                        assignments[session.session_id] && assignments[session.session_id].length > 0
+                        assignments[getSessionId(session)] && assignments[getSessionId(session)].length > 0
                     ).length;
 
                     const isFirstTimeSlot = index === 0;
@@ -1789,7 +1789,7 @@
 
                     // Add individual sessions under the time slot
                     sessionsInSlot.forEach(session => {
-                        const sessionAssignments = assignments[session.session_id] || [];
+                        const sessionAssignments = assignments[getSessionId(session)] || [];
                         const assignedUsers = sessionAssignments.map(userId =>
                             users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
                         ).filter(Boolean);
@@ -1823,7 +1823,7 @@
 
             container.innerHTML = calendarHTML;
 
-            const assignedCount = sessions.filter(s => assignments[s.session_id]?.length > 0).length;
+            const assignedCount = sessions.filter(s => assignments[getSessionId(s)]?.length > 0).length;
             summary.textContent = `${assignedCount}/${sessions.length} sessions assigned`;
         }
 
@@ -1940,7 +1940,7 @@
             report += '-'.repeat(30) + '\n\n';
             
             const sessionsWithAttendees = sessions.filter(session => 
-                assignments[session.session_id] && assignments[session.session_id].length > 0
+                assignments[getSessionId(session)] && assignments[getSessionId(session)].length > 0
             ).sort((a, b) => {
                 const dateA = new Date(a.schedule?.date || '2025-01-01');
                 const dateB = new Date(b.schedule?.date || '2025-01-01');
@@ -1948,10 +1948,15 @@
             });
             
             sessionsWithAttendees.forEach(session => {
-                const sessionAssignments = assignments[session.session_id] || [];
-                const assignedUsers = sessionAssignments.map(userId => 
+                const sessionAssignments = assignments[getSessionId(session)] || [];
+                const assignedUsers = sessionAssignments.map(userId =>
                     users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
-                ).filter(Boolean);
+                ).filter(Boolean).sort((a, b) => {
+                    // Sort by lastname alphabetically
+                    const lastNameA = a.lastname || a.name?.split(' ').pop() || '';
+                    const lastNameB = b.lastname || b.name?.split(' ').pop() || '';
+                    return lastNameA.localeCompare(lastNameB);
+                });
                 
                 report += `${session.session_info?.title || 'Untitled'}\n`;
                 report += `${formatDate(session.schedule?.date)} | ${session.schedule?.time || 'TBD'}\n`;
@@ -2141,6 +2146,37 @@
             console.error('❌ ' + message);
         }
 
+        function getSessionTitle(session) {
+            // For poster sessions, title is in presentation_details.title
+            // For regular sessions, title is in session_info.title
+            return session.presentation_details?.title || session.session_info?.title || 'Untitled Session';
+        }
+
+        function getSessionId(session) {
+            // For poster sessions, use presentation_details.id as session ID
+            // For regular sessions, use session_id
+            return session.session_id || session.presentation_details?.id || 'unknown';
+        }
+
+        function findSessionById(sessionId) {
+            // Try multiple matching strategies for both regular and poster sessions
+            let session = sessions.find(s => s.session_id === sessionId);
+            if (!session) {
+                session = sessions.find(s => s.session_id == sessionId);
+            }
+            if (!session) {
+                session = sessions.find(s => String(s.session_id) === String(sessionId));
+            }
+            // Also check poster sessions by presentation_details.id
+            if (!session) {
+                session = sessions.find(s => s.presentation_details?.id === sessionId);
+            }
+            if (!session) {
+                session = sessions.find(s => String(s.presentation_details?.id) === String(sessionId));
+            }
+            return session;
+        }
+
         function showAttendeesBySession() {
             if (sessions.length === 0) {
                 showErrorMessage('No sessions loaded yet');
@@ -2165,7 +2201,7 @@
             
             // Get sessions with attendees assigned
             const sessionsWithAttendees = sessions.filter(session => {
-                const hasAttendees = assignments[session.session_id] && assignments[session.session_id].length > 0;
+                const hasAttendees = assignments[getSessionId(session)] && assignments[getSessionId(session)].length > 0;
                 const matchesSearch = searchTerm === '' || 
                     session.session_info?.title?.toLowerCase().includes(searchTerm) ||
                     session.schedule?.location?.toLowerCase().includes(searchTerm);
@@ -2183,15 +2219,20 @@
 
             let html = '';
             sessionsWithAttendees.forEach(session => {
-                const sessionAssignments = assignments[session.session_id] || [];
-                const assignedUsers = sessionAssignments.map(userId => 
+                const sessionAssignments = assignments[getSessionId(session)] || [];
+                const assignedUsers = sessionAssignments.map(userId =>
                     users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
-                ).filter(Boolean);
+                ).filter(Boolean).sort((a, b) => {
+                    // Sort by lastname alphabetically
+                    const lastNameA = a.lastname || a.name?.split(' ').pop() || '';
+                    const lastNameB = b.lastname || b.name?.split(' ').pop() || '';
+                    return lastNameA.localeCompare(lastNameB);
+                });
 
                 html += `
                     <div style="border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 15px; padding: 15px;">
                         <h3 style="color: #2c5aa0; margin-bottom: 10px; font-size: 16px;">
-                            ${session.session_info?.title || 'Untitled Session'}
+                            ${getSessionTitle(session)}
                         </h3>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 10px; font-size: 13px; color: #666;">
                             <div><strong>📅 Date:</strong> ${formatDate(session.schedule?.date) || 'TBD'}</div>
@@ -2280,12 +2321,21 @@
                 const exactMatch = sessions.find(s => s.session_id === assignedId);
                 const looseMatch = sessions.find(s => s.session_id == assignedId);
                 const stringMatch = sessions.find(s => String(s.session_id) === String(assignedId));
+                const posterMatch = sessions.find(s => s.presentation_details?.id === assignedId);
+                const posterStringMatch = sessions.find(s => String(s.presentation_details?.id) === String(assignedId));
+                const findByIdMatch = findSessionById(assignedId);
+
                 console.log(`  Exact match (===): ${!!exactMatch}`);
                 console.log(`  Loose match (==): ${!!looseMatch}`);
                 console.log(`  String match: ${!!stringMatch}`);
-                
+                console.log(`  Poster match: ${!!posterMatch}`);
+                console.log(`  Poster string match: ${!!posterStringMatch}`);
+                console.log(`  findSessionById match: ${!!findByIdMatch}`);
+
                 if (exactMatch) console.log(`  Found: ${exactMatch.session_info?.title}`);
                 if (looseMatch && !exactMatch) console.log(`  Loose found: ${looseMatch.session_info?.title} (ID: ${looseMatch.session_id}, type: ${typeof looseMatch.session_id})`);
+                if (posterMatch) console.log(`  Poster found: ${posterMatch.presentation_details?.title} (ID: ${posterMatch.presentation_details?.id})`);
+                if (findByIdMatch) console.log(`  Helper found: ${getSessionTitle(findByIdMatch)}`);
             });
             
             // Separate found sessions from missing ones
@@ -2293,15 +2343,8 @@
             const missingSessions = [];
             
             userAssignments.forEach(sessionId => {
-                // Try multiple matching strategies due to type mismatches
-                let session = sessions.find(s => s.session_id === sessionId);
-                if (!session) {
-                    session = sessions.find(s => s.session_id == sessionId);
-                }
-                if (!session) {
-                    session = sessions.find(s => String(s.session_id) === String(sessionId));
-                }
-                
+                const session = findSessionById(sessionId);
+
                 if (session) {
                     foundSessions.push(session);
                 } else {
@@ -2341,8 +2384,8 @@
                     html += `
                         <div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 10px; ${hasConflict ? 'border-color: #dc3545; background: #fff5f5;' : 'background: white;'}">
                             <div style="display: flex; justify-content: between; align-items: flex-start; margin-bottom: 8px;">
-                                <h4 style="color: #2c5aa0; margin: 0; flex: 1;">${session.session_info?.title || 'Untitled Session'}</h4>
-                                <button onclick="removeAssignment('${session.session_id}', ${userId})" 
+                                <h4 style="color: #2c5aa0; margin: 0; flex: 1;">${getSessionTitle(session)}</h4>
+                                <button onclick="removeAssignment('${getSessionId(session)}', ${userId})" 
                                     style="background: #dc3545; color: white; border: none; padding: 4px 8px; border-radius: 3px; font-size: 12px; cursor: pointer;">
                                     Remove
                                 </button>
@@ -2448,7 +2491,12 @@
                     user.email.toLowerCase().includes(searchTerm) ||
                     (user.department && user.department.toLowerCase().includes(searchTerm));
                 return matchesSearch;
-            }).sort((a, b) => a.name.localeCompare(b.name));
+            }).sort((a, b) => {
+                // Sort by lastname alphabetically
+                const lastNameA = a.lastname || a.name?.split(' ').pop() || '';
+                const lastNameB = b.lastname || b.name?.split(' ').pop() || '';
+                return lastNameA.localeCompare(lastNameB);
+            });
 
             if (filteredUsers.length === 0) {
                 container.innerHTML = '<div class="no-data">No attendees found.</div>';
@@ -2458,8 +2506,9 @@
             let html = '';
             filteredUsers.forEach(user => {
                 const userSessionIds = getUserAssignments(user.id);
+
                 const userSessions = userSessionIds
-                    .map(sessionId => sessions.find(s => s.session_id === sessionId))
+                    .map(sessionId => findSessionById(sessionId))
                     .filter(Boolean)
                     .sort((a, b) => {
                         const dateA = new Date(a.schedule?.date || '2025-01-01');
@@ -2489,7 +2538,7 @@
                             <div style="margin-top: 8px;">
                                 ${userSessions.map(session => `
                                     <div style="padding: 8px; background: #f8f9fa; border-radius: 6px; margin-bottom: 5px; border-left: 3px solid #2c5aa0;">
-                                        <strong>${session.session_info?.title || 'Untitled Session'}</strong>
+                                        <strong>${getSessionTitle(session)}</strong>
                                         <br><span style="font-size: 12px; color: #666;">
                                             📅 ${formatDate(session.schedule?.date) || 'TBD'} • 
                                             🕐 ${session.schedule?.time || 'TBD'} • 
