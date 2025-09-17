@@ -127,7 +127,6 @@ input:focus, select:focus, textarea:focus {
 .main-layout {
     display: grid;
     grid-template-columns: 300px 1fr;
-    grid-template-rows: 1fr auto;
     gap: 20px;
     height: 80vh;
 }
@@ -139,6 +138,77 @@ input:focus, select:focus, textarea:focus {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+}
+
+/* Tab Styles */
+.tabbed-panel {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-navigation {
+    display: flex;
+    background: white;
+    gap: 1px;
+    border-bottom: 1px solid #34495e;
+    justify-content: flex-start;
+}
+
+.tab-button {
+    background: white;
+    border: 2px solid #34495e;
+    border-bottom: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    color: #34495e;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 8px 8px 0 0;
+    margin-right: 1px;
+    white-space: nowrap;
+}
+
+.tab-button:last-child {
+    margin-right: 0;
+}
+
+.tab-button:hover {
+    background: #f8f9fa;
+    color: #2c5aa0;
+    border-color: #2c5aa0;
+}
+
+.tab-button.active {
+    background: #34495e;
+    color: white;
+    border-color: #34495e;
+    border-bottom: 2px solid #34495e;
+    z-index: 1;
+    position: relative;
+    margin-bottom: -1px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(44, 90, 160, 0.3);
+}
+
+
+.tab-content {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.tab-content.active {
+    display: flex;
 }
 
 .panel-header {
@@ -235,6 +305,16 @@ input:focus, select:focus, textarea:focus {
 .session-item:hover {
     border-color: #2c5aa0;
     box-shadow: 0 2px 8px rgba(44, 90, 160, 0.1);
+}
+
+.session-item.assigned {
+    border-left: 4px solid #2c5aa0;
+    background: #e3f2fd;
+}
+
+.session-item.unassigned {
+    border-left: 4px solid #ffc107;
+    background: #fffdf8;
 }
 
 .session-header {
@@ -373,10 +453,12 @@ input:focus, select:focus, textarea:focus {
     font-size: 16px;
 }
 
+/* Old calendar panel styles - kept for compatibility but not used in tabbed view */
 .calendar-panel {
     grid-column: 1 / -1;
     height: 200px;
     transition: height 0.3s ease;
+    display: none; /* Hidden since we're using tabs now */
 }
 
 .calendar-panel.expanded {
@@ -386,9 +468,20 @@ input:focus, select:focus, textarea:focus {
 
 .calendar-view {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     height: 100%;
+    overflow-x: auto;
+    padding: 15px;
+}
+
+/* Calendar in tab gets much more height */
+.tab-content .calendar-view {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    min-height: 60vh;
+    height: auto;
     overflow-x: auto;
     padding: 15px;
 }
@@ -397,10 +490,19 @@ input:focus, select:focus, textarea:focus {
     border: 1px solid #e9ecef;
     border-radius: 8px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh;
+}
+
+.day-content {
+    overflow-y: auto;
+    flex: 1;
+    padding: 8px;
 }
 
 .day-header {
-    background: #2c5aa0;
+    background: linear-gradient(135deg, #34495e, #2c3e50);
     color: white;
     padding: 10px;
     font-weight: bold;
@@ -426,8 +528,47 @@ input:focus, select:focus, textarea:focus {
 }
 
 .time-slot.unassigned {
-    background: #fff3e0;
-    border-left: 3px solid #ff9800;
+    background: #fffdf8;
+    border-left: 3px solid #ffc107;
+}
+
+/* Calendar-specific styles */
+.day-content .time-slot-header {
+    background: linear-gradient(135deg, #e9edf0, #a2a4a5);
+    color: #495057;
+    padding: 8px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    border-left: 3px solid transparent;
+    font-weight: 600;
+}
+
+/* Calendar time slot headers should not change color based on assignment status - they stay gray like in session view */
+
+.calendar-session {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 6px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.calendar-session:hover {
+    border-color: #2c5aa0;
+    box-shadow: 0 1px 4px rgba(44, 90, 160, 0.1);
+}
+
+.calendar-session.assigned {
+    border-left-color: #2c5aa0;
+    background: #e3f2fd;
+}
+
+.calendar-session.unassigned {
+    border-left-color: #ffc107;
+    background: #fffef8;
 }
 
 .tooltip {
@@ -580,9 +721,9 @@ input:focus, select:focus, textarea:focus {
 }
 
 .detailed-day-header {
-    background: linear-gradient(135deg, #2c5aa0, #3b6db0);
+    background: linear-gradient(135deg, #34495e, #2c3e50);
     color: white;
-    padding: 12px 16px;
+    padding: 5px 10px;
     font-size: 16px;
     font-weight: 600;
     border-radius: 8px 8px 0 0;
@@ -604,17 +745,35 @@ input:focus, select:focus, textarea:focus {
     background: linear-gradient(135deg, #e9edf0, #a2a4a5);
     color: #495057;
     padding: 5px 10px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: 600;
     border-top: 1px solid #a2a4a5;
+    border-left: 3px solid #a2a4a5;
     cursor: pointer;
     transition: all 0.2s ease;
     user-select: none;
+    font-size: 16px;
 }
 
 .time-slot-header:hover {
+    background: linear-gradient(135deg, #e9edf0, #a2a4a5);
+}
+
+.time-slot-header.cal {
+    background: linear-gradient(135deg, #e9edf0, #e9edf0);
+    font-size: 14px;
+    padding: 2px;
+    margin-top: 10px;
+}
+
+.time-slot-header.cal.first {
+    margin-top: 5px;
+}
+
+.time-slot-header.cal:hover {
     background: linear-gradient(135deg, #e9edf0, #a2a4a5);
 }
 
@@ -897,7 +1056,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .grouped-session {
-    border-bottom: 1px solid #f8f9fa;
+    border-bottom: 1px solid gainsboro;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
@@ -911,6 +1070,16 @@ input:focus, select:focus, textarea:focus {
 
 .grouped-session:hover {
     background-color: #f8f9fa;
+}
+
+.grouped-session.assigned {
+    border-left: 4px solid #2c5aa0;
+    background: #e3f2fd;
+}
+
+.grouped-session.unassigned {
+    border-left: 4px solid #ffc107;
+    background: #fffdf8;
 }
 
 .grouped-session-main {

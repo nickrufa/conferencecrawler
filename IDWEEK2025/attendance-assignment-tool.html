@@ -55,45 +55,50 @@
             </div>
         </div>
 
-        <div class="panel">
-            <div class="panel-header">
-                <span>📅 Conference Sessions</span>
-                <span><button class="btn_header" id="expand-collapse-all" onclick="toggleAllTimeSlots()">📋 Collapse All</button></span>
-                <span id="session-count">0 sessions</span>
+        <div class="panel tabbed-panel">
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-button active" onclick="switchTab('sessions')" id="sessions-tab">
+                    📋 Conference Sessions
+                </button>
+                <button class="tab-button" onclick="switchTab('calendar')" id="calendar-tab">
+                    📅 Weekly Calendar View
+                </button>
             </div>
-            
-            <div class="session-filters">
-                <input type="text" id="search-input" placeholder="🔍 Search sessions, locations, speakers...">
-                <select id="date-filter">
-                    <option value="">All Dates</option>
-                </select>
-                <select id="type-filter">
-                    <option value="">All Types</option>
-                </select>
-                <button class="btn btn-sm" onclick="clearFilters()">Clear</button>
-            </div>
-            
-            <div class="panel-content">
-                <div id="sessions-container">
-                    <div class="loading">Loading sessions...</div>
+
+            <!-- Sessions Tab Content -->
+            <div id="sessions-tab-content" class="tab-content active">
+                <div class="panel-header">
+                    <span id="session-count">0 sessions</span>
+                    <span><button class="btn_header" id="expand-collapse-all" onclick="toggleAllTimeSlots()">📋 Collapse All</button></span>
+                </div>
+
+                <div class="session-filters">
+                    <input type="text" id="search-input" placeholder="🔍 Search sessions, locations, speakers...">
+                    <select id="date-filter">
+                        <option value="">All Dates</option>
+                    </select>
+                    <select id="type-filter">
+                        <option value="">All Types</option>
+                    </select>
+                    <button class="btn btn-sm" onclick="clearFilters()">Clear</button>
+                </div>
+
+                <div class="panel-content">
+                    <div id="sessions-container">
+                        <div class="loading">Loading sessions...</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- Calendar Panel -->
-        <div class="panel calendar-panel">
-            <div class="panel-header">
-                <span>📅 Weekly Calendar View</span>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <button id="calendar-toggle-btn" onclick="toggleCalendarView()" 
-                            style="background: #2c5aa0; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 12px;">
-                        Detailed View
-                    </button>
+
+            <!-- Calendar Tab Content -->
+            <div id="calendar-tab-content" class="tab-content">
+                <div class="panel-header">
                     <span id="calendar-summary">Loading calendar...</span>
                 </div>
-            </div>
-            <div class="calendar-view" id="calendar-container">
-                <!-- Calendar will be populated by JavaScript -->
+                <div class="calendar-view" id="calendar-container">
+                    <!-- Calendar will be populated by JavaScript -->
+                </div>
             </div>
         </div>
     </div>
@@ -954,8 +959,9 @@
             const sessionLocation = session.schedule?.location || groupLocation || 'TBD';
             const showLocation = sessionLocation !== groupLocation;
 
+            const hasAssignments = sessionAssignments.length > 0;
             return `
-                <div class="grouped-session" data-session-id="${session.session_id}">
+                <div class="grouped-session ${hasAssignments ? 'assigned' : 'unassigned'}" data-session-id="${session.session_id}">
                     <div class="grouped-session-main">
                         <div class="grouped-session-title">${session.session_info?.title || 'Untitled Session'}</div>
                         <div class="grouped-session-meta">
@@ -1000,11 +1006,12 @@
 
         function createSessionElement(session) {
             const div = document.createElement('div');
-            div.className = 'session-item';
+            const sessionAssignments = assignments[session.session_id] || [];
+            const hasAssignments = sessionAssignments.length > 0;
+            div.className = `session-item ${hasAssignments ? 'assigned' : 'unassigned'}`;
             div.dataset.sessionId = session.session_id;
 
-            const sessionAssignments = assignments[session.session_id] || [];
-            const assignedUsers = sessionAssignments.map(userId => 
+            const assignedUsers = sessionAssignments.map(userId =>
                 users.find(u => u.id === userId)
             ).filter(Boolean);
 
@@ -1575,34 +1582,42 @@
                 return;
             }
 
-            // Group sessions by date
+            // Group sessions by date, then by time slot
             const sessionsByDate = {};
             sessions.forEach(session => {
                 const date = session.schedule?.date;
                 if (date) {
                     if (!sessionsByDate[date]) {
-                        sessionsByDate[date] = [];
+                        sessionsByDate[date] = {};
                     }
-                    sessionsByDate[date].push(session);
+                    const time = session.schedule?.time || 'Time TBD';
+                    if (!sessionsByDate[date][time]) {
+                        sessionsByDate[date][time] = [];
+                    }
+                    sessionsByDate[date][time].push(session);
                 }
             });
 
-            // Sort dates
-            const sortedDates = Object.keys(sessionsByDate).sort();
-            
-            // Show all dates (not just first 4)
-            const displayDates = sortedDates;
-            
-            if (displayDates.length === 0) {
+            // Sort dates chronologically
+            const sortedDates = Object.keys(sessionsByDate).sort((a, b) => {
+                const dateA = new Date(a);
+                const dateB = new Date(b);
+                if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
+                    return dateA - dateB;
+                }
+                return a.localeCompare(b);
+            });
+
+            if (sortedDates.length === 0) {
                 container.innerHTML = '<div class="no-data">No sessions with dates available.</div>';
                 summary.textContent = 'No scheduled sessions';
                 return;
             }
 
             let calendarHTML = '';
-            displayDates.forEach(date => {
+            sortedDates.forEach(date => {
                 console.log('Processing date:', date); // Debug log
-                
+
                 // Handle different date formats
                 let dateObj;
                 if (date.includes(',')) {
@@ -1612,7 +1627,7 @@
                     // Try adding time for parsing
                     dateObj = new Date(date + 'T00:00:00');
                 }
-                
+
                 // Fallback if date parsing fails
                 let dayName, dayNumber;
                 if (isNaN(dateObj.getTime())) {
@@ -1623,45 +1638,85 @@
                     dayName = dateObj.toLocaleDateString('en-US', { weekday: 'long' });
                     dayNumber = dateObj.getDate();
                 }
-                
-                const daySessions = sessionsByDate[date].sort((a, b) => {
-                    const timeA = a.schedule?.time || '';
-                    const timeB = b.schedule?.time || '';
-                    return timeA.localeCompare(timeB);
+
+                // Parse times for sorting
+                const parseTime = (timeStr) => {
+                    if (!timeStr || timeStr === 'TBD' || timeStr === 'Time TBD') return 0;
+                    const match = timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+                    if (!match) return 0;
+                    let hours = parseInt(match[1]);
+                    const minutes = parseInt(match[2]);
+                    const period = match[3].toUpperCase();
+                    if (period === 'PM' && hours !== 12) hours += 12;
+                    if (period === 'AM' && hours === 12) hours = 0;
+                    return hours * 60 + minutes;
+                };
+
+                // Sort time slots chronologically
+                const timeSlots = Object.keys(sessionsByDate[date]).sort((a, b) => {
+                    return parseTime(a) - parseTime(b);
                 });
 
                 calendarHTML += `
                     <div class="day-column">
                         <div class="day-header">${dayName} ${dayNumber}</div>
+                        <div class="day-content">
                 `;
 
-                daySessions.slice(0, 10).forEach(session => { // Show more sessions per day
-                    const sessionAssignments = assignments[session.session_id] || [];
-                    const assignedUsers = sessionAssignments.map(userId => 
-                        users.find(u => u.id === userId)
-                    ).filter(Boolean);
-                    
-                    const hasAssignments = assignedUsers.length > 0;
-                    const className = hasAssignments ? 'assigned' : 'unassigned';
-                    const title = session.session_info?.title || 'Untitled';
-                    
+                timeSlots.forEach((timeSlot, index) => {
+                    const sessionsInSlot = sessionsByDate[date][timeSlot];
+                    const sessionCount = sessionsInSlot.length;
+                    const assignedCount = sessionsInSlot.filter(session =>
+                        assignments[session.session_id] && assignments[session.session_id].length > 0
+                    ).length;
+
+                    const isFirstTimeSlot = index === 0;
                     calendarHTML += `
-                        <div class="time-slot ${className}" onclick="scrollToSession('${session.session_id}')" title="${title} - ${assignedUsers.length} MSDs assigned">
-                            <div style="font-weight: bold; font-size: 11px;">${session.schedule?.time || 'TBD'}</div>
-                            <div style="font-size: 10px; line-height: 1.2; margin: 2px 0;">${title.length > 50 ? title.substring(0, 50) + '...' : title}</div>
-                            ${assignedUsers.length > 0 ? 
-                                `<div style="font-size: 9px; color: #666; margin-top: 2px; font-weight: bold;">👥 ${assignedUsers.map(u => u.name.split(' ')[0]).join(', ')}</div>` : 
-                                '<div style="font-size: 9px; color: #999; margin-top: 2px;">⚪ Unassigned</div>'
-                            }
+                        <div class="time-slot-header cal ${isFirstTimeSlot ? 'first' : ''}">
+                            <div style="font-weight: bold; margin-bottom: 4px;">${timeSlot}</div>
+                            <div style="font-size: 11px; color: #666;">
+                                ${sessionCount} session${sessionCount !== 1 ? 's' : ''}
+                                ${assignedCount > 0 ? `• ${assignedCount} assigned` : ''}
+                            </div>
                         </div>
                     `;
+
+                    // Add individual sessions under the time slot
+                    sessionsInSlot.forEach(session => {
+                        const sessionAssignments = assignments[session.session_id] || [];
+                        const assignedUsers = sessionAssignments.map(userId =>
+                            users.find(u => u.id === userId)
+                        ).filter(Boolean);
+
+                        const hasAssignments = assignedUsers.length > 0;
+                        const title = session.session_info?.title || 'Untitled';
+                        const location = session.schedule?.location || 'TBD';
+
+                        calendarHTML += `
+                            <div class="calendar-session ${hasAssignments ? 'assigned' : 'unassigned'}"
+                                 onclick="switchTab('sessions')"
+                                 title="${title} - ${location}">
+                                <div style="font-size: 12px; font-weight: 600;">
+                                    ${title.length > 60 ? title.substring(0, 60) + '...' : title}
+                                </div>
+                                <div style="font-size: 10px; color: #666; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>📍 ${location}</span>
+                                    ${assignedUsers.length > 0 ?
+                                        `<span style="font-size: 9px; font-weight: bold;">👥 ${assignedUsers.map(u => u.name.split(' ')[0]).join(', ')}</span>` :
+                                        '<span style="font-size: 9px; color: #999;">⚪ Unassigned</span>'
+                                    }
+                                </div>
+                            </div>
+                        `;
+                    });
                 });
 
-                calendarHTML += '</div>';
+                calendarHTML += '</div></div>'; // Close day-content and day-column
+
             });
 
             container.innerHTML = calendarHTML;
-            
+
             const assignedCount = sessions.filter(s => assignments[s.session_id]?.length > 0).length;
             summary.textContent = `${assignedCount}/${sessions.length} sessions assigned`;
         }
@@ -1679,193 +1734,30 @@
             });
         }
 
-        // Calendar view toggle functionality
-        let isDetailedView = false;
+        function switchTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
 
-        function toggleCalendarView() {
-            isDetailedView = !isDetailedView;
-            const container = document.getElementById('calendar-container');
-            const toggleBtn = document.getElementById('calendar-toggle-btn');
-            const calendarPanel = container.closest('.calendar-panel');
-            
-            if (isDetailedView) {
-                container.className = 'calendar-view detailed';
-                toggleBtn.textContent = 'Compact View';
-                calendarPanel.classList.add('expanded');
-                renderDetailedCalendar();
-            } else {
-                container.className = 'calendar-view';
-                toggleBtn.textContent = 'Detailed View';
-                calendarPanel.classList.remove('expanded');
-                renderCalendar();
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+
+            // Show selected tab content
+            const selectedTabContent = document.getElementById(tabName + '-tab-content');
+            const selectedTabButton = document.getElementById(tabName + '-tab');
+
+            if (selectedTabContent && selectedTabButton) {
+                selectedTabContent.classList.add('active');
+                selectedTabButton.classList.add('active');
+
+                // If switching to calendar tab, refresh the calendar display
+                if (tabName === 'calendar') {
+                    renderCalendar();
+                }
             }
         }
 
-        function renderDetailedCalendar() {
-            const container = document.getElementById('calendar-container');
-            const summary = document.getElementById('calendar-summary');
-
-            if (sessions.length === 0) {
-                container.innerHTML = '<div class="no-data">No sessions available for detailed calendar view.</div>';
-                summary.textContent = 'No data';
-                return;
-            }
-
-            // Group sessions by date, then by time slot for desk calendar style
-            const sessionsByDate = {};
-            sessions.forEach(session => {
-                const date = session.schedule?.date;
-                if (date) {
-                    if (!sessionsByDate[date]) {
-                        sessionsByDate[date] = {};
-                    }
-                    const time = session.schedule?.time || 'Time TBD';
-                    if (!sessionsByDate[date][time]) {
-                        sessionsByDate[date][time] = [];
-                    }
-                    sessionsByDate[date][time].push(session);
-                }
-            });
-
-            // Sort dates
-            const sortedDates = Object.keys(sessionsByDate).sort((a, b) => {
-                const dateA = new Date(a);
-                const dateB = new Date(b);
-                if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
-                    return dateA - dateB;
-                }
-                return a.localeCompare(b);
-            });
-
-            if (sortedDates.length === 0) {
-                container.innerHTML = '<div class="no-data">No sessions with dates available.</div>';
-                summary.textContent = 'No scheduled sessions';
-                return;
-            }
-
-            let detailedHTML = `
-                <div style="background: #f8f9fa; padding: 8px; margin-bottom: 15px; border-radius: 6px; text-align: center; color: #666; font-size: 12px; border: 1px solid #e9ecef;">
-                    📊 ${sortedDates.length} days • ${sessions.length} sessions | Desk calendar style view
-                </div>
-            `;
-
-            sortedDates.forEach(date => {
-                // Parse date for display
-                let dateObj;
-                if (date.includes(',')) {
-                    dateObj = new Date(date);
-                } else {
-                    dateObj = new Date(date + 'T00:00:00');
-                }
-
-                let dateDisplay;
-                if (isNaN(dateObj.getTime())) {
-                    dateDisplay = date;
-                } else {
-                    dateDisplay = dateObj.toLocaleDateString('en-US', {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    });
-                }
-
-                const dayTimeSlots = sessionsByDate[date];
-                const totalSessions = Object.values(dayTimeSlots).reduce((sum, sessions) => sum + sessions.length, 0);
-
-                detailedHTML += `
-                    <div class="detailed-day">
-                        <div class="detailed-day-header">
-                            📅 ${dateDisplay} (${totalSessions} sessions)
-                        </div>
-                        <div class="detailed-sessions" style="padding: 8px;">
-                `;
-
-                // Sort time slots
-                const sortedTimes = Object.keys(dayTimeSlots).sort((a, b) => {
-                    // Try to parse and sort times properly
-                    if (a === 'Time TBD') return 1;
-                    if (b === 'Time TBD') return -1;
-                    return a.localeCompare(b);
-                });
-
-                sortedTimes.forEach(timeSlot => {
-                    const sessionsInTimeSlot = dayTimeSlots[timeSlot];
-
-                    detailedHTML += `
-                        <div class="time-slot-group" style="margin-bottom: 12px; border: 1px solid #e0e0e0; border-radius: 6px; overflow: hidden;">
-                            <div class="time-slot-header" style="background: #f5f5f5; padding: 6px 10px; font-weight: 600; font-size: 13px; color: #2c5aa0; border-bottom: 1px solid #e0e0e0;">
-                                ⏰ ${timeSlot} ${sessionsInTimeSlot.length > 1 ? `(${sessionsInTimeSlot.length} concurrent sessions)` : ''}
-                            </div>
-                            <div class="concurrent-sessions" style="display: flex; flex-direction: column; gap: 1px;">
-                    `;
-
-                    sessionsInTimeSlot.forEach((session, index) => {
-                        const sessionAssignments = assignments[session.session_id] || [];
-                        const assignedUsers = sessionAssignments.map(userId =>
-                            users.find(u => u.id === userId)
-                        ).filter(Boolean);
-
-                        const hasAssignments = assignedUsers.length > 0;
-                        const className = hasAssignments ? 'assigned' : 'unassigned';
-
-                        const title = session.session_info?.title || session.title || 'Untitled Session';
-                        const sessionType = session.session_info?.type || session.session_type || 'Session';
-                        const location = session.schedule?.location || 'Location TBD';
-
-                        detailedHTML += `
-                            <div class="compact-session ${className}" onclick="scrollToSession('${session.session_id}')"
-                                 style="padding: 8px 10px; background: ${hasAssignments ? '#f0f8ff' : '#fffaf0'};
-                                        border-left: 3px solid ${hasAssignments ? '#28a745' : '#ffc107'};
-                                        cursor: pointer; transition: background-color 0.2s;
-                                        ${index > 0 ? 'border-top: 1px solid #e0e0e0;' : ''}">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px;">
-                                    <div style="flex: 1; min-width: 0;">
-                                        <div class="session-title" style="font-weight: 600; font-size: 13px; color: #2c5aa0; line-height: 1.2; margin-bottom: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${title}">
-                                            ${title}
-                                        </div>
-                                        <div style="display: flex; gap: 12px; font-size: 11px; color: #666; margin-bottom: 4px;">
-                                            <span>📍 ${location}</span>
-                                            <span style="background: #e9ecef; padding: 1px 6px; border-radius: 8px;">${sessionType}</span>
-                                            <span>🆔 ${session.session_id || 'N/A'}</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                ${assignedUsers.length > 0 ? `
-                                    <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px;">
-                                        ${assignedUsers.map(user => `
-                                            <span style="background: #d4edda; color: #155724; padding: 2px 6px; border-radius: 8px; font-size: 10px; font-weight: 500;">
-                                                👨‍⚕️ ${user.name.split(' ')[0]} ${user.name.split(' ')[1] ? user.name.split(' ')[1][0] + '.' : ''}
-                                            </span>
-                                        `).join('')}
-                                    </div>
-                                ` : `
-                                    <div style="font-size: 10px; color: #999; font-style: italic; margin-top: 2px;">
-                                        ⚪ No MSDs assigned
-                                    </div>
-                                `}
-                            </div>
-                        `;
-                    });
-
-                    detailedHTML += `
-                            </div>
-                        </div>
-                    `;
-                });
-
-                detailedHTML += `
-                        </div>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = detailedHTML;
-
-            const assignedCount = sessions.filter(s => assignments[s.session_id]?.length > 0).length;
-            summary.textContent = `${assignedCount}/${sessions.length} sessions assigned`;
-        }
 
         function exportAssignments() {
             const exportData = {
