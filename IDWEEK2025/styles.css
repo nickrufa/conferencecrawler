@@ -751,7 +751,7 @@ input:focus, select:focus, textarea:focus {
     align-items: center;
     font-weight: 600;
     border-top: 1px solid #a2a4a5;
-    border-left: 3px solid #a2a4a5;
+    border-left: 4px solid #a2a4a5;
     cursor: pointer;
     transition: all 0.2s ease;
     user-select: none;

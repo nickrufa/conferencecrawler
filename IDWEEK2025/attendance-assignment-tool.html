@@ -1696,13 +1696,13 @@
                             <div class="calendar-session ${hasAssignments ? 'assigned' : 'unassigned'}"
                                  onclick="switchTab('sessions')"
                                  title="${title} - ${location}">
-                                <div style="font-size: 12px; font-weight: 600;">
+                                <div style="font-size: 14px; font-weight: 600;">
                                     ${title.length > 60 ? title.substring(0, 60) + '...' : title}
                                 </div>
                                 <div style="font-size: 10px; color: #666; display: flex; justify-content: space-between; align-items: center;">
                                     <span>📍 ${location}</span>
                                     ${assignedUsers.length > 0 ?
-                                        `<span style="font-size: 9px; font-weight: bold;">👥 ${assignedUsers.map(u => u.name.split(' ')[0]).join(', ')}</span>` :
+                                        `<span style="font-size: 12px; font-weight: bold;">👥 ${assignedUsers.map(u => u.name.split(' ')[0]).join(', ')}</span>` :
                                         '<span style="font-size: 9px; color: #999;">⚪ Unassigned</span>'
                                     }
                                 </div>
