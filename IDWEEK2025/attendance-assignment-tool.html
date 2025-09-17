@@ -38,6 +38,7 @@
             <button class="btn" onclick="showSessionsByAttendee()">📅 Sessions by Attendee</button>
             <button class="btn" onclick="exportAssignments()">💾 Export Data</button>
             <button class="btn" onclick="generateReports()">📊 Generate Reports</button>
+            <button class="btn" onclick="forceReload()">🔄 Reload Data</button>
             <button class="btn btn-danger" onclick="clearAllData()">🗑️ Clear All</button>
         </div>
     </div>
@@ -235,48 +236,115 @@
             });
         }
 
+        function getConferenceId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('confid') || urlParams.get('conference_id') || '1'; // Default to 1 if not specified
+        }
+
         function loadMSDData() {
-            console.log('Loading Medical Science Directors data...');
-            
-            // Try to load medical_science_directors.json
-            fetch('medical_science_directors.json')
+            console.log('Loading Medical Science Directors from database...');
+            const conferenceId = getConferenceId();
+            console.log('🔍 Using conference ID:', conferenceId);
+
+            // Load conference users from database API
+            console.log('🔍 Attempting to fetch from:', `api_conference_users.cfm?confid=${conferenceId}&_t=${Date.now()}`);
+            fetch(`api_conference_users.cfm?confid=${conferenceId}&_t=${Date.now()}`)
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error('MSD file not found');
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
                     return response.json();
                 })
                 .then(data => {
-                    console.log(`Successfully loaded ${data.length} Medical Science Directors`);
+                    console.log(`✅ Successfully loaded ${data.length} conference users from DATABASE`);
+                    console.log('🔍 Raw database users:', data);
                     msds = data;
-                    // Pre-populate users with MSD data if users is empty
+                    // Pre-populate users with conference user data if users is empty
                     if (users.length === 0) {
-                        users = msds.map(msd => ({
-                            id: msd.melintaId,
-                            melintaId: msd.melintaId,
-                            name: msd.name,
-                            email: msd.email,
-                            department: msd.department || 'Medical Affairs',
-                            role: msd.role,
-                            territory: msd.territory,
-                            territories: msd.territories,
-                            phone: msd.phone,
-                            createdAt: new Date().toISOString()
-                        }));
+                        users = msds.map(user => {
+                            console.log('🔍 Processing user:', user);
+                            const mappedUser = {
+                                id: user.USER_ID || user.user_id || user.id,
+                                userId: user.USER_ID || user.user_id || user.id,
+                                name: user.NAME || user.name || `${user.FIRSTNAME || user.firstname || ''} ${user.LASTNAME || user.lastname || ''}`.trim() || 'Unknown User',
+                                firstname: user.FIRSTNAME || user.firstname || '',
+                                lastname: user.LASTNAME || user.lastname || '',
+                                email: user.EMAIL || user.email || '',
+                                department: user.DEPARTMENT || user.department || 'Medical Affairs',
+                                role: user.ROLE || user.role || user.TITLE || user.title || 'Medical Science Director',
+                                title: user.TITLE || user.title || '',
+                                degree: user.DEGREE || user.degree || '',
+                                territory: user.TERRITORY || user.territory || '',
+                                phone: user.PHONE || user.phone || '',
+                                externalId: user.EXTERNAL_ID || user.external_id,
+                                externalSystem: user.EXTERNAL_SYSTEM || user.external_system || '',
+                                conferenceRole: user.CONFERENCE_ROLE || user.conference_role || 'msd',
+                                active: user.ACTIVE || user.active,
+                                createdAt: user.CREATED_AT || user.created_at || new Date().toISOString()
+                            };
+                            console.log('🔍 Mapped user:', mappedUser);
+                            return mappedUser;
+                        });
+                        console.log('✅ Final users array:', users);
                         renderUsersMin();
                         updateStats();
                     }
-                    showSuccessMessage(`Loaded ${msds.length} Medical Science Directors!`);
+                    showSuccessMessage(`Loaded ${msds.length} conference users!`);
                     
                     // Load stored assignments after MSDs are loaded
                     loadStoredData();
                 })
                 .catch(error => {
-                    console.error('Error loading MSD data:', error);
-                    console.log('Using fallback MSD data');
-                    
-                    // Fallback MSD data
-                    msds = [
+                    console.error('❌ Error loading conference users from database:', error);
+                    console.error('❌ Error details:', {
+                        message: error.message,
+                        name: error.name,
+                        stack: error.stack
+                    });
+                    alert('❌ Database API not available. Please start the API server.');
+                    console.log('Falling back to local JSON file...');
+
+                    // Fallback to JSON file if database is not available
+                    return fetch('medical_science_directors.json')
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('JSON fallback file not found');
+                            }
+                            return response.json();
+                        })
+                        .then(jsonData => {
+                            console.log(`Loaded ${jsonData.length} users from JSON fallback`);
+                            msds = jsonData;
+                            if (users.length === 0) {
+                                users = msds.map(msd => ({
+                                    id: msd.melintaId || msd.id,
+                                    userId: msd.melintaId || msd.id,
+                                    name: msd.name,
+                                    email: msd.email,
+                                    department: msd.department || 'Medical Affairs',
+                                    role: msd.role,
+                                    title: msd.role,
+                                    degree: msd.degree,
+                                    territory: msd.territory,
+                                    phone: msd.phone,
+                                    externalId: msd.melintaId,
+                                    externalSystem: 'melinta',
+                                    conferenceRole: 'msd',
+                                    active: true,
+                                    createdAt: new Date().toISOString()
+                                }));
+                                renderUsersMin();
+                                updateStats();
+                            }
+                            showSuccessMessage(`Loaded ${msds.length} users from JSON fallback`);
+                            loadStoredData();
+                        })
+                        .catch(jsonError => {
+                            console.error('Both database and JSON fallback failed:', jsonError);
+                            console.log('Using hardcoded fallback data');
+
+                            // Fallback MSD data
+                            msds = [
                         {
                             "id": 3,
                             "melintaId": 3,
@@ -387,10 +455,11 @@
                         updateStats();
                         saveToStorage(); // Save the new MSD data
                     }
-                    showSuccessMessage(`Loaded ${msds.length} Medical Science Directors (fallback data)!`);
-                    
-                    // Load stored assignments after MSDs are loaded  
-                    loadStoredData();
+                            showSuccessMessage(`Loaded ${msds.length} Medical Science Directors (fallback data)!`);
+
+                            // Load stored assignments after MSDs are loaded
+                            loadStoredData();
+                        });
                 });
         }
 
@@ -949,7 +1018,7 @@
         function createGroupedSessionHTML(session, groupLocation) {
             const sessionAssignments = assignments[session.session_id] || [];
             const assignedUsers = sessionAssignments.map(userId =>
-                users.find(u => u.id === userId)
+                users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
             ).filter(Boolean);
 
             const conflicts = selectedUser ? getConflicts(selectedUser.id, session) : [];
@@ -1012,7 +1081,7 @@
             div.dataset.sessionId = session.session_id;
 
             const assignedUsers = sessionAssignments.map(userId =>
-                users.find(u => u.id === userId)
+                users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
             ).filter(Boolean);
 
             const conflicts = selectedUser ? getConflicts(selectedUser.id, session) : [];
@@ -1142,7 +1211,7 @@
 
         function renderUsersMin() {
             const container = document.getElementById('users-container');
-            
+
             if (users.length === 0) {
                 container.innerHTML = `
                     <div class="no-data">
@@ -1152,10 +1221,19 @@
                 `;
                 return;
             }
-            
+
             container.innerHTML = '';
-            
-            users.forEach(user => {
+
+            // Sort users alphabetically by last name
+            const sortedUsers = [...users].sort((a, b) => {
+                const nameA = a.name || a.firstname + ' ' + a.lastname || 'Unknown';
+                const nameB = b.name || b.firstname + ' ' + b.lastname || 'Unknown';
+                const lastNameA = nameA.split(' ').pop().toLowerCase();
+                const lastNameB = nameB.split(' ').pop().toLowerCase();
+                return lastNameA.localeCompare(lastNameB);
+            });
+
+            sortedUsers.forEach(user => {
                 const userAssignments = getUserAssignments(user.id);
                 const userConflicts = getUserConflicts(user.id);
                 
@@ -1320,9 +1398,19 @@
 
         function removeAssignment(sessionId, userId) {
             if (assignments[sessionId]) {
-                const index = assignments[sessionId].indexOf(userId);
+                // Handle both string and number user IDs
+                const index = assignments[sessionId].findIndex(id =>
+                    id == userId || id === String(userId) || id === Number(userId)
+                );
                 if (index !== -1) {
                     assignments[sessionId].splice(index, 1);
+
+                    // Clean up empty assignment arrays
+                    if (assignments[sessionId].length === 0) {
+                        delete assignments[sessionId];
+                    }
+
+                    console.log(`✅ Removed assignment: User ${userId} from Session ${sessionId}`);
                     renderSessions();
                     renderUsersMin();
                     updateStats();
@@ -1332,9 +1420,27 @@
         }
 
         function getUserAssignments(userId) {
-            return Object.keys(assignments).filter(sessionId => 
-                assignments[sessionId].includes(userId)
-            );
+            const userAssignments = Object.keys(assignments).filter(sessionId => {
+                // Check both string and number versions of userId
+                return assignments[sessionId].includes(userId) ||
+                       assignments[sessionId].includes(String(userId)) ||
+                       assignments[sessionId].includes(Number(userId));
+            });
+
+            // Debug logging - temporarily enabled
+            if (userId === 9 || userId === '9') {
+                console.log(`🔍 getUserAssignments(${userId}):`, {
+                    userId: userId,
+                    userIdType: typeof userId,
+                    assignments: assignments,
+                    userAssignments: userAssignments,
+                    allAssignmentKeys: Object.keys(assignments),
+                    allAssignmentValues: Object.values(assignments),
+                    sampleAssignmentUserIds: Object.values(assignments).flat().slice(0, 10)
+                });
+            }
+
+            return userAssignments;
         }
 
         function getUserConflicts(userId) {
@@ -1685,7 +1791,7 @@
                     sessionsInSlot.forEach(session => {
                         const sessionAssignments = assignments[session.session_id] || [];
                         const assignedUsers = sessionAssignments.map(userId =>
-                            users.find(u => u.id === userId)
+                            users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
                         ).filter(Boolean);
 
                         const hasAssignments = assignedUsers.length > 0;
@@ -1702,7 +1808,7 @@
                                 <div style="font-size: 10px; color: #666; display: flex; justify-content: space-between; align-items: center;">
                                     <span>📍 ${location}</span>
                                     ${assignedUsers.length > 0 ?
-                                        `<span style="font-size: 12px; font-weight: bold;">👥 ${assignedUsers.map(u => u.name.split(' ')[0]).join(', ')}</span>` :
+                                        `<span style="font-size: 12px; font-weight: bold;">👥 ${assignedUsers.map(u => (u.name || u.firstname || 'Unknown').split(' ')[0]).join(', ')}</span>` :
                                         '<span style="font-size: 9px; color: #999;">⚪ Unassigned</span>'
                                     }
                                 </div>
@@ -1844,7 +1950,7 @@
             sessionsWithAttendees.forEach(session => {
                 const sessionAssignments = assignments[session.session_id] || [];
                 const assignedUsers = sessionAssignments.map(userId => 
-                    users.find(u => u.id === userId)
+                    users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
                 ).filter(Boolean);
                 
                 report += `${session.session_info?.title || 'Untitled'}\n`;
@@ -1871,6 +1977,19 @@
             showSuccessMessage('Report generated and downloaded!');
         }
 
+        function forceReload() {
+            console.log('🔄 Force reloading all data from database...');
+            // Clear cached data
+            users = [];
+            assignments = {};
+            selectedUser = null;
+            // Clear localStorage
+            localStorage.removeItem('idweek2025_tool_data');
+            // Force reload from database
+            loadMSDData();
+            showSuccessMessage('Data reloaded from database');
+        }
+
         function clearAllData() {
             if (confirm('⚠️ This will remove ALL users and assignments. Are you sure?')) {
                 users = [];
@@ -1887,49 +2006,129 @@
         }
 
         function saveToStorage() {
-            const data = {
-                users: users,
-                assignments: assignments,
-                selectedUserId: selectedUser?.id,
-                lastSaved: new Date().toISOString()
-            };
-            
-            try {
-                localStorage.setItem('idweek2025_tool_data', JSON.stringify(data));
-                console.log('Data saved to localStorage');
-            } catch (error) {
-                console.error('Error saving to localStorage:', error);
-            }
+            // Save assignments to database
+            const assignmentData = Object.keys(assignments).map(sessionId =>
+                assignments[sessionId].map(userId => ({
+                    session_id: sessionId,
+                    user_id: userId
+                }))
+            ).flat();
+
+            console.log('💾 Saving assignments to database:', {
+                conferenceId: getConferenceId(),
+                assignmentCount: assignmentData.length,
+                assignments: assignmentData
+            });
+
+            fetch(`api_assignments.cfm?confid=${getConferenceId()}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ assignments: assignmentData })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('✅ Assignments saved to database successfully:', data);
+                if (data.count !== undefined) {
+                    showSuccessMessage(`Saved ${data.count} assignments to database`);
+                }
+            })
+            .catch(error => {
+                console.error('Error saving assignments to database:', error);
+                // Fallback to localStorage
+                try {
+                    const fallbackData = {
+                        users: users,
+                        assignments: assignments,
+                        selectedUserId: selectedUser?.id,
+                        lastSaved: new Date().toISOString()
+                    };
+                    localStorage.setItem('idweek2025_tool_data', JSON.stringify(fallbackData));
+                    console.log('Fallback: Data saved to localStorage');
+                } catch (localError) {
+                    console.error('Error saving to localStorage fallback:', localError);
+                }
+            });
         }
 
         function loadStoredData() {
-            try {
-                const stored = localStorage.getItem('idweek2025_tool_data');
-                if (stored) {
-                    const data = JSON.parse(stored);
-                    
-                    // Load assignments (but preserve MSDs if already loaded)
-                    assignments = data.assignments || {};
-                    
-                    // Only override users if we don't already have MSDs loaded
-                    if (users.length === 0 && data.users && data.users.length > 0) {
-                        users = data.users;
-                        console.log(`Loaded ${users.length} users from storage`);
-                        renderUsersMin();
-                        updateStats();
-                    } else if (users.length > 0) {
-                        // We have MSDs loaded, just update assignments and re-render
-                        console.log(`Using ${users.length} MSDs, loading ${Object.keys(assignments).length} assignments from storage`);
-                        if (data.selectedUserId) {
-                            selectedUser = users.find(u => u.id === data.selectedUserId);
-                        }
-                        renderUsersMin();
-                        updateStats();
+            // Load assignments from database
+            console.log('📥 Loading assignments from database for conference ID:', getConferenceId());
+            fetch(`api_assignments.cfm?confid=${getConferenceId()}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
-                }
-            } catch (error) {
-                console.error('Error loading stored data:', error);
-            }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('✅ Loaded assignments from database:', data);
+                    console.log('🔍 Raw assignments data:', data.assignments);
+
+                    // Convert database format to frontend format
+                    assignments = data.assignments || {};
+
+                    console.log('🔍 Processed assignments object:', assignments);
+
+                    const assignmentCount = Object.values(assignments).reduce((sum, arr) => sum + arr.length, 0);
+                    console.log(`📊 Assignment summary: ${Object.keys(assignments).length} sessions with ${assignmentCount} total assignments`);
+
+                    if (users.length > 0) {
+                        console.log(`Using ${users.length} MSDs, loaded ${assignmentCount} assignments from database`);
+                        // Force re-render to show assignment counts in left panel
+                        renderUsersMin();
+                        updateStats();
+                        renderSessions();
+                        // Re-render users again to ensure assignment counts are displayed
+                        setTimeout(() => {
+                            console.log('🔄 Re-rendering users to show assignment counts...');
+                            renderUsersMin();
+                            updateStats();
+                        }, 100);
+                        if (assignmentCount > 0) {
+                            showSuccessMessage(`Loaded ${assignmentCount} assignments from database`);
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading assignments from database:', error);
+                    console.log('Falling back to localStorage...');
+
+                    // Fallback to localStorage
+                    try {
+                        const stored = localStorage.getItem('idweek2025_tool_data');
+                        if (stored) {
+                            const data = JSON.parse(stored);
+
+                            // Load assignments (but preserve MSDs if already loaded)
+                            assignments = data.assignments || {};
+
+                            // Only override users if we don't already have MSDs loaded
+                            if (users.length === 0 && data.users && data.users.length > 0) {
+                                users = data.users;
+                                console.log(`Loaded ${users.length} users from localStorage fallback`);
+                                renderUsersMin();
+                                updateStats();
+                            } else if (users.length > 0) {
+                                // We have MSDs loaded, just update assignments and re-render
+                                console.log(`Using ${users.length} MSDs, loading ${Object.keys(assignments).length} assignments from localStorage fallback`);
+                                if (data.selectedUserId) {
+                                    selectedUser = users.find(u => u.id === data.selectedUserId);
+                                }
+                                renderUsersMin();
+                                updateStats();
+                            }
+                        }
+                    } catch (localError) {
+                        console.error('Error loading from localStorage fallback:', localError);
+                    }
+                });
         }
 
         function showSuccessMessage(message) {
@@ -1986,7 +2185,7 @@
             sessionsWithAttendees.forEach(session => {
                 const sessionAssignments = assignments[session.session_id] || [];
                 const assignedUsers = sessionAssignments.map(userId => 
-                    users.find(u => u.id === userId)
+                    users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
                 ).filter(Boolean);
 
                 html += `
@@ -2041,7 +2240,7 @@
         function showMSDAssignments(userId, event) {
             event.stopPropagation(); // Prevent user selection when clicking assignment count
             
-            const user = users.find(u => u.id === userId);
+            const user = users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId));
             if (!user) return;
             
             const modal = document.getElementById('msd-assignments-modal');
@@ -2212,24 +2411,27 @@
 
         function removeAssignment(sessionId, userId) {
             if (!assignments[sessionId]) return;
-            
-            const index = assignments[sessionId].indexOf(userId);
+
+            // Handle both string and number user IDs
+            const index = assignments[sessionId].findIndex(id =>
+                id == userId || id === String(userId) || id === Number(userId)
+            );
             if (index !== -1) {
                 assignments[sessionId].splice(index, 1);
-                
+
                 // Clean up empty assignment arrays
                 if (assignments[sessionId].length === 0) {
                     delete assignments[sessionId];
                 }
-                
-                console.log(`Removed assignment: User ${userId} from Session ${sessionId}`);
+
+                console.log(`✅ Removed assignment: User ${userId} from Session ${sessionId}`);
                 renderUsersMin();
                 renderSessions();
                 updateStats();
                 saveToStorage();
-                
+
                 // Re-open the modal to show updated assignments
-                const user = users.find(u => u.id === userId);
+                const user = users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId));
                 if (user) {
                     showMSDAssignments(userId, {stopPropagation: () => {}});
                 }
@@ -2239,23 +2441,22 @@
         function renderSessionsByAttendee(searchTerm = '') {
             const container = document.getElementById('sessions-by-attendee-content');
             
-            // Get users with sessions assigned
-            const usersWithSessions = users.filter(user => {
-                const hasAssignments = getUserAssignments(user.id).length > 0;
-                const matchesSearch = searchTerm === '' || 
+            // Get all users (filter by search term, show assignment counts)
+            const filteredUsers = users.filter(user => {
+                const matchesSearch = searchTerm === '' ||
                     user.name.toLowerCase().includes(searchTerm) ||
                     user.email.toLowerCase().includes(searchTerm) ||
                     (user.department && user.department.toLowerCase().includes(searchTerm));
-                return hasAssignments && matchesSearch;
+                return matchesSearch;
             }).sort((a, b) => a.name.localeCompare(b.name));
 
-            if (usersWithSessions.length === 0) {
-                container.innerHTML = '<div class="no-data">No attendees with session assignments found.</div>';
+            if (filteredUsers.length === 0) {
+                container.innerHTML = '<div class="no-data">No attendees found.</div>';
                 return;
             }
 
             let html = '';
-            usersWithSessions.forEach(user => {
+            filteredUsers.forEach(user => {
                 const userSessionIds = getUserAssignments(user.id);
                 const userSessions = userSessionIds
                     .map(sessionId => sessions.find(s => s.session_id === sessionId))
@@ -2274,7 +2475,7 @@
                             <div>
                                 <h3 style="color: #2c5aa0; margin-bottom: 5px; font-size: 16px;">${user.name}</h3>
                                 <div style="font-size: 13px; color: #666;">
-                                    <div>${user.email} • ${user.role}</div>
+                                    <div>${user.email} • ${user.conference_role || 'msd'}</div>
                                     ${user.department ? `<div>${user.department}</div>` : ''}
                                     <div style="margin-top: 5px;">
                                         <strong>${userSessions.length} sessions assigned</strong>
