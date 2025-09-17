@@ -1,25 +1,43 @@
-<cfsetting showdebugoutput="no">
-<cfparam name="url.thisID" default="1">
+<cfsetting showdebugoutput="1">
 <cfparam name="url.table" default="IDWEEK_Posters_2025">
 <cfparam name="url.rawField" default="rawPosterData">
 <cfparam name="url.thisID" default="1">
+
+<!--- Debug output to show current parameters --->
+<div style="background: #f0f0f0; padding: 10px; margin: 10px 0; border: 1px solid #ccc;">
+    <strong>Debug Info:</strong><br>
+    Current ID: <cfoutput>#url.thisID#</cfoutput><br>
+    Table: <cfoutput>#url.table#</cfoutput><br>
+    Raw Field: <cfoutput>#url.rawField#</cfoutput>
+</div>
 <cfquery name="getAllIDWEEKSessionData" datasource="conference_crawler">
-    SELECT #url.rawField# as data
+    SELECT id, #url.rawField# as data
     FROM #url.table#
     WHERE 0=0
-    AND id = <cfqueryparam cfsqltype="cf_sql_integer" value="#url.thisID#">
+    ORDER BY id
 </cfquery>
 
-<cfoutput query="getAllIDWEEKSessionData">#trim(getAllIDWEEKSessionData.data)#</cfoutput>
+<cfoutput query="getAllIDWEEKSessionData">
+    <div style="background: ##ffffcc; padding: 5px; margin: 5px 0; border: 2px solid ##ff6600; font-weight: bold; font-size: 16px;">
+        🆔 POSTER ID: #getAllIDWEEKSessionData.id# (URL param thisID: #url.thisID#)
+    </div>
+    #trim(getAllIDWEEKSessionData.data)#
+</cfoutput>
 
-<!--- cfquery name="getFilteredIDWEEKSessionData" dbtype="query">
+<cfquery name="getFilteredIDWEEKSessionData" dbtype="query">
     SELECT *
     FROM getAllIDWEEKSessionData
     WHERE 0=0
-    <cfif len(trim(url.thisStartDate))>AND sessionLocalStart like <cfqueryparam cfsqltype="cf_sql_varchar" value="#url.thisStartDate#%"></cfif>
-    <cfif len(trim(url.thisSessionType))>AND sessionType = <cfqueryparam cfsqltype="cf_sql_varchar" value="#url.thisSessionType#"></cfif>
-    ORDER BY id,sessionId, sessionType 
+    ORDER BY id
 </cfquery>
+
+<!--- Debug output for query results --->
+<div style="background: #e6f3ff; padding: 10px; margin: 10px 0; border: 1px solid #0066cc;">
+    <strong>Query Results:</strong><br>
+    Total records from getAllIDWEEKSessionData: <cfoutput>#getAllIDWEEKSessionData.recordCount#</cfoutput><br>
+    Total records from getFilteredIDWEEKSessionData: <cfoutput>#getFilteredIDWEEKSessionData.recordCount#</cfoutput>
+</div>
+
 <cfif 0><cfdump var="#getFilteredIDWEEKSessionData#" label="getFilteredIDWEEKSessionData"></cfif>
 
 <cfif isnumeric(trim(url.thisID))>

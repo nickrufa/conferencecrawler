@@ -1,2 +1,31 @@
 IDWEEK 2024/myenv/*
 ESCMID 2025/2025/venv/*
+
+# Claude Code settings
+.claude/
+
+# Python cache files
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Common development files
+.DS_Store
+*.log
+.env
+.env.local
+
+# Data files - generated/processed content
+*.json.gz
+*_sessions*.json
+*_posters*.json
+*.csv
+*.xlsx
+*.sql
+
+# Keep only source scripts, not generated data
+
+# Design mockups and prototypes (move to docs/ if needed)
+*mockup*.html
+*prototype*.html

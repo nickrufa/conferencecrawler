@@ -48,7 +48,7 @@
         </cftry>
         <cfoutput>
             <div style="font-size: 10px;">#htmleditformat(cleanSessionData)#</div><hr>
-            <meta http-equiv="refresh" content="#CreateRandomSixteenThirtySix()#; url=http://local.dev.conferencecrawler.com/IDWEEK2025/_getLiveSessionAgendaItem.cfm">
+            <meta http-equiv="refresh" content="#CreateRandomSixteenThirtySix()#; url=http://local.dev.conferencecrawler.com/IDWEEK2025/cfml_crawler/_getLiveSessionAgendaItem.cfm">
         </cfoutput>
     </cfloop>
     <cfquery name="sessionData" datasource="conference_crawler">

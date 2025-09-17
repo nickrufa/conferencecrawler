@@ -1,0 +1,130 @@
+[
+  {
+    "id": 2,
+    "melintaId": 168,
+    "name": "Saagar Akundi",
+    "degree": "BCPS, BCMAS",
+    "role": "Medical Science Director",
+    "email": "sakundi@melinta.com",
+    "department": "Medical Affairs",
+    "territory": "South Central",
+    "territories": ["New Mexico", "Oklahoma", "Texas"],
+    "phone": "(512) 507-7816"
+  },
+ {
+    "id": 4,
+    "melintaId": 142,
+    "name": "Christina Andrzejewski",
+    "degree": "PharmD, BCIDP",
+    "role": "Medical Science Director",
+    "email": "candrzejewski@melinta.com",
+    "department": "Medical Affairs", 
+    "territory": "Atlantic Capital",
+    "territories": ["Delaware", "District of Columbia", "Maryland", "North Carolina", "Ohio", "Pennsylvania", "Virginia", "West Virginia"],
+    "phone": "(908) 968-1300"
+  },
+  {
+    "id": 9,
+    "melintaId": 210,
+    "name": "Sarah Brooks Minor",
+    "degree": "PharmD, MHA, BCPS, BCIDP",
+    "role": "Medical Science Director",
+    "email": "sminor@melinta.com",
+    "department": "Medical Affairs",
+    "territory": "South Sunbelt",
+    "territories": ["Alabama", "Florida", "Georgia", "North Carolina", "South Carolina"],
+    "phone": "(407) 922-1882"
+  },
+  {
+    "id": 1,
+    "melintaId": 172,
+    "name": "Sandy Estrada",
+    "degree": "PharmD, BCPS",
+    "role": "Senior Medical Science Director",
+    "email": "sestrada@melinta.com",
+    "department": "Medical Affairs",
+    "territory": "Multiple Territories",
+    "territories": ["Alaska", "Hawaii", "Idaho", "Iowa", "Kansas", "Montana", "Nebraska", "New Mexico", "North Dakota", "Oregon", "Puerto Rico", "South Dakota", "Washington", "Wyoming"],
+    "phone": "(239) 233-9380"
+  },
+  {
+    "id": 6,
+    "melintaId": 156,
+    "name": "Marianna Fedorenko",
+    "degree": "PharmD, BCPS, BCIDP",
+    "role": "Medical Science Director",
+    "email": "mfedorenko@melinta.com",
+    "department": "Medical Affairs",
+    "territory": "NYC Metro, NJ",
+    "territories": ["New Jersey", "New York"],
+    "phone": "(201) 394-3552"
+  },
+  {
+    "id": 5,
+    "melintaId": 146,
+    "name": "Erica Fernandez",
+    "degree": "PharmD, BCCCP, BCPS",
+    "role": "Medical Science Director",
+    "email": "efernandez@melinta.com",
+    "department": "Medical Affairs",
+    "territory": "Midwest, North Central Ozarks", 
+    "territories": ["Illinois", "Indiana", "Minnesota", "Missouri", "Nebraska", "Wisconsin"],
+    "phone": "(312) 219-3032"
+  },
+  {
+    "id": 8,
+    "melintaId": 166,
+    "name": "Ronak Gandhi",
+    "degree": "PharmD",
+    "role": "Medical Science Director", 
+    "email": "rgandhi@melinta.com",
+    "department": "Medical Affairs",
+    "territory": "New England & Upstate NY",
+    "territories": ["Connecticut", "Maine", "Massachusetts", "New Hampshire", "New York", "Rhode Island", "Vermont"],
+    "phone": "(781) 799-4372"
+  },
+  {
+    "id": 7,
+    "melintaId": 157,
+    "name": "Michael North",
+    "degree": "PharmD, BCPS",
+    "role": "Medical Science Director",
+    "email": "mnorth@melinta.com",
+    "department": "Medical Affairs",
+    "territory": "West",
+    "territories": ["Arizona", "California", "Colorado", "Nevada", "New Mexico", "Utah"],
+    "phone": "(303) 913-8961"
+  },
+  {
+    "id": 8,
+    "melintaId": 8,
+    "name": "Nancy Robasco",
+    "degree": "",
+    "role": "Tester", 
+    "email": "nancy@cmeunited.com",
+    "department": "Testing",
+    "territory": "Test Territory"
+  },
+  {
+    "id": 163,
+    "melintaId": 163,
+    "name": "Nick Rufa",
+    "degree": "",
+    "role": "Tester",
+    "email": "nrufa@melinta.com",
+    "department": "Testing",
+    "territory": "Test Territory"
+  },
+  {
+    "id": 3,
+    "melintaId": 141,
+    "name": "Besu Teshome",
+    "degree": "PharmD, MSc, BCPS",
+    "role": "Medical Science Director",
+    "email": "bteshome@melinta.com",
+    "department": "Medical Affairs",
+    "territory": "South Central Ozarks",
+    "territories": ["Alabama", "Arkansas", "Kentucky", "Louisiana", "Mississippi", "Missouri", "Tennessee"],
+    "phone": "(512) 228-1208"
+  }
+]

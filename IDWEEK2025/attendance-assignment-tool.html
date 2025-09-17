@@ -1,0 +1,2551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDWeek 2025 - Attendance Assignments</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>IDWeek 2025 Assignments - <span style="font-size:24px;">October 19-22, 2025</span></h1>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number" id="total-sessions">0</div>
+            <div class="stat-label">Sessions</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="total-users">0</div>
+            <div class="stat-label">MSDs</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="total-assignments">0</div>
+            <div class="stat-label">Assignments</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="conflicts-count">0</div>
+            <div class="stat-label">Conflicts</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div class="control-buttons">
+            <input type="file" id="json-upload" accept=".json" style="display: none;">
+            <button class="btn" onclick="document.getElementById('json-upload').click()">📁 Load Sessions JSON</button>
+            <button class="btn" onclick="showAttendeesBySession()">📋 Attendees by Session</button>
+            <button class="btn" onclick="showSessionsByAttendee()">📅 Sessions by Attendee</button>
+            <button class="btn" onclick="exportAssignments()">💾 Export Data</button>
+            <button class="btn" onclick="generateReports()">📊 Generate Reports</button>
+            <button class="btn btn-danger" onclick="clearAllData()">🗑️ Clear All</button>
+        </div>
+    </div>
+
+    <div class="main-layout">
+        <div class="panel">
+            <div class="panel-header">
+                <span>👥 Medical Science Directors</span>
+                <button class="btn btn_header btn-sm" onclick="showAddUserModal()">+ Add</button>
+            </div>
+            <div class="panel-content">
+                <div id="users-container">
+                    <div class="no-data">No MSDs loaded yet.<br><button class="btn" onclick="showAddUserModal()">Add First MSD</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <span>📅 Conference Sessions</span>
+                <span><button class="btn_header" id="expand-collapse-all" onclick="toggleAllTimeSlots()">📋 Collapse All</button></span>
+                <span id="session-count">0 sessions</span>
+            </div>
+            
+            <div class="session-filters">
+                <input type="text" id="search-input" placeholder="🔍 Search sessions, locations, speakers...">
+                <select id="date-filter">
+                    <option value="">All Dates</option>
+                </select>
+                <select id="type-filter">
+                    <option value="">All Types</option>
+                </select>
+                <button class="btn btn-sm" onclick="clearFilters()">Clear</button>
+            </div>
+            
+            <div class="panel-content">
+                <div id="sessions-container">
+                    <div class="loading">Loading sessions...</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Calendar Panel -->
+        <div class="panel calendar-panel">
+            <div class="panel-header">
+                <span>📅 Weekly Calendar View</span>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <button id="calendar-toggle-btn" onclick="toggleCalendarView()" 
+                            style="background: #2c5aa0; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 12px;">
+                        Detailed View
+                    </button>
+                    <span id="calendar-summary">Loading calendar...</span>
+                </div>
+            </div>
+            <div class="calendar-view" id="calendar-container">
+                <!-- Calendar will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div id="user-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeUserModal()">&times;</span>
+            <h2 style="color: #34495e; margin-bottom: 20px;">Add New Attendee</h2>
+            
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="user-name" placeholder="Enter full name">
+            </div>
+            
+            <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" id="user-email" placeholder="Enter email address">
+            </div>
+            
+            <div class="form-group">
+                <label>Department/Organization</label>
+                <input type="text" id="user-department" placeholder="Enter department or organization">
+            </div>
+            
+            <div class="form-group">
+                <label>Role</label>
+                <select id="user-role">
+                    <option value="Attendee">Attendee</option>
+                    <option value="Speaker">Speaker</option>
+                    <option value="Staff">Staff</option>
+                    <option value="VIP">VIP</option>
+                    <option value="Moderator">Moderator</option>
+                </select>
+            </div>
+            
+            <div style="margin-top: 25px; text-align: right;">
+                <button class="btn" onclick="closeUserModal()" style="margin-right: 10px; background: #6c757d;">Cancel</button>
+                <button class="btn btn-success" onclick="saveUser()">Save User</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attendees by Session Modal -->
+    <div id="attendees-by-session-modal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close" onclick="closeAttendeesBySessionModal()">&times;</span>
+            <h2 style="color: #34495e; margin-bottom: 20px;">📋 Attendees by Session</h2>
+            
+            <input type="text" id="session-search" placeholder="🔍 Search sessions..." style="margin-bottom: 15px;">
+            
+            <div id="attendees-by-session-content" style="max-height: 60vh; overflow-y: auto;">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+            
+            <div style="margin-top: 25px; text-align: right;">
+                <button class="btn" onclick="closeAttendeesBySessionModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sessions by Attendee Modal -->
+    <div id="sessions-by-attendee-modal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close" onclick="closeSessionsByAttendeeModal()">&times;</span>
+            <h2 style="color: #34495e; margin-bottom: 20px;">📅 Sessions by Attendee</h2>
+            
+            <input type="text" id="attendee-search" placeholder="🔍 Search attendees..." style="margin-bottom: 15px;">
+            
+            <div id="sessions-by-attendee-content" style="max-height: 60vh; overflow-y: auto;">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+            
+            <div style="margin-top: 25px; text-align: right;">
+                <button class="btn" onclick="closeSessionsByAttendeeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MSD Assignments Modal -->
+    <div id="msd-assignments-modal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <span class="close" onclick="closeMSDAssignmentsModal()">&times;</span>
+            <h2 id="msd-assignments-title" style="color: #34495e; margin-bottom: 20px;">👨‍⚕️ MSD Assignments</h2>
+            
+            <div id="msd-assignments-content" style="max-height: 600px; overflow-y: auto; border: 1px solid #ddd; border-radius: 4px; padding: 15px;">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+            
+            <div style="margin-top: 25px; text-align: right;">
+                <button class="btn" onclick="closeMSDAssignmentsModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global application state
+        let sessions = [];
+        let users = [];
+        let msds = []; // Medical Science Directors data
+        let assignments = {}; // sessionId -> [userIds]
+        let selectedUser = null;
+        let filteredSessions = [];
+
+        // Initialize application
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initializing IDWeek 2025 Attendance Tool...');
+            setupEventHandlers();
+            // Load MSD data first, then check for stored data
+            loadMSDData();
+            loadSessionsData();
+        });
+
+        function setupEventHandlers() {
+            // File upload
+            document.getElementById('json-upload').addEventListener('change', handleFileUpload);
+            
+            // Search and filters
+            document.getElementById('search-input').addEventListener('input', filterSessions);
+            document.getElementById('date-filter').addEventListener('change', filterSessions);
+            document.getElementById('type-filter').addEventListener('change', filterSessions);
+            
+            // Modal controls
+            window.addEventListener('click', function(event) {
+                if (event.target.id === 'user-modal') {
+                    closeUserModal();
+                } else if (event.target.id === 'attendees-by-session-modal') {
+                    closeAttendeesBySessionModal();
+                } else if (event.target.id === 'sessions-by-attendee-modal') {
+                    closeSessionsByAttendeeModal();
+                } else if (event.target.id === 'duplicate-assignment-modal') {
+                    cancelDuplicateAssignment();
+                }
+            });
+        }
+
+        function loadMSDData() {
+            console.log('Loading Medical Science Directors data...');
+            
+            // Try to load medical_science_directors.json
+            fetch('medical_science_directors.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('MSD file not found');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(`Successfully loaded ${data.length} Medical Science Directors`);
+                    msds = data;
+                    // Pre-populate users with MSD data if users is empty
+                    if (users.length === 0) {
+                        users = msds.map(msd => ({
+                            id: msd.melintaId,
+                            melintaId: msd.melintaId,
+                            name: msd.name,
+                            email: msd.email,
+                            department: msd.department || 'Medical Affairs',
+                            role: msd.role,
+                            territory: msd.territory,
+                            territories: msd.territories,
+                            phone: msd.phone,
+                            createdAt: new Date().toISOString()
+                        }));
+                        renderUsersMin();
+                        updateStats();
+                    }
+                    showSuccessMessage(`Loaded ${msds.length} Medical Science Directors!`);
+                    
+                    // Load stored assignments after MSDs are loaded
+                    loadStoredData();
+                })
+                .catch(error => {
+                    console.error('Error loading MSD data:', error);
+                    console.log('Using fallback MSD data');
+                    
+                    // Fallback MSD data
+                    msds = [
+                        {
+                            "id": 3,
+                            "melintaId": 3,
+                            "name": "Besu Teshome, PharmD, MSc, BCPS",
+                            "role": "Medical Science Director",
+                            "email": "bteshome@melinta.com",
+                            "department": "Medical Affairs",
+                            "territory": "South Central Ozarks",
+                            "territories": ["Alabama", "Arkansas", "Kentucky", "Louisiana", "Mississippi", "Missouri", "Tennessee"]
+                        },
+                        {
+                            "id": 4,
+                            "melintaId": 4,
+                            "name": "Christina Andrzejewski, PharmD, BCIDP",
+                            "role": "Medical Science Director",
+                            "email": "candrzejewski@melinta.com",
+                            "department": "Medical Affairs",
+                            "territory": "Atlantic Capital",
+                            "territories": ["Delaware", "District of Columbia", "Maryland", "North Carolina", "Ohio", "Pennsylvania", "Virginia", "West Virginia"]
+                        },
+                        {
+                            "id": 5,
+                            "melintaId": 5,
+                            "name": "Erica Fernandez, PharmD, BCCCP, BCPS",
+                            "role": "Medical Science Director",
+                            "email": "efernandez@melinta.com",
+                            "department": "Medical Affairs",
+                            "territory": "Midwest, North Central Ozarks",
+                            "territories": ["Illinois", "Indiana", "Minnesota", "Missouri", "Nebraska", "Wisconsin"]
+                        },
+                        {
+                            "id": 6,
+                            "melintaId": 6,
+                            "name": "Marianna Fedorenko, PharmD, BCPS, BCIDP",
+                            "role": "Medical Science Director",
+                            "email": "mfedorenko@melinta.com",
+                            "department": "Medical Affairs",
+                            "territory": "NYC Metro, NJ",
+                            "territories": ["New Jersey", "New York"]
+                        },
+                        {
+                            "id": 7,
+                            "melintaId": 7,
+                            "name": "Michael North, PharmD, BCPS",
+                            "role": "Medical Science Director",
+                            "email": "mnorth@melinta.com",
+                            "department": "Medical Affairs",
+                            "territory": "West",
+                            "territories": ["Arizona", "California", "Colorado", "Nevada", "New Mexico", "Utah"]
+                        },
+                        {
+                            "id": 8,
+                            "melintaId": 8,
+                            "name": "Ronak Gandhi, PharmD",
+                            "role": "Medical Science Director",
+                            "email": "rgandhi@melinta.com",
+                            "department": "Medical Affairs",
+                            "territory": "New England & Upstate NY",
+                            "territories": ["Connecticut", "Maine", "Massachusetts", "New Hampshire", "New York", "Rhode Island", "Vermont"]
+                        },
+                        {
+                            "id": 2,
+                            "melintaId": 2,
+                            "name": "Saagar Akundi, BCPS, BCMAS",
+                            "role": "Medical Science Director",
+                            "email": "sakundi@melinta.com",
+                            "department": "Medical Affairs",
+                            "territory": "South Central",
+                            "territories": ["New Mexico", "Oklahoma", "Texas"]
+                        },
+                        {
+                            "id": 1,
+                            "melintaId": 1,
+                            "name": "Sandy Estrada, PharmD, BCPS",
+                            "role": "Senior Medical Science Director",
+                            "email": "sestrada@melinta.com",
+                            "department": "Medical Affairs",
+                            "territory": "Multiple Territories",
+                            "territories": ["Alaska", "Hawaii", "Idaho", "Iowa", "Kansas", "Montana", "Nebraska", "New Mexico", "North Dakota", "Oregon", "Puerto Rico", "South Dakota", "Washington", "Wyoming"]
+                        },
+                        {
+                            "id": 9,
+                            "melintaId": 9,
+                            "name": "Sarah Brooks Minor, PharmD, MHA, BCPS, BCIDP",
+                            "role": "Medical Science Director",
+                            "email": "sminor@melinta.com",
+                            "department": "Medical Affairs",
+                            "territory": "South Sunbelt",
+                            "territories": ["Alabama", "Florida", "Georgia", "North Carolina", "South Carolina"]
+                        }
+                    ];
+                    
+                    // Always populate users with MSD data if users is empty
+                    if (users.length === 0) {
+                        users = msds.map(msd => ({
+                            id: msd.melintaId,
+                            melintaId: msd.melintaId,
+                            name: msd.name,
+                            email: msd.email,
+                            department: msd.department || 'Medical Affairs',
+                            role: msd.role,
+                            territory: msd.territory,
+                            territories: msd.territories,
+                            createdAt: new Date().toISOString()
+                        }));
+                        console.log(`Pre-populated ${users.length} users from fallback MSD data`);
+                        renderUsersMin();
+                        updateStats();
+                        saveToStorage(); // Save the new MSD data
+                    }
+                    showSuccessMessage(`Loaded ${msds.length} Medical Science Directors (fallback data)!`);
+                    
+                    // Load stored assignments after MSDs are loaded  
+                    loadStoredData();
+                });
+        }
+
+        function loadSessionsData() {
+            console.log('Loading combined sessions and posters data...');
+
+            // Load combined data file
+            fetch('idweek2025_combined.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Combined data file not found');
+                    return response.json();
+                })
+                .then(allSessions => {
+                    console.log(`Successfully loaded ${allSessions.length} items`);
+
+                    // Count different types
+                    const typeCounts = {};
+                    allSessions.forEach(item => {
+                        const type = item.session_info?.type || 'Unknown';
+                        typeCounts[type] = (typeCounts[type] || 0) + 1;
+                    });
+
+                    console.log('Data breakdown:', typeCounts);
+                    console.log('Sample item:', allSessions[0]);
+
+                    if (allSessions.length === 0) {
+                        document.getElementById('sessions-container').innerHTML = `
+                            <div class="no-data">
+                                <h3>No Data Found</h3>
+                                <p>Could not load sessions or posters</p>
+                                <button class="btn" onclick="document.getElementById('json-upload').click()">
+                                    📁 Upload Sessions File
+                                </button>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    sessions = allSessions;
+                    processSessionsData();
+                    renderSessions();
+                    updateStats();
+
+                    const posterCount = typeCounts['Poster'] || 0;
+                    const sessionCount = allSessions.length - posterCount;
+
+                    let message = `Loaded ${allSessions.length} items total`;
+                    if (sessionCount > 0 && posterCount > 0) {
+                        message = `Loaded ${sessionCount} sessions + ${posterCount} posters (${allSessions.length} total)`;
+                    } else if (sessionCount > 0) {
+                        message = `Loaded ${sessionCount} sessions`;
+                    } else if (posterCount > 0) {
+                        message = `Loaded ${posterCount} posters`;
+                    }
+
+                    showSuccessMessage(message);
+                })
+                .catch(error => {
+                    console.error('Failed to load combined data:', error);
+                    console.error('Make sure idweek2025_combined.json exists and is valid JSON');
+                    document.getElementById('sessions-container').innerHTML = `
+                        <div class="no-data">
+                            <h3>Error Loading Data</h3>
+                            <p>Could not load idweek2025_combined.json</p>
+                            <button class="btn" onclick="document.getElementById('json-upload').click()">
+                                📁 Upload Sessions File
+                            </button>
+                        </div>
+                    `;
+                });
+        }
+
+        function processSessionsData() {
+            console.log(`Processing ${sessions.length} sessions...`);
+            
+            // Deduplicate sessions based on title, date, time, and location
+            const sessionMap = new Map();
+            const duplicateGroups = new Map();
+            
+            sessions.forEach(session => {
+                const key = createSessionKey(session);
+                
+                if (sessionMap.has(key)) {
+                    // This is a duplicate - group with the first occurrence
+                    if (!duplicateGroups.has(key)) {
+                        duplicateGroups.set(key, [sessionMap.get(key)]);
+                    }
+                    duplicateGroups.get(key).push(session);
+                } else {
+                    // This is the first occurrence
+                    sessionMap.set(key, session);
+                }
+            });
+            
+            // Replace sessions array with deduplicated sessions
+            const originalCount = sessions.length;
+            sessions = Array.from(sessionMap.values());
+            
+            // Merge assignments from duplicate sessions
+            mergeAssignmentsFromDuplicates(duplicateGroups);
+            
+            console.log(`Deduplicated from ${originalCount} to ${sessions.length} sessions`);
+            if (duplicateGroups.size > 0) {
+                console.log(`Found ${duplicateGroups.size} session groups with duplicates`);
+            }
+            
+            // Extract unique dates and session types for filters
+            const dates = new Set();
+            const types = new Set();
+
+            sessions.forEach(session => {
+                const date = session.schedule?.date;
+                const type = session.session_info?.type;
+
+                if (date) dates.add(date);
+                if (type) types.add(type);
+            });
+
+            console.log('Unique types found:', Array.from(types));
+            console.log('Total sessions processed:', sessions.length);
+            
+            // Populate date filter
+            const dateFilter = document.getElementById('date-filter');
+            dateFilter.innerHTML = '<option value="">All Dates</option>';
+            // Sort dates chronologically, not alphabetically
+            Array.from(dates).sort((a, b) => {
+                const dateA = new Date(a);
+                const dateB = new Date(b);
+                return dateA - dateB;
+            }).forEach(date => {
+                dateFilter.innerHTML += `<option value="${date}">${formatDate(date)}</option>`;
+            });
+            
+            // Populate type filter
+            const typeFilter = document.getElementById('type-filter');
+            typeFilter.innerHTML = '<option value="">All Types</option>';
+            Array.from(types).sort().forEach(type => {
+                typeFilter.innerHTML += `<option value="${type}">${type}</option>`;
+            });
+        }
+
+        function createSessionKey(session) {
+            // Create a unique key for deduplication based on core session properties
+            const title = session.session_info?.title || '';
+            const date = session.schedule?.date || '';
+            const time = session.schedule?.time || '';
+            const location = session.schedule?.location || '';
+            const type = session.session_info?.type || '';
+            
+            return `${title}|||${date}|||${time}|||${location}|||${type}`;
+        }
+
+        function mergeAssignmentsFromDuplicates(duplicateGroups) {
+            // When we have duplicate sessions, we need to merge assignments
+            // The first session in each group becomes the "canonical" session
+            duplicateGroups.forEach((sessionGroup, key) => {
+                if (sessionGroup.length > 1) {
+                    const canonicalSession = sessionGroup[0];
+                    const canonicalId = canonicalSession.session_id;
+                    
+                    // Merge assignments from all duplicate sessions into the canonical one
+                    for (let i = 1; i < sessionGroup.length; i++) {
+                        const duplicateId = sessionGroup[i].session_id;
+                        
+                        if (assignments[duplicateId]) {
+                            if (!assignments[canonicalId]) {
+                                assignments[canonicalId] = [];
+                            }
+                            
+                            // Add any users from the duplicate that aren't already assigned to canonical
+                            assignments[duplicateId].forEach(userId => {
+                                if (!assignments[canonicalId].includes(userId)) {
+                                    assignments[canonicalId].push(userId);
+                                }
+                            });
+                            
+                            // Remove the duplicate assignment entry
+                            delete assignments[duplicateId];
+                        }
+                    }
+                }
+            });
+        }
+
+        function formatDate(dateStr) {
+            // Convert "Sunday, October 19, 2025" to "Sun Oct 19"
+            if (!dateStr) return 'TBD';
+            const parts = dateStr.split(', ');
+            if (parts.length >= 2) {
+                const day = parts[0].substring(0, 3);
+                const monthDay = parts[1].split(' ');
+                if (monthDay.length >= 2) {
+                    return `${day} ${monthDay[0].substring(0, 3)} ${monthDay[1]}`;
+                }
+            }
+            return dateStr;
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    sessions = data;
+                    console.log(`Loaded ${sessions.length} sessions from file`);
+                    processSessionsData();
+                    renderSessions();
+                    updateStats();
+                    showSuccessMessage(`Successfully loaded ${sessions.length} sessions!`);
+                } catch (error) {
+                    showErrorMessage('Error parsing JSON file: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function filterSessions() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+            const dateFilter = document.getElementById('date-filter').value;
+            const typeFilter = document.getElementById('type-filter').value;
+            
+            // First, filter by search and date to get available sessions
+            let availableSessions = sessions.filter(session => {
+                // Search filter
+                if (searchTerm) {
+                    const title = session.session_info?.title?.toLowerCase() || '';
+                    const location = session.schedule?.location?.toLowerCase() || '';
+                    const speakers = getSpeakerNames(session).toLowerCase();
+                    
+                    if (!title.includes(searchTerm) && 
+                        !location.includes(searchTerm) && 
+                        !speakers.includes(searchTerm)) {
+                        return false;
+                    }
+                }
+                
+                // Date filter
+                if (dateFilter && session.schedule?.date !== dateFilter) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            // Update type filter options based on available sessions
+            updateTypeFilterOptions(availableSessions);
+            
+            // Apply type filter to get final results
+            filteredSessions = availableSessions.filter(session => {
+                // Type filter
+                if (typeFilter && session.session_info?.type !== typeFilter) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            renderSessions();
+        }
+        
+        function updateTypeFilterOptions(availableSessions) {
+            const typeFilter = document.getElementById('type-filter');
+            const currentValue = typeFilter.value;
+            
+            // Get unique types from available sessions
+            const availableTypes = new Set();
+            availableSessions.forEach(session => {
+                const type = session.session_info?.type;
+                if (type) availableTypes.add(type);
+            });
+            
+            // Rebuild type filter options
+            typeFilter.innerHTML = '<option value="">All Types</option>';
+            Array.from(availableTypes).sort().forEach(type => {
+                const option = document.createElement('option');
+                option.value = type;
+                option.textContent = type;
+                if (currentValue === type) {
+                    option.selected = true;
+                }
+                typeFilter.appendChild(option);
+            });
+            
+            // If the previously selected type is no longer available, clear the selection
+            if (currentValue && !availableTypes.has(currentValue)) {
+                typeFilter.value = '';
+            }
+        }
+
+        function getSpeakerNames(session) {
+            const speakers = session.speakers || {};
+            let names = [];
+            
+            if (typeof speakers === 'object') {
+                Object.values(speakers).forEach(speakerList => {
+                    if (Array.isArray(speakerList)) {
+                        speakerList.forEach(speaker => {
+                            if (speaker.name) names.push(speaker.name);
+                        });
+                    }
+                });
+            }
+            
+            return names.join(' ');
+        }
+
+        function renderSessions() {
+            const container = document.getElementById('sessions-container');
+            const sessionsToShow = filteredSessions.length > 0 ? filteredSessions : sessions;
+
+            if (sessionsToShow.length === 0) {
+                container.innerHTML = '<div class="no-data">No sessions match your filters.</div>';
+                document.getElementById('session-count').textContent = '0 sessions';
+                return;
+            }
+
+            container.innerHTML = '';
+
+            // Group sessions by date, then time slots
+            const dateGroups = groupSessions(sessionsToShow);
+
+            dateGroups.forEach(dateGroup => {
+                const dateEl = createDateGroupElement(dateGroup);
+                container.appendChild(dateEl);
+            });
+
+            document.getElementById('session-count').textContent = `${sessionsToShow.length} sessions`;
+        }
+
+        function groupSessions(sessions) {
+            console.log('Grouping sessions:', sessions.length);
+
+            // First group by date
+            const dateGroups = new Map();
+
+            sessions.forEach(session => {
+                const date = session.schedule?.date || 'TBD';
+
+                if (!dateGroups.has(date)) {
+                    dateGroups.set(date, []);
+                }
+
+                dateGroups.get(date).push(session);
+            });
+
+            const sortedDates = Array.from(dateGroups.keys()).sort((a, b) => {
+                return parseDate(a) - parseDate(b);
+            });
+            console.log('Date groups (chronological):', sortedDates);
+
+            // Create hierarchical structure: dates containing time slots
+            const finalGroups = [];
+
+            sortedDates.forEach(date => {
+                const daySessions = dateGroups.get(date);
+                const timeGroups = new Map();
+
+                // Group sessions by time within this date
+                daySessions.forEach(session => {
+                    const time = session.schedule?.time || 'TBD';
+                    const key = time;
+
+                    if (!timeGroups.has(key)) {
+                        timeGroups.set(key, {
+                            time: time,
+                            sessions: []
+                        });
+                    }
+
+                    timeGroups.get(key).sessions.push(session);
+                });
+
+                // Sort time groups within each day by actual time
+                const sortedTimeGroups = Array.from(timeGroups.values()).sort((a, b) => {
+                    const timeA = parseTimeForSorting(a.time);
+                    const timeB = parseTimeForSorting(b.time);
+                    return timeA - timeB;
+                });
+
+                // Create date group with nested time slots
+                const dateGroup = {
+                    type: 'date',
+                    date: date,
+                    timeSlots: sortedTimeGroups,
+                    totalSessions: daySessions.length
+                };
+
+                console.log(`Date ${date}: ${sortedTimeGroups.length} time slots, ${daySessions.length} total sessions`);
+                finalGroups.push(dateGroup);
+            });
+
+            console.log('Final date groups created:', finalGroups.length);
+            return finalGroups;
+        }
+
+        function parseDate(dateString) {
+            if (!dateString || dateString === 'TBD') return new Date(0);
+
+            // Handle format: "Monday, October 20, 2025"
+            try {
+                // Remove day name and parse
+                const cleanDate = dateString.replace(/^\w+,\s*/, '');
+                return new Date(cleanDate);
+            } catch (e) {
+                console.warn('Could not parse date:', dateString);
+                return new Date(0);
+            }
+        }
+
+        function parseTimeForSorting(timeString) {
+            if (!timeString || timeString === 'TBD') return 0;
+
+            // Extract start time from "8:00 AM - 12:15 PM" format
+            const startTime = timeString.split(' - ')[0].trim();
+
+            try {
+                // Parse time like "8:00 AM"
+                const [time, period] = startTime.split(' ');
+                const [hours, minutes] = time.split(':').map(Number);
+
+                let hour24 = hours;
+                if (period === 'PM' && hours !== 12) hour24 += 12;
+                if (period === 'AM' && hours === 12) hour24 = 0;
+
+                // Return minutes since midnight for comparison
+                return hour24 * 60 + (minutes || 0);
+            } catch (e) {
+                console.warn('Could not parse time:', timeString);
+                return 0;
+            }
+        }
+
+        function toggleDateGroup(headerElement) {
+            const dateGroup = headerElement.closest('.date-group');
+            const isCollapsed = dateGroup.classList.contains('collapsed');
+
+            if (isCollapsed) {
+                dateGroup.classList.remove('collapsed');
+                headerElement.classList.remove('collapsed');
+            } else {
+                dateGroup.classList.add('collapsed');
+                headerElement.classList.add('collapsed');
+            }
+        }
+
+        function toggleTimeSlot(headerElement) {
+            const timeSlotGroup = headerElement.closest('.time-slot-group');
+            const isCollapsed = timeSlotGroup.classList.contains('collapsed');
+
+            if (isCollapsed) {
+                timeSlotGroup.classList.remove('collapsed');
+                headerElement.classList.remove('collapsed');
+            } else {
+                timeSlotGroup.classList.add('collapsed');
+                headerElement.classList.add('collapsed');
+            }
+        }
+
+        function toggleAllTimeSlots() {
+            const dateGroups = document.querySelectorAll('.date-group');
+            const timeSlotGroups = document.querySelectorAll('.time-slot-group');
+            const button = document.getElementById('expand-collapse-all');
+
+            if (dateGroups.length === 0) return;
+
+            // Check if any are expanded
+            const hasExpanded = Array.from(dateGroups).some(group => !group.classList.contains('collapsed')) ||
+                              Array.from(timeSlotGroups).some(group => !group.classList.contains('collapsed'));
+
+            // Toggle date groups
+            dateGroups.forEach(group => {
+                const header = group.querySelector('.date-header');
+                if (hasExpanded) {
+                    // Collapse all
+                    group.classList.add('collapsed');
+                    header.classList.add('collapsed');
+                } else {
+                    // Expand all
+                    group.classList.remove('collapsed');
+                    header.classList.remove('collapsed');
+                }
+            });
+
+            // Toggle time slot groups
+            timeSlotGroups.forEach(group => {
+                const header = group.querySelector('.time-slot-header');
+                if (hasExpanded) {
+                    // Collapse all
+                    group.classList.add('collapsed');
+                    header.classList.add('collapsed');
+                } else {
+                    // Expand all
+                    group.classList.remove('collapsed');
+                    header.classList.remove('collapsed');
+                }
+            });
+
+            // Update button text
+            button.textContent = hasExpanded ? '📋 Expand All' : '📋 Collapse All';
+        }
+
+        function createDateGroupElement(dateGroup) {
+            const div = document.createElement('div');
+            div.className = 'date-group';
+
+            const totalAssignments = dateGroup.timeSlots.reduce((sum, timeSlot) => {
+                return sum + timeSlot.sessions.reduce((sessionSum, session) => {
+                    return sessionSum + (assignments[session.session_id] || []).length;
+                }, 0);
+            }, 0);
+
+            div.innerHTML = `
+                <div class="date-header" onclick="toggleDateGroup(this)">
+                    <div class="date-info">
+                        <div class="date-caret">▼</div>
+                        <div class="date-title">📅 ${formatDate(dateGroup.date)}</div>
+                    </div>
+                    <div class="date-stats">
+                        ${dateGroup.timeSlots.length} time slot(s) • ${dateGroup.totalSessions} session(s) • ${totalAssignments} assignment(s)
+                    </div>
+                </div>
+                <div class="date-content">
+                    ${dateGroup.timeSlots.map(timeSlot => createTimeSlotElement(timeSlot)).join('')}
+                </div>
+            `;
+
+            return div;
+        }
+
+        function createTimeSlotElement(timeSlot) {
+            const totalAssignments = timeSlot.sessions.reduce((sum, session) => {
+                return sum + (assignments[session.session_id] || []).length;
+            }, 0);
+
+            return `
+                <div class="time-slot-group">
+                    <div class="time-slot-header" onclick="toggleTimeSlot(this)">
+                        <div class="time-slot-info">
+                            <div class="time-slot-caret">▼</div>
+                            <div class="time-slot-time">🕐 ${timeSlot.time}</div>
+                        </div>
+                        <div class="time-slot-stats">
+                            ${timeSlot.sessions.length} session(s) • ${totalAssignments} assignment(s)
+                        </div>
+                    </div>
+                    <div class="time-slot-content">
+                        ${timeSlot.sessions.map(session => createGroupedSessionHTML(session, null)).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createGroupedSessionHTML(session, groupLocation) {
+            const sessionAssignments = assignments[session.session_id] || [];
+            const assignedUsers = sessionAssignments.map(userId =>
+                users.find(u => u.id === userId)
+            ).filter(Boolean);
+
+            const conflicts = selectedUser ? getConflicts(selectedUser.id, session) : [];
+            const hasConflict = selectedUser && !sessionAssignments.includes(selectedUser.id) && hasTimeConflict(selectedUser.id, session);
+
+            // Use individual session location if different from group location
+            const sessionLocation = session.schedule?.location || groupLocation || 'TBD';
+            const showLocation = sessionLocation !== groupLocation;
+
+            return `
+                <div class="grouped-session" data-session-id="${session.session_id}">
+                    <div class="grouped-session-main">
+                        <div class="grouped-session-title">${session.session_info?.title || 'Untitled Session'}</div>
+                        <div class="grouped-session-meta">
+                            ${showLocation ? `
+                            <div class="grouped-session-meta-item">
+                                <strong>📍 Location:</strong> ${sessionLocation}
+                            </div>
+                            ` : ''}
+                            <div class="grouped-session-meta-item">
+                                <strong>📋 Type:</strong> ${session.session_info?.type || 'General'}
+                            </div>
+                            <div class="grouped-session-meta-item">
+                                <strong>🎯 Track:</strong> ${session.tracks?.primary_track || 'General'}
+                            </div>
+                            <div class="grouped-session-meta-item ${assignedUsers.length > 0 ? 'assigned' : ''}">
+                                <strong>👥 Assigned:</strong> ${assignedUsers.length > 0 ? assignedUsers.map(user => user.name).join(', ') : 'None'}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grouped-session-controls">
+                        ${selectedUser ? `
+                            ${hasConflict ? `
+                                <div class="conflict-popup">
+                                    <button class="btn btn-sm" style="background: #ffc107; color: #333; border: 1px solid #f0ad4e;"
+                                            onclick="toggleAssignment('${session.session_id}', ${selectedUser.id})"
+                                            onmouseenter="showConflictTooltip(event, '${selectedUser.name}', '${conflicts.join('|||')}')"
+                                            onmouseleave="hideConflictTooltip()">
+                                        ⚠️ Conflict
+                                    </button>
+                                </div>
+                            ` : `
+                                <button class="btn btn-sm ${sessionAssignments.includes(selectedUser.id) ? 'btn-danger' : 'btn-success'}"
+                                        onclick="toggleAssignment('${session.session_id}', ${selectedUser.id})">
+                                    ${sessionAssignments.includes(selectedUser.id) ? '➖ Remove' : '➕ Assign'}
+                                </button>
+                            `}
+                        ` : '<span style="color: #999; font-size: 12px;">Select user to assign</span>'}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createSessionElement(session) {
+            const div = document.createElement('div');
+            div.className = 'session-item';
+            div.dataset.sessionId = session.session_id;
+
+            const sessionAssignments = assignments[session.session_id] || [];
+            const assignedUsers = sessionAssignments.map(userId => 
+                users.find(u => u.id === userId)
+            ).filter(Boolean);
+
+            const conflicts = selectedUser ? getConflicts(selectedUser.id, session) : [];
+            const hasConflict = selectedUser && !sessionAssignments.includes(selectedUser.id) && hasTimeConflict(selectedUser.id, session);
+            
+            div.innerHTML = `
+                <div class="session-header">
+                    <div class="session-title">${session.session_info?.title || 'Untitled Session'}</div>
+                    <div>
+                        ${selectedUser ? `
+                            <button class="btn btn-sm ${sessionAssignments.includes(selectedUser.id) ? 'btn-danger' : hasConflict ? 'btn' : 'btn-success'}" 
+                                    onclick="toggleAssignment('${session.session_id}', ${selectedUser.id})"
+                                    ${hasConflict ? 'style="background: #ffc107; color: #333; border: 1px solid #f0ad4e;" title="⚠️ Time conflict - cannot attend multiple sessions simultaneously"' : ''}>
+                                ${sessionAssignments.includes(selectedUser.id) ? '➖ Remove' : hasConflict ? '⚠️ Conflict' : '➕ Assign'}
+                            </button>
+                        ` : '<span style="color: #999; font-size: 12px;">Select user to assign</span>'}
+                    </div>
+                </div>
+                
+                <div class="session-details">
+                    <div class="session-meta">
+                        <div class="meta-item">
+                            <strong>📅 Date</strong>
+                            ${formatDate(session.schedule?.date) || 'TBD'}
+                        </div>
+                        <div class="meta-item">
+                            <strong>🕐 Time</strong>
+                            ${session.schedule?.time || 'TBD'}
+                        </div>
+                        <div class="meta-item">
+                            <strong>📍 Location</strong>
+                            ${session.schedule?.location || 'TBD'}
+                        </div>
+                        <div class="meta-item">
+                            <strong>📋 Type</strong>
+                            ${session.session_info?.type || 'General'}
+                        </div>
+                        <div class="meta-item">
+                            <strong>👥 Assigned</strong>
+                            ${assignedUsers.length} attendee(s)
+                        </div>
+                        <div class="meta-item">
+                            <strong>🎯 Track</strong>
+                            ${session.tracks?.primary_track || 'General'}
+                        </div>
+                    </div>
+                    
+                    ${assignedUsers.length > 0 ? `
+                        <div class="attendee-list">
+                            ${assignedUsers.map(user => `
+                                <span class="attendee-tag">
+                                    ${user.name}
+                                    <button class="remove-attendee" onclick="removeAssignment(${session.session_id}, ${user.id})" title="Remove ${user.name}">×</button>
+                                </span>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                    
+                    ${hasConflict ? `
+                        <div class="conflict-warning" style="background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; font-weight: bold;">
+                            🚫 TIME CONFLICT: ${selectedUser.name} is already assigned to overlapping session(s): ${conflicts.join(', ')}
+                            <br><small style="font-weight: normal;">A person cannot attend multiple sessions at the same time.</small>
+                        </div>
+                    ` : conflicts.length > 0 ? `
+                        <div class="conflict-warning">
+                            ⚠️ Time conflict with: ${conflicts.join(', ')}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+
+            return div;
+        }
+
+        function renderUsers() {
+            const container = document.getElementById('users-container');
+            
+            if (users.length === 0) {
+                container.innerHTML = `
+                    <div class="no-data">
+                        No attendees added yet.<br>
+                        <button class="btn" onclick="showAddUserModal()">Add First User</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            users.forEach(user => {
+                const userAssignments = getUserAssignments(user.id);
+                const userConflicts = getUserConflicts(user.id);
+                
+                const div = document.createElement('div');
+                div.className = `user-item ${selectedUser?.id === user.id ? 'selected' : ''}`;
+                div.onclick = () => selectUser(user);
+                
+                // Create assignment count span with proper event handling
+                const assignmentSpan = document.createElement('span');
+                assignmentSpan.className = 'assignment-count';
+                assignmentSpan.textContent = `${userAssignments.length} sessions`;
+                assignmentSpan.title = 'Click to view assigned sessions';
+                assignmentSpan.onclick = (event) => {
+                    event.stopPropagation();
+                    showMSDAssignments(user.id, event);
+                };
+                
+                div.innerHTML = `
+                    <div class="user-name">${user.name}</div>
+                    <div class="user-email">${user.email}</div>
+                    ${user.role ? `<div class="user-email">${user.role}</div>` : ''}
+                    ${user.territory ? `<div class="user-email" style="font-size: 11px; color: #999;">${user.territory}</div>` : ''}
+                    <div class="user-stats">
+                        <span class="assignment-count-placeholder"></span>
+                        ${userConflicts > 0 ? `• ${userConflicts} conflicts` : ''}
+                        ${user.melintaId ? `• ID: ${user.melintaId}` : ''}
+                    </div>
+                `;
+                
+                // Replace the placeholder with the actual clickable element
+                const placeholder = div.querySelector('.assignment-count-placeholder');
+                placeholder.replaceWith(assignmentSpan);
+                
+                container.appendChild(div);
+            });
+        }
+
+        function renderUsersMin() {
+            const container = document.getElementById('users-container');
+            
+            if (users.length === 0) {
+                container.innerHTML = `
+                    <div class="no-data">
+                        No attendees added yet.<br>
+                        <button class="btn" onclick="showAddUserModal()">Add First User</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            users.forEach(user => {
+                const userAssignments = getUserAssignments(user.id);
+                const userConflicts = getUserConflicts(user.id);
+                
+                const div = document.createElement('div');
+                div.className = `user-item ${selectedUser?.id === user.id ? 'selected' : ''}`;
+                div.onclick = () => selectUser(user);
+                
+                // Create assignment count span with proper event handling
+                const assignmentSpan = document.createElement('span');
+                assignmentSpan.className = 'assignment-count';
+                assignmentSpan.textContent = `${userAssignments.length} sessions`;
+                assignmentSpan.title = 'Click to view assigned sessions';
+                assignmentSpan.onclick = (event) => {
+                    event.stopPropagation();
+                    showMSDAssignments(user.id, event);
+                };
+                
+                div.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                        <div class="user-name" title="${user.email || user.name}">${user.name}</div>
+                        <span class="assignment-count-placeholder"></span>
+                    </div>
+                    ${userConflicts > 0 ? `<div class="user-stats" style="color: #dc3545; font-size: 11px;">${userConflicts} conflicts</div>` : ''}
+                `;
+                
+                // Replace the placeholder with the actual clickable element
+                const placeholder = div.querySelector('.assignment-count-placeholder');
+                placeholder.replaceWith(assignmentSpan);
+                
+                container.appendChild(div);
+            });
+        }
+
+        function selectUser(user) {
+            selectedUser = user;
+
+            // Force remove selected class from all user items first
+            document.querySelectorAll('.user-item.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+
+            renderUsersMin();
+            renderSessions();
+            console.log(`Selected user: ${user.name}`);
+        }
+
+        async function toggleAssignment(sessionId, userId) {
+            if (!assignments[sessionId]) {
+                assignments[sessionId] = [];
+            }
+            
+            const index = assignments[sessionId].indexOf(userId);
+            if (index === -1) {
+                // Check for duplicate assignment to same session (unless it's a poster session)
+                // Try multiple matching strategies due to type mismatches
+                let newSession = sessions.find(s => s.session_id === sessionId);
+                if (!newSession) {
+                    newSession = sessions.find(s => s.session_id == sessionId);
+                }
+                if (!newSession) {
+                    newSession = sessions.find(s => String(s.session_id) === String(sessionId));
+                }
+                const sessionType = newSession?.session_info?.type?.toLowerCase() || '';
+                const isPosterSession = sessionType.includes('poster');
+                
+                if (!isPosterSession && assignments[sessionId] && assignments[sessionId].length > 0) {
+                    const existingUser = users.find(u => u.id === assignments[sessionId][0]);
+                    const shouldContinue = await showDuplicateAssignmentModal(
+                        existingUser?.name || 'Unknown',
+                        newSession?.session_info?.title || 'Unknown Session'
+                    );
+
+                    if (!shouldContinue) {
+                        console.log(`Assignment blocked - session ${sessionId} already has an MSD assigned`);
+                        return;
+                    }
+                }
+                
+                // Check for time conflicts before assigning
+                if (newSession && hasTimeConflict(userId, newSession)) {
+                    const conflictingSessions = getConflictingSessions(userId, newSession);
+                    const conflictList = conflictingSessions.map(s => s.session_info?.title || `Session ${s.session_id}`).join('\n• ');
+                    
+                    const shouldContinue = confirm(
+                        `⚠️ TIME CONFLICT DETECTED\n\n` +
+                        `This user is already assigned to overlapping session(s):\n• ${conflictList}\n\n` +
+                        `A person cannot be in two places at the same time.\n\n` +
+                        `Do you want to proceed anyway? (Not recommended)`
+                    );
+                    
+                    if (!shouldContinue) {
+                        console.log(`Assignment blocked due to time conflict for user ${userId} and session ${sessionId}`);
+                        return;
+                    }
+                }
+                
+                assignments[sessionId].push(userId);
+                console.log(`Assigned user ${userId} to session ${sessionId}`);
+            } else {
+                assignments[sessionId].splice(index, 1);
+                console.log(`Removed user ${userId} from session ${sessionId}`);
+            }
+            
+            renderSessions();
+            renderUsersMin();
+            updateStats();
+            saveToStorage();
+        }
+
+        function hasTimeConflict(userId, newSession) {
+            const userSessions = getUserAssignments(userId);
+            
+            return userSessions.some(sessionId => {
+                // Skip self-comparison with flexible matching
+                if (sessionId === newSession.session_id || 
+                    sessionId == newSession.session_id || 
+                    String(sessionId) === String(newSession.session_id)) {
+                    return false;
+                }
+                
+                // Try multiple matching strategies due to type mismatches
+                let existingSession = sessions.find(s => s.session_id === sessionId);
+                if (!existingSession) {
+                    existingSession = sessions.find(s => s.session_id == sessionId);
+                }
+                if (!existingSession) {
+                    existingSession = sessions.find(s => String(s.session_id) === String(sessionId));
+                }
+                
+                return existingSession && sessionsOverlap(newSession, existingSession);
+            });
+        }
+
+        function getConflictingSessions(userId, newSession) {
+            const userSessions = getUserAssignments(userId);
+            const conflicting = [];
+            
+            userSessions.forEach(sessionId => {
+                // Skip self-comparison with flexible matching
+                if (sessionId === newSession.session_id || 
+                    sessionId == newSession.session_id || 
+                    String(sessionId) === String(newSession.session_id)) {
+                    return;
+                }
+                
+                // Try multiple matching strategies due to type mismatches
+                let existingSession = sessions.find(s => s.session_id === sessionId);
+                if (!existingSession) {
+                    existingSession = sessions.find(s => s.session_id == sessionId);
+                }
+                if (!existingSession) {
+                    existingSession = sessions.find(s => String(s.session_id) === String(sessionId));
+                }
+                
+                if (existingSession && sessionsOverlap(newSession, existingSession)) {
+                    conflicting.push(existingSession);
+                }
+            });
+            
+            return conflicting;
+        }
+
+        function removeAssignment(sessionId, userId) {
+            if (assignments[sessionId]) {
+                const index = assignments[sessionId].indexOf(userId);
+                if (index !== -1) {
+                    assignments[sessionId].splice(index, 1);
+                    renderSessions();
+                    renderUsersMin();
+                    updateStats();
+                    saveToStorage();
+                }
+            }
+        }
+
+        function getUserAssignments(userId) {
+            return Object.keys(assignments).filter(sessionId => 
+                assignments[sessionId].includes(userId)
+            );
+        }
+
+        function getUserConflicts(userId) {
+            const userSessions = getUserAssignments(userId);
+            let conflicts = 0;
+            
+            for (let i = 0; i < userSessions.length; i++) {
+                // Try multiple matching strategies due to type mismatches
+                let session1 = sessions.find(s => s.session_id === userSessions[i]);
+                if (!session1) {
+                    session1 = sessions.find(s => s.session_id == userSessions[i]);
+                }
+                if (!session1) {
+                    session1 = sessions.find(s => String(s.session_id) === String(userSessions[i]));
+                }
+                if (!session1) continue;
+                
+                for (let j = i + 1; j < userSessions.length; j++) {
+                    // Try multiple matching strategies due to type mismatches  
+                    let session2 = sessions.find(s => s.session_id === userSessions[j]);
+                    if (!session2) {
+                        session2 = sessions.find(s => s.session_id == userSessions[j]);
+                    }
+                    if (!session2) {
+                        session2 = sessions.find(s => String(s.session_id) === String(userSessions[j]));
+                    }
+                    if (!session2) continue;
+                    
+                    if (sessionsOverlap(session1, session2)) {
+                        conflicts++;
+                    }
+                }
+            }
+            
+            return conflicts;
+        }
+
+        function getConflicts(userId, newSession) {
+            const userSessions = getUserAssignments(userId);
+            const conflicts = [];
+            
+            userSessions.forEach(sessionId => {
+                // Skip self-comparison with flexible matching
+                if (sessionId === newSession.session_id || 
+                    sessionId == newSession.session_id || 
+                    String(sessionId) === String(newSession.session_id)) {
+                    return;
+                }
+                
+                // Try multiple matching strategies due to type mismatches
+                let existingSession = sessions.find(s => s.session_id === sessionId);
+                if (!existingSession) {
+                    existingSession = sessions.find(s => s.session_id == sessionId);
+                }
+                if (!existingSession) {
+                    existingSession = sessions.find(s => String(s.session_id) === String(sessionId));
+                }
+                
+                if (existingSession && sessionsOverlap(newSession, existingSession)) {
+                    conflicts.push(existingSession.session_info?.title || `Session ${sessionId}`);
+                }
+            });
+            
+            return conflicts;
+        }
+
+        function sessionsOverlap(session1, session2) {
+            const date1 = session1.schedule?.date;
+            const date2 = session2.schedule?.date;
+            const time1 = session1.schedule?.time;
+            const time2 = session2.schedule?.time;
+            
+            
+            // If no date or time info, treat as potential conflict (be conservative)
+            if (!date1 || !date2 || !time1 || !time2) {
+                console.warn('Missing date/time data for conflict check:', {session1: session1.session_id, session2: session2.session_id});
+                return false; // Don't block if we can't determine
+            }
+            
+            // Different dates = no conflict
+            if (date1 !== date2) {
+                return false;
+            }
+            
+            // Same date and exact same time string = definite conflict
+            if (time1 === time2) {
+                console.log('Exact time match conflict detected:', time1);
+                return true;
+            }
+            
+            // Parse time ranges (e.g., "8:00 AM - 12:00 PM" or "12:15 PM - 1:30 PM")
+            const parseTime = (timeStr) => {
+                // Handle both single times and ranges
+                let match = timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM)\s*-\s*(\d{1,2}):(\d{2})\s*(AM|PM)/);
+                
+                if (!match) {
+                    // Try single time format (assume 1 hour duration)
+                    match = timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/);
+                    if (!match) {
+                        console.warn('Unable to parse time format:', timeStr);
+                        return null;
+                    }
+                    
+                    let hour = parseInt(match[1]);
+                    let min = parseInt(match[2]);
+                    
+                    if (match[3] === 'PM' && hour !== 12) hour += 12;
+                    if (match[3] === 'AM' && hour === 12) hour = 0;
+                    
+                    const startMinutes = hour * 60 + min;
+                    return {
+                        start: startMinutes,
+                        end: startMinutes + 60 // Assume 1 hour duration
+                    };
+                }
+                
+                // Parse range format
+                let startHour = parseInt(match[1]);
+                let startMin = parseInt(match[2]);
+                let endHour = parseInt(match[4]);
+                let endMin = parseInt(match[5]);
+                
+                if (match[3] === 'PM' && startHour !== 12) startHour += 12;
+                if (match[3] === 'AM' && startHour === 12) startHour = 0;
+                if (match[6] === 'PM' && endHour !== 12) endHour += 12;
+                if (match[6] === 'AM' && endHour === 12) endHour = 0;
+                
+                return {
+                    start: startHour * 60 + startMin,
+                    end: endHour * 60 + endMin
+                };
+            };
+            
+            const t1 = parseTime(time1);
+            const t2 = parseTime(time2);
+            
+            if (!t1 || !t2) {
+                console.warn('Could not parse times for overlap check:', {time1, time2});
+                return false; // Conservative: don't block if we can't parse
+            }
+            
+            // Check for overlap: sessions overlap if one starts before the other ends
+            const overlaps = t1.start < t2.end && t2.start < t1.end;
+            
+            if (overlaps) {
+                console.log('Time overlap detected:', {
+                    session1: `${session1.session_id} (${time1})`,
+                    session2: `${session2.session_id} (${time2})`,
+                    times: {t1, t2}
+                });
+            }
+            
+            return overlaps;
+        }
+
+        function showAddUserModal() {
+            document.getElementById('user-modal').style.display = 'block';
+            document.getElementById('user-name').focus();
+        }
+
+        function closeUserModal() {
+            document.getElementById('user-modal').style.display = 'none';
+            clearUserForm();
+        }
+
+        function clearUserForm() {
+            document.getElementById('user-name').value = '';
+            document.getElementById('user-email').value = '';
+            document.getElementById('user-department').value = '';
+            document.getElementById('user-role').value = 'Attendee';
+        }
+
+        function saveUser() {
+            const name = document.getElementById('user-name').value.trim();
+            const email = document.getElementById('user-email').value.trim();
+            const department = document.getElementById('user-department').value.trim();
+            const role = document.getElementById('user-role').value;
+            
+            if (!name) {
+                showErrorMessage('Name is required');
+                return;
+            }
+            
+            if (!email) {
+                showErrorMessage('Email is required');
+                return;
+            }
+            
+            // Check for duplicate email
+            if (users.some(u => u.email.toLowerCase() === email.toLowerCase())) {
+                showErrorMessage('A user with this email already exists');
+                return;
+            }
+            
+            const user = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                department: department,
+                role: role,
+                createdAt: new Date().toISOString()
+            };
+            
+            users.push(user);
+            renderUsersMin();
+            updateStats();
+            saveToStorage();
+            closeUserModal();
+            
+            showSuccessMessage(`Added ${name} as ${role}`);
+            console.log('Added user:', user);
+        }
+
+        function clearFilters() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('date-filter').value = '';
+            document.getElementById('type-filter').value = '';
+            filterSessions();
+        }
+
+        function updateStats() {
+            document.getElementById('total-sessions').textContent = sessions.length;
+            document.getElementById('total-users').textContent = users.length;
+            
+            const totalAssignments = Object.values(assignments).reduce((sum, userList) => sum + userList.length, 0);
+            document.getElementById('total-assignments').textContent = totalAssignments;
+            
+            let totalConflicts = 0;
+            users.forEach(user => {
+                totalConflicts += getUserConflicts(user.id);
+            });
+            document.getElementById('conflicts-count').textContent = totalConflicts;
+            
+            // Update calendar
+            renderCalendar();
+        }
+
+        function renderCalendar() {
+            const container = document.getElementById('calendar-container');
+            const summary = document.getElementById('calendar-summary');
+            
+            if (sessions.length === 0) {
+                container.innerHTML = '<div class="no-data">No sessions available for calendar view.</div>';
+                summary.textContent = 'No data';
+                return;
+            }
+
+            // Group sessions by date
+            const sessionsByDate = {};
+            sessions.forEach(session => {
+                const date = session.schedule?.date;
+                if (date) {
+                    if (!sessionsByDate[date]) {
+                        sessionsByDate[date] = [];
+                    }
+                    sessionsByDate[date].push(session);
+                }
+            });
+
+            // Sort dates
+            const sortedDates = Object.keys(sessionsByDate).sort();
+            
+            // Show all dates (not just first 4)
+            const displayDates = sortedDates;
+            
+            if (displayDates.length === 0) {
+                container.innerHTML = '<div class="no-data">No sessions with dates available.</div>';
+                summary.textContent = 'No scheduled sessions';
+                return;
+            }
+
+            let calendarHTML = '';
+            displayDates.forEach(date => {
+                console.log('Processing date:', date); // Debug log
+                
+                // Handle different date formats
+                let dateObj;
+                if (date.includes(',')) {
+                    // Format like "Sunday, October 19, 2025"
+                    dateObj = new Date(date);
+                } else {
+                    // Try adding time for parsing
+                    dateObj = new Date(date + 'T00:00:00');
+                }
+                
+                // Fallback if date parsing fails
+                let dayName, dayNumber;
+                if (isNaN(dateObj.getTime())) {
+                    console.warn('Failed to parse date:', date);
+                    dayName = date.split(',')[0] || 'Unknown Day';
+                    dayNumber = date.split(' ')[2] || '?';
+                } else {
+                    dayName = dateObj.toLocaleDateString('en-US', { weekday: 'long' });
+                    dayNumber = dateObj.getDate();
+                }
+                
+                const daySessions = sessionsByDate[date].sort((a, b) => {
+                    const timeA = a.schedule?.time || '';
+                    const timeB = b.schedule?.time || '';
+                    return timeA.localeCompare(timeB);
+                });
+
+                calendarHTML += `
+                    <div class="day-column">
+                        <div class="day-header">${dayName} ${dayNumber}</div>
+                `;
+
+                daySessions.slice(0, 10).forEach(session => { // Show more sessions per day
+                    const sessionAssignments = assignments[session.session_id] || [];
+                    const assignedUsers = sessionAssignments.map(userId => 
+                        users.find(u => u.id === userId)
+                    ).filter(Boolean);
+                    
+                    const hasAssignments = assignedUsers.length > 0;
+                    const className = hasAssignments ? 'assigned' : 'unassigned';
+                    const title = session.session_info?.title || 'Untitled';
+                    
+                    calendarHTML += `
+                        <div class="time-slot ${className}" onclick="scrollToSession('${session.session_id}')" title="${title} - ${assignedUsers.length} MSDs assigned">
+                            <div style="font-weight: bold; font-size: 11px;">${session.schedule?.time || 'TBD'}</div>
+                            <div style="font-size: 10px; line-height: 1.2; margin: 2px 0;">${title.length > 50 ? title.substring(0, 50) + '...' : title}</div>
+                            ${assignedUsers.length > 0 ? 
+                                `<div style="font-size: 9px; color: #666; margin-top: 2px; font-weight: bold;">👥 ${assignedUsers.map(u => u.name.split(' ')[0]).join(', ')}</div>` : 
+                                '<div style="font-size: 9px; color: #999; margin-top: 2px;">⚪ Unassigned</div>'
+                            }
+                        </div>
+                    `;
+                });
+
+                calendarHTML += '</div>';
+            });
+
+            container.innerHTML = calendarHTML;
+            
+            const assignedCount = sessions.filter(s => assignments[s.session_id]?.length > 0).length;
+            summary.textContent = `${assignedCount}/${sessions.length} sessions assigned`;
+        }
+
+        function scrollToSession(sessionId) {
+            const sessionElements = document.querySelectorAll('.session-item');
+            sessionElements.forEach(element => {
+                if (element.dataset.sessionId === sessionId) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    element.style.boxShadow = '0 0 10px rgba(44, 90, 160, 0.5)';
+                    setTimeout(() => {
+                        element.style.boxShadow = '';
+                    }, 2000);
+                }
+            });
+        }
+
+        // Calendar view toggle functionality
+        let isDetailedView = false;
+
+        function toggleCalendarView() {
+            isDetailedView = !isDetailedView;
+            const container = document.getElementById('calendar-container');
+            const toggleBtn = document.getElementById('calendar-toggle-btn');
+            const calendarPanel = container.closest('.calendar-panel');
+            
+            if (isDetailedView) {
+                container.className = 'calendar-view detailed';
+                toggleBtn.textContent = 'Compact View';
+                calendarPanel.classList.add('expanded');
+                renderDetailedCalendar();
+            } else {
+                container.className = 'calendar-view';
+                toggleBtn.textContent = 'Detailed View';
+                calendarPanel.classList.remove('expanded');
+                renderCalendar();
+            }
+        }
+
+        function renderDetailedCalendar() {
+            const container = document.getElementById('calendar-container');
+            const summary = document.getElementById('calendar-summary');
+
+            if (sessions.length === 0) {
+                container.innerHTML = '<div class="no-data">No sessions available for detailed calendar view.</div>';
+                summary.textContent = 'No data';
+                return;
+            }
+
+            // Group sessions by date, then by time slot for desk calendar style
+            const sessionsByDate = {};
+            sessions.forEach(session => {
+                const date = session.schedule?.date;
+                if (date) {
+                    if (!sessionsByDate[date]) {
+                        sessionsByDate[date] = {};
+                    }
+                    const time = session.schedule?.time || 'Time TBD';
+                    if (!sessionsByDate[date][time]) {
+                        sessionsByDate[date][time] = [];
+                    }
+                    sessionsByDate[date][time].push(session);
+                }
+            });
+
+            // Sort dates
+            const sortedDates = Object.keys(sessionsByDate).sort((a, b) => {
+                const dateA = new Date(a);
+                const dateB = new Date(b);
+                if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
+                    return dateA - dateB;
+                }
+                return a.localeCompare(b);
+            });
+
+            if (sortedDates.length === 0) {
+                container.innerHTML = '<div class="no-data">No sessions with dates available.</div>';
+                summary.textContent = 'No scheduled sessions';
+                return;
+            }
+
+            let detailedHTML = `
+                <div style="background: #f8f9fa; padding: 8px; margin-bottom: 15px; border-radius: 6px; text-align: center; color: #666; font-size: 12px; border: 1px solid #e9ecef;">
+                    📊 ${sortedDates.length} days • ${sessions.length} sessions | Desk calendar style view
+                </div>
+            `;
+
+            sortedDates.forEach(date => {
+                // Parse date for display
+                let dateObj;
+                if (date.includes(',')) {
+                    dateObj = new Date(date);
+                } else {
+                    dateObj = new Date(date + 'T00:00:00');
+                }
+
+                let dateDisplay;
+                if (isNaN(dateObj.getTime())) {
+                    dateDisplay = date;
+                } else {
+                    dateDisplay = dateObj.toLocaleDateString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                }
+
+                const dayTimeSlots = sessionsByDate[date];
+                const totalSessions = Object.values(dayTimeSlots).reduce((sum, sessions) => sum + sessions.length, 0);
+
+                detailedHTML += `
+                    <div class="detailed-day">
+                        <div class="detailed-day-header">
+                            📅 ${dateDisplay} (${totalSessions} sessions)
+                        </div>
+                        <div class="detailed-sessions" style="padding: 8px;">
+                `;
+
+                // Sort time slots
+                const sortedTimes = Object.keys(dayTimeSlots).sort((a, b) => {
+                    // Try to parse and sort times properly
+                    if (a === 'Time TBD') return 1;
+                    if (b === 'Time TBD') return -1;
+                    return a.localeCompare(b);
+                });
+
+                sortedTimes.forEach(timeSlot => {
+                    const sessionsInTimeSlot = dayTimeSlots[timeSlot];
+
+                    detailedHTML += `
+                        <div class="time-slot-group" style="margin-bottom: 12px; border: 1px solid #e0e0e0; border-radius: 6px; overflow: hidden;">
+                            <div class="time-slot-header" style="background: #f5f5f5; padding: 6px 10px; font-weight: 600; font-size: 13px; color: #2c5aa0; border-bottom: 1px solid #e0e0e0;">
+                                ⏰ ${timeSlot} ${sessionsInTimeSlot.length > 1 ? `(${sessionsInTimeSlot.length} concurrent sessions)` : ''}
+                            </div>
+                            <div class="concurrent-sessions" style="display: flex; flex-direction: column; gap: 1px;">
+                    `;
+
+                    sessionsInTimeSlot.forEach((session, index) => {
+                        const sessionAssignments = assignments[session.session_id] || [];
+                        const assignedUsers = sessionAssignments.map(userId =>
+                            users.find(u => u.id === userId)
+                        ).filter(Boolean);
+
+                        const hasAssignments = assignedUsers.length > 0;
+                        const className = hasAssignments ? 'assigned' : 'unassigned';
+
+                        const title = session.session_info?.title || session.title || 'Untitled Session';
+                        const sessionType = session.session_info?.type || session.session_type || 'Session';
+                        const location = session.schedule?.location || 'Location TBD';
+
+                        detailedHTML += `
+                            <div class="compact-session ${className}" onclick="scrollToSession('${session.session_id}')"
+                                 style="padding: 8px 10px; background: ${hasAssignments ? '#f0f8ff' : '#fffaf0'};
+                                        border-left: 3px solid ${hasAssignments ? '#28a745' : '#ffc107'};
+                                        cursor: pointer; transition: background-color 0.2s;
+                                        ${index > 0 ? 'border-top: 1px solid #e0e0e0;' : ''}">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px;">
+                                    <div style="flex: 1; min-width: 0;">
+                                        <div class="session-title" style="font-weight: 600; font-size: 13px; color: #2c5aa0; line-height: 1.2; margin-bottom: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${title}">
+                                            ${title}
+                                        </div>
+                                        <div style="display: flex; gap: 12px; font-size: 11px; color: #666; margin-bottom: 4px;">
+                                            <span>📍 ${location}</span>
+                                            <span style="background: #e9ecef; padding: 1px 6px; border-radius: 8px;">${sessionType}</span>
+                                            <span>🆔 ${session.session_id || 'N/A'}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                ${assignedUsers.length > 0 ? `
+                                    <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px;">
+                                        ${assignedUsers.map(user => `
+                                            <span style="background: #d4edda; color: #155724; padding: 2px 6px; border-radius: 8px; font-size: 10px; font-weight: 500;">
+                                                👨‍⚕️ ${user.name.split(' ')[0]} ${user.name.split(' ')[1] ? user.name.split(' ')[1][0] + '.' : ''}
+                                            </span>
+                                        `).join('')}
+                                    </div>
+                                ` : `
+                                    <div style="font-size: 10px; color: #999; font-style: italic; margin-top: 2px;">
+                                        ⚪ No MSDs assigned
+                                    </div>
+                                `}
+                            </div>
+                        `;
+                    });
+
+                    detailedHTML += `
+                            </div>
+                        </div>
+                    `;
+                });
+
+                detailedHTML += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = detailedHTML;
+
+            const assignedCount = sessions.filter(s => assignments[s.session_id]?.length > 0).length;
+            summary.textContent = `${assignedCount}/${sessions.length} sessions assigned`;
+        }
+
+        function exportAssignments() {
+            const exportData = {
+                exportInfo: {
+                    tool: 'IDWeek 2025 Attendance Assignments',
+                    exportDate: new Date().toISOString(),
+                    sessionCount: sessions.length,
+                    userCount: users.length,
+                    assignmentCount: Object.values(assignments).reduce((sum, arr) => sum + arr.length, 0)
+                },
+                sessions: sessions,
+                users: users,
+                assignments: assignments
+            };
+            
+            const blob = new Blob([JSON.stringify(exportData, null, 2)], { 
+                type: 'application/json' 
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `idweek2025_assignments_${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showSuccessMessage('Assignment data exported successfully!');
+        }
+
+        function generateReports() {
+            if (users.length === 0) {
+                showErrorMessage('No users to generate reports for');
+                return;
+            }
+            
+            let report = 'IDWeek 2025 - Assignment Report\n';
+            report += '='.repeat(50) + '\n';
+            report += `Generated: ${new Date().toLocaleDateString()}\n`;
+            report += `Sessions: ${sessions.length} | Users: ${users.length} | Assignments: ${Object.values(assignments).reduce((sum, arr) => sum + arr.length, 0)}\n\n`;
+            
+            // User schedules
+            report += 'INDIVIDUAL SCHEDULES\n';
+            report += '-'.repeat(30) + '\n\n';
+            
+            users.forEach(user => {
+                const userSessions = getUserAssignments(user.id)
+                    .map(sessionId => sessions.find(s => s.session_id === sessionId))
+                    .filter(Boolean)
+                    .sort((a, b) => {
+                        const dateA = new Date(a.schedule?.date || '2025-01-01');
+                        const dateB = new Date(b.schedule?.date || '2025-01-01');
+                        return dateA - dateB;
+                    });
+                
+                report += `${user.name} (${user.email})\n`;
+                if (user.department) report += `${user.department}\n`;
+                report += `Role: ${user.role}\n`;
+                report += `Sessions: ${userSessions.length}\n\n`;
+                
+                if (userSessions.length === 0) {
+                    report += '  No sessions assigned\n\n';
+                } else {
+                    userSessions.forEach(session => {
+                        report += `  • ${session.session_info?.title || 'Untitled'}\n`;
+                        report += `    ${formatDate(session.schedule?.date)} | ${session.schedule?.time || 'TBD'}\n`;
+                        report += `    📍 ${session.schedule?.location || 'TBD'}\n\n`;
+                    });
+                }
+                
+                report += '\n';
+            });
+            
+            // Session attendance
+            report += '\n\nSESSION ATTENDANCE\n';
+            report += '-'.repeat(30) + '\n\n';
+            
+            const sessionsWithAttendees = sessions.filter(session => 
+                assignments[session.session_id] && assignments[session.session_id].length > 0
+            ).sort((a, b) => {
+                const dateA = new Date(a.schedule?.date || '2025-01-01');
+                const dateB = new Date(b.schedule?.date || '2025-01-01');
+                return dateA - dateB;
+            });
+            
+            sessionsWithAttendees.forEach(session => {
+                const sessionAssignments = assignments[session.session_id] || [];
+                const assignedUsers = sessionAssignments.map(userId => 
+                    users.find(u => u.id === userId)
+                ).filter(Boolean);
+                
+                report += `${session.session_info?.title || 'Untitled'}\n`;
+                report += `${formatDate(session.schedule?.date)} | ${session.schedule?.time || 'TBD'}\n`;
+                report += `📍 ${session.schedule?.location || 'TBD'}\n`;
+                report += `Attendees (${assignedUsers.length}):\n`;
+                
+                assignedUsers.forEach(user => {
+                    report += `  • ${user.name} (${user.email}) - ${user.role}\n`;
+                });
+                
+                report += '\n';
+            });
+            
+            // Download report
+            const blob = new Blob([report], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `idweek2025_report_${new Date().toISOString().split('T')[0]}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showSuccessMessage('Report generated and downloaded!');
+        }
+
+        function clearAllData() {
+            if (confirm('⚠️ This will remove ALL users and assignments. Are you sure?')) {
+                users = [];
+                assignments = {};
+                selectedUser = null;
+                localStorage.removeItem('idweek2025_tool_data');
+                renderUsersMin();
+                renderSessions();
+                updateStats();
+                // Trigger MSD data reload
+                loadMSDData();
+                showSuccessMessage('All data cleared - MSDs will reload automatically');
+            }
+        }
+
+        function saveToStorage() {
+            const data = {
+                users: users,
+                assignments: assignments,
+                selectedUserId: selectedUser?.id,
+                lastSaved: new Date().toISOString()
+            };
+            
+            try {
+                localStorage.setItem('idweek2025_tool_data', JSON.stringify(data));
+                console.log('Data saved to localStorage');
+            } catch (error) {
+                console.error('Error saving to localStorage:', error);
+            }
+        }
+
+        function loadStoredData() {
+            try {
+                const stored = localStorage.getItem('idweek2025_tool_data');
+                if (stored) {
+                    const data = JSON.parse(stored);
+                    
+                    // Load assignments (but preserve MSDs if already loaded)
+                    assignments = data.assignments || {};
+                    
+                    // Only override users if we don't already have MSDs loaded
+                    if (users.length === 0 && data.users && data.users.length > 0) {
+                        users = data.users;
+                        console.log(`Loaded ${users.length} users from storage`);
+                        renderUsersMin();
+                        updateStats();
+                    } else if (users.length > 0) {
+                        // We have MSDs loaded, just update assignments and re-render
+                        console.log(`Using ${users.length} MSDs, loading ${Object.keys(assignments).length} assignments from storage`);
+                        if (data.selectedUserId) {
+                            selectedUser = users.find(u => u.id === data.selectedUserId);
+                        }
+                        renderUsersMin();
+                        updateStats();
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading stored data:', error);
+            }
+        }
+
+        function showSuccessMessage(message) {
+            // Simple alert for now - could be enhanced with toast notifications
+            console.log('✅ ' + message);
+        }
+
+        function showErrorMessage(message) {
+            alert('❌ ' + message);
+            console.error('❌ ' + message);
+        }
+
+        function showAttendeesBySession() {
+            if (sessions.length === 0) {
+                showErrorMessage('No sessions loaded yet');
+                return;
+            }
+            
+            document.getElementById('attendees-by-session-modal').style.display = 'block';
+            renderAttendeesBySession();
+            
+            // Add search functionality
+            document.getElementById('session-search').oninput = function() {
+                renderAttendeesBySession(this.value.toLowerCase());
+            };
+        }
+
+        function closeAttendeesBySessionModal() {
+            document.getElementById('attendees-by-session-modal').style.display = 'none';
+        }
+
+        function renderAttendeesBySession(searchTerm = '') {
+            const container = document.getElementById('attendees-by-session-content');
+            
+            // Get sessions with attendees assigned
+            const sessionsWithAttendees = sessions.filter(session => {
+                const hasAttendees = assignments[session.session_id] && assignments[session.session_id].length > 0;
+                const matchesSearch = searchTerm === '' || 
+                    session.session_info?.title?.toLowerCase().includes(searchTerm) ||
+                    session.schedule?.location?.toLowerCase().includes(searchTerm);
+                return hasAttendees && matchesSearch;
+            }).sort((a, b) => {
+                const dateA = new Date(a.schedule?.date || '2025-01-01');
+                const dateB = new Date(b.schedule?.date || '2025-01-01');
+                return dateA - dateB;
+            });
+
+            if (sessionsWithAttendees.length === 0) {
+                container.innerHTML = '<div class="no-data">No sessions with attendees found.</div>';
+                return;
+            }
+
+            let html = '';
+            sessionsWithAttendees.forEach(session => {
+                const sessionAssignments = assignments[session.session_id] || [];
+                const assignedUsers = sessionAssignments.map(userId => 
+                    users.find(u => u.id === userId)
+                ).filter(Boolean);
+
+                html += `
+                    <div style="border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 15px; padding: 15px;">
+                        <h3 style="color: #2c5aa0; margin-bottom: 10px; font-size: 16px;">
+                            ${session.session_info?.title || 'Untitled Session'}
+                        </h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 10px; font-size: 13px; color: #666;">
+                            <div><strong>📅 Date:</strong> ${formatDate(session.schedule?.date) || 'TBD'}</div>
+                            <div><strong>🕐 Time:</strong> ${session.schedule?.time || 'TBD'}</div>
+                            <div><strong>📍 Location:</strong> ${session.schedule?.location || 'TBD'}</div>
+                            <div><strong>👥 Attendees:</strong> ${assignedUsers.length}</div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong style="color: #333;">Attendees:</strong>
+                            <div style="margin-top: 8px;">
+                                ${assignedUsers.map(user => `
+                                    <div style="padding: 8px; background: #f8f9fa; border-radius: 6px; margin-bottom: 5px; border-left: 3px solid #2c5aa0;">
+                                        <strong>${user.name}</strong> (${user.role})
+                                        <br><span style="font-size: 12px; color: #666;">${user.email}</span>
+                                        ${user.department ? `<br><span style="font-size: 12px; color: #666;">${user.department}</span>` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function showSessionsByAttendee() {
+            if (users.length === 0) {
+                showErrorMessage('No attendees added yet');
+                return;
+            }
+            
+            document.getElementById('sessions-by-attendee-modal').style.display = 'block';
+            renderSessionsByAttendee();
+            
+            // Add search functionality
+            document.getElementById('attendee-search').oninput = function() {
+                renderSessionsByAttendee(this.value.toLowerCase());
+            };
+        }
+
+        function closeSessionsByAttendeeModal() {
+            document.getElementById('sessions-by-attendee-modal').style.display = 'none';
+        }
+
+        function showMSDAssignments(userId, event) {
+            event.stopPropagation(); // Prevent user selection when clicking assignment count
+            
+            const user = users.find(u => u.id === userId);
+            if (!user) return;
+            
+            const modal = document.getElementById('msd-assignments-modal');
+            const title = document.getElementById('msd-assignments-title');
+            const content = document.getElementById('msd-assignments-content');
+            
+            title.textContent = `👨‍⚕️ ${user.name} - Assigned Sessions`;
+            
+            // Check if sessions are still loading
+            if (sessions.length === 0) {
+                content.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">⏳ Loading sessions data... Please wait.</p>';
+                modal.style.display = 'block';
+                
+                // Wait for sessions to load, then try again
+                const checkInterval = setInterval(() => {
+                    if (sessions.length > 0) {
+                        clearInterval(checkInterval);
+                        // Re-call this function now that sessions are loaded
+                        showMSDAssignments(userId, {stopPropagation: () => {}});
+                    }
+                }, 500);
+                return;
+            }
+            
+            const userAssignments = getUserAssignments(userId);
+            
+            // DEBUG: Show what we're looking for vs what exists
+            console.log('=== DEBUGGING SESSION LOOKUP ===');
+            console.log('User assignments:', userAssignments);
+            console.log('Total sessions in array:', sessions.length);
+            console.log('First 10 session IDs in array:', sessions.slice(0, 10).map(s => ({id: s.session_id, type: typeof s.session_id})));
+            console.log('Sample session titles:', sessions.slice(0, 5).map(s => s.session_info?.title?.substring(0, 50)));
+            
+            // Check each assignment individually
+            userAssignments.forEach(assignedId => {
+                console.log(`\nLooking for session ID: "${assignedId}" (type: ${typeof assignedId})`);
+                const exactMatch = sessions.find(s => s.session_id === assignedId);
+                const looseMatch = sessions.find(s => s.session_id == assignedId);
+                const stringMatch = sessions.find(s => String(s.session_id) === String(assignedId));
+                console.log(`  Exact match (===): ${!!exactMatch}`);
+                console.log(`  Loose match (==): ${!!looseMatch}`);
+                console.log(`  String match: ${!!stringMatch}`);
+                
+                if (exactMatch) console.log(`  Found: ${exactMatch.session_info?.title}`);
+                if (looseMatch && !exactMatch) console.log(`  Loose found: ${looseMatch.session_info?.title} (ID: ${looseMatch.session_id}, type: ${typeof looseMatch.session_id})`);
+            });
+            
+            // Separate found sessions from missing ones
+            const foundSessions = [];
+            const missingSessions = [];
+            
+            userAssignments.forEach(sessionId => {
+                // Try multiple matching strategies due to type mismatches
+                let session = sessions.find(s => s.session_id === sessionId);
+                if (!session) {
+                    session = sessions.find(s => s.session_id == sessionId);
+                }
+                if (!session) {
+                    session = sessions.find(s => String(s.session_id) === String(sessionId));
+                }
+                
+                if (session) {
+                    foundSessions.push(session);
+                } else {
+                    missingSessions.push(sessionId);
+                }
+            });
+            
+            if (userAssignments.length === 0) {
+                content.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">No sessions assigned to this MSD.</p>';
+            } else {
+                // Sort found sessions by date and time
+                foundSessions.sort((a, b) => {
+                    const dateA = new Date(a.schedule?.date || '2025-01-01');
+                    const dateB = new Date(b.schedule?.date || '2025-01-01');
+                    if (dateA.getTime() !== dateB.getTime()) {
+                        return dateA - dateB;
+                    }
+                    // If same date, sort by time
+                    const timeA = a.schedule?.time || '';
+                    const timeB = b.schedule?.time || '';
+                    return timeA.localeCompare(timeB);
+                });
+                
+                let html = `<div style="margin-bottom: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px;">
+                    <strong>Total Assignments: ${userAssignments.length}</strong>
+                    ${foundSessions.length !== userAssignments.length ? 
+                        `<br><span style="color: #dc3545; font-size: 12px;">⚠️ ${foundSessions.length} found, ${missingSessions.length} missing/conflicted</span>` : 
+                        ''
+                    }
+                </div>`;
+                
+                // Show found sessions first
+                foundSessions.forEach((session, index) => {
+                    const conflicts = getConflictingSessions(userId, session);
+                    const hasConflict = conflicts.length > 0;
+                    
+                    html += `
+                        <div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 10px; ${hasConflict ? 'border-color: #dc3545; background: #fff5f5;' : 'background: white;'}">
+                            <div style="display: flex; justify-content: between; align-items: flex-start; margin-bottom: 8px;">
+                                <h4 style="color: #2c5aa0; margin: 0; flex: 1;">${session.session_info?.title || 'Untitled Session'}</h4>
+                                <button onclick="removeAssignment('${session.session_id}', ${userId})" 
+                                    style="background: #dc3545; color: white; border: none; padding: 4px 8px; border-radius: 3px; font-size: 12px; cursor: pointer;">
+                                    Remove
+                                </button>
+                            </div>
+                            
+                            <div style="font-size: 13px; color: #666; margin-bottom: 8px;">
+                                <strong>📅 ${session.schedule?.date || 'Date TBD'}</strong> • 
+                                <strong>⏰ ${session.schedule?.time || 'Time TBD'}</strong> • 
+                                <strong>📍 ${session.schedule?.location || 'Location TBD'}</strong>
+                            </div>
+                            
+                            ${session.session_info?.type ? `<div style="display: inline-block; background: #e9ecef; padding: 2px 8px; border-radius: 12px; font-size: 11px; margin-bottom: 8px;">${session.session_info.type}</div>` : ''}
+                            
+                            ${session.session_info?.description ? `<p style="font-size: 13px; color: #333; margin: 8px 0;">${session.session_info.description}</p>` : ''}
+                            
+                            ${hasConflict ? `
+                                <div style="background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 8px; border-radius: 4px; font-size: 12px; margin-top: 8px;">
+                                    ⚠️ <strong>Time Conflict:</strong> This session conflicts with ${conflicts.length} other assigned session(s)
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+                
+                // Show missing/conflicted sessions
+                if (missingSessions.length > 0) {
+                    html += `<div style="margin-top: 20px; margin-bottom: 15px;">
+                        <h4 style="color: #dc3545; margin-bottom: 10px;">⚠️ Missing/Conflicted Assignments (${missingSessions.length})</h4>
+                        <p style="font-size: 12px; color: #666; margin-bottom: 15px;">These assignments exist but the sessions cannot be found. They may have been removed or changed.</p>
+                    </div>`;
+                    
+                    missingSessions.forEach(sessionId => {
+                        html += `
+                            <div style="border: 1px solid #dc3545; border-radius: 6px; padding: 15px; margin-bottom: 10px; background: #fff5f5;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                                    <h4 style="color: #dc3545; margin: 0; flex: 1;">⚠️ Session ID: ${sessionId}</h4>
+                                    <button onclick="removeAssignment('${sessionId}', ${userId})" 
+                                        style="background: #dc3545; color: white; border: none; padding: 4px 8px; border-radius: 3px; font-size: 12px; cursor: pointer;"
+                                        title="Remove this missing assignment">
+                                        Remove
+                                    </button>
+                                </div>
+                                
+                                <div style="font-size: 13px; color: #721c24; margin-bottom: 8px;">
+                                    <strong>Status:</strong> Session not found in current data
+                                </div>
+                                
+                                <div style="background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 8px; border-radius: 4px; font-size: 12px;">
+                                    This assignment references a session that no longer exists or has been changed. 
+                                    You should remove this assignment or verify the session still exists.
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+                
+                content.innerHTML = html;
+            }
+            
+            modal.style.display = 'block';
+        }
+
+        function closeMSDAssignmentsModal() {
+            document.getElementById('msd-assignments-modal').style.display = 'none';
+        }
+
+        function removeAssignment(sessionId, userId) {
+            if (!assignments[sessionId]) return;
+            
+            const index = assignments[sessionId].indexOf(userId);
+            if (index !== -1) {
+                assignments[sessionId].splice(index, 1);
+                
+                // Clean up empty assignment arrays
+                if (assignments[sessionId].length === 0) {
+                    delete assignments[sessionId];
+                }
+                
+                console.log(`Removed assignment: User ${userId} from Session ${sessionId}`);
+                renderUsersMin();
+                renderSessions();
+                updateStats();
+                saveToStorage();
+                
+                // Re-open the modal to show updated assignments
+                const user = users.find(u => u.id === userId);
+                if (user) {
+                    showMSDAssignments(userId, {stopPropagation: () => {}});
+                }
+            }
+        }
+
+        function renderSessionsByAttendee(searchTerm = '') {
+            const container = document.getElementById('sessions-by-attendee-content');
+            
+            // Get users with sessions assigned
+            const usersWithSessions = users.filter(user => {
+                const hasAssignments = getUserAssignments(user.id).length > 0;
+                const matchesSearch = searchTerm === '' || 
+                    user.name.toLowerCase().includes(searchTerm) ||
+                    user.email.toLowerCase().includes(searchTerm) ||
+                    (user.department && user.department.toLowerCase().includes(searchTerm));
+                return hasAssignments && matchesSearch;
+            }).sort((a, b) => a.name.localeCompare(b.name));
+
+            if (usersWithSessions.length === 0) {
+                container.innerHTML = '<div class="no-data">No attendees with session assignments found.</div>';
+                return;
+            }
+
+            let html = '';
+            usersWithSessions.forEach(user => {
+                const userSessionIds = getUserAssignments(user.id);
+                const userSessions = userSessionIds
+                    .map(sessionId => sessions.find(s => s.session_id === sessionId))
+                    .filter(Boolean)
+                    .sort((a, b) => {
+                        const dateA = new Date(a.schedule?.date || '2025-01-01');
+                        const dateB = new Date(b.schedule?.date || '2025-01-01');
+                        return dateA - dateB;
+                    });
+
+                const userConflicts = getUserConflicts(user.id);
+
+                html += `
+                    <div style="border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 15px; padding: 15px;">
+                        <div style="display: flex; justify-content: between; align-items: flex-start; margin-bottom: 10px;">
+                            <div>
+                                <h3 style="color: #2c5aa0; margin-bottom: 5px; font-size: 16px;">${user.name}</h3>
+                                <div style="font-size: 13px; color: #666;">
+                                    <div>${user.email} • ${user.role}</div>
+                                    ${user.department ? `<div>${user.department}</div>` : ''}
+                                    <div style="margin-top: 5px;">
+                                        <strong>${userSessions.length} sessions assigned</strong>
+                                        ${userConflicts > 0 ? `<span style="color: #dc3545;"> • ${userConflicts} conflicts</span>` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <strong style="color: #333;">Assigned Sessions:</strong>
+                            <div style="margin-top: 8px;">
+                                ${userSessions.map(session => `
+                                    <div style="padding: 8px; background: #f8f9fa; border-radius: 6px; margin-bottom: 5px; border-left: 3px solid #2c5aa0;">
+                                        <strong>${session.session_info?.title || 'Untitled Session'}</strong>
+                                        <br><span style="font-size: 12px; color: #666;">
+                                            📅 ${formatDate(session.schedule?.date) || 'TBD'} • 
+                                            🕐 ${session.schedule?.time || 'TBD'} • 
+                                            📍 ${session.schedule?.location || 'TBD'}
+                                        </span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Global tooltip element
+        let globalTooltip = null;
+
+        function createGlobalTooltip() {
+            if (globalTooltip) return globalTooltip;
+
+            globalTooltip = document.createElement('div');
+            globalTooltip.style.position = 'fixed';
+            globalTooltip.style.zIndex = '1000';
+            globalTooltip.style.visibility = 'hidden';
+            globalTooltip.style.opacity = '0';
+            globalTooltip.style.pointerEvents = 'none';
+            globalTooltip.style.transition = 'opacity 0.3s, transform 0.3s';
+            globalTooltip.style.transform = 'translateY(-10px)';
+            globalTooltip.style.maxWidth = '300px';
+            document.body.appendChild(globalTooltip);
+            return globalTooltip;
+        }
+
+        function showConflictTooltip(event, userName, conflictsString) {
+            const tooltip = createGlobalTooltip();
+            const button = event.target;
+            const buttonRect = button.getBoundingClientRect();
+
+            // Parse conflicts string
+            const conflicts = conflictsString.split('|||').filter(c => c.length > 0);
+
+            // Set tooltip content
+            tooltip.innerHTML = `
+                <div class="conflict-popup-content-inner">
+                    <div class="conflict-popup-message">
+                        ${userName} already assigned to this time slot
+                    </div>
+                    ${conflicts.map(conflict => `<div class="conflict-popup-session">${conflict}</div>`).join('')}
+                </div>
+            `;
+
+            // Position tooltip above button, centered, but constrain to viewport
+            const tooltipWidth = 300;
+            const viewportWidth = window.innerWidth;
+            const buttonCenter = buttonRect.left + (buttonRect.width / 2);
+
+            let left = buttonCenter - (tooltipWidth / 2);
+
+            // Keep tooltip within viewport with 10px margin
+            if (left < 10) {
+                left = 10;
+            } else if (left + tooltipWidth > viewportWidth - 10) {
+                left = viewportWidth - tooltipWidth - 10;
+            }
+
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = (buttonRect.top - tooltip.offsetHeight - 8) + 'px';
+            tooltip.style.width = tooltipWidth + 'px';
+
+            // Show tooltip
+            tooltip.style.visibility = 'visible';
+            tooltip.style.opacity = '1';
+            tooltip.style.transform = 'translateY(0)';
+        }
+
+        function hideConflictTooltip() {
+            if (globalTooltip) {
+                globalTooltip.style.visibility = 'hidden';
+                globalTooltip.style.opacity = '0';
+                globalTooltip.style.transform = 'translateY(10px)';
+            }
+        }
+
+        // Duplicate Assignment Modal Functions
+        let duplicateAssignmentResolve = null;
+
+        function showDuplicateAssignmentModal(existingMsdName, sessionTitle) {
+            return new Promise((resolve) => {
+                duplicateAssignmentResolve = resolve;
+
+                // Update modal content
+                document.getElementById('existing-msd-name').textContent = existingMsdName;
+                document.getElementById('duplicate-session-title').textContent = sessionTitle;
+
+                // Show modal
+                document.getElementById('duplicate-assignment-modal').style.display = 'block';
+            });
+        }
+
+        function confirmDuplicateAssignment() {
+            document.getElementById('duplicate-assignment-modal').style.display = 'none';
+            if (duplicateAssignmentResolve) {
+                duplicateAssignmentResolve(true);
+                duplicateAssignmentResolve = null;
+            }
+        }
+
+        function cancelDuplicateAssignment() {
+            document.getElementById('duplicate-assignment-modal').style.display = 'none';
+            if (duplicateAssignmentResolve) {
+                duplicateAssignmentResolve(false);
+                duplicateAssignmentResolve = null;
+            }
+        }
+    </script>
+
+    <!-- Duplicate Assignment Warning Modal -->
+    <div id="duplicate-assignment-modal" class="modal">
+        <div class="modal-content warning-modal">
+            <div class="warning-header">
+                <div class="warning-icon">⚠️</div>
+                <h3>DUPLICATE ASSIGNMENT WARNING</h3>
+            </div>
+            <div class="warning-body">
+                <p class="warning-message">
+                    This session already has an MSD assigned: <strong id="existing-msd-name">Unknown</strong>
+                </p>
+                <p class="session-title">
+                    Session: <span id="duplicate-session-title">Unknown Session</span>
+                </p>
+                <p class="warning-note">
+                    Typically only one MSD should attend each session (except poster sessions).
+                </p>
+                <p class="warning-question">
+                    Do you want to assign multiple MSDs to this session?
+                </p>
+            </div>
+            <div class="warning-buttons">
+                <button class="btn btn-danger" onclick="cancelDuplicateAssignment()">
+                    ❌ Cancel Assignment
+                </button>
+                <button class="btn btn-warning" onclick="confirmDuplicateAssignment()">
+                    ⚠️ Allow Multiple MSDs
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

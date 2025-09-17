@@ -53,7 +53,7 @@
             </cfcatch>
         </cftry>
         <cfoutput>
-            <meta http-equiv="refresh" content="#CreateRandomSixteenThirtySix()#; url=http://local.dev.meetings.com/IDWEEK/_getPosterSessionAgendaItem.cfm">
+            <meta http-equiv="refresh" content="#CreateRandomSixteenThirtySix()#; url=http://local.dev.meetings.com/IDWEEK/cfml_crawler/_getPosterSessionAgendaItem.cfm">
             <!--- cfdump var="#cleanSessionData#" label="cleanSessionData" --->
         </cfoutput>
     </cfloop>

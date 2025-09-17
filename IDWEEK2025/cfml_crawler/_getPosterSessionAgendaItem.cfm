@@ -49,7 +49,16 @@
         </cftry>
         <cfoutput>
             <div style="font-size: 10px;">#htmleditformat(cleanSessionData)#</div><hr>
-            <meta http-equiv="refresh" content="#CreateRandomSixteenThirtySix()#; url=http://local.dev.conferencecrawler.com/IDWEEK2025/_getPosterSessionAgendaItem.cfm">
+            <!--- Only refresh if there are more records to process --->
+            <cfquery name="checkRemaining" datasource="conference_crawler">
+                SELECT count(1) as remaining FROM IDWEEK_Posters_2025 WHERE 0=0     
+                AND (rawPosterData IS NULL OR rawPosterData LIKE '<!DOCTYPE%')
+            </cfquery>
+            <cfif checkRemaining.remaining GT 1>
+                <meta http-equiv="refresh" content="#CreateRandomSixteenThirtySix()#; url=http://local.dev.conferencecrawler.com/IDWEEK2025/cfml_crawler/_getPosterSessionAgendaItem.cfm?t=#getTickCount()#">
+            <cfelse>
+                <div style="color: green; font-weight: bold;">✅ All posters processed!</div>
+            </cfif>
             <!--- cfdump var="#cleanSessionData#" label="cleanSessionData" --->
         </cfoutput>
     </cfloop>
