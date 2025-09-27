@@ -126,18 +126,21 @@ input:focus, select:focus, textarea:focus {
 
 .main-layout {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 300px minmax(0, 1fr);
     gap: 20px;
     height: 80vh;
+    overflow-x: auto;
+    min-width: 100%;
 }
 
 .panel {
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 /* Tab Styles */
@@ -224,17 +227,92 @@ input:focus, select:focus, textarea:focus {
 
 .panel-content {
     flex: 1;
-    overflow-y: auto;
+    overflow: auto;
     padding: 15px;
+    min-width: 0; /* Allow flex item to shrink below content size */
+}
+
+/* Ensure sessions container can scroll horizontally */
+#sessions-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    min-height: 400px;
+    min-width: 800px; /* Force minimum width to trigger horizontal scroll */
 }
 
 .user-item {
     padding: 5px;
-    /* border: 2px solid #e9ecef; */
+    border: 1px solid #e9ecef;
     border-radius: 8px;
     margin-bottom: 10px;
     cursor: pointer;
     transition: all 0.2s;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    flex: 1;
+}
+
+.user-details {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.user-name {
+    position: relative;
+    cursor: pointer;
+    font-weight: 600;
+    color: #34495e;
+    font-size: 14px;
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.user-name .email-tooltip {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: normal;
+
+    /* Position */
+    position: absolute;
+    z-index: 1000;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Arrow */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.user-name .email-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+.user-name:hover .email-tooltip {
+    visibility: visible;
+    opacity: 1;
 }
 
 .user-item:hover {
@@ -250,11 +328,6 @@ input:focus, select:focus, textarea:focus {
     transform: translateX(3px);
 }
 
-.user-name {
-    font-weight: 600;
-    color: #34495e;
-    /* margin-bottom: 4px; */
-}
 
 .user-email {
     font-size: 12px;
@@ -317,6 +390,90 @@ input:focus, select:focus, textarea:focus {
     background: #fffdf8;
 }
 
+/* Collapsed session styles */
+.session-item.collapsed .session-header {
+    background: #e8f4f8;
+    border-bottom: none;
+}
+
+.session-item.collapsed.assigned .session-header {
+    background: #d4edda;
+}
+
+.session-title-wrapper {
+    flex: 1;
+}
+
+.assignment-summary {
+    font-size: 12px;
+    color: #28a745;
+    font-weight: normal;
+    margin-top: 4px;
+    line-height: 1.2;
+}
+
+.session-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.collapse-indicator {
+    font-size: 14px;
+    color: #666;
+    user-select: none;
+}
+
+/* Grouped session collapse styles */
+.grouped-session.collapsed .grouped-session-header {
+    background: #e8f4f8;
+    border-bottom: none;
+}
+
+.grouped-session.collapsed.assigned .grouped-session-header {
+    background: #d4edda;
+}
+
+.grouped-session-title-wrapper {
+    flex: 1;
+}
+
+.grouped-session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.grouped-session-main-info {
+    flex: 1;
+}
+
+.grouped-session-title {
+    font-weight: 600;
+    color: #2c5aa0;
+    font-size: 16px;
+    line-height: 1.3;
+    margin-bottom: 5px;
+}
+
+.grouped-session-meta-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.grouped-session-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .session-header {
     background: #f8f9fa;
     padding: 15px;
@@ -326,13 +483,29 @@ input:focus, select:focus, textarea:focus {
     align-items: flex-start;
 }
 
+.session-main-info {
+    flex: 1;
+}
+
 .session-title {
     font-weight: 600;
     color: #2c5aa0;
     font-size: 16px;
-    flex: 1;
-    margin-right: 15px;
     line-height: 1.3;
+    margin-bottom: 5px;
+}
+
+.session-meta-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.meta-inline-item {
+    white-space: nowrap;
 }
 
 .session-details {
@@ -414,6 +587,187 @@ input:focus, select:focus, textarea:focus {
     max-width: 500px;
     position: relative;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.modal-lg {
+    max-width: 800px;
+}
+
+.modal-xl {
+    max-width: 800px;
+}
+
+/* Modal Session Styling */
+.msd-info-summary {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.date-group-assignments {
+    margin-top: 20px;
+}
+
+.date-group-assignments h5 {
+    color: #34495e;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #34495e;
+}
+
+.session-card {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.session-card-content {
+    flex: 1;
+}
+
+.session-card .session-title {
+    color: #2c5aa0;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.session-card .session-meta {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.session-card .session-meta .date-time {
+    margin-bottom: 4px;
+}
+
+.session-card .session-meta .location {
+    margin-bottom: 4px;
+}
+
+.session-card .session-type {
+    background: #e9ecef;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #666;
+    display: inline-block;
+}
+
+.session-type-inline {
+    background: #e9ecef;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #666;
+}
+
+.btn-remove {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    align-self: flex-start;
+    white-space: nowrap;
+}
+
+.btn-remove:hover {
+    background: #c82333;
+}
+
+/* Missing session styling */
+.missing-session {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+}
+
+.missing-badge {
+    background-color: #dc3545;
+    color: white;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 8px;
+    font-weight: 500;
+}
+
+/* Simple session layout */
+.simple-session {
+    background: white;
+    border: 1px solid #e9ecef;
+    /* border-radius: 8px; */
+    padding: 15px;
+    /* margin-bottom: 10px; */
+    transition: all 0.2s;
+}
+
+
+.simple-session:hover {
+    border-color: #2c5aa0;
+    box-shadow: 0 2px 8px rgba(44, 90, 160, 0.1);
+}
+
+.simple-session.assigned {
+    border-left: 4px solid #2c5aa0;
+    background: #e3f2fd;
+}
+
+.simple-session.unassigned {
+    border-left: 4px solid #ffc107;
+    background: #fffdf8;
+}
+
+.simple-session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.simple-session-title {
+    font-weight: 600;
+    color: #2c5aa0;
+    font-size: 16px;
+    line-height: 1.3;
+    flex: 1;
+    margin-right: 15px;
+}
+
+.simple-session-controls {
+    display: flex;
+    align-items: center;
+}
+
+.simple-session-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.simple-session-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 13px;
+    color: #666;
+}
+
+.simple-session-assignee {
+    font-size: 13px;
+    color: #28a745;
+    font-weight: 600;
 }
 
 .close {
@@ -723,7 +1077,7 @@ input:focus, select:focus, textarea:focus {
 .detailed-day-header {
     background: linear-gradient(135deg, #34495e, #2c3e50);
     color: white;
-    padding: 5px 10px;
+    padding: 0px 2px;
     font-size: 16px;
     font-weight: 600;
     border-radius: 8px 8px 0 0;
@@ -744,7 +1098,7 @@ input:focus, select:focus, textarea:focus {
 .time-slot-header {
     background: linear-gradient(135deg, #e9edf0, #a2a4a5);
     color: #495057;
-    padding: 5px 10px;
+    padding: 0px 5px;
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
@@ -907,6 +1261,12 @@ input:focus, select:focus, textarea:focus {
     background: linear-gradient(135deg, #495057, #34495e);
 }
 
+.date-caret {
+    font-size: 14px;
+    transition: transform 0.2s ease;
+    margin-right: 8px;
+}
+
 .date-info {
     display: flex;
     align-items: center;
@@ -938,7 +1298,8 @@ input:focus, select:focus, textarea:focus {
 .date-content {
     padding: 0;
     transition: all 0.3s ease;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: visible;
 }
 
 .date-group.collapsed .date-content {
@@ -1027,7 +1388,8 @@ input:focus, select:focus, textarea:focus {
     padding: 0;
     background: white;
     transition: all 0.3s ease;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: visible;
 }
 
 .time-slot-group.collapsed .time-slot-content {
@@ -1183,11 +1545,11 @@ input:focus, select:focus, textarea:focus {
 }
 
 .session-title {
-    background: rgba(255, 193, 7, 0.2);
-    padding: 12px;
+    /* background: rgba(255, 193, 7, 0.2); */
+    /* padding: 12px; */
     border-radius: 8px;
-    border-left: 4px solid #ffc107;
-    margin: 15px 0;
+    /* border-left: 4px solid #ffc107; */
+    /* margin: 15px 0; */
     font-size: 14px;
 }
 

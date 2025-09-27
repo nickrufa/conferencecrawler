@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IDWeek 2025 - Attendance Assignments</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/assets/css/conference_crawler.css">
 </head>
 <body>
     <div class="header">
@@ -33,12 +33,12 @@
     <div class="controls">
         <div class="control-buttons">
             <input type="file" id="json-upload" accept=".json" style="display: none;">
-            <button class="btn" onclick="document.getElementById('json-upload').click()">📁 Load Sessions JSON</button>
+            <!--- button class="btn" onclick="document.getElementById('json-upload').click()">📁 Load Sessions JSON</button --->
             <button class="btn" onclick="showAttendeesBySession()">📋 Attendees by Session</button>
             <button class="btn" onclick="showSessionsByAttendee()">📅 Sessions by Attendee</button>
-            <button class="btn" onclick="exportAssignments()">💾 Export Data</button>
-            <button class="btn" onclick="generateReports()">📊 Generate Reports</button>
-            <button class="btn" onclick="forceReload()">🔄 Reload Data</button>
+            <button class="btn" onclick="exportAssignments()">💾 Export Data</button> <!--- - Export Data = Complete data backup for technical use/reimport --->
+            <button class="btn" onclick="generateReports()">📊 Generate Reports</button> <!--- -- Generate Reports = Human-readable summary for review/printing --->
+            <!--- button class="btn" onclick="forceReload()">🔄 Reload Data</button --->
             <button class="btn btn-danger" onclick="clearAllData()">🗑️ Clear All</button>
         </div>
     </div>
@@ -500,7 +500,7 @@
 
                     sessions = allSessions;
                     processSessionsData();
-                    renderSessions();
+                    // Don't render sessions immediately - wait for assignments to load
                     updateStats();
 
                     const posterCount = typeCounts['Poster'] || 0;
@@ -516,6 +516,14 @@
                     }
 
                     showSuccessMessage(message);
+
+                    // Trigger initial render if no assignments will load
+                    setTimeout(() => {
+                        if (Object.keys(assignments).length === 0) {
+                            console.log('No assignments detected, rendering sessions now...');
+                            renderSessions();
+                        }
+                    }, 500);
                 })
                 .catch(error => {
                     console.error('Failed to load combined data:', error);
@@ -1024,15 +1032,51 @@
             const conflicts = selectedUser ? getConflicts(selectedUser.id, session) : [];
             const hasConflict = selectedUser && !sessionAssignments.includes(selectedUser.id) && hasTimeConflict(selectedUser.id, session);
 
+            // Debug logging for assign button visibility
+            if (!selectedUser) {
+                console.log('🔍 DEBUG: No selectedUser set, buttons will not show');
+            } else {
+                console.log(`🔍 DEBUG: selectedUser is set to ${selectedUser.name}, buttons should show`);
+            }
+
             // Use individual session location if different from group location
             const sessionLocation = session.schedule?.location || groupLocation || 'TBD';
             const showLocation = sessionLocation !== groupLocation;
 
             const hasAssignments = sessionAssignments.length > 0;
+            const isCollapsed = hasAssignments; // Auto-collapse assigned sessions
+
+            console.log(`Creating grouped session ${getSessionId(session)}: hasAssignments=${hasAssignments}, isCollapsed=${isCollapsed}, assignments:`, sessionAssignments);
+
             return `
-                <div class="grouped-session ${hasAssignments ? 'assigned' : 'unassigned'}" data-session-id="${getSessionId(session)}">
-                    <div class="grouped-session-main">
-                        <div class="grouped-session-title">${getSessionTitle(session)}</div>
+                <div class="grouped-session ${hasAssignments ? 'assigned' : 'unassigned'} ${isCollapsed ? 'collapsed' : 'expanded'}" data-session-id="${getSessionId(session)}">
+                    <div class="grouped-session-header" onclick="toggleSessionCollapse('${getSessionId(session)}')" style="cursor: pointer;">
+                        <div class="grouped-session-title-wrapper">
+                            <div class="grouped-session-title">${getSessionTitle(session)}</div>
+                            ${hasAssignments ? `<div class="assignment-summary">✅ ${assignedUsers.length} MSD${assignedUsers.length !== 1 ? 's' : ''} assigned: ${assignedUsers.map(u => u.name).join(', ')}</div>` : ''}
+                        </div>
+                        <div class="grouped-session-controls">
+                            ${selectedUser ? `
+                                ${hasConflict ? `
+                                    <div class="conflict-popup">
+                                        <button class="btn btn-sm" style="background: #ffc107; color: #333; border: 1px solid #f0ad4e;"
+                                                onclick="event.stopPropagation(); toggleAssignment('${getSessionId(session)}', ${selectedUser.id})"
+                                                onmouseenter="showConflictTooltip(event, '${selectedUser.name}', '${conflicts.join('|||')}')"
+                                                onmouseleave="hideConflictTooltip()">
+                                            ⚠️ Conflict
+                                        </button>
+                                    </div>
+                                ` : `
+                                    <button class="btn btn-sm ${sessionAssignments.includes(selectedUser.id) ? 'btn-danger' : 'btn-success'}"
+                                            onclick="event.stopPropagation(); toggleAssignment('${getSessionId(session)}', ${selectedUser.id})">
+                                        ${sessionAssignments.includes(selectedUser.id) ? '➖ Remove' : '➕ Assign'}
+                                    </button>
+                                `}
+                            ` : '<span style="color: #999; font-size: 12px;">Select user to assign</span>'}
+                            <span class="collapse-indicator">${isCollapsed ? '📁' : '📂'}</span>
+                        </div>
+                    </div>
+                    <div class="grouped-session-details" style="display: ${isCollapsed ? 'none' : 'block'};">
                         <div class="grouped-session-meta">
                             ${showLocation ? `
                             <div class="grouped-session-meta-item">
@@ -1050,35 +1094,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grouped-session-controls">
-                        ${selectedUser ? `
-                            ${hasConflict ? `
-                                <div class="conflict-popup">
-                                    <button class="btn btn-sm" style="background: #ffc107; color: #333; border: 1px solid #f0ad4e;"
-                                            onclick="toggleAssignment('${getSessionId(session)}', ${selectedUser.id})"
-                                            onmouseenter="showConflictTooltip(event, '${selectedUser.name}', '${conflicts.join('|||')}')"
-                                            onmouseleave="hideConflictTooltip()">
-                                        ⚠️ Conflict
-                                    </button>
-                                </div>
-                            ` : `
-                                <button class="btn btn-sm ${sessionAssignments.includes(selectedUser.id) ? 'btn-danger' : 'btn-success'}"
-                                        onclick="toggleAssignment('${getSessionId(session)}', ${selectedUser.id})">
-                                    ${sessionAssignments.includes(selectedUser.id) ? '➖ Remove' : '➕ Assign'}
-                                </button>
-                            `}
-                        ` : '<span style="color: #999; font-size: 12px;">Select user to assign</span>'}
-                    </div>
                 </div>
             `;
         }
 
         function createSessionElement(session) {
             const div = document.createElement('div');
-            const sessionAssignments = assignments[getSessionId(session)] || [];
+            const sessionId = getSessionId(session);
+            const sessionAssignments = assignments[sessionId] || [];
             const hasAssignments = sessionAssignments.length > 0;
-            div.className = `session-item ${hasAssignments ? 'assigned' : 'unassigned'}`;
-            div.dataset.sessionId = getSessionId(session);
+            const isCollapsed = hasAssignments; // Auto-collapse assigned sessions
+
+
+            div.className = `session-item ${hasAssignments ? 'assigned' : 'unassigned'} ${isCollapsed ? 'collapsed' : 'expanded'}`;
+            div.dataset.sessionId = sessionId;
 
             const assignedUsers = sessionAssignments.map(userId =>
                 users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
@@ -1086,22 +1115,26 @@
 
             const conflicts = selectedUser ? getConflicts(selectedUser.id, session) : [];
             const hasConflict = selectedUser && !sessionAssignments.includes(selectedUser.id) && hasTimeConflict(selectedUser.id, session);
-            
+
             div.innerHTML = `
-                <div class="session-header">
-                    <div class="session-title">${getSessionTitle(session)}</div>
-                    <div>
+                <div class="session-header" onclick="toggleSessionCollapse('${getSessionId(session)}')" style="cursor: pointer;">
+                    <div class="session-title-wrapper">
+                        <div class="session-title">${getSessionTitle(session)}</div>
+                        ${hasAssignments ? `<div class="assignment-summary">✅ ${assignedUsers.length} MSD${assignedUsers.length !== 1 ? 's' : ''} assigned: ${assignedUsers.map(u => u.name).join(', ')}</div>` : ''}
+                    </div>
+                    <div class="session-controls">
                         ${selectedUser ? `
-                            <button class="btn btn-sm ${sessionAssignments.includes(selectedUser.id) ? 'btn-danger' : hasConflict ? 'btn' : 'btn-success'}" 
-                                    onclick="toggleAssignment('${getSessionId(session)}', ${selectedUser.id})"
+                            <button class="btn btn-sm ${sessionAssignments.includes(selectedUser.id) ? 'btn-danger' : hasConflict ? 'btn' : 'btn-success'}"
+                                    onclick="event.stopPropagation(); toggleAssignment('${getSessionId(session)}', ${selectedUser.id})"
                                     ${hasConflict ? 'style="background: #ffc107; color: #333; border: 1px solid #f0ad4e;" title="⚠️ Time conflict - cannot attend multiple sessions simultaneously"' : ''}>
                                 ${sessionAssignments.includes(selectedUser.id) ? '➖ Remove' : hasConflict ? '⚠️ Conflict' : '➕ Assign'}
                             </button>
                         ` : '<span style="color: #999; font-size: 12px;">Select user to assign</span>'}
+                        <span class="collapse-indicator">${isCollapsed ? '📁' : '📂'}</span>
                     </div>
                 </div>
-                
-                <div class="session-details">
+
+                <div class="session-details" style="display: ${isCollapsed ? 'none' : 'block'}">
                     <div class="session-meta">
                         <div class="meta-item">
                             <strong>📅 Date</strong>
@@ -1267,8 +1300,47 @@
             });
         }
 
+        function toggleSessionCollapse(sessionId) {
+            // Handle both session-item and grouped-session elements
+            let sessionElement = document.querySelector(`.session-item[data-session-id="${sessionId}"]`);
+            if (!sessionElement) {
+                sessionElement = document.querySelector(`.grouped-session[data-session-id="${sessionId}"]`);
+            }
+            if (!sessionElement) return;
+
+            // Handle both session-details and grouped-session-details
+            let sessionDetails = sessionElement.querySelector('.session-details');
+            if (!sessionDetails) {
+                sessionDetails = sessionElement.querySelector('.grouped-session-details');
+            }
+
+            const collapseIndicator = sessionElement.querySelector('.collapse-indicator');
+
+            if (sessionElement.classList.contains('collapsed')) {
+                // Expand
+                sessionElement.classList.remove('collapsed');
+                sessionElement.classList.add('expanded');
+                if (sessionDetails) sessionDetails.style.display = 'block';
+                if (collapseIndicator) collapseIndicator.textContent = '📂';
+            } else {
+                // Collapse
+                sessionElement.classList.remove('expanded');
+                sessionElement.classList.add('collapsed');
+                if (sessionDetails) sessionDetails.style.display = 'none';
+                if (collapseIndicator) collapseIndicator.textContent = '📁';
+            }
+        }
+
         function selectUser(user) {
-            selectedUser = user;
+            // If clicking on the already selected user, deselect them
+            if (selectedUser && selectedUser.id === user.id) {
+                selectedUser = null;
+                console.log(`🔍 DEBUG: User ${user.name} deselected`);
+            } else {
+                selectedUser = user;
+                console.log(`🔍 DEBUG: selectUser called with user: ${user.name} (ID: ${user.id})`);
+                console.log(`🔍 DEBUG: selectedUser is now:`, selectedUser);
+            }
 
             // Force remove selected class from all user items first
             document.querySelectorAll('.user-item.selected').forEach(el => {
@@ -1277,7 +1349,9 @@
 
             renderUsersMin();
             renderSessions();
-            console.log(`Selected user: ${user.name}`);
+            renderCalendar();
+            console.log(`🔍 DEBUG: renderSessions() and renderCalendar() called, calendar should now show assign buttons`);
+            console.log(`Selected user: ${selectedUser ? selectedUser.name : 'None'}`);
         }
 
         async function toggleAssignment(sessionId, userId) {
@@ -1288,14 +1362,7 @@
             const index = assignments[sessionId].indexOf(userId);
             if (index === -1) {
                 // Check for duplicate assignment to same session (unless it's a poster session)
-                // Try multiple matching strategies due to type mismatches
-                let newSession = sessions.find(s => s.session_id === sessionId);
-                if (!newSession) {
-                    newSession = sessions.find(s => s.session_id == sessionId);
-                }
-                if (!newSession) {
-                    newSession = sessions.find(s => String(s.session_id) === String(sessionId));
-                }
+                let newSession = findSessionById(sessionId);
                 const sessionType = newSession?.session_info?.type?.toLowerCase() || '';
                 const isPosterSession = sessionType.includes('poster');
                 
@@ -1332,11 +1399,33 @@
                 
                 assignments[sessionId].push(userId);
                 console.log(`Assigned user ${userId} to session ${sessionId}`);
+
+                // Auto-collapse session after assignment
+                setTimeout(() => {
+                    let sessionElement = document.querySelector(`.session-item[data-session-id="${sessionId}"]`);
+                    if (!sessionElement) {
+                        sessionElement = document.querySelector(`.grouped-session[data-session-id="${sessionId}"]`);
+                    }
+                    if (sessionElement && !sessionElement.classList.contains('collapsed')) {
+                        toggleSessionCollapse(sessionId);
+                    }
+                }, 100);
             } else {
                 assignments[sessionId].splice(index, 1);
                 console.log(`Removed user ${userId} from session ${sessionId}`);
+
+                // Auto-expand session when assignment is removed
+                setTimeout(() => {
+                    let sessionElement = document.querySelector(`.session-item[data-session-id="${sessionId}"]`);
+                    if (!sessionElement) {
+                        sessionElement = document.querySelector(`.grouped-session[data-session-id="${sessionId}"]`);
+                    }
+                    if (sessionElement && sessionElement.classList.contains('collapsed')) {
+                        toggleSessionCollapse(sessionId);
+                    }
+                }, 100);
             }
-            
+
             renderSessions();
             renderUsersMin();
             updateStats();
@@ -1795,12 +1884,16 @@
                         ).filter(Boolean);
 
                         const hasAssignments = assignedUsers.length > 0;
-                        const title = session.session_info?.title || 'Untitled';
+                        const title = getSessionTitle(session);
                         const location = session.schedule?.location || 'TBD';
+
+                        const sessionId = getSessionId(session);
+                        const hasConflict = selectedUser && sessionAssignments.some(userId =>
+                            userId == selectedUser.id || userId === selectedUser.id
+                        );
 
                         calendarHTML += `
                             <div class="calendar-session ${hasAssignments ? 'assigned' : 'unassigned'}"
-                                 onclick="switchTab('sessions')"
                                  title="${title} - ${location}">
                                 <div style="font-size: 14px; font-weight: 600;">
                                     ${title.length > 60 ? title.substring(0, 60) + '...' : title}
@@ -1812,6 +1905,29 @@
                                         '<span style="font-size: 9px; color: #999;">⚪ Unassigned</span>'
                                     }
                                 </div>
+                                ${selectedUser ? `
+                                    <div class="calendar-session-controls" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee;">
+                                        ${hasConflict ? `
+                                            <div style="color: #ffc107; font-size: 11px; margin-bottom: 4px;">
+                                                ⚠️ Already assigned
+                                            </div>
+                                            <button class="btn btn-sm" style="background: #ffc107; color: #333; border: 1px solid #f0ad4e; font-size: 11px; padding: 2px 12px;"
+                                                    onclick="removeAssignment(${sessionId}, ${selectedUser.id}); event.stopPropagation();">
+                                                Remove Assignment
+                                            </button>
+                                        ` : `
+                                            <button class="btn btn-sm btn-success" style="font-size: 11px; padding: 2px 12px;"
+                                                    onclick="toggleAssignment('${sessionId}', ${selectedUser.id}); event.stopPropagation();">
+                                                📌 Assign
+                                            </button>
+                                        `}
+                                    </div>
+                                ` : `
+                                    <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee; font-size: 11px; color: #999; cursor: pointer;"
+                                         onclick="switchTab('sessions'); event.stopPropagation();">
+                                        Click to view in Sessions tab
+                                    </div>
+                                `}
                             </div>
                         `;
                     });
@@ -2080,6 +2196,8 @@
                     assignments = data.assignments || {};
 
                     console.log('🔍 Processed assignments object:', assignments);
+                    console.log('🔍 Assignment keys:', Object.keys(assignments));
+                    console.log('🔍 Sample assignment:', Object.keys(assignments).length > 0 ? assignments[Object.keys(assignments)[0]] : 'none');
 
                     const assignmentCount = Object.values(assignments).reduce((sum, arr) => sum + arr.length, 0);
                     console.log(`📊 Assignment summary: ${Object.keys(assignments).length} sessions with ${assignmentCount} total assignments`);
@@ -2095,6 +2213,27 @@
                             console.log('🔄 Re-rendering users to show assignment counts...');
                             renderUsersMin();
                             updateStats();
+                            // Ensure assigned sessions are properly collapsed after data loads
+                            console.log('🔄 Ensuring assigned sessions are collapsed...');
+                            Object.keys(assignments).forEach(sessionId => {
+                                if (assignments[sessionId].length > 0) {
+                                    let sessionElement = document.querySelector(`.session-item[data-session-id="${sessionId}"]`);
+                                    if (!sessionElement) {
+                                        sessionElement = document.querySelector(`.grouped-session[data-session-id="${sessionId}"]`);
+                                    }
+                                    if (sessionElement && !sessionElement.classList.contains('collapsed')) {
+                                        sessionElement.classList.add('collapsed');
+                                        sessionElement.classList.remove('expanded');
+                                        let sessionDetails = sessionElement.querySelector('.session-details');
+                                        if (!sessionDetails) {
+                                            sessionDetails = sessionElement.querySelector('.grouped-session-details');
+                                        }
+                                        const collapseIndicator = sessionElement.querySelector('.collapse-indicator');
+                                        if (sessionDetails) sessionDetails.style.display = 'none';
+                                        if (collapseIndicator) collapseIndicator.textContent = '📁';
+                                    }
+                                }
+                            });
                         }, 100);
                         if (assignmentCount > 0) {
                             showSuccessMessage(`Loaded ${assignmentCount} assignments from database`);
@@ -2127,7 +2266,30 @@
                                     selectedUser = users.find(u => u.id === data.selectedUserId);
                                 }
                                 renderUsersMin();
+                                renderSessions();
                                 updateStats();
+                                // Ensure assigned sessions are properly collapsed after localStorage load
+                                setTimeout(() => {
+                                    Object.keys(assignments).forEach(sessionId => {
+                                        if (assignments[sessionId].length > 0) {
+                                            let sessionElement = document.querySelector(`.session-item[data-session-id="${sessionId}"]`);
+                                            if (!sessionElement) {
+                                                sessionElement = document.querySelector(`.grouped-session[data-session-id="${sessionId}"]`);
+                                            }
+                                            if (sessionElement && !sessionElement.classList.contains('collapsed')) {
+                                                sessionElement.classList.add('collapsed');
+                                                sessionElement.classList.remove('expanded');
+                                                let sessionDetails = sessionElement.querySelector('.session-details');
+                                                if (!sessionDetails) {
+                                                    sessionDetails = sessionElement.querySelector('.grouped-session-details');
+                                                }
+                                                const collapseIndicator = sessionElement.querySelector('.collapse-indicator');
+                                                if (sessionDetails) sessionDetails.style.display = 'none';
+                                                if (collapseIndicator) collapseIndicator.textContent = '📁';
+                                            }
+                                        }
+                                    });
+                                }, 100);
                             }
                         }
                     } catch (localError) {
