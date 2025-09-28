@@ -4,10 +4,22 @@
 <cfheader name="Content-Type" value="application/json">
 
 <cftry>
-    <!--- Database connection settings - adjust these for your environment ---!>
-    <cfset dsn = "your_datasource_name">
+    <!--- Database connection settings - UPDATE THIS with your actual datasource name --->
+    <cfset dsn = application.dsn>
 
-    <!--- Query to get users/MSDs from database ---!>
+    <!--- Check if datasource is configured --->
+    <cfif dsn EQ "" OR dsn EQ "your_datasource_name">
+        <!--- No datasource configured - return error --->
+        <cfset response = {
+            "success" = false,
+            "error" = "Database not configured. Please update the 'dsn' variable in api_users.cfm with your ColdFusion datasource name.",
+            "fallback" = true
+        }>
+        <cfoutput>#serializeJSON(response)#</cfoutput>
+        <cfabort>
+    </cfif>
+
+    <!--- Query to get users/MSDs from database --->
     <cfquery name="qUsers" datasource="#dsn#">
         SELECT
             user_id as id,
@@ -26,7 +38,7 @@
         ORDER BY last_name, first_name
     </cfquery>
 
-    <!--- Convert query to JSON array ---!>
+    <!--- Convert query to JSON array --->
     <cfset userArray = []>
     <cfloop query="qUsers">
         <cfset userObj = {
@@ -44,7 +56,7 @@
         <cfset arrayAppend(userArray, userObj)>
     </cfloop>
 
-    <!--- Return JSON response ---!>
+    <!--- Return JSON response --->
     <cfset response = {
         "success" = true,
         "users" = userArray,
@@ -54,7 +66,7 @@
     <cfoutput>#serializeJSON(response)#</cfoutput>
 
 <cfcatch type="any">
-    <!--- Error response ---!>
+    <!--- Error response --->
     <cfset errorResponse = {
         "success" = false,
         "error" = cfcatch.message,

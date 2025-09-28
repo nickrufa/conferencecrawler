@@ -17,6 +17,9 @@ let filteredSessions = [];
 // Initialize application
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Initializing IDWeek 2025 Attendance Tool...');
+    console.log('🔍 Testing modal functions availability...');
+    console.log('showAttendeesBySession function:', typeof window.showAttendeesBySession);
+    console.log('showSessionsByAttendee function:', typeof window.showSessionsByAttendee);
     setupEventHandlers();
     // Load MSD data first, then check for stored data
     loadMSDData();
@@ -819,7 +822,7 @@ function createGroupedSessionHTML(session, groupLocation) {
     ).filter(Boolean);
 
     const conflicts = selectedUser ? getConflicts(selectedUser.id, session) : [];
-    const hasConflict = selectedUser && !sessionAssignments.includes(selectedUser.id) && hasTimeConflict(selectedUser.id, session);
+    const hasConflict = selectedUser && !sessionAssignments.some(id => id == selectedUser.id) && hasTimeConflict(selectedUser.id, session);
 
     // Debug logging for assign button visibility
     if (!selectedUser) {
@@ -850,9 +853,9 @@ function createGroupedSessionHTML(session, groupLocation) {
                                 ⚠️ Conflict
                             </button>
                         ` : `
-                            <button class="btn btn-sm ${sessionAssignments.includes(selectedUser.id) ? 'btn-danger' : 'btn-success'}"
+                            <button class="btn btn-sm ${sessionAssignments.some(id => id == selectedUser.id) ? 'btn-danger' : 'btn-success'}"
                                     onclick="toggleAssignment('${getSessionId(session)}', ${selectedUser.id})">
-                                ${sessionAssignments.includes(selectedUser.id) ? 'Remove' : 'Assign'}
+                                ${sessionAssignments.some(id => id == selectedUser.id) ? 'Remove' : 'Assign'}
                             </button>
                         `}
                     ` : '<span style="color: #999; font-size: 12px;">Select user to assign</span>'}
@@ -864,7 +867,7 @@ function createGroupedSessionHTML(session, groupLocation) {
                     <span class="meta-inline-item">📋 ${session.session_info?.type || 'General'}</span>
                     <span class="meta-inline-item">🎯 ${session.tracks?.primary_track || 'General'}</span>
                 </div>
-                <div class="simple-session-assignee">
+                <div class="simple-session-assignee ${hasAssignments ? 'has-assignees' : ''}">
                     ${hasAssignments ? assignedUsers.map(u => u.name).join(', ') : ''}
                 </div>
             </div>
@@ -898,7 +901,7 @@ function createSessionElement(session) {
     ).filter(Boolean);
 
     const conflicts = selectedUser ? getConflicts(selectedUser.id, session) : [];
-    const hasConflict = selectedUser && !sessionAssignments.includes(selectedUser.id) && hasTimeConflict(selectedUser.id, session);
+    const hasConflict = selectedUser && !sessionAssignments.some(id => id == selectedUser.id) && hasTimeConflict(selectedUser.id, session);
 
     div.innerHTML = `
         <div class="session-header" onclick="toggleSessionCollapse('${getSessionId(session)}')" style="cursor: pointer;">
@@ -913,10 +916,10 @@ function createSessionElement(session) {
             </div>
             <div class="session-controls">
                 ${selectedUser ? `
-                    <button class="btn btn-sm ${sessionAssignments.includes(selectedUser.id) ? 'btn-danger' : hasConflict ? 'btn' : 'btn-success'}"
+                    <button class="btn btn-sm ${sessionAssignments.some(id => id == selectedUser.id) ? 'btn-danger' : hasConflict ? 'btn' : 'btn-success'}"
                             onclick="event.stopPropagation(); toggleAssignment('${getSessionId(session)}', ${selectedUser.id})"
                             ${hasConflict ? 'style="background: #ffc107; color: #333; border: 1px solid #f0ad4e;" title="⚠️ Time conflict - cannot attend multiple sessions simultaneously"' : ''}>
-                        ${sessionAssignments.includes(selectedUser.id) ? '➖ Remove' : hasConflict ? '⚠️ Conflict' : '➕ Assign'}
+                        ${sessionAssignments.some(id => id == selectedUser.id) ? '➖ Remove' : hasConflict ? '⚠️ Conflict' : '➕ Assign'}
                     </button>
                 ` : '<span style="color: #999; font-size: 12px;">Select user to assign</span>'}
                 <span class="collapse-indicator">${isCollapsed ? '📁' : '📂'}</span>
@@ -995,47 +998,66 @@ function toggleTimeSlot(header) {
     }
 }
 
+
+/* Get a scrollable list of MSDs, the current one highlighted, a badge showing how many sessions each has, click row to select, click the badge to see their schedule. */
 function renderUsersMin() {
+    /*Find the container */
     const container = document.getElementById('users-container');
 
+    /* If users is empty, it shows a “No MSDs loaded yet” message with an “Add First MSD” button. */
     if (users.length === 0) {
         container.innerHTML = '<div class="no-data">No MSDs loaded yet.<br><button class="btn" onclick="showAddUserModal()">Add First MSD</button></div>';
         return;
     }
 
-    container.innerHTML = '';
+    /* Rebuild the list from users */
 
-    users.forEach(user => {
-        const div = document.createElement('div');
-        div.className = `user-item ${selectedUser && selectedUser.id === user.id ? 'selected' : ''}`;
-        div.onclick = () => selectUser(user);
+        container.innerHTML = '';
+        /* For each user create a <div class="user-item">: 
+            Clicking the whole row calls selectUser(user) (which updates the selection and re-renders sessions/calendar).
+            Inserts the user’s name and an email tooltip (purely presentational—your CSS controls the hover behavior).
+            Assignment count badge - Computes how many sessions that user is assigned to via getUserAssignments(user.id).
+            Creates a <span class="assignment-count">N</span>:
+            Sets title tooltip.
+            Clicking the badge calls showMSDAssignments(user.id, e) to open the modal of that user’s assigned sessions.
+            (Inside showMSDAssignments you call event.stopPropagation() so clicking the badge does not also trigger the row’s selectUser click.)
 
-        const userAssignments = getUserAssignments(user.id);
-        const assignmentCount = userAssignments.length;
+            DOM insertion detail
+            It writes most of the row with innerHTML (which includes an assignment-count-placeholder), then replaces that placeholder with the real, clickable badge node (assignmentSpan). 
+            That’s just a safe way to attach the badge with a live click handler.
+        */
+        users.forEach(user => {
+            const div = document.createElement('div');
+            div.className = `user-item ${selectedUser && selectedUser.id === user.id ? 'selected' : ''}`;
+            div.onclick = () => selectUser(user);
 
-        div.innerHTML = `
-            <div class="user-info">
-                <div class="user-name">
-                    ${user.name}
-                    <span class="email-tooltip">${user.email}</span>
+            const userAssignments = getUserAssignments(user.id);
+            const assignmentCount = userAssignments.length;
+
+            div.innerHTML = `
+                <div class="user-info">
+                    <div class="user-name">
+                        ${user.name}
+                        <span class="email-tooltip">${user.email}</span>
+                    </div>
                 </div>
-            </div>
-            <div class="assignment-count-placeholder"></div>
-        `;
+                <div class="assignment-count-placeholder"></div>
+            `;
 
-        // Create assignment count element with click handler
-        const assignmentSpan = document.createElement('span');
-        assignmentSpan.className = `assignment-count ${assignmentCount > 0 ? 'has-assignments' : ''}`;
-        assignmentSpan.textContent = assignmentCount;
-        assignmentSpan.title = `${assignmentCount} session${assignmentCount !== 1 ? 's' : ''} assigned`;
-        assignmentSpan.onclick = (e) => showMSDAssignments(user.id, e);
+            // Create assignment count element with click handler
+            /* Adds has-assignments if N > 0 so you can style “non-zero” counts. */
+            const assignmentSpan = document.createElement('span');
+            assignmentSpan.className = `assignment-count ${assignmentCount > 0 ? 'has-assignments' : ''}`;
+            assignmentSpan.textContent = assignmentCount;
+            assignmentSpan.title = `${assignmentCount} session${assignmentCount !== 1 ? 's' : ''} assigned`;
+            assignmentSpan.onclick = (e) => showMSDAssignments(user.id, e);
 
-        // Replace placeholder with the actual assignment span
-        const placeholder = div.querySelector('.assignment-count-placeholder');
-        placeholder.replaceWith(assignmentSpan);
+            // Replace placeholder with the actual assignment span
+            const placeholder = div.querySelector('.assignment-count-placeholder');
+            placeholder.replaceWith(assignmentSpan);
 
-        container.appendChild(div);
-    });
+            container.appendChild(div);
+        });
 }
 
 function toggleSessionCollapse(sessionId) {
@@ -1093,14 +1115,15 @@ function selectUser(user) {
 }
 
 async function toggleAssignment(sessionId, userId) {
-   alert("toggleAssignment: " + sessionId + " " + userId);
-   console.log(assignments);
+   console.log(`Toggle assignment for session ${sessionId} and user ${userId}`);
+   console.log('Current assignments:', assignments);
 
     if (!assignments[sessionId]) {
         assignments[sessionId] = [];
     }
 
-    const index = assignments[sessionId].indexOf(userId);
+    const index = assignments[sessionId].findIndex(id => idsEqual(id, userId));
+
     if (index === -1) {
         console.log('1130');
         // Check for duplicate assignment to same session (unless it's a poster session)
@@ -1169,6 +1192,7 @@ async function toggleAssignment(sessionId, userId) {
     }
 
     renderSessions();
+    renderCalendar(); // Update calendar view when assignments change
     renderUsersMin();
     updateStats();
     saveToStorage();
@@ -1368,107 +1392,213 @@ function updateStats() {
     }
 }
 
-// Calendar rendering functions
+// Calendar rendering functions - USING WORKING HTML VERSION
 function renderCalendar() {
     const container = document.getElementById('calendar-container');
     const summary = document.getElementById('calendar-summary');
 
     if (sessions.length === 0) {
-        container.innerHTML = '<div class="no-data">No sessions loaded yet.</div>';
+        container.innerHTML = '<div class="no-data">No sessions available for calendar view.</div>';
+        summary.textContent = 'No data';
         return;
     }
 
-    // Group sessions by date
-    const dateGroups = new Map();
+    // Group sessions by date, then by time slot
+    const sessionsByDate = {};
     sessions.forEach(session => {
-        const date = session.schedule?.date || 'TBD';
-        if (!dateGroups.has(date)) {
-            dateGroups.set(date, []);
+        const date = session.schedule?.date;
+        if (date) {
+            if (!sessionsByDate[date]) {
+                sessionsByDate[date] = {};
+            }
+            const time = session.schedule?.time || 'Time TBD';
+            if (!sessionsByDate[date][time]) {
+                sessionsByDate[date][time] = [];
+            }
+            sessionsByDate[date][time].push(session);
         }
-        dateGroups.get(date).push(session);
     });
 
-    // Sort dates
-    const sortedDates = Array.from(dateGroups.keys()).sort((a, b) => {
-        if (a === 'TBD') return 1;
-        if (b === 'TBD') return -1;
-        return new Date(a) - new Date(b);
+    // Sort dates chronologically
+    const sortedDates = Object.keys(sessionsByDate).sort((a, b) => {
+        const dateA = new Date(a);
+        const dateB = new Date(b);
+        if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
+            return dateA - dateB;
+        }
+        return a.localeCompare(b);
     });
 
-    let calendarHTML = '<div class="calendar-grid">';
+    if (sortedDates.length === 0) {
+        container.innerHTML = '<div class="no-data">No sessions with dates available.</div>';
+        summary.textContent = 'No scheduled sessions';
+        return;
+    }
+
+    // Parse times for sorting
+    const parseTime = (timeStr) => {
+        if (!timeStr || timeStr === 'TBD' || timeStr === 'Time TBD') return 0;
+        const match = timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+        if (!match) return 0;
+        let hours = parseInt(match[1]);
+        const minutes = parseInt(match[2]);
+        const period = match[3].toUpperCase();
+        if (period === 'PM' && hours !== 12) hours += 12;
+        if (period === 'AM' && hours === 12) hours = 0;
+        return hours * 60 + minutes;
+    };
+
+    // Force container to NOT use CSS grid and let our inner div handle the layout
+    container.style.display = 'block';
+    container.style.gridTemplateColumns = 'none';
+
+    // SIMPLE CSS GRID - 3 COLUMNS FULL WIDTH
+    let calendarHTML = '<div style="display: grid !important; grid-template-columns: 1fr 1fr 1fr !important; gap: 20px !important; width: 100% !important; padding: 20px !important; box-sizing: border-box !important;">';
+
+    console.log('Sorted dates found:', sortedDates.length, sortedDates);
 
     sortedDates.forEach(date => {
-        console.log('Processing date:', date);
-        const dateSessions = dateGroups.get(date);
+        // console.log('Processing date:', date);
+
+        // Handle different date formats
+        let dateObj;
+        if (date.includes(',')) {
+            dateObj = new Date(date);
+        } else {
+            dateObj = new Date(date + 'T00:00:00');
+        }
+
+        let dayName, dayNumber;
+        if (isNaN(dateObj.getTime())) {
+            console.warn('Failed to parse date:', date);
+            dayName = date.split(',')[0] || 'Unknown Day';
+            dayNumber = date.split(' ')[2] || '?';
+        } else {
+            dayName = dateObj.toLocaleDateString('en-US', { weekday: 'long' });
+            dayNumber = dateObj.getDate();
+        }
+
+        // Sort time slots chronologically
+        const timeSlots = Object.keys(sessionsByDate[date]).sort((a, b) => {
+            return parseTime(a) - parseTime(b);
+        });
 
         calendarHTML += `
-            <div class="day-column">
-                <div class="day-header">
-                    <h3>${formatDate(date)}</h3>
-                    <div class="day-stats">${dateSessions.length} sessions</div>
+            <div style="border: 1px solid #ddd; border-radius: 8px; background: white; overflow: hidden; display: flex; flex-direction: column; max-height: 70vh;">
+                <div style="background: #343a40; color: white; padding: 15px; text-align: center; font-weight: bold; font-size: 18px;">
+                    ${dayName} ${dayNumber}
                 </div>
-                <div class="day-content">
+                <div style="padding: 15px; overflow-y: auto; flex: 1;">
         `;
 
-        dateSessions.forEach(session => {
-            const sessionId = getSessionId(session);
-            const sessionAssignments = assignments[sessionId] || [];
-            const isAssigned = sessionAssignments.length > 0;
-            const assignedUsers = sessionAssignments.map(userId =>
-                users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
-            ).filter(Boolean);
+        timeSlots.forEach((timeSlot, index) => {
+            const sessionsInSlot = sessionsByDate[date][timeSlot];
+            const sessionCount = sessionsInSlot.length;
+            const assignedCount = sessionsInSlot.filter(session =>
+                assignments[getSessionId(session)] && assignments[getSessionId(session)].length > 0
+            ).length;
 
             calendarHTML += `
-                <div class="calendar-session ${isAssigned ? 'assigned' : 'unassigned'}" data-session-id="${sessionId}">
-                    <div class="session-time">${session.schedule?.time || 'TBD'}</div>
-                    <div class="session-title">${getSessionTitle(session)}</div>
-                    <div class="session-details">
-                        <div><strong>📍</strong> ${session.schedule?.location || 'TBD'}</div>
-                        <div><strong>📋</strong> ${session.session_info?.type || 'General'}</div>
-                        ${assignedUsers.length > 0 ? `
-                            <div class="assigned-users">
-                                <strong>👥</strong> ${assignedUsers.map(u => u.name).join(', ')}
+                <div class="alert alert-secondary py-2 mb-2">
+                    <div class="fw-bold">${timeSlot}</div>
+                    <small class="text-muted">
+                        ${sessionCount} session${sessionCount !== 1 ? 's' : ''}
+                        ${assignedCount > 0 ? `• ${assignedCount} assigned` : ''}
+                    </small>
+                </div>
+            `;
+
+            // Add individual sessions under the time slot
+            sessionsInSlot.forEach(session => {
+                const sessionAssignments = assignments[getSessionId(session)] || [];
+                const assignedUsers = sessionAssignments.map(userId =>
+                    users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
+                ).filter(Boolean);
+                const hasAssignments = assignedUsers.length > 0;
+                const title = getSessionTitle(session);
+                const location = session.schedule?.location || 'TBD';
+                const sessionId = getSessionId(session);
+
+                calendarHTML += `
+                    <div class="card mb-2 calendar-session ${hasAssignments ? 'assigned border-primary' : 'unassigned border-warning'}"
+                         data-session-id="${sessionId}"
+                         title="${title} - ${location}">
+                        <div class="card-body p-2">
+                            <div class="fw-semibold" style="font-size: 14px;">
+                                ${title.length > 60 ? title.substring(0, 60) + '...' : title}
                             </div>
-                        ` : ''}
-                    </div>
-                    <div class="session-actions">
-                        ${selectedUser ? `
-                            ${sessionAssignments.includes(selectedUser.id) ? `
-                                <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee;">
-                                    <button class="btn btn-sm btn-danger" style="font-size: 11px; padding: 2px 12px;"
+                            <div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin-top: 0.25rem; width: 100%;">
+                                <small style="color: #6c757d; margin: 0;">📍 ${location}</small>
+                                ${assignedUsers.length > 0 ?
+                                    `<small style="font-weight: bold; color: #198754; margin: 0; text-align: right;">${assignedUsers.map(u => (u.name || u.firstname || 'Unknown').split(' ')[0]).join(', ')}</small>` :
+                                    '<small style="color: #6c757d; margin: 0; text-align: right;">⚪ Unassigned</small>'
+                                }
+                            </div>
+                            ${selectedUser ? `
+                                <div class="mt-2 pt-2 border-top">
+                                    ${sessionAssignments.some(id => id == selectedUser.id) ? `
+                                    <button class="btn btn-sm btn-danger"
                                             onclick="toggleAssignment('${sessionId}', ${selectedUser.id}); event.stopPropagation();">
-                                        ➖ Remove
+                                        ➖ Unassign
                                     </button>
-                                </div>
-                            ` : `
-                                <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee;">
-                                    <button class="btn btn-sm btn-success" style="font-size: 11px; padding: 2px 12px;"
+                                    ` : `
+                                    <button class="btn btn-sm btn-success"
                                             onclick="toggleAssignment('${sessionId}', ${selectedUser.id}); event.stopPropagation();">
                                         📌 Assign
                                     </button>
+                                    `}
                                 </div>
-                            `}
-                        ` : `
-                            <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee; font-size: 11px; color: #999; cursor: pointer;"
-                                    onclick="switchTab('sessions'); event.stopPropagation();">
-                                Click to view in Sessions tab
-                            </div>
-                        `}
+                                ` : `
+                               <div class="mt-2 pt-2 border-top">
+                                   
+                                </div>
+                                `}
+
+                        </div>
                     </div>
-                </div>
-            `;
+                `;
+            });
         });
 
-        calendarHTML += '</div></div>'; // Close day-content and day-column
-
+        calendarHTML += '</div></div>'; // Close day content and day column
     });
 
-    calendarHTML += '</div>'; // Close calendar-grid
-
+    calendarHTML += '</div>'; // Close CSS grid
     container.innerHTML = calendarHTML;
 
     const assignedCount = sessions.filter(s => assignments[getSessionId(s)]?.length > 0).length;
     summary.textContent = `${assignedCount}/${sessions.length} sessions assigned`;
+}
+
+// Function to make calendar responsive to screen width changes
+function makeCalendarResponsive(calendarGrid) {
+    function updateCalendarLayout() {
+        const containerWidth = calendarGrid.parentElement?.offsetWidth || window.innerWidth;
+
+        // Adjust columns based on available width
+        if (containerWidth < 768) {
+            // Mobile: 1 column
+            calendarGrid.style.gridTemplateColumns = 'repeat(1, 1fr)';
+            calendarGrid.style.gap = '15px';
+            calendarGrid.style.padding = '15px';
+        } else if (containerWidth < 1200) {
+            // Tablet: 2 columns with smaller gap
+            calendarGrid.style.gridTemplateColumns = 'repeat(2, minmax(250px, 1fr))';
+            calendarGrid.style.gap = '15px';
+            calendarGrid.style.padding = '15px';
+        } else {
+            // Desktop: 2 columns with full responsiveness
+            calendarGrid.style.gridTemplateColumns = 'repeat(2, minmax(300px, 1fr))';
+            calendarGrid.style.gap = '20px';
+            calendarGrid.style.padding = '20px';
+        }
+    }
+
+    // Update layout immediately
+    updateCalendarLayout();
+
+    // Add resize listener for future changes
+    window.addEventListener('resize', updateCalendarLayout);
 }
 
 function scrollToSession(sessionId) {
@@ -1683,17 +1813,27 @@ function saveToDatabase() {
         },
         body: JSON.stringify({
             conferenceId: 1, // IDWeek 2025 conference ID
-            assignments: assignments
+            assignments: JSON.stringify(assignments) // Double-stringify for ColdFusion
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.success) {
             console.log('✅ Successfully saved assignments to database:', data);
             showSuccessMessage(`Saved ${data.assignmentCount} assignments to database!`);
         } else {
-            console.error('❌ Database save failed:', data.error);
-            console.log('⚠️ Falling back to localStorage...');
+            if (data.fallback) {
+                console.log('⚠️ Database not configured:', data.error);
+                console.log('⚠️ Using localStorage until database is set up');
+            } else {
+                console.error('❌ Database save failed:', data.error);
+                console.log('⚠️ Falling back to localStorage...');
+            }
             saveToLocalStorage();
         }
     })
@@ -1763,8 +1903,11 @@ function loadStoredData() {
             console.log('✅ Loaded assignments from database:', data);
             console.log('🔍 Raw assignments data:', data.assignments);
 
-            // Convert database format to frontend format
-            assignments = data.assignments || {};
+            // Convert database format to frontend format (merge with existing, don't replace)
+            if (data.assignments && Object.keys(data.assignments).length > 0) {
+                console.log('🔄 Merging database assignments with existing assignments');
+                assignments = {...assignments, ...data.assignments}; // Merge instead of replace
+            }
 
             console.log('🔍 Processed assignments object:', assignments);
             console.log('🔍 Assignment keys:', Object.keys(assignments));
@@ -1819,12 +1962,15 @@ function loadStoredData() {
 
             // Fallback to localStorage
             try {
-                const stored = localStorage.getItem('idweek2025_tool_data');
+                const stored = localStorage.getItem('conference_assignments');
                 if (stored) {
                     const data = JSON.parse(stored);
 
-                    // Load assignments (but preserve MSDs if already loaded)
-                    assignments = data.assignments || {};
+                    // Load assignments (preserve existing assignments, don't overwrite completely)
+                    if (data.assignments && Object.keys(data.assignments).length > 0) {
+                        console.log('🔄 Merging localStorage assignments with existing assignments');
+                        assignments = {...assignments, ...data.assignments}; // Merge instead of replace
+                    }
 
                     // Only override users if we don't already have MSDs loaded
                     if (users.length === 0 && data.users && data.users.length > 0) {
@@ -1880,13 +2026,20 @@ function loadStoredData() {
 
 // Modal functions
 function showAttendeesBySession() {
+    console.log('🔍 showAttendeesBySession called - sessions:', sessions.length, 'users:', users.length);
     if (sessions.length === 0) {
         showErrorMessage('No sessions loaded yet');
         return;
     }
 
-    document.getElementById('attendees-by-session-modal').style.display = 'block';
-    renderAttendeesBySession();
+    const modal = document.getElementById('attendees-by-session-modal');
+    console.log('🔍 Modal element found:', !!modal);
+    if (modal) {
+        modal.style.display = 'block';
+        renderAttendeesBySession();
+    } else {
+        console.error('❌ attendees-by-session-modal not found');
+    }
 
     // Add search functionality
     document.getElementById('session-search').oninput = function() {
@@ -1968,13 +2121,20 @@ function renderAttendeesBySession(searchTerm = '') {
 }
 
 function showSessionsByAttendee() {
+    console.log('🔍 showSessionsByAttendee called - sessions:', sessions.length, 'users:', users.length);
     if (users.length === 0) {
         showErrorMessage('No attendees added yet');
         return;
     }
 
-    document.getElementById('sessions-by-attendee-modal').style.display = 'block';
-    renderSessionsByAttendee();
+    const modal = document.getElementById('sessions-by-attendee-modal');
+    console.log('🔍 Modal element found:', !!modal);
+    if (modal) {
+        modal.style.display = 'block';
+        renderSessionsByAttendee();
+    } else {
+        console.error('❌ sessions-by-attendee-modal not found');
+    }
 
     // Add search functionality
     document.getElementById('attendee-search').oninput = function() {
@@ -2278,3 +2438,29 @@ function showDuplicateAssignmentModal(existingUserName, sessionTitle) {
     });
 }
 
+function idsEqual(a, b) {
+  return String(a) === String(b);
+}
+
+function isUserAssignedToSession(sessionId, userId) {
+  const arr = assignments[sessionId] || [];
+  return arr.some(id => idsEqual(id, userId));
+}
+
+// Test function to verify JavaScript is loading
+function testJavaScript() {
+    console.log('🧪 TEST: JavaScript is working!');
+    alert('JavaScript is working!');
+}
+
+// Make modal functions globally accessible for onclick handlers
+window.showAttendeesBySession = showAttendeesBySession;
+window.showSessionsByAttendee = showSessionsByAttendee;
+window.testJavaScript = testJavaScript;
+
+console.log('🚀 JavaScript file loaded completely');
+console.log('Functions available:', {
+    showAttendeesBySession: typeof window.showAttendeesBySession,
+    showSessionsByAttendee: typeof window.showSessionsByAttendee,
+    testJavaScript: typeof window.testJavaScript
+});

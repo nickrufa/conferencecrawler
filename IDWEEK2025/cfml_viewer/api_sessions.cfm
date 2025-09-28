@@ -4,10 +4,22 @@
 <cfheader name="Content-Type" value="application/json">
 
 <cftry>
-    <!--- Database connection settings - adjust these for your environment ---!>
-    <cfset dsn = "your_datasource_name">
+    <!--- Database connection settings - UPDATE THIS with your actual datasource name --->
+    <cfset dsn = application.dsn>
 
-    <!--- Query to get sessions from database ---!>
+    <!--- Check if datasource is configured --->
+    <cfif dsn EQ "" OR dsn EQ "your_datasource_name">
+        <!--- No datasource configured - return error --->
+        <cfset response = {
+            "success" = false,
+            "error" = "Database not configured. Please update the 'dsn' variable in api_sessions.cfm with your ColdFusion datasource name.",
+            "fallback" = true
+        }>
+        <cfoutput>#serializeJSON(response)#</cfoutput>
+        <cfabort>
+    </cfif>
+
+    <!--- Query to get sessions from database --->
     <cfquery name="qSessions" datasource="#dsn#">
         SELECT
             session_id,
@@ -27,7 +39,7 @@
         ORDER BY session_date, start_time, session_title
     </cfquery>
 
-    <!--- Convert query to JSON array ---!>
+    <!--- Convert query to JSON array --->
     <cfset sessionArray = []>
     <cfloop query="qSessions">
         <cfset sessionObj = {
@@ -50,7 +62,7 @@
         <cfset arrayAppend(sessionArray, sessionObj)>
     </cfloop>
 
-    <!--- Return JSON response ---!>
+    <!--- Return JSON response --->
     <cfset response = {
         "success" = true,
         "sessions" = sessionArray,
@@ -60,7 +72,7 @@
     <cfoutput>#serializeJSON(response)#</cfoutput>
 
 <cfcatch type="any">
-    <!--- Error response ---!>
+    <!--- Error response --->
     <cfset errorResponse = {
         "success" = false,
         "error" = cfcatch.message,

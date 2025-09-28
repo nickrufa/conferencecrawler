@@ -20,96 +20,52 @@
     <title><cfoutput>#conferenceName# - Attendance Assignments</cfoutput></title>
 
     <!-- Custom stylesheet for IDWeek styling -->
-    <link rel="stylesheet" href="/assets/css/conference_crawler.css">
+    <link rel="stylesheet" href="/assets/css/conference_crawler.css?v=<cfoutput>#application.cachebuster#</cfoutput>">
 
-    <!-- Force proper text wrapping in calendar session cards -->
+    <!-- Force calendar to fit in viewport -->
     <style>
-    .calendar-session {
-        min-width: 0 !important;
+    #calendar-container .calendar-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(280px, 1fr)) !important;
+        gap: 10px !important;
         width: 100% !important;
-        box-sizing: border-box !important;
-    }
-    .calendar-session .session-title {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        white-space: normal !important;
-        hyphens: auto !important;
-        min-width: 0 !important;
-        width: 100% !important;
-        display: block !important;
-        -webkit-line-clamp: unset !important;
-        -webkit-box-orient: unset !important;
-        overflow: visible !important;
-    }
-    .calendar-session .session-details {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        white-space: normal !important;
-        min-width: 0 !important;
-        width: 100% !important;
-    }
-    .calendar-session .session-time {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        white-space: normal !important;
-        min-width: 0 !important;
-        width: 100% !important;
-    }
-
-    /* Additional aggressive fixes for calendar text wrapping */
-    #calendar-container * {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        white-space: normal !important;
+        overflow-x: auto !important;
+        padding: 10px !important;
         box-sizing: border-box !important;
     }
 
-    #calendar-container .calendar-session * {
-        -webkit-line-clamp: unset !important;
-        -webkit-box-orient: unset !important;
-        display: block !important;
-        overflow: visible !important;
-        text-overflow: unset !important;
-        max-width: 100% !important;
-        width: auto !important;
-        flex-shrink: 1 !important;
+    #calendar-container .day-column {
+        min-width: 280px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
-    /* Remove all CSS grid conflicts - let JavaScript handle layout */
-
-    /* Let JavaScript inline styles handle all calendar layout */
-
-    /* Container width constraints - FULL WIDTH */
     .calendar-view {
         width: 100% !important;
-        max-width: none !important;
-        overflow-x: hidden !important;
+        overflow-x: auto !important;
         box-sizing: border-box !important;
-        padding: 0 !important;
-        margin: 0 !important;
     }
 
-    #calendar-container {
-        width: 100% !important;
-        max-width: none !important;
-        overflow-x: hidden !important;
-        box-sizing: border-box !important;
-        padding: 0 !important;
-        margin: 0 !important;
+    .calendar-session {
+        padding: 8px !important;
+        margin-bottom: 4px !important;
+        font-size: 12px !important;
+        word-wrap: break-word !important;
+        white-space: normal !important;
     }
 
-    /* Force the tab content to use full width */
-    #calendar-tab-content {
-        width: 100% !important;
-        max-width: none !important;
+    .calendar-session .session-title {
+        font-size: 12px !important;
+        line-height: 1.3 !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
     }
 
-    /* Make calendar responsive - expand columns as screen gets wider */
-    @media (min-width: 768px) {
-        .calendar-view .col-lg-6 {
-            flex: 1 1 50% !important;
-            max-width: 50% !important;
-        }
+    .calendar-session .session-time {
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        white-space: nowrap !important;
     }
     </style>
 </head>
@@ -145,8 +101,6 @@
       <div class="control-buttons">
         <input type="file" id="json-upload" accept=".json" style="display: none;">
         <!-- <button class="btn" onclick="document.getElementById('json-upload').click()">📁 Load Sessions JSON</button> -->
-        <button class="btn" onclick="testJavaScript()" style="background: orange;">🧪 Test External JS</button>
-        <button class="btn" onclick="inlineTest()" style="background: green;">🧪 Test Inline JS</button>
         <button class="btn" onclick="showAttendeesBySession()">📋 Attendees by Session</button>
         <button class="btn" onclick="showSessionsByAttendee()">📅 Sessions by Attendee</button>
         <button class="btn" onclick="exportAssignments()">💾 Export Data</button>
@@ -325,21 +279,6 @@
   <script src="/assets/js/conference_crawler.js"></script>
 
   <script>
-    // Test if external JS loaded
-    console.log('🔍 Inline script running...');
-    console.log('External JS functions available:', {
-      showAttendeesBySession: typeof window.showAttendeesBySession,
-      showSessionsByAttendee: typeof window.showSessionsByAttendee,
-      testJavaScript: typeof window.testJavaScript
-    });
-
-    // Test button functions
-    window.inlineTest = function() {
-      alert('Inline test works!');
-    };
-  </script>
-
-  <script>
     // Modal functions using native CSS display
     function showAddUserModal() {
       document.getElementById('user-modal').style.display = 'block';
@@ -349,11 +288,16 @@
       document.getElementById('user-modal').style.display = 'none';
     }
 
-    // Modal close functions (open functions are in external JS)
+    function showAttendeesBySession() {
+      document.getElementById('attendees-by-session-modal').style.display = 'block';
+    }
     function closeAttendeesBySessionModal() {
       document.getElementById('attendees-by-session-modal').style.display = 'none';
     }
 
+    function showSessionsByAttendee() {
+      document.getElementById('sessions-by-attendee-modal').style.display = 'block';
+    }
     function closeSessionsByAttendeeModal() {
       document.getElementById('sessions-by-attendee-modal').style.display = 'none';
     }
