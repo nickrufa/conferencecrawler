@@ -19,99 +19,14 @@
     
     <title><cfoutput>#conferenceName# - Attendance Assignments</cfoutput></title>
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom stylesheet for IDWeek styling -->
     <link rel="stylesheet" href="/assets/css/conference_crawler.css">
 
     <!-- Force proper text wrapping in calendar session cards -->
-    <style>
-    .calendar-session {
-        min-width: 0 !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-    .calendar-session .session-title {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        white-space: normal !important;
-        hyphens: auto !important;
-        min-width: 0 !important;
-        width: 100% !important;
-        display: block !important;
-        -webkit-line-clamp: unset !important;
-        -webkit-box-orient: unset !important;
-        overflow: visible !important;
-    }
-    .calendar-session .session-details {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        white-space: normal !important;
-        min-width: 0 !important;
-        width: 100% !important;
-    }
-    .calendar-session .session-time {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        white-space: normal !important;
-        min-width: 0 !important;
-        width: 100% !important;
-    }
-
-    /* Additional aggressive fixes for calendar text wrapping */
-    #calendar-container * {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        white-space: normal !important;
-        box-sizing: border-box !important;
-    }
-
-    #calendar-container .calendar-session * {
-        -webkit-line-clamp: unset !important;
-        -webkit-box-orient: unset !important;
-        display: block !important;
-        overflow: visible !important;
-        text-overflow: unset !important;
-        max-width: 100% !important;
-        width: auto !important;
-        flex-shrink: 1 !important;
-    }
-
-    /* Remove all CSS grid conflicts - let JavaScript handle layout */
-
-    /* Let JavaScript inline styles handle all calendar layout */
-
-    /* Container width constraints - FULL WIDTH */
-    .calendar-view {
-        width: 100% !important;
-        max-width: none !important;
-        overflow-x: hidden !important;
-        box-sizing: border-box !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    #calendar-container {
-        width: 100% !important;
-        max-width: none !important;
-        overflow-x: hidden !important;
-        box-sizing: border-box !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    /* Force the tab content to use full width */
-    #calendar-tab-content {
-        width: 100% !important;
-        max-width: none !important;
-    }
-
-    /* Make calendar responsive - expand columns as screen gets wider */
-    @media (min-width: 768px) {
-        .calendar-view .col-lg-6 {
-            flex: 1 1 50% !important;
-            max-width: 50% !important;
-        }
-    }
-    </style>
+   
 </head>
 <body>
 
@@ -144,15 +59,15 @@
     <div class="controls">
       <div class="control-buttons">
         <input type="file" id="json-upload" accept=".json" style="display: none;">
-        <!-- <button class="btn" onclick="document.getElementById('json-upload').click()">📁 Load Sessions JSON</button> -->
+        <!--- <button class="btn" onclick="document.getElementById('json-upload').click()">📁 Load Sessions JSON</button>
         <button class="btn" onclick="testJavaScript()" style="background: orange;">🧪 Test External JS</button>
-        <button class="btn" onclick="inlineTest()" style="background: green;">🧪 Test Inline JS</button>
+        <button class="btn" onclick="inlineTest()" style="background: green;">🧪 Test Inline JS</button>  --->
         <button class="btn" onclick="showAttendeesBySession()">📋 Attendees by Session</button>
         <button class="btn" onclick="showSessionsByAttendee()">📅 Sessions by Attendee</button>
         <button class="btn" onclick="exportAssignments()">💾 Export Data</button>
         <button class="btn" onclick="generateReports()">📊 Generate Reports</button>
         <!-- <button class="btn" onclick="forceReload()">🔄 Reload Data</button> -->
-        <button class="btn btn-danger" onclick="clearAllData()">🗑️ Clear All</button>
+        <button class="btn btn-outline-danger" onclick="clearAllData()">🗑️ Clear All</button>
       </div>
     </div>
 
@@ -269,7 +184,7 @@
   <div id="attendees-by-session-modal" class="modal">
     <div class="modal-content modal-lg">
       <div class="modal-header">
-        <h5>📋 Attendees by Session</h5>
+        <div class="h2 p-2">📋 Attendees by Session</div>
         <span class="close" onclick="closeAttendeesBySessionModal()">&times;</span>
       </div>
       <div class="modal-body">
@@ -288,7 +203,7 @@
   <div id="sessions-by-attendee-modal" class="modal">
     <div class="modal-content modal-lg">
       <div class="modal-header">
-        <h5>📅 Sessions by Attendee</h5>
+        <div class="h2 p-2">📅 Sessions by Attendee</div>
         <span class="close" onclick="closeSessionsByAttendeeModal()">&times;</span>
       </div>
       <div class="modal-body">
@@ -320,6 +235,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Your app JS -->
   <script src="/assets/js/conference_crawler.js"></script>

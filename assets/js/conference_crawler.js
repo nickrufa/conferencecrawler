@@ -701,6 +701,11 @@ function populateDateFilter() {
     const dateFilter = document.getElementById('date-filter');
     const dates = new Set();
 
+    // Clear existing options except the first "All Dates" option
+    while (dateFilter.children.length > 1) {
+        dateFilter.removeChild(dateFilter.lastChild);
+    }
+
     sessions.forEach(session => {
         const date = session.schedule?.date;
         if (date) dates.add(date);
@@ -847,15 +852,15 @@ function createGroupedSessionHTML(session, groupLocation) {
                 <div class="simple-session-controls">
                     ${selectedUser ? `
                         ${hasConflict ? `
-                            <button class="btn btn-sm" style="background: #ffc107; color: #333; border: 1px solid #f0ad4e;"
+                            <button class="btn btn-sm" style="background: #EB954A; color: #333; border: 1px solid #f0ad4e;"
                                     onclick="toggleAssignment('${getSessionId(session)}', ${selectedUser.id})"
                                     title="⚠️ Time conflict - cannot attend multiple sessions simultaneously">
                                 ⚠️ Conflict
                             </button>
                         ` : `
-                            <button class="btn btn-sm ${sessionAssignments.some(id => id == selectedUser.id) ? 'btn-danger' : 'btn-success'}"
+                            <button class="btn btn-sm ${sessionAssignments.some(id => id == selectedUser.id) ? 'btn-outline-primary' : 'btn-primary'}"
                                     onclick="toggleAssignment('${getSessionId(session)}', ${selectedUser.id})">
-                                ${sessionAssignments.some(id => id == selectedUser.id) ? 'Remove' : 'Assign'}
+                                ${sessionAssignments.some(id => id == selectedUser.id) ? 'Unassign' : 'Assign'}
                             </button>
                         `}
                     ` : '<span style="color: #999; font-size: 12px;">Select user to assign</span>'}
@@ -916,9 +921,9 @@ function createSessionElement(session) {
             </div>
             <div class="session-controls">
                 ${selectedUser ? `
-                    <button class="btn btn-sm ${sessionAssignments.some(id => id == selectedUser.id) ? 'btn-danger' : hasConflict ? 'btn' : 'btn-success'}"
+                    <button class="btn btn-sm ${sessionAssignments.some(id => id == selectedUser.id) ? 'btn-outline-danger' : hasConflict ? 'btn' : 'btn-primary'}"
                             onclick="event.stopPropagation(); toggleAssignment('${getSessionId(session)}', ${selectedUser.id})"
-                            ${hasConflict ? 'style="background: #ffc107; color: #333; border: 1px solid #f0ad4e;" title="⚠️ Time conflict - cannot attend multiple sessions simultaneously"' : ''}>
+                            ${hasConflict ? 'style="background: #EB954A; color: #333; border: 1px solid #f0ad4e;" title="⚠️ Time conflict - cannot attend multiple sessions simultaneously"' : ''}>
                         ${sessionAssignments.some(id => id == selectedUser.id) ? '➖ Remove' : hasConflict ? '⚠️ Conflict' : '➕ Assign'}
                     </button>
                 ` : '<span style="color: #999; font-size: 12px;">Select user to assign</span>'}
@@ -1448,12 +1453,26 @@ function renderCalendar() {
         return hours * 60 + minutes;
     };
 
-    // Force container to NOT use CSS grid and let our inner div handle the layout
+    // Reset container styles to allow parent tab to handle scrolling
     container.style.display = 'block';
     container.style.gridTemplateColumns = 'none';
+    container.style.height = '100%';
+    container.style.maxHeight = 'none';
+    container.style.overflow = 'auto';
 
-    // SIMPLE CSS GRID - 3 COLUMNS FULL WIDTH
-    let calendarHTML = '<div style="display: grid !important; grid-template-columns: 1fr 1fr 1fr !important; gap: 20px !important; width: 100% !important; padding: 20px !important; box-sizing: border-box !important;">';
+    // CREATE PROPER SCROLLING GRID STRUCTURE
+    let calendarHTML = `
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(3, minmax(350px, 400px));
+            gap: 20px;
+            padding: 20px;
+            width: fit-content;
+            min-width: 100%;
+            height: auto;
+            overflow: visible;
+        ">
+    `;
 
     console.log('Sorted dates found:', sortedDates.length, sortedDates);
 
@@ -1484,8 +1503,8 @@ function renderCalendar() {
         });
 
         calendarHTML += `
-            <div style="border: 1px solid #ddd; border-radius: 8px; background: white; overflow: hidden; display: flex; flex-direction: column; max-height: 70vh;">
-                <div style="background: #343a40; color: white; padding: 15px; text-align: center; font-weight: bold; font-size: 18px;">
+            <div style="border: 1px solid #ddd; border-radius: 8px; background: white; overflow: hidden; display: flex; flex-direction: column; height: auto; min-height: 400px;">
+                <div style="background: var(--date-header-bg, #f3f3f3); color: var(--date-header-text, #5a3d5c); padding: 15px; text-align: center; font-weight: bold; font-size: 18px; border-bottom: 1px solid rgba(0,0,0,0.1);">
                     ${dayName} ${dayNumber}
                 </div>
                 <div style="padding: 15px; overflow-y: auto; flex: 1;">
@@ -1520,7 +1539,7 @@ function renderCalendar() {
                 const sessionId = getSessionId(session);
 
                 calendarHTML += `
-                    <div class="card mb-2 calendar-session ${hasAssignments ? 'assigned border-primary' : 'unassigned border-warning'}"
+                    <div class="card mb-2 calendar-session ${hasAssignments ? 'assigned' : 'unassigned'}"
                          data-session-id="${sessionId}"
                          title="${title} - ${location}">
                         <div class="card-body p-2">
@@ -1530,21 +1549,20 @@ function renderCalendar() {
                             <div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin-top: 0.25rem; width: 100%;">
                                 <small style="color: #6c757d; margin: 0;">📍 ${location}</small>
                                 ${assignedUsers.length > 0 ?
-                                    `<small style="font-weight: bold; color: #198754; margin: 0; text-align: right;">${assignedUsers.map(u => (u.name || u.firstname || 'Unknown').split(' ')[0]).join(', ')}</small>` :
+                                    `<small style="font-weight: 700; color: var(--subheader-bg, #6a4a70); margin: 0; text-align: right; font-size: 16px;">${assignedUsers.map(u => (u.name || u.firstname || 'Unknown').split(' ')[0]).join(', ')}</small>` :
                                     '<small style="color: #6c757d; margin: 0; text-align: right;">⚪ Unassigned</small>'
                                 }
                             </div>
                             ${selectedUser ? `
                                 <div class="mt-2 pt-2 border-top">
                                     ${sessionAssignments.some(id => id == selectedUser.id) ? `
-                                    <button class="btn btn-sm btn-danger"
+                                    <button class="btn btn-sm btn-outline-primary"
                                             onclick="toggleAssignment('${sessionId}', ${selectedUser.id}); event.stopPropagation();">
-                                        ➖ Unassign
+                                        Unassign
                                     </button>
                                     ` : `
-                                    <button class="btn btn-sm btn-success"
-                                            onclick="toggleAssignment('${sessionId}', ${selectedUser.id}); event.stopPropagation();">
-                                        📌 Assign
+                                    <button class="btn btn-sm btn-primary"
+                                            onclick="toggleAssignment('${sessionId}', ${selectedUser.id}); event.stopPropagation();">Assign
                                     </button>
                                     `}
                                 </div>
@@ -1563,7 +1581,7 @@ function renderCalendar() {
         calendarHTML += '</div></div>'; // Close day content and day column
     });
 
-    calendarHTML += '</div>'; // Close CSS grid
+    calendarHTML += '</div>'; // Close grid container
     container.innerHTML = calendarHTML;
 
     const assignedCount = sessions.filter(s => assignments[getSessionId(s)]?.length > 0).length;
@@ -1623,6 +1641,10 @@ function switchTab(tabName) {
     const tabButtons = document.querySelectorAll('.tab-button');
     tabButtons.forEach(button => button.classList.remove('active'));
 
+    // Get the right panel and main layout to manage calendar overflow
+    const rightPanel = document.querySelector('.main-layout > .panel:last-child');
+    const mainLayout = document.querySelector('.main-layout');
+
     // Show selected tab content
     const selectedTabContent = document.getElementById(tabName + '-tab-content');
     const selectedTabButton = document.getElementById(tabName + '-tab');
@@ -1631,9 +1653,14 @@ function switchTab(tabName) {
         selectedTabContent.classList.add('active');
         selectedTabButton.classList.add('active');
 
-        // If switching to calendar tab, refresh the calendar display
+        // Manage overflow for calendar tab
         if (tabName === 'calendar') {
+            if (rightPanel) rightPanel.classList.add('calendar-active');
+            if (mainLayout) mainLayout.classList.add('calendar-active');
             renderCalendar();
+        } else {
+            if (rightPanel) rightPanel.classList.remove('calendar-active');
+            if (mainLayout) mainLayout.classList.remove('calendar-active');
         }
     }
 }
@@ -2092,27 +2119,38 @@ function renderAttendeesBySession(searchTerm = '') {
         ).filter(Boolean);
 
         html += `
-            <div class="session-assignment-item">
-                <div class="session-info">
-                    <h4>${getSessionTitle(session)}</h4>
-                    <div class="session-details">
-                        <span>📅 ${formatDate(session.schedule?.date)}</span>
-                        <span>🕐 ${session.schedule?.time || 'TBD'}</span>
-                        <span>📍 ${session.schedule?.location || 'TBD'}</span>
+            <div class="mb-4 p-3 border rounded" style="background: var(--bg-1); border-color: var(--border);">
+                <h5 class="mb-3" style="color: var(--neutral-accent); font-weight: 600;">${getSessionTitle(session)}</h5>
+                <div class="row small mb-3" style="color: var(--muted);">
+                    <div class="col-auto">
+                        <i class="me-1">📅</i> <strong>Date:</strong> ${formatDate(session.schedule?.date)}
+                    </div>
+                    <div class="col-auto">
+                        <i class="me-1">🕐</i> <strong>Time:</strong> ${session.schedule?.time || 'TBD'}
+                    </div>
+                    <div class="col-auto">
+                        <i class="me-1">📍</i> <strong>Location:</strong> ${session.schedule?.location || 'TBD'}
+                    </div>
+                    <div class="col-auto">
+                        <i class="me-1">👥</i> <strong>Attendees:</strong> ${assignedUsers.length}
                     </div>
                 </div>
-                <div class="attendees-list">
-                    <h5>Assigned MSDs (${assignedUsers.length}):</h5>
-                    ${assignedUsers.map(user => `
-                        <div class="attendee-item">
-                            <span class="user-name">${user.name}</span>
-                            <span class="user-details">${user.email}</span>
-                            <button class="btn btn-sm btn-danger" onclick="removeAssignment('${sessionId}', ${user.id}); renderAttendeesBySession();">
-                                Remove
+
+                <h6 style="color: var(--ink);">Attendees:</h6>
+                ${assignedUsers.length > 0 ? assignedUsers.map(user => `
+                    <div class="p-2 mb-2 bg-white" style="border-left: 3px solid var(--btn-blue); border-radius: 4px;">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <strong style="color: var(--ink);">${user.name}</strong> <span style="color: var(--muted);">(${user.role || 'MSD'})</span>
+                                <br><small style="color: var(--muted);">${user.email}</small>
+                                <br><small style="color: var(--muted);">${user.department || ''}</small>
+                            </div>
+                            <button class="btn btn-sm" style="background: #db1f68; color: white; border: 1px solid #db1f68;" onclick="removeAssignment('${sessionId}', ${user.id}); renderAttendeesBySession();">
+                                Unassign
                             </button>
                         </div>
-                    `).join('')}
-                </div>
+                    </div>
+                `).join('') : '<p style="color: var(--muted);">No attendees assigned</p>'}
             </div>
         `;
     });
@@ -2168,8 +2206,24 @@ function renderSessionsByAttendee(searchTerm = '') {
 
     let html = '';
     filteredUsers.forEach(user => {
-        const userSessions = getUserAssignments(user.id)
-            .map(sessionId => sessions.find(s => getSessionId(s) === sessionId))
+        const userAssignmentIds = getUserAssignments(user.id);
+
+        // Debug logging for Nancy Rabasco specifically
+        if (user.name && user.name.toLowerCase().includes('nancy')) {
+            console.log(`🔍 Nancy's assignment IDs:`, userAssignmentIds);
+            console.log(`🔍 Total sessions in data:`, sessions.length);
+            console.log(`🔍 Session types in data:`, [...new Set(sessions.map(s => s.session_info?.type || 'Unknown'))]);
+        }
+
+        const userSessions = userAssignmentIds
+            .map(sessionId => {
+                // Use the same matching logic as findSessionById to handle type mismatches
+                const found = sessions.find(s => s.session_id === sessionId || s.session_id == sessionId || String(s.session_id) === String(sessionId));
+                if (!found && user.name && user.name.toLowerCase().includes('nancy')) {
+                    console.log(`❌ Could not find session with ID: ${sessionId}`);
+                }
+                return found;
+            })
             .filter(Boolean)
             .sort((a, b) => {
                 const dateA = new Date(a.schedule?.date || '2025-01-01');
@@ -2177,28 +2231,49 @@ function renderSessionsByAttendee(searchTerm = '') {
                 return dateA - dateB;
             });
 
+        // More debug logging for Nancy
+        if (user.name && user.name.toLowerCase().includes('nancy')) {
+            console.log(`🔍 Nancy's found sessions:`, userSessions.map(s => ({
+                id: s.session_id,
+                title: getSessionTitle(s),
+                type: s.session_info?.type
+            })));
+        }
+
         html += `
-            <div class="attendee-assignment-item">
-                <div class="attendee-info">
-                    <h4>${user.name}</h4>
-                    <div class="attendee-details">
-                        <span>📧 ${user.email}</span>
-                        ${user.department ? `<span>🏢 ${user.department}</span>` : ''}
+            <div class="mb-4 p-3 border rounded" style="background: var(--bg-1); border-color: var(--border);">
+                <h5 class="mb-3" style="color: var(--neutral-accent); font-weight: 600;">${user.name}</h5>
+                <div class="row small mb-3" style="color: var(--muted);">
+                    <div class="col-auto">
+                        <i class="me-1">📧</i> <strong>Email:</strong> ${user.email}
+                    </div>
+                    ${user.department ? `
+                    <div class="col-auto">
+                        <i class="me-1">🏢</i> <strong>Department:</strong> ${user.department}
+                    </div>
+                    ` : ''}
+                    <div class="col-auto">
+                        <i class="me-1">📅</i> <strong>Sessions:</strong> ${userSessions.length}
                     </div>
                 </div>
-                <div class="sessions-list">
-                    <h5>Assigned Sessions (${userSessions.length}):</h5>
-                    ${userSessions.length === 0 ? '<div class="no-assignments">No sessions assigned</div>' : ''}
-                    ${userSessions.map(session => `
-                        <div class="session-item-small">
-                            <div class="session-basic-info">
-                                <span class="session-title">${getSessionTitle(session)}</span>
-                                <br><span style="font-size: 12px; color: #666;">${user.email}</span>
-                                ${user.department ? `<br><span style="font-size: 12px; color: #666;">${user.department}</span>` : ''}
+
+                <h6 style="color: var(--ink);">Assigned Sessions (${userSessions.length}):</h6>
+                ${userSessions.length === 0 ?
+                    '<p style="color: var(--muted);">No sessions assigned</p>' :
+                    userSessions.map(session => `
+                        <div class="p-2 mb-2 bg-white" style="border-left: 3px solid var(--btn-blue); border-radius: 4px;">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <strong style="color: var(--ink);">${getSessionTitle(session)}</strong>
+                                    <br><small style="color: var(--muted);">📅 ${formatDate(session.schedule?.date)} • 🕐 ${session.schedule?.time || 'TBD'} • 📍 ${session.schedule?.location || 'TBD'}</small>
+                                </div>
+                                <button class="btn btn-sm" style="background: #db1f68; color: white; border: 1px solid #db1f68;" onclick="removeAssignment('${getSessionId(session)}', ${user.id}); renderSessionsByAttendee();">
+                                    Unassign
+                                </button>
                             </div>
                         </div>
-                    `).join('')}
-                </div>
+                    `).join('')
+                }
             </div>
         `;
     });
@@ -2309,7 +2384,7 @@ function showMSDAssignments(userId, event) {
             const dateSessions = sessionsByDate.get(date);
             html += `
                 <div class="date-group-assignments">
-                    <h5>📅 ${formatDate(date)} (${dateSessions.length} session${dateSessions.length !== 1 ? 's' : ''})</h5>
+                <div class="h2 p-2">📅 ${formatDate(date)} (${dateSessions.length} session${dateSessions.length !== 1 ? 's' : ''})</div>
                     ${dateSessions.map(session => `
                         <div class="session-card ${session._missing ? 'missing-session' : ''}">
                             <div class="session-card-content">
@@ -2324,7 +2399,7 @@ function showMSDAssignments(userId, event) {
                             </div>
                             <button class="btn-remove"
                                     onclick="removeAssignmentFromModal('${getSessionId(session)}', ${user.id})">
-                                Remove
+                                Unassign
                             </button>
                         </div>
                     `).join('')}
@@ -2406,7 +2481,7 @@ function showErrorMessage(message) {
         position: fixed;
         top: 20px;
         right: 20px;
-        background: #dc3545;
+        background: #db1f68;
         color: white;
         padding: 12px 20px;
         border-radius: 5px;

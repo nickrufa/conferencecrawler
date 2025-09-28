@@ -3,32 +3,51 @@
 :root {
     --bg-1:             #f8f9fa;
     --bg-2:             #e8f4f8;
-    --header-bg:        #5C5346;   /* top header bar (deep wine) */
-    --subheader-bg:     #605e5b;   /* day headers, panel headers */
-    --on-dark:          #FFFFFF;
+    --bg-3:             #f3f4f6;
+    --bg-4:             #f6f0f0;
 
+    --header-bg:        #2E2E2E;   /* top header bar */
+    --subheader-bg:     #424242;   /* day headers, panel headers */
+    --neutral-accent:   #3F3F46;  /* titles, tabs, borders */
+    --neutral-accent-2: #52525B;  /* hover/active  */
+
+    --header-bg:        #5a3d5c;   /* top header */
+    --subheader-bg:     #6a4a70;   /* tabs, panel headers */
+    --date-header-bg:   #f3f3f3;   /* neutral background for date headers */
+    --date-header-text: #5a3d5c; /* plum text */
+    --neutral-accent:   #3F3F46;   /* titles */
+    --neutral-accent-2: #7b5e84; /* hover/active */
+
+    --red-danger:       #db1f68 !important;
+    --plum-hover:       #732F57;   /* hover/active states */
+    --on-dark:          #FFFFFF;
     --ink:              #2C3E50;   /* base body text */
-    --neutral-accent:   #5C5346;  /* taupe for titles, tabs, borders */
-    --neutral-accent-2: #766A5E;  /* hover/active taupe */
+    --gray-text:        #6c757d;
 
     --border:           #E9ECEF;
+    --header-border:    #a2a4a5;
     --muted:            #666;
 
-    --assigned-bg:      #e3fee7;
+    --assigned-bg:      #d6e5d878;
     --assigned-left:    #28A745;
     --assigned:         #28A745;
-    --unassigned-bg:    #EFE1C3;
-    --unassigned-left:  #FFC107;
+    --unassigned-bg:    #f6d4d469;
+    --unassigned-left:  #db1f68;
 
     --shadow-1:         rgba(0,0,0,0.10);
     --shadow-2:         rgba(0,0,0,0.15);
+    
 
     /* Buttons keep blue */
     --btn-blue:         #2c5aa0;
     --btn-blue-hover:   #1e4080;
+    --btn-blue-2:       #34495e;
 
     --user-grad-1:      #e3f2fd;  
-    --user-grad-2:      #bbdefb;    
+    --user-grad-2:      #bbdefb;  
+    
+    --timeslot-grad-1:  #e9edf0;
+    --timeslot-grad-2:  #696c6c;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -54,14 +73,18 @@ body {
 .header h1 { font-size: 32px; margin-bottom: 8px; }
 .header p { opacity: 0.9; font-size: 16px; }
 
-.day-header,
-.detailed-day-header{
+.day-header{
     background: var(--subheader-bg);
     color: var(--on-dark);
     padding: 10px;
     font-weight: bold;
     text-align: center;
     font-size: 14px;
+}
+
+.detailed-day-header{
+  background: linear-gradient(135deg, #5C5346, #766A5E) !important;
+  color: #fff !important;
 }
 
 .panel-header{
@@ -84,14 +107,14 @@ body {
     text-align: initial !important;        /* undo center text */
     padding: 2px 10px !important;
     gap: 10px;
-    background: var(--subheader-bg) !important;
-    color: var(--on-dark) !important;
+    background: var(--date-header-bg, #f9f9f9) !important;
+    color: var(--date-header-text) !important;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     font-weight: 700;
     cursor: pointer;
-     transition: all 0.2s ease;
+    transition: all 0.2s ease;
     user-select: none;
-    border-bottom: thin #0097A7 solid;
+    border-radius: 6px;
 }
 
 .session-header {
@@ -119,14 +142,40 @@ body {
     background: var(--btn-blue-hover);
     transform: translateY(-1px);
 }
+
 .btn-success { background: var(--assigned); }
 .btn-success:hover { background: #218838; }
-.btn-danger { background: #dc3545; }
-.btn-danger:hover { background: #c82333; }
+.btn-danger { background: var(--red-danger);}
+.btn-danger:hover { background: #ae202e; }
+
+.btn-outline-primary { 
+    border: 2px solid var(--btn-blue); 
+    color:var(--btn-blue); 
+    background: white; 
+    font-weight:bold; 
+}
+.btn-outline-primary:hover { 
+    background: var(--btn-blue); 
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-outline-danger {
+    border: 2px solid var(--red-danger); 
+    color:var(--red-danger); 
+    background: white; 
+    font-weight:bold; 
+}
+.btn-outline-danger:hover {
+    background: var(--red-danger); 
+    color:white; 
+        
+ }
+
 .btn-sm { padding: 6px 12px; font-size: 12px; }
 
 .btn_header {
-    background: #2c5aa0;
+    background: var(--btn-blue);
     color: white;
     border: 1px solid white;
     padding: 2px 5px;
@@ -157,7 +206,7 @@ body {
 .stat-number {
     font-size: 20px;
     font-weight: bold;
-    color: #34495e;
+    color: var(--btn-blue-2);
     margin-bottom: 5px;
 }
 
@@ -175,7 +224,7 @@ body {
 }
 
 .controls h3 {
-    color: #34495e;
+    color: var(--btn-blue-2);
     margin-bottom: 15px;
     font-size: 18px;
 }
@@ -191,33 +240,64 @@ body {
     grid-template-columns: 300px minmax(0, 1fr);
     gap: 20px;
     height: 80vh;
-    overflow-x: hidden;
+    overflow: hidden;
     min-width: 100%;
+    max-width: 100vw;
 }
 
 .panel {
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 8px var(--shadow-1);
-    overflow: visible;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     min-width: 0;
 }
 
-/* ======= TABS ======= */
-.tabbed-panel {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px var(--shadow-1);
+/* Left panel (MSD panel) - fixed width, no horizontal scroll */
+.main-layout > .panel:first-child {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Right panel (tab panel) - allows horizontal scroll */
+.main-layout > .panel:last-child {
     overflow-x: auto;
     overflow-y: hidden;
-    display: flex;
+    min-width: 0;
+}
+
+/* Calendar tab needs vertical scrolling for multiple rows of days */
+.main-layout > .panel:last-child.calendar-active {
+    overflow-y: auto;
+}
+
+/* Allow main layout to scroll when calendar is active */
+.main-layout.calendar-active {
+    overflow-y: auto;
+    height: auto;
+    min-height: 80vh;
+}
+
+/* ======= TABS ======= */
+.tab-content {
+    display: none;
+    flex: 1;
     flex-direction: column;
+    overflow-x: auto;
+    overflow-y: auto;
 }
 
 .tab-navigation {
-    display: flex;
+    display:flex !important;
+    align-items:flex-end;
+    gap:8px;
+    flex-wrap:nowrap !important;
+    overflow-x:auto;
     background: white;
     gap: 1px;
     border-bottom: 1px solid var(--neutral-accent);
@@ -240,7 +320,8 @@ body {
     gap: 8px;
     border-radius: 8px 8px 0 0;
     margin-right: 1px;
-    white-space: nowrap;
+    flex:0 0 auto !important;
+    white-space:nowrap !important;
 }
 
 .tab-button:last-child {
@@ -254,9 +335,9 @@ body {
 }
 
 .tab-button.active {
-    background: var(--neutral-accent);
+    background: var(--subheader-bg);
     color: white;
-    border-color: var(--neutral-accent);
+    border-color: var(--subheader-bg);
     box-shadow: 0 2px 8px var(--shadow-1);
     z-index: 1;
     position: relative;
@@ -268,11 +349,13 @@ body {
     display: none;
     flex: 1;
     flex-direction: column;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .tab-content.active {
     display: flex;
+    overflow: auto;
+    height: 100%;
 }
 
 /* ======= SESSION STATES ======= */
@@ -323,16 +406,21 @@ body {
 }
 
 .calendar-session .session-title {
+    color: var(--neutral-accent) !important;
     font-weight: 500;
     margin-bottom: 6px;
     line-height: 1.3;
     font-size: 12px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    hyphens: auto;
-    min-width: 0;
-    width: 100%;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    hyphens: auto !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    overflow: visible !important;
 }
 
 .grouped-session-title {
@@ -344,7 +432,7 @@ body {
 }
 
 .attendee-tag {
-    background: #f3f4f6;
+    background: var(--bg-3);
     color: var(--neutral-accent);
     border: 1px solid var(--neutral-accent);
     padding: 4px 8px;
@@ -383,7 +471,7 @@ input, select, textarea {
 /* ======= HOVERS ======= */
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: #2c5aa0;
+    border-color: var(--btn-blue);
 }
 
 /* ======= PANELS / CONTAINERS ======= */
@@ -505,15 +593,17 @@ input:focus, select:focus, textarea:focus {
 
 /* =======SESSION  ======= */
 .session-filters {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr auto;
-    gap: 10px;
+    display:grid !important;
+    grid-template-columns: 2fr 1fr 1fr auto !important;
+    gap: 10px !important;
     align-items: end;
     /* margin-bottom: 15px; */
     padding: 15px;
     background: var(--bg-1);
     border-radius: 6px;
 }
+.session-filters > *{ min-width:0 !important; }
+.session-filters .btn{ height:38px !important; }
 
 .session-item {
     border: 1px solid var(--border);
@@ -641,7 +731,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .remove-attendee {
-    background: #dc3545;
+    background: var(--red-danger);
     color: white;
     border: none;
     border-radius: 50%;
@@ -704,10 +794,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 .date-group-assignments h5 {
-    color: #34495e;
+    color: var(--btn-blue-2);
     margin-bottom: 10px;
     padding-bottom: 5px;
-    border-bottom: 2px solid #34495e;
+    border-bottom: 2px solid var(--btn-blue-2);
 }
 
 .session-card {
@@ -761,7 +851,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .btn-remove {
-    background: #dc3545;
+    background: var(--red-danger);
     color: white;
     border: none;
     padding: 6px 12px;
@@ -779,11 +869,11 @@ input:focus, select:focus, textarea:focus {
 /* Missing session styling */
 .missing-session {
     background-color: #fff3cd;
-    border-left: 4px solid #ffc107;
+    border-left: 4px solid #EB954A;
 }
 
 .missing-badge {
-    background-color: #dc3545;
+    background-color: var(--red-danger);
     color: white;
     font-size: 11px;
     padding: 2px 6px;
@@ -842,10 +932,11 @@ input:focus, select:focus, textarea:focus {
     padding: 3px;
     color: white;
     font-weight: 600;
-    border-radius: 5px;
 }
 .simple-session-assignee.has-assignees {
-    background: var(--assigned);
+    color: var(--subheader-bg);
+    font-size:16px;
+    font-weight: 700;
 }   
 
 .close {
@@ -870,6 +961,18 @@ input:focus, select:focus, textarea:focus {
 }
 
 .hidden { display: none !important; }
+
+/* Heading classes for non-heading elements */
+.h1 { font-size: 2.5rem; font-weight: 600; margin: 0; color: var(--ink); }
+.h2 { font-size: 2rem; font-weight: 600; margin: 0; color: var(--ink); }
+.h3 { font-size: 1.75rem; font-weight: 600; margin: 0; color: var(--ink); }
+.h4 { font-size: 1.5rem; font-weight: 600; margin: 0; color: var(--ink); }
+.h5 { font-size: 1.25rem; font-weight: 600; margin: 0; color: var(--ink); }
+
+/* Padding utilities */
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
 
 .no-data {
     text-align: center;
@@ -907,13 +1010,13 @@ input:focus, select:focus, textarea:focus {
     padding: 15px;
 }
 
-/* Calendar in tab gets much more height */
+/* Calendar in tab needs proper scrolling */
 .tab-content .calendar-view {
     width: 100% !important;
-    min-height: 60vh;
-    height: auto;
-    overflow-x: hidden !important;
-    padding: 5px !important;
+    height: 100%;
+    max-height: none;
+    overflow: visible !important;
+    padding: 0 !important;
     box-sizing: border-box !important;
 }
 
@@ -979,12 +1082,6 @@ input:focus, select:focus, textarea:focus {
     box-sizing: border-box;
 }
 
-.day-content {
-    overflow-y: auto;
-    flex: 1;
-    padding: 8px;
-}
-
 
 .time-slot {
     padding: 8px;
@@ -1002,15 +1099,18 @@ input:focus, select:focus, textarea:focus {
 
 
 /* Calendar-specific styles */
-.day-content .time-slot-header {
-    background: linear-gradient(135deg, #e9edf0, #a2a4a5);
-    color: #495057;
+.day-content {
+    background: transparent !important;
+    color: inherit !important;
     padding: 8px;
     margin-bottom: 4px;
-    border-radius: 4px;
-    border-left: 3px solid transparent;
-    font-weight: 600;
+    border-radius: 0 !important;
+    border-left: 0 !important;
+    font-weight: normal !important;
+    overflow-y: auto;
+    flex: 1;
 }
+
 
 /* Calendar time slot headers should not change color based on assignment status - they stay gray like in session view */
 
@@ -1024,10 +1124,11 @@ input:focus, select:focus, textarea:focus {
     transition: all 0.2s;
     border-left: 3px solid transparent;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    min-width: 0;
-    width: 100%;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 .calendar-session .session-time {
@@ -1041,11 +1142,11 @@ input:focus, select:focus, textarea:focus {
     font-size: 11px;
     color: #666;
     margin-bottom: 6px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    min-width: 0;
-    width: 100%;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    min-width: 0 !important;
+    width: 100% !important;
 }
 
 .calendar-session .session-details > div {
@@ -1124,7 +1225,7 @@ input:focus, select:focus, textarea:focus {
 
     /* Styling */
     background: #fff;
-    border: 2px solid #ffc107;
+    border: 2px solid #EB954A;
     border-radius: 8px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     padding: 15px;
@@ -1154,14 +1255,14 @@ input:focus, select:focus, textarea:focus {
 
 .conflict-popup-content-inner {
     background: #fff;
-    border: 2px solid #dc3545;
+    border: 2px solid var(--red-danger);
     border-radius: 8px;
     padding: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .conflict-popup-message {
-    color: #dc3545;
+    color: var(--red-danger);
     font-weight: 600;
     font-size: 14px;
     margin-bottom: 8px;
@@ -1174,7 +1275,7 @@ input:focus, select:focus, textarea:focus {
     line-height: 1.4;
     margin-bottom: 4px;
     padding-left: 8px;
-    border-left: 3px solid #dc3545;
+    border-left: 3px solid var(--red-danger);
     background: var(--bg-1);
     padding: 6px 8px;
     border-radius: 3px;
@@ -1193,7 +1294,7 @@ input:focus, select:focus, textarea:focus {
     margin-left: -8px;
     border-width: 8px;
     border-style: solid;
-    border-color: #ffc107 transparent transparent transparent;
+    border-color: #EB954A transparent transparent transparent;
 }
 
 /* Detailed Calendar View */
@@ -1214,7 +1315,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .detailed-day-header {
-    background: linear-gradient(135deg, #34495e, #2c3e50);
+    background: linear-gradient(135deg, var(--btn-blue-2), var(--ink));
     color: white;
     padding: 0px 2px;
     font-size: 16px;
@@ -1235,28 +1336,30 @@ input:focus, select:focus, textarea:focus {
 }
 
 .time-slot-header {
-    background: linear-gradient(135deg, #e9edf0, #a2a4a5);
-    color: #495057;
+    background: linear-gradient(135deg, var(--timeslot-grad-1), var(--timeslot-grad-2)) !important;
+    color: #495057 !important;
+    padding: 4px 6px !important;
+    border-top: 1px solid var(--header-border);
+    border-left: 4px solid var(--header-border) !important;
+    font-size: 16px;
+    font-weight: 600 !important;
     padding: 0px 5px;
-    margin-top: 20px;
+    margin-top: 2px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: 600;
-    border-top: 1px solid #a2a4a5;
-    border-left: 4px solid #a2a4a5;
     cursor: pointer;
     transition: all 0.2s ease;
     user-select: none;
-    font-size: 16px;
 }
 
+
 .time-slot-header:hover {
-    background: linear-gradient(135deg, #e9edf0, #a2a4a5);
+    background: linear-gradient(135deg, var(--timeslot-grad-1), var(--header-border));
 }
 
 .time-slot-header.cal {
-    background: linear-gradient(135deg, #e9edf0, #e9edf0);
+    background: linear-gradient(135deg, var(--timeslot-grad-1), var(--timeslot-grad-1));
     font-size: 14px;
     padding: 2px;
     margin-top: 10px;
@@ -1267,7 +1370,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .time-slot-header.cal:hover {
-    background: linear-gradient(135deg, #e9edf0, #a2a4a5);
+    background: linear-gradient(135deg, var(--timeslot-grad-1), var(--header-border));
 }
 
 .compact-session {
@@ -1280,9 +1383,6 @@ input:focus, select:focus, textarea:focus {
     background-color: rgba(44, 90, 160, 0.05) !important;
     box-shadow: inset 0 0 0 1px rgba(44, 90, 160, 0.2);
 }
-
-
-
 
 
 .session-header {
@@ -1305,7 +1405,7 @@ input:focus, select:focus, textarea:focus {
     padding: 2px 8px;
     border-radius: 12px;
     font-size: 11px;
-    color: #6c757d;
+    color: var(--gray-text)
 }
 
 .session-content {
@@ -1366,6 +1466,7 @@ input:focus, select:focus, textarea:focus {
     margin-bottom: 25px;
     background: white;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border:thin solid gainsboro;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -1461,6 +1562,7 @@ input:focus, select:focus, textarea:focus {
     padding: 6px 12px;
     border-radius: 15px;
     backdrop-filter: blur(10px);
+    color:white;
 }
 
 /* Keep old styles for compatibility but hide them */
@@ -1589,7 +1691,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .grouped-session-assignee {
-    background: #f6f0f0;
+    background: var(--bg-4);
     color:  var(--btn-blue);
     padding: 2px 6px;
     border-radius: 10px;
@@ -1600,14 +1702,14 @@ input:focus, select:focus, textarea:focus {
 /* Warning Modal Styles */
 .warning-modal {
     background: linear-gradient(135deg, #fff3cd, #ffeaa7);
-    border: 3px solid #ffc107;
+    border: 3px solid #EB954A;
     border-radius: 15px;
     max-width: 500px;
     box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
 }
 
 .warning-header {
-    background: linear-gradient(135deg, #ffc107, #e0a800);
+    background: linear-gradient(135deg, #EB954A, #e0a800);
     color: #856404;
     padding: 20px;
     border-radius: 12px 12px 0 0;
@@ -1644,7 +1746,7 @@ input:focus, select:focus, textarea:focus {
 .warning-note {
     font-style: italic;
     margin: 15px 0;
-    color: #6c757d;
+    color: var(--gray-text)
 }
 
 .warning-question {
@@ -1670,7 +1772,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .btn-warning {
-    background: linear-gradient(135deg, #ffc107, #e0a800);
+    background: linear-gradient(135deg, #EB954A, #e0a800);
     color: #856404;
     border: 2px solid #d39e00;
 }
@@ -1705,3 +1807,63 @@ input:focus, select:focus, textarea:focus {
         right: 10px !important;
     }
 }
+
+ /* Global calendar text wrapping fixes */
+    #calendar-container * {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        white-space: normal !important;
+        box-sizing: border-box !important;
+    }
+
+    #calendar-container .calendar-session * {
+        -webkit-line-clamp: unset !important;
+        -webkit-box-orient: unset !important;
+        display: block !important;
+        overflow: visible !important;
+        text-overflow: unset !important;
+        max-width: 100% !important;
+        width: auto !important;
+        flex-shrink: 1 !important;
+    }
+
+    /* Remove all CSS grid conflicts - let JavaScript handle layout */
+
+    /* Let JavaScript inline styles handle all calendar layout */
+
+    /* Container width constraints - ALLOW SCROLLING */
+    .calendar-view {
+        width: 100% !important;
+        max-width: none !important;
+        overflow-x: auto !important;
+        overflow-y: auto !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        height: auto !important;
+    }
+
+    #calendar-container {
+        width: 100% !important;
+        max-width: none !important;
+        overflow-x: auto !important;
+        overflow-y: auto !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Force the tab content to use full width */
+    #calendar-tab-content {
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    /* Make calendar responsive - expand columns as screen gets wider */
+    @media (min-width: 768px) {
+        .calendar-view .col-lg-6 {
+            flex: 1 1 50% !important;
+            max-width: 50% !important;
+        }
+    }
+  
