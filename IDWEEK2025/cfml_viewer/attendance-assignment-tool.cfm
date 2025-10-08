@@ -69,6 +69,13 @@
         <!-- <button class="btn" onclick="forceReload()">🔄 Reload Data</button> -->
         <button class="btn btn-outline-danger" onclick="clearAllData()">🗑️ Clear All</button>
       </div>
+
+      <!-- Color Legend -->
+      <div class="color-legend">
+        <div class="legend-color assigned">Assigned</div>
+        <div class="legend-color unassigned">Unassigned</div>
+        <div class="legend-color conflict">Time Conflicts</div>
+      </div>
     </div>
 
     <div class="main-layout">
@@ -114,6 +121,14 @@
               </select>
               <select id="type-filter">
                 <option value="">All Types</option>
+              </select>
+              <select id="track-filter">
+                <option value="">All Tracks</option>
+              </select>
+              <select id="assignment-filter" onchange="setAssignmentFilterFromDropdown()">
+                <option value="all">All Sessions</option>
+                <option value="assigned">✅ Assigned</option>
+                <option value="unassigned">⚪ Unassigned</option>
               </select>
               <button class="btn btn-sm" onclick="clearFilters()">Clear</button>
             </div>
@@ -184,7 +199,7 @@
   <div id="attendees-by-session-modal" class="modal">
     <div class="modal-content modal-lg">
       <div class="modal-header">
-        <div class="h2 p-2">📋 Attendees by Session</div>
+        <div class="h4 p-2">📋 Attendees by Session</div>
         <span class="close" onclick="closeAttendeesBySessionModal()">&times;</span>
       </div>
       <div class="modal-body">
@@ -203,7 +218,7 @@
   <div id="sessions-by-attendee-modal" class="modal">
     <div class="modal-content modal-lg">
       <div class="modal-header">
-        <div class="h2 p-2">📅 Sessions by Attendee</div>
+        <div class="h4 p-2">📅 Sessions by Attendee</div>
         <span class="close" onclick="closeSessionsByAttendeeModal()">&times;</span>
       </div>
       <div class="modal-body">

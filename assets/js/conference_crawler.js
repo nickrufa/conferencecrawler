@@ -11,6 +11,7 @@ let users = [];
 let assignments = {}; // sessionId -> [userIds]
 let selectedUser = null;
 let filteredSessions = [];
+let currentAssignmentFilter = 'all'; // 'all', 'assigned', 'unassigned'
 
 // Conference ID will be determined from URL parameters
 
@@ -34,6 +35,7 @@ function setupEventHandlers() {
     document.getElementById('search-input').addEventListener('input', filterSessions);
     document.getElementById('date-filter').addEventListener('change', filterSessions);
     document.getElementById('type-filter').addEventListener('change', filterSessions);
+    document.getElementById('track-filter').addEventListener('change', filterSessions);
 
     // Modal controls
     window.addEventListener('click', function(event) {
@@ -235,18 +237,13 @@ function loadSessionsData() {
 
             showSuccessMessage(message);
 
-            // Trigger initial render if no assignments will load
-            setTimeout(() => {
-                console.log('🔍 Checking assignments for initial render...');
-                console.log('🔍 assignments keys:', Object.keys(assignments));
-                console.log('🔍 assignments length:', Object.keys(assignments).length);
-                if (Object.keys(assignments).length === 0) {
-                    console.log('✅ No assignments detected, rendering sessions now...');
-                    renderSessions();
-                } else {
-                    console.log('⏳ Assignments exist, not rendering sessions yet');
-                }
-            }, 500);
+            // Always trigger initial render of sessions once loaded
+            console.log('✅ Session data loaded, rendering sessions...');
+            renderSessions();
+            renderCalendar();
+            populateDateFilter();
+            updateTypeFilterOptions(sessions);
+            updateTrackFilterOptions(sessions);
         })
         .catch(error => {
             console.error('Failed to load combined data:', error);
@@ -397,11 +394,11 @@ function getSessionTitle(session) {
 }
 
 function formatDate(dateStr) {
-    // Convert "Sunday, October 19, 2025" to "Sun Oct 19"
+    // Convert "Sunday, October 19, 2025" to "Sunday Oct 19"
     if (!dateStr) return 'TBD';
     const parts = dateStr.split(', ');
     if (parts.length >= 2) {
-        const day = parts[0].substring(0, 3);
+        const day = parts[0]; // Keep full day name instead of abbreviating
         const monthDay = parts[1].split(' ');
         if (monthDay.length >= 2) {
             return `${day} ${monthDay[0].substring(0, 3)} ${monthDay[1]}`;
@@ -435,6 +432,7 @@ function filterSessions() {
     const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
     const dateFilter = document.getElementById('date-filter').value;
     const typeFilter = document.getElementById('type-filter').value;
+    const trackFilter = document.getElementById('track-filter').value;
 
     // First, filter by search and date to get available sessions
     let availableSessions = sessions.filter(session => {
@@ -461,12 +459,32 @@ function filterSessions() {
 
     // Update type filter options based on available sessions
     updateTypeFilterOptions(availableSessions);
+    updateTrackFilterOptions(availableSessions);
 
-    // Apply type filter to get final results
+    // Apply type filter, track filter, and assignment status filter to get final results
     filteredSessions = availableSessions.filter(session => {
         // Type filter
         if (typeFilter && session.session_info?.type !== typeFilter) {
             return false;
+        }
+
+        // Track filter
+        if (trackFilter && session.tracks?.primary_track !== trackFilter) {
+            return false;
+        }
+
+        // Assignment status filter
+        if (currentAssignmentFilter !== 'all') {
+            const sessionAssignments = assignments[getSessionId(session)] || [];
+            const hasAssignments = sessionAssignments.length > 0;
+
+            if (currentAssignmentFilter === 'assigned' && !hasAssignments) {
+                return false;
+            }
+
+            if (currentAssignmentFilter === 'unassigned' && hasAssignments) {
+                return false;
+            }
         }
 
         return true;
@@ -496,6 +514,30 @@ function updateTypeFilterOptions(availableSessions) {
             option.selected = true;
         }
         typeFilter.appendChild(option);
+    });
+}
+
+function updateTrackFilterOptions(availableSessions) {
+    const trackFilter = document.getElementById('track-filter');
+    const currentValue = trackFilter.value;
+
+    // Get unique tracks from available sessions
+    const availableTracks = new Set();
+    availableSessions.forEach(session => {
+        const track = session.tracks?.primary_track;
+        if (track) availableTracks.add(track);
+    });
+
+    // Rebuild track filter options
+    trackFilter.innerHTML = '<option value="">All Tracks</option>';
+    Array.from(availableTracks).sort().forEach(track => {
+        const option = document.createElement('option');
+        option.value = track;
+        option.textContent = track;
+        if (currentValue === track) {
+            option.selected = true;
+        }
+        trackFilter.appendChild(option);
     });
 }
 
@@ -692,8 +734,27 @@ function clearFilters() {
     document.getElementById('search-input').value = '';
     document.getElementById('date-filter').value = '';
     document.getElementById('type-filter').value = '';
+    document.getElementById('track-filter').value = '';
+    document.getElementById('assignment-filter').value = 'all';
+    currentAssignmentFilter = 'all';
     filteredSessions = [];
     renderSessions();
+}
+
+function setAssignmentFilterFromDropdown() {
+    const filterType = document.getElementById('assignment-filter').value;
+    currentAssignmentFilter = filterType;
+
+    // Apply the filter
+    filterSessions();
+}
+
+function setAssignmentFilter(filterType) {
+    currentAssignmentFilter = filterType;
+    document.getElementById('assignment-filter').value = filterType;
+
+    // Apply the filter
+    filterSessions();
 }
 
 // Populate date filter
@@ -843,16 +904,22 @@ function createGroupedSessionHTML(session, groupLocation) {
     const hasAssignments = sessionAssignments.length > 0;
     const isCollapsed = false; // FIXED: Don't auto-collapse sessions
 
+    // Check if any assigned user has conflicts
+    const hasAnyConflicts = assignedUsers.some(user => {
+        const userConflicts = getConflicts(user.id, session);
+        return userConflicts.length > 0;
+    });
+
     //console.log(`Creating grouped session ${getSessionId(session)}: hasAssignments=${hasAssignments}, isCollapsed=${isCollapsed}, assignments:`, sessionAssignments);
 
     return `
-        <div class="simple-session ${hasAssignments ? 'assigned' : 'unassigned'}" data-session-id="${getSessionId(session)}">
+        <div class="simple-session ${hasAnyConflicts ? 'conflict' : hasAssignments ? 'assigned' : 'unassigned'}" data-session-id="${getSessionId(session)}">
             <div class="simple-session-header">
                 <div class="simple-session-title">${getSessionTitle(session)}</div>
                 <div class="simple-session-controls">
                     ${selectedUser ? `
                         ${hasConflict ? `
-                            <button class="btn btn-sm" style="background: #EB954A; color: #333; border: 1px solid #f0ad4e;"
+                            <button class="btn btn-sm btn-conflict"
                                     onclick="toggleAssignment('${getSessionId(session)}', ${selectedUser.id})"
                                     title="⚠️ Time conflict - cannot attend multiple sessions simultaneously">
                                 ⚠️ Conflict
@@ -868,12 +935,15 @@ function createGroupedSessionHTML(session, groupLocation) {
             </div>
             <div class="simple-session-meta">
                 <div class="simple-session-info">
-                    ${showLocation ? `<span class="meta-inline-item">📍 ${sessionLocation}</span>` : ''}
-                    <span class="meta-inline-item">📋 ${session.session_info?.type || 'General'}</span>
+                    <span class="meta-inline-item">📍 ${sessionLocation} • 📋 ${session.session_info?.type || 'General'}</span>
                     <span class="meta-inline-item">🎯 ${session.tracks?.primary_track || 'General'}</span>
                 </div>
                 <div class="simple-session-assignee ${hasAssignments ? 'has-assignees' : ''}">
-                    ${hasAssignments ? assignedUsers.map(u => u.name).join(', ') : ''}
+                    ${hasAssignments ? assignedUsers.map(u => {
+                        const userConflicts = getConflicts(u.id, session);
+                        const hasUserConflict = userConflicts.length > 0;
+                        return hasUserConflict ? `<span style="color: var(--conflict-text); ; font-weight: bold;">⚠️ ${u.name}</span>` : u.name;
+                    }).join(', ') : ''}
                 </div>
             </div>
         </div>
@@ -898,12 +968,18 @@ function createSessionElement(session) {
     const isCollapsed = false; // FIXED: Don't auto-collapse sessions
 
 
-    div.className = `session-item ${hasAssignments ? 'assigned' : 'unassigned'} ${isCollapsed ? 'collapsed' : 'expanded'}`;
-    div.dataset.sessionId = sessionId;
-
     const assignedUsers = sessionAssignments.map(userId =>
         users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
     ).filter(Boolean);
+
+    // Check if any assigned user has conflicts
+    const hasAnyConflicts = assignedUsers.some(user => {
+        const userConflicts = getConflicts(user.id, session);
+        return userConflicts.length > 0;
+    });
+
+    div.className = `session-item ${hasAnyConflicts ? 'conflict' : hasAssignments ? 'assigned' : 'unassigned'} ${isCollapsed ? 'collapsed' : 'expanded'}`;
+    div.dataset.sessionId = sessionId;
 
     const conflicts = selectedUser ? getConflicts(selectedUser.id, session) : [];
     const hasConflict = selectedUser && !sessionAssignments.some(id => id == selectedUser.id) && hasTimeConflict(selectedUser.id, session);
@@ -913,17 +989,20 @@ function createSessionElement(session) {
             <div class="session-main-info">
                 <div class="session-title">${getSessionTitle(session)}</div>
                 <div class="session-meta-inline">
-                    <span class="meta-inline-item">📍 ${session.schedule?.location || 'TBD'}</span>
-                    <span class="meta-inline-item">📋 ${session.session_info?.type || 'General'}</span>
+                    <span class="meta-inline-item">📍 ${session.schedule?.location || 'TBD'} • 📋 ${session.session_info?.type || 'General'}</span>
                     <span class="meta-inline-item">🎯 ${session.tracks?.primary_track || 'General'}</span>
                 </div>
-                ${hasAssignments ? `<div class="assignment-summary">✅ ${assignedUsers.length} MSD${assignedUsers.length !== 1 ? 's' : ''} assigned: ${assignedUsers.map(u => u.name).join(', ')}</div>` : ''}
+                ${hasAssignments ? `<div class="assignment-summary">✅ ${assignedUsers.length} MSD${assignedUsers.length !== 1 ? 's' : ''} assigned: ${assignedUsers.map(u => {
+                    const userConflicts = getConflicts(u.id, session);
+                    const hasUserConflict = userConflicts.length > 0;
+                    return hasUserConflict ? `<span style="color: var(--conflict-text); ; font-weight: bold;">⚠️ ${u.name}</span>` : u.name;
+                }).join(', ')}</div>` : ''}
             </div>
             <div class="session-controls">
                 ${selectedUser ? `
-                    <button class="btn btn-sm ${sessionAssignments.some(id => id == selectedUser.id) ? 'btn-outline-danger' : hasConflict ? 'btn' : 'btn-primary'}"
+                    <button class="btn btn-sm ${sessionAssignments.some(id => id == selectedUser.id) ? 'btn-outline-danger' : hasConflict ? 'btn-conflict' : 'btn-primary'}"
                             onclick="event.stopPropagation(); toggleAssignment('${getSessionId(session)}', ${selectedUser.id})"
-                            ${hasConflict ? 'style="background: #EB954A; color: #333; border: 1px solid #f0ad4e;" title="⚠️ Time conflict - cannot attend multiple sessions simultaneously"' : ''}>
+                             title="⚠️ Time conflict - cannot attend multiple sessions simultaneously"' : ''}>
                         ${sessionAssignments.some(id => id == selectedUser.id) ? '➖ Remove' : hasConflict ? '⚠️ Conflict' : '➕ Assign'}
                     </button>
                 ` : '<span style="color: #999; font-size: 12px;">Select user to assign</span>'}
@@ -977,7 +1056,7 @@ function createSessionElement(session) {
                                 ${user.name}
                                 <br><small>${user.email}</small>
                             </span>
-                            <button class="btn btn-sm btn-danger" onclick="removeAssignment('${getSessionId(session)}', ${user.id})" title="Remove assignment">
+                            <button class="btn btn-sm btn-outline-primary" onclick="removeAssignment('${getSessionId(session)}', ${user.id})" title="Remove assignment">
                                 ➖ Remove
                             </button>
                         </div>
@@ -1181,19 +1260,9 @@ async function toggleAssignment(sessionId, userId) {
             }
         }, 100);
     } else {
-        assignments[sessionId].splice(index, 1);
-        console.log(`Removed user ${userId} from session ${sessionId}`);
-
-        // Auto-expand session when assignment is removed
-        setTimeout(() => {
-            let sessionElement = document.querySelector(`.session-item[data-session-id="${sessionId}"]`);
-            if (!sessionElement) {
-                sessionElement = document.querySelector(`.grouped-session[data-session-id="${sessionId}"]`);
-            }
-            if (sessionElement && sessionElement.classList.contains('collapsed')) {
-                toggleSessionCollapse(sessionId);
-            }
-        }, 100);
+        // Call the proper removeAssignment function that handles database deactivation
+        removeAssignment(sessionId, userId);
+        return; // Exit here since removeAssignment handles all the UI updates
     }
 
     renderSessions();
@@ -1272,26 +1341,78 @@ function getConflictingSessions(userId, newSession) {
 }
 
 function removeAssignment(sessionId, userId) {
-    if (assignments[sessionId]) {
-        // Handle both string and number user IDs
-        const index = assignments[sessionId].findIndex(id =>
-            id == userId || id === String(userId) || id === Number(userId)
-        );
-        if (index !== -1) {
-            assignments[sessionId].splice(index, 1);
+    console.log(`🗑️ Deactivating assignment: User ${userId} from Session ${sessionId}`);
 
-            // Clean up empty assignment arrays
-            if (assignments[sessionId].length === 0) {
-                delete assignments[sessionId];
+    // Call API to deactivate assignment in database
+    const requestData = {
+        action: 'deactivate',
+        session_id: sessionId,
+        user_id: userId
+    };
+
+    const apiUrlWithParams = apiUrl(`api_assignments.cfm?confid=${getConferenceId()}`);
+
+    console.log('🔍 DEBUG: Sending deactivation request:', requestData);
+    console.log('🔍 DEBUG: API URL:', apiUrlWithParams);
+
+    fetch(apiUrlWithParams, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    })
+    .then(response => {
+        console.log('🔍 DEBUG: Response status:', response.status);
+        return response.text();
+    })
+    .then(responseText => {
+        console.log('🔍 DEBUG: Raw response:', responseText);
+
+        let data;
+        try {
+            data = JSON.parse(responseText);
+            console.log('🔍 DEBUG: Parsed response:', data);
+        } catch (parseError) {
+            console.error('❌ JSON Parse Error:', parseError);
+            console.error('❌ Response that failed to parse:', responseText);
+            showErrorMessage('Server returned invalid response. Check console for details.');
+            return;
+        }
+
+        if (data.success) {
+            console.log('✅ Assignment deactivated in database:', data.message);
+
+            // Remove from local assignments object
+            if (assignments[sessionId]) {
+                const index = assignments[sessionId].findIndex(id =>
+                    id == userId || id === String(userId) || id === Number(userId)
+                );
+                if (index !== -1) {
+                    assignments[sessionId].splice(index, 1);
+
+                    // Clean up empty assignment arrays
+                    if (assignments[sessionId].length === 0) {
+                        delete assignments[sessionId];
+                    }
+                }
             }
 
-            console.log(`✅ Removed assignment: User ${userId} from Session ${sessionId}`);
+            // Re-render UI
             renderSessions();
+            renderCalendar();
             renderUsersMin();
             updateStats();
-            saveToStorage();
+            showSuccessMessage(`Removed assignment: ${userId} from session ${sessionId}`);
+        } else {
+            console.error('❌ Failed to deactivate assignment:', data);
+            showErrorMessage(`Failed to remove assignment: ${data.message || 'Unknown error'}`);
         }
-    }
+    })
+    .catch(error => {
+        console.error('❌ Error deactivating assignment:', error);
+        showErrorMessage(`Error removing assignment: ${error.message}`);
+    });
 }
 
 function getUserAssignments(userId) {
@@ -1312,8 +1433,89 @@ function findSessionById(sessionId) {
 }
 
 function getConflicts(userId, session) {
-    // This could be enhanced to return detailed conflict information
-    return [];
+    const userSessions = getUserAssignments(userId);
+    const conflicts = [];
+
+    userSessions.forEach(sessionId => {
+        // Skip self-comparison
+        if (sessionId === session.session_id || sessionId == session.session_id || String(sessionId) === String(session.session_id)) {
+            return;
+        }
+
+        let existingSession = sessions.find(s => s.session_id === sessionId || s.session_id == sessionId || String(s.session_id) === String(sessionId));
+
+        if (existingSession && hasTimeOverlap(session, existingSession)) {
+            conflicts.push({
+                sessionId: sessionId,
+                session: existingSession,
+                time: existingSession.schedule?.time,
+                title: getSessionTitle(existingSession)
+            });
+        }
+    });
+
+    return conflicts;
+}
+
+function hasTimeOverlap(session1, session2) {
+    // Check if sessions have overlapping times
+    const time1 = session1.schedule?.time;
+    const time2 = session2.schedule?.time;
+    const date1 = session1.schedule?.date;
+    const date2 = session2.schedule?.date;
+
+    // Must be same date to conflict
+    if (date1 !== date2) {
+        return false;
+    }
+
+    // If either time is missing, assume potential conflict
+    if (!time1 || !time2) {
+        return true;
+    }
+
+    // If times are exactly the same, it's definitely a conflict
+    if (time1 === time2) {
+        return true;
+    }
+
+    // Check if times overlap (e.g., 8:00 AM - 12:00 PM vs 8:00 AM - 12:15 PM)
+    return doTimesOverlap(time1, time2);
+}
+
+function doTimesOverlap(time1, time2) {
+    // Parse time ranges and check for overlap
+    const parseTimeRange = (timeStr) => {
+        const match = timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM)\s*-\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+        if (!match) return null;
+
+        const startHour = parseInt(match[1]);
+        const startMin = parseInt(match[2]);
+        const startPeriod = match[3].toUpperCase();
+        const endHour = parseInt(match[4]);
+        const endMin = parseInt(match[5]);
+        const endPeriod = match[6].toUpperCase();
+
+        let startMinutes = startHour * 60 + startMin;
+        let endMinutes = endHour * 60 + endMin;
+
+        if (startPeriod === 'PM' && startHour !== 12) startMinutes += 12 * 60;
+        if (startPeriod === 'AM' && startHour === 12) startMinutes -= 12 * 60;
+        if (endPeriod === 'PM' && endHour !== 12) endMinutes += 12 * 60;
+        if (endPeriod === 'AM' && endHour === 12) endMinutes -= 12 * 60;
+
+        return { start: startMinutes, end: endMinutes };
+    };
+
+    const range1 = parseTimeRange(time1);
+    const range2 = parseTimeRange(time2);
+
+    if (!range1 || !range2) {
+        return true; // If we can't parse, assume conflict
+    }
+
+    // Check if ranges overlap: start1 < end2 && start2 < end1
+    return range1.start < range2.end && range2.start < range1.end;
 }
 
 function showAddUserModal() {
@@ -1534,23 +1736,35 @@ function renderCalendar() {
                     users.find(u => u.id == userId || u.id === String(userId) || u.id === Number(userId))
                 ).filter(Boolean);
                 const hasAssignments = assignedUsers.length > 0;
+
+                // Check if any assigned user has conflicts
+                const hasAnyConflicts = assignedUsers.some(user => {
+                    const userConflicts = getConflicts(user.id, session);
+                    return userConflicts.length > 0;
+                });
+
                 const title = getSessionTitle(session);
                 const location = session.schedule?.location || 'TBD';
                 const sessionId = getSessionId(session);
 
                 calendarHTML += `
-                    <div class="card mb-2 calendar-session ${hasAssignments ? 'assigned' : 'unassigned'}"
+                    <div class="card mb-2 calendar-session ${hasAnyConflicts ? 'conflict' : hasAssignments ? 'assigned' : 'unassigned'}"
                          data-session-id="${sessionId}"
                          title="${title} - ${location}">
                         <div class="card-body p-2">
-                            <div class="fw-semibold" style="font-size: 14px;">
+                            <div class="fw-semibold session-title-2">
                                 ${title.length > 60 ? title.substring(0, 60) + '...' : title}
                             </div>
-                            <div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin-top: 0.25rem; width: 100%;">
-                                <small style="color: #6c757d; margin: 0;">📍 ${location}</small>
+                            <div class="session-location-row">
+                                <small class="session-location">📍 ${location}</small>
                                 ${assignedUsers.length > 0 ?
-                                    `<small style="font-weight: 700; color: var(--subheader-bg, #6a4a70); margin: 0; text-align: right; font-size: 16px;">${assignedUsers.map(u => (u.name || u.firstname || 'Unknown').split(' ')[0]).join(', ')}</small>` :
-                                    '<small style="color: #6c757d; margin: 0; text-align: right;">⚪ Unassigned</small>'
+                                    `<small class="session-location assigned">${assignedUsers.map(u => {
+                                        const userName = (u.name || u.firstname || 'Unknown').split(' ')[0];
+                                        const userConflicts = getConflicts(u.id, session);
+                                        const hasUserConflict = userConflicts.length > 0;
+                                        return hasUserConflict ?`<span style="color: var(--conflict-text); ; font-weight: bold;">⚠️ ${userName}</span>` : userName;
+                                    }).join(', ')}</small>` :
+                                    '<small class="session-location unassigned">⚪ Unassigned</small>'
                                 }
                             </div>
                             ${selectedUser ? `
@@ -2145,10 +2359,11 @@ function renderAttendeesBySession(searchTerm = '') {
                                 <br><small style="color: var(--muted);">${user.email}</small>
                                 <br><small style="color: var(--muted);">${user.department || ''}</small>
                             </div>
-                            <button class="btn btn-sm" style="background: #db1f68; color: white; border: 1px solid #db1f68;" onclick="removeAssignment('${sessionId}', ${user.id}); renderAttendeesBySession();">
+                            <button class="btn btn-sm btn-outline-primary" onclick="removeAssignment('${sessionId}', ${user.id}); renderAttendeesBySession();">
                                 Unassign
                             </button>
                         </div>
+
                     </div>
                 `).join('') : '<p style="color: var(--muted);">No attendees assigned</p>'}
             </div>
@@ -2208,36 +2423,125 @@ function renderSessionsByAttendee(searchTerm = '') {
     filteredUsers.forEach(user => {
         const userAssignmentIds = getUserAssignments(user.id);
 
-        // Debug logging for Nancy Rabasco specifically
-        if (user.name && user.name.toLowerCase().includes('nancy')) {
-            console.log(`🔍 Nancy's assignment IDs:`, userAssignmentIds);
+        // Enhanced debug logging for all users to find poster issues
+        if (user.name && (user.name.toLowerCase().includes('nancy') || userAssignmentIds.length > 0)) {
+            console.log(`🔍 ${user.name}'s assignment IDs:`, userAssignmentIds);
             console.log(`🔍 Total sessions in data:`, sessions.length);
-            console.log(`🔍 Session types in data:`, [...new Set(sessions.map(s => s.session_info?.type || 'Unknown'))]);
+
+            // Check what types of sessions are in the data
+            const sessionTypes = [...new Set(sessions.map(s => s.session_info?.type || 'Unknown'))];
+            console.log(`🔍 Session types available:`, sessionTypes);
+
+            // Check for poster sessions specifically
+            const posterSessions = sessions.filter(s => s.session_info?.type && s.session_info.type.toLowerCase().includes('poster'));
+            console.log(`🔍 Poster sessions found in data:`, posterSessions.length);
+            if (posterSessions.length > 0) {
+                console.log(`🔍 Sample poster session IDs:`, posterSessions.slice(0, 3).map(s => s.session_id));
+            }
         }
 
         const userSessions = userAssignmentIds
             .map(sessionId => {
                 // Use the same matching logic as findSessionById to handle type mismatches
-                const found = sessions.find(s => s.session_id === sessionId || s.session_id == sessionId || String(s.session_id) === String(sessionId));
-                if (!found && user.name && user.name.toLowerCase().includes('nancy')) {
-                    console.log(`❌ Could not find session with ID: ${sessionId}`);
+                let found = sessions.find(s => s.session_id === sessionId || s.session_id == sessionId || String(s.session_id) === String(sessionId));
+
+                // If not found and it looks like a poster ID (P-XXX), try alternative strategies
+                if (!found && String(sessionId).match(/^P-\d+$/i)) {
+                    // Strategy 1: Try to find by poster presentation number in any field
+                    const posterNum = String(sessionId).replace(/^P-/i, '');
+                    found = sessions.find(s => {
+                        // Check if the number appears anywhere in the session data
+                        const sessionStr = JSON.stringify(s).toLowerCase();
+                        return sessionStr.includes(posterNum) ||
+                               sessionStr.includes(String(sessionId).toLowerCase());
+                    });
+
+                    // Strategy 2: If still not found, look for poster sessions with similar numbers
+                    if (!found) {
+                        found = sessions.find(s => {
+                            if (!s.session_info?.type || !s.session_info.type.toLowerCase().includes('poster')) return false;
+                            return String(s.session_id) === posterNum || s.session_id == posterNum;
+                        });
+                    }
+
+                    if (found && user.name && user.name.toLowerCase().includes('nancy')) {
+                        console.log(`✅ Found poster mapping: ${sessionId} → Session ${found.session_id} (${getSessionTitle(found)})`);
+                    }
+                }
+
+                if (!found && user.name && (user.name.toLowerCase().includes('nancy') || userAssignmentIds.length > 0)) {
+                    console.log(`❌ ${user.name}: Could not find session with ID: ${sessionId} (type: ${typeof sessionId})`);
+
+                    // Try to find poster sessions with similar IDs or containing the session ID in title/content
+                    const posterMatches = sessions.filter(s => {
+                        if (!s.session_info?.type || !s.session_info.type.toLowerCase().includes('poster')) return false;
+
+                        // Check if session ID appears in title, abstract, or any text content
+                        const title = getSessionTitle(s).toLowerCase();
+                        const sessionIdStr = String(sessionId).toLowerCase();
+
+                        return (
+                            String(s.session_id).includes(String(sessionId)) ||
+                            String(sessionId).includes(String(s.session_id)) ||
+                            title.includes(sessionIdStr) ||
+                            (s.abstract && s.abstract.toLowerCase().includes(sessionIdStr)) ||
+                            (s.session_info.title && s.session_info.title.toLowerCase().includes(sessionIdStr))
+                        );
+                    });
+
+                    if (posterMatches.length > 0) {
+                        console.log(`🎯 Possible poster matches for ${sessionId}:`, posterMatches.map(s => ({
+                            id: s.session_id,
+                            title: getSessionTitle(s).substring(0, 100),
+                            type: s.session_info?.type
+                        })));
+                    } else {
+                        // If it's a poster ID format like P-752, try searching all sessions for this pattern
+                        if (String(sessionId).match(/^P-\d+$/i)) {
+                            const allMatches = sessions.filter(s => {
+                                const title = getSessionTitle(s).toLowerCase();
+                                return title.includes(sessionIdStr) ||
+                                       (s.abstract && s.abstract.toLowerCase().includes(sessionIdStr));
+                            });
+                            if (allMatches.length > 0) {
+                                console.log(`📝 Found sessions containing "${sessionId}":`, allMatches.map(s => ({
+                                    id: s.session_id,
+                                    title: getSessionTitle(s).substring(0, 100),
+                                    type: s.session_info?.type
+                                })));
+                            }
+                        }
+                    }
+                }
+
+                // If still not found, create a placeholder like the left panel does
+                if (!found) {
+                    console.log(`🔧 Creating placeholder for missing session: ${sessionId}`);
+                    return {
+                        session_id: sessionId,
+                        id: sessionId,
+                        session_info: { title: `Missing Session (${sessionId})`, type: 'Unknown' },
+                        schedule: { date: '2025-10-20', time: 'TBD', location: 'TBD' },
+                        tracks: { primary_track: 'Unknown' },
+                        _missing: true
+                    };
                 }
                 return found;
             })
-            .filter(Boolean)
             .sort((a, b) => {
                 const dateA = new Date(a.schedule?.date || '2025-01-01');
                 const dateB = new Date(b.schedule?.date || '2025-01-01');
                 return dateA - dateB;
             });
 
-        // More debug logging for Nancy
-        if (user.name && user.name.toLowerCase().includes('nancy')) {
-            console.log(`🔍 Nancy's found sessions:`, userSessions.map(s => ({
+        // Enhanced debug logging
+        if (user.name && (user.name.toLowerCase().includes('nancy') || userSessions.length > 0)) {
+            console.log(`🔍 ${user.name}'s found sessions:`, userSessions.map(s => ({
                 id: s.session_id,
                 title: getSessionTitle(s),
                 type: s.session_info?.type
             })));
+            console.log(`📊 ${user.name}: ${userAssignmentIds.length} assignment IDs → ${userSessions.length} found sessions`);
         }
 
         html += `
@@ -2261,13 +2565,13 @@ function renderSessionsByAttendee(searchTerm = '') {
                 ${userSessions.length === 0 ?
                     '<p style="color: var(--muted);">No sessions assigned</p>' :
                     userSessions.map(session => `
-                        <div class="p-2 mb-2 bg-white" style="border-left: 3px solid var(--btn-blue); border-radius: 4px;">
+                        <div class="p-2 mb-2 ${session._missing ? 'missing-session' : 'bg-white'}" style="border-left: 3px solid ${session._missing ? 'var(--conflict-text); ' : 'var(--btn-blue)'}; border-radius: 4px;">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
-                                    <strong style="color: var(--ink);">${getSessionTitle(session)}</strong>
+                                    <strong style="color: var(--ink);">${getSessionTitle(session)}${session._missing ? ' <span class="missing-badge">MISSING</span>' : ''}</strong>
                                     <br><small style="color: var(--muted);">📅 ${formatDate(session.schedule?.date)} • 🕐 ${session.schedule?.time || 'TBD'} • 📍 ${session.schedule?.location || 'TBD'}</small>
                                 </div>
-                                <button class="btn btn-sm" style="background: #db1f68; color: white; border: 1px solid #db1f68;" onclick="removeAssignment('${getSessionId(session)}', ${user.id}); renderSessionsByAttendee();">
+                                <button class="btn btn-sm btn-outline-primary" onclick="removeAssignment('${getSessionId(session)}', ${user.id}); renderSessionsByAttendee();">
                                     Unassign
                                 </button>
                             </div>
@@ -2384,7 +2688,7 @@ function showMSDAssignments(userId, event) {
             const dateSessions = sessionsByDate.get(date);
             html += `
                 <div class="date-group-assignments">
-                <div class="h2 p-2">📅 ${formatDate(date)} (${dateSessions.length} session${dateSessions.length !== 1 ? 's' : ''})</div>
+                <div class="h4 p-2">📅 ${formatDate(date)} (${dateSessions.length} session${dateSessions.length !== 1 ? 's' : ''})</div>
                     ${dateSessions.map(session => `
                         <div class="session-card ${session._missing ? 'missing-session' : ''}">
                             <div class="session-card-content">
@@ -2397,7 +2701,7 @@ function showMSDAssignments(userId, event) {
                                     <div class="location">📍 ${session.schedule?.location || 'TBD'}</div>
                                 </div>
                             </div>
-                            <button class="btn-remove"
+                            <button class="btn btn-sm btn-outline-primary"
                                     onclick="removeAssignmentFromModal('${getSessionId(session)}', ${user.id})">
                                 Unassign
                             </button>
